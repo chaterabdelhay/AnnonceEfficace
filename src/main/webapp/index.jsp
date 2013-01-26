@@ -49,12 +49,12 @@
             <li><a href="#"><img src="template/images/carousel/6.jpg" alt="" /></a><br />Slide six</li>
             <li><a href="#"><img src="template/images/carousel/7.jpg" alt="" /></a><br />Slide seven</li>
         </ul>
-    </div> 
-	<div class="clear"></div>
+    </div> 	
 	--> 
 	<!-- end .grid_12 --> 
     
-    
+    <div class="clear"></div>
+    <br/>
 	
     <!-- begin boxes -->
     <div id="boxes">
