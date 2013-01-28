@@ -21,4 +21,15 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  <!-- Fix files(css,js...) lock on windows -->
+  <!-- Override init parameter to avoid nasty -->
+    <!-- file locking issue on windows.         -->
+  <servlet>    
+    <servlet-name>default</servlet-name>
+    <init-param>
+        <param-name>useFileMappedBuffer</param-name>
+        <param-value>false</param-value>
+    </init-param>
+  </servlet>
 </web-app>

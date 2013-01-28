@@ -16,11 +16,11 @@
 		<table id="login">
 			<tr>
 				<td>
-					<form class="form-2">
+					<form class="form-2" action="login">
 						<h1><span class="log-in">Log in</span> or <span class="sign-up">sign up</span></h1>
 						<p class="float">
 							<label for="login"><i class="icon-user"></i>Username</label>
-							<input type="text" name="login" placeholder="Username or email">
+							<input type="text" name="username" placeholder="Username or email">
 						</p>
 						<p class="float">
 							<label for="password"><i class="icon-lock"></i>Password</label>

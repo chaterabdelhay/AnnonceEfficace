@@ -61,7 +61,6 @@
         </dependency>
 
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -85,6 +84,7 @@
 				<version>0.9.6</version>
 				<configuration>
 					<!-- Embedded version -->
+					<webDefaultXml>src/main/resources/webdefault.xml</webDefaultXml>
 					<tomcatVersion>7.0.11</tomcatVersion>
 					<!-- Embedded port -->
 					<tomcatHttpPort>8080</tomcatHttpPort>

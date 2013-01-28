@@ -10,8 +10,15 @@
 	<include file="example.xml"/>
 	
 	<package name="welcomePage" extends="struts-default">   
-    	<action name="*" class="org.arQam.AnnonceEfficace.example.ExampleSupport">
+    	<action name="*" class="com.opensymphony.xwork2.ActionSupport">
       		<result>/index.jsp</result>
+    	</action>            
+  	</package>
+  	
+  	<package name="utilisateur" extends="struts-default">   
+    	<action name="login" class="org.arQam.AnnonceEfficace.Utilisateur.Login">
+    		<result name="input">/connexion.jsp</result>
+      		<result name="success">/espaceUtilisateur.jsp</result>      		
     	</action>            
   	</package>
       

@@ -146,7 +146,7 @@
     <!-- begin .grid_9 - LINKS -->
     <div id="navigation" class="grid_9">
         <ul>
-        	<li><a href="index.jsp" class="selected">Acceuil</a></li>
+        	<li><a href="/AnnonceEfficace/" class="selected">Acceuil</a></li>
             <li><a href="listeAnnonces.jsp">Annonces</a></li>
             <li><a href="connexion.jsp">Se connecter</a></li>
         </ul>
