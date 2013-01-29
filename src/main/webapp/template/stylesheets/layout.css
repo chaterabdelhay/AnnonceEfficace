@@ -561,3 +561,19 @@ FOOTER
     margin: -1px 5px 0 1px;
 }
 
+/* ************** TEST CSS ********************** */
+#topGrayLayer{
+	display:none;
+	width:100%;
+	height:100%;
+	//background-color:rgba(0,0,0,0.9);
+	background-color:rgba(255,255,255,0.9);
+	position:absolute; top:0px; left:0px;z-index:1000;
+}
+
+#mapDiv
+{		
+	width: 70%; height: 800px; margin: 0px auto; 		
+}
+
+#mapa {width:100%; height:340px; border:5px solid #DEEBF2;margin-top:100px;}
