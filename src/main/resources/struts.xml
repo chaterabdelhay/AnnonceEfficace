@@ -16,7 +16,7 @@
   	</package>
   	
   	<package name="utilisateur" extends="struts-default">   
-    	<action name="login" class="org.arQam.AnnonceEfficace.Utilisateur.Login">
+    	<action name="login" class="org.arQam.AnnonceEfficace.Utilisateur.LoginAction">
     		<result name="input">/connexion.jsp</result>
       		<result name="success">/espaceUtilisateur.jsp</result>      		
     	</action>            

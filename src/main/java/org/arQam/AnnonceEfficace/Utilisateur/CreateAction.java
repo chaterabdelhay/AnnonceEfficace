@@ -23,22 +23,21 @@ package org.arQam.AnnonceEfficace.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class Login extends ActionSupport {	
-    private String username;
-    private String password;
-    
+public class CreateAction extends ActionSupport {
+	
+	private String username;
+	private String password;
+	
     public String execute() throws Exception {
-        if (isInvalid(getUsername())) return INPUT;
-        if (isInvalid(getPassword())) return INPUT;
-        
-        // mettre code pour tester si l'utilisateur existe !
+
+        if (isInvalid()) return INPUT;        
         return SUCCESS;
     }
 
-    private boolean isInvalid(String value) {
-        return (value == null || value.length() == 0);
-    }
-
+    private boolean isInvalid() {
+    	// mettre le code de test d'invalidité ici
+        return true;
+    }    
 
     public String getUsername() {
         return username;
