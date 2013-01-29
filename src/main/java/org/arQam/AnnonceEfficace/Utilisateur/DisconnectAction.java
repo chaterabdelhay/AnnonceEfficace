@@ -23,26 +23,19 @@ package org.arQam.AnnonceEfficace.Utilisateur;
 
 import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 import org.arQam.AnnonceEfficace.Metier.Utilisateur;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport {	
+public class DisconnectAction extends ActionSupport {	
     private String username;
     private String password;
     
     public String execute() throws Exception {
-        if (isInvalid(getUsername())) return INPUT;
-        if (isInvalid(getPassword())) return INPUT;
-        Utilisateur user = Utilisateur.exists(username,password);
-        if(user != null){
-        	Map session = ActionContext.getContext().getSession();
-        	session.put("utilisateur", user);        	
-        	// mettre code pour tester si l'utilisateur existe !
-            return SUCCESS;
-        }        
-        return INPUT;
+    	ServletActionContext.getRequest().getSession().invalidate();
+        return SUCCESS;       
     }
 
     private boolean isInvalid(String value) {

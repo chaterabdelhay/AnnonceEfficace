@@ -18,7 +18,7 @@
 			<tr>
 				<td>
 				
-					<h2>Bienvenu dans votre espace personnel, M. <s:property value="username"/></h2>																		
+					<h2>Bienvenu dans votre espace personnel, M. <s:property value="%{#session.utilisateur.nomUtilisateur}"/></h2>																		
 				</td>
 				<td>
 					<div id="createAccount" style="line-height:30px;width:250px; font-size:13px; margin-left:50px; color:#555">

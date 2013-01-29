@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -146,9 +149,14 @@
     <!-- begin .grid_9 - LINKS -->
     <div id="navigation" class="grid_9">
         <ul>
-        	<li><a href="/AnnonceEfficace/" class="selected">Acceuil</a></li>
-            <li><a href="listeAnnonces.jsp">Annonces</a></li>
-            <li><a href="connexion.jsp">Se connecter</a></li>
+        	<li><a href="." class="selected">Acceuil</a></li>
+            <li><a href="listeAnnonces">Annonces</a></li>
+            <s:if test="%{#session.utilisateur!=null}">
+            	<li><a href="disconnect">Se deconnecter</a></li>
+            </s:if>
+            <s:if test="%{#session.utilisateur==null}">
+            	<li><a href="connexion.jsp">Se connecter</a></li>
+            </s:if>                        
         </ul>
     </div><!-- end .grid_9 -->
     
