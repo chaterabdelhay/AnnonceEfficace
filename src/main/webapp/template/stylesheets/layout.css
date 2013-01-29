@@ -359,10 +359,9 @@ FOOTER
 
 
 .form-2 {
-    /* Size and position */
-    width: 340px;
+    /* Size and position */    
     margin: 60px auto 30px;
-    padding: 15px;
+    padding: 20px 70px;
     position: relative;
 
     /* Styles */

@@ -22,38 +22,45 @@
 						<table>
 							<tr>
 								<td>
-									<s:form action="login" theme="css_xhtml" style="width:250px">
+									<s:form action="login" theme="css_xhtml" style="width:550px">
 										<h1>
-											<span class="sign-up">Connectez-vous</span>
+											<span class="log-in">Création de compte</span>
 										</h1>
 										<p>
-											<label for="login"><i class="icon-user"></i>Nom d'utilisateur</label>
+											<label for="login">Username</label>
 											<s:textfield name="username" maxlength="20" id="username"
-												placeholder="nom d'utilisateur" />
+												placeholder="Nom d'utilisateur" />
 										</p>
 										<p>
-											<label for="password"><i class="icon-lock"></i>Mot de passe</label>
+											<label for="password">Password</label>
 											<s:textfield type="password" name="password" maxlength="20"
-												id="username" placeholder="mot de passe" class="showpassword" />
+												id="username" placeholder="Mot de passe" class="showpassword" />
 										</p>
+										<p>
+											<label for="confirmPassword">Confirm the password</label>
+											<s:textfield type="password" name="confirmPassword" maxlength="20"
+												id="confirmPassword" placeholder="reindiquez votre mot de passe" class="showpassword" />
+										</p>										
+										<p>
+											<label for="email">E-mail</label>
+											<s:textfield name="email" maxlength="20"
+												id="email" placeholder="votre email, ex: mohamed@gmail.com"/>
+										</p>
+										<p>
+											<label for="email">Telephone</label>
+											<s:textfield name="telephone" maxlength="20"
+												id="telephone" placeholder="votre numéro de téléphone"/>
+										</p>
+										<p>
+											<label for="villeId">Ville</label>
+											<s:textfield name="villeId" maxlength="20"
+												id="villeId" placeholder="id de votre ville"/>
+										</p>																			
 										<p class="clearfix">
-											<input type="submit" value="Login">
+											<input type="submit" value="Créer">
 										</p>
 									</s:form>
-								</td>
-								<td>
-									<div id="createAccount"
-										style="line-height: 30px; width: 250px; font-size: 13px; margin-left: 50px; color: #555">
-										<h1 style="font-weight: 800;">Vous ne disposez pas de compte ?</h1>																				
-										<p style="text-align: justify;">											
-											<s:a href="creerCompte">La création d'un compte</s:a> est instantanée ! Même pas deux minutes et vous aurez votre 
-											propre compte.<br/>
-											<span style="color:#888">
-											Les internautes authenfiés ont accès à des <s:a href="Manuel?rubrique=5">fonctionnalités très interresantes</s:a>, ne vous en privez pas ! 
-											</span>
-										</p>																																	
-									</div>
-								</td>
+								</td>							
 							</tr>
 						</table>
 					</div>
