@@ -32,7 +32,7 @@
     	
     	<action name="creerCompte" class="com.opensymphony.xwork2.ActionSupport">    		
       		<result name="success">/creerCompte.jsp</result>      		
-    	</action>
+    	</action>    	    	
     	
     	<action name="disconnect" class="org.arQam.AnnonceEfficace.Utilisateur.DisconnectAction">    		
       		<result name="success" type="redirect">/listeAnnonces</result>      		
@@ -45,6 +45,11 @@
     		<!-- <interceptor-ref name="login" />  -->  	            
     		<result name="success">/listeAnnonces.jsp</result>
     	</action>    	
+    	
+    	
+    	<action name="publierAnnonce" class="com.opensymphony.xwork2.ActionSupport">    		
+      		<result name="success">/publierAnnonce.jsp</result>      		
+    	</action>
 	</package>	
 	
 	<package name="welcomePage" extends="struts-default">   

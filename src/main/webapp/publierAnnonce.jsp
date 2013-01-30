@@ -27,6 +27,15 @@
 											<span class="log-in">Création de compte</span>
 										</h1>
 										<p>
+											<label for="typeAnnonce">Type</label>
+											<select id="typeAnnonce" name="field_nomville_value">
+												<option value="">Vente</option>
+												<option value="">Evenement</option>
+												<option value="">Offre d'emploi</option>
+												<option value="">Offre de stage</option>
+											</select>
+										</p>	
+										<p>
 											<label for="login">Titre</label>
 											<s:textfield name="username" maxlength="20" id="username"
 												placeholder="Titre de l'annonce" />
@@ -35,17 +44,8 @@
 											<label for="password">Description</label>
 											<s:textfield type="password" name="password" maxlength="20"
 												id="username" placeholder="Mot de passe" class="showpassword" />
-										</p>
-										<p>
-											<label for="typeAnnonce">Type</label>
-											<select id="typeAnnonce" name="field_nomville_value">
-												<option value="">Vente</option>
-												<option value="">Evenement</option>
-												<option value="">Offre d'emploi</option>
-												<option value="">Offre de stage</option>
-											</select>
-										</p>																				
-										<p><a href="#" onclick="showGMapLayer();">Selectionner la position</a></p>																																													
+										</p>																												
+										<p><a href="#" id="setPosition">Selectionner la position</a></p>																																													
 										<p class="clearfix">
 											<input type="submit" value="Créer">
 										</p>
@@ -62,12 +62,12 @@
 		</table>
 
 	</div>
-	<div id="topGrayLayer">
+	<div id="topGrayLayer1" class="topGrayLayer">
 		<div id="mapDiv">
 			<div id="mapa"></div>
 			<div class="eventtext">				
 				<div id="mapDivBottomBar">
-					<p><span style="font-weight:800;">Position actuelle : </span><span id="latlongclicked"></span><a href="#" onclick="hideGMapLayer();" style="float:right;font-weight:800;">Confirmer</a></p>
+					<p><span style="font-weight:800;">Position actuelle : </span><span id="latlongclicked"></span><a href="#"  id="GMapConfirmPosition">Confirmer</a></p>
 				</div>				
 			</div>
 		</div>
@@ -88,22 +88,19 @@
 					document.getElementById('latlongclicked').innerHTML = point.lat() + ', ' + point.lng();
 				});							
 			}
-		}
-				
-		//document.getElementById('topGrayLayer').style.display ="none";
-		
-		function showGMapLayer()
-		{			
-			document.getElementById('topGrayLayer').style.display ="block";
-			if(GMapInitialized == false){
+		}						
+							
+		$("#setPosition").click(function () {
+  			$("#topGrayLayer1").fadeIn(500);
+  			if(GMapInitialized == false){
 				initGMap();
 				GMapInitialized = true;
-			} 													
-		}
-		function hideGMapLayer()
-		{			
-				document.getElementById('topGrayLayer').style.display ="none";							
-		}
+			} 	
+		});
+		
+		$("#GMapConfirmPosition").click(function () {
+  			$("#topGrayLayer1").fadeOut(300);  			
+		});	
 	</script>
 
 	<!-- begin .grid_12 - COMMENTS -->
