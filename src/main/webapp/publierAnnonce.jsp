@@ -37,9 +37,13 @@
 												id="username" placeholder="Mot de passe" class="showpassword" />
 										</p>
 										<p>
-											<label for="confirmPassword">Type</label>
-											<s:textfield type="password" name="confirmPassword" maxlength="20"
-												id="confirmPassword" placeholder="reindiquez votre mot de passe" class="showpassword" />
+											<label for="typeAnnonce">Type</label>
+											<select id="typeAnnonce" name="field_nomville_value">
+												<option value="">Vente</option>
+												<option value="">Evenement</option>
+												<option value="">Offre d'emploi</option>
+												<option value="">Offre de stage</option>
+											</select>
 										</p>																				
 										<p><a href="#" onclick="showGMapLayer();">Selectionner la position</a></p>																																													
 										<p class="clearfix">
@@ -62,32 +66,27 @@
 		<div id="mapDiv">
 			<div id="mapa"></div>
 			<div class="eventtext">				
-				<p>Position actuelle :<span id="latlongclicked"></span></p>				
-				<p><a href="#" onclick="hideGMapLayer();">Confirmer</a></p>
+				<div id="mapDivBottomBar">
+					<p><span style="font-weight:800;">Position actuelle : </span><span id="latlongclicked"></span><a href="#" onclick="hideGMapLayer();" style="float:right;font-weight:800;">Confirmer</a></p>
+				</div>				
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
 		var GMapInitialized = false;
+		var initLatitude  = 32.99023555965106;
+		var initLongitude = -7.3828125;
 		function initGMap(){		
 			if (GBrowserIsCompatible()) {
 				map = new GMap2(document.getElementById("mapa"));				
 				map.addControl(new GLargeMapControl());
 				map.addControl(new GMapTypeControl(3));
-				map.setCenter(new GLatLng(32.99023555965106, -7.3828125), 11, 0);
-				map.setZoom(8);
-
-				GEvent.addListener(map, 'mousemove', function(point) {
-					document.getElementById('latspan').innerHTML = point.lat()
-					document.getElementById('lngspan').innerHTML = point.lng()
-					document.getElementById('latlong').innerHTML = point.lat()
-							+ ', ' + point.lng()
-				});
-
+				map.setCenter(new GLatLng(initLatitude,initLongitude ), 11, 0);
+				map.setZoom(8);				
+				document.getElementById('latlongclicked').innerHTML = initLatitude + ', ' + initLongitude;
 				GEvent.addListener(map, 'click', function(overlay, point) {
-					document.getElementById('latlongclicked').innerHTML = point.lat()
-							+ ', ' + point.lng()
-				});
+					document.getElementById('latlongclicked').innerHTML = point.lat() + ', ' + point.lng();
+				});							
 			}
 		}
 				
