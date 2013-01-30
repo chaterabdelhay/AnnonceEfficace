@@ -19,36 +19,25 @@
  * under the License.
  */
 
-package org.arQam.AnnonceEfficace.Utilisateur;
+package org.arQam.AnnonceEfficace.Action;
 
-import java.util.Map;
-
-import org.arQam.AnnonceEfficace.Metier.Utilisateur;
-
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport {	
-    private String username;
-    private String password;
-    
+public class CreateAction extends ActionSupport {
+	
+	private String username;
+	private String password;
+	
     public String execute() throws Exception {
-        if (isInvalid(getUsername())) return INPUT;
-        if (isInvalid(getPassword())) return INPUT;
-        Utilisateur user = Utilisateur.exists(username,password);
-        if(user != null){
-        	Map session = ActionContext.getContext().getSession();
-        	session.put("utilisateur", user);        	
-        	// mettre code pour tester si l'utilisateur existe !
-            return SUCCESS;
-        }        
-        return INPUT;
+
+        if (isInvalid()) return INPUT;        
+        return SUCCESS;
     }
 
-    private boolean isInvalid(String value) {
-        return (value == null || value.length() == 0);
-    }
-
+    private boolean isInvalid() {
+    	// mettre le code de test d'invalidité ici
+        return true;
+    }    
 
     public String getUsername() {
         return username;

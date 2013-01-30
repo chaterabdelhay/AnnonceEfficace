@@ -19,44 +19,23 @@
  * under the License.
  */
 
-package org.arQam.AnnonceEfficace.Utilisateur;
+package org.arQam.AnnonceEfficace.Action;
 
-import java.util.Map;
-
-import org.apache.struts2.ServletActionContext;
-import org.arQam.AnnonceEfficace.Metier.Utilisateur;
-
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class DisconnectAction extends ActionSupport {	
-    private String username;
-    private String password;
+public class GetListeAnnoncesAction extends ActionSupport {	
+    private String p;    
     
-    public String execute() throws Exception {
-    	ServletActionContext.getRequest().getSession().invalidate();
+    public String execute() throws Exception {    	
         return SUCCESS;       
     }
 
-    private boolean isInvalid(String value) {
-        return (value == null || value.length() == 0);
-    }
+	public String getP() {
+		return p;
+	}
 
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }    
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setP(String p) {
+		this.p = p;
+	}
 
 }

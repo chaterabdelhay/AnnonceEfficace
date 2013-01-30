@@ -19,25 +19,29 @@
  * under the License.
  */
 
-package org.arQam.AnnonceEfficace.Utilisateur;
+package org.arQam.AnnonceEfficace.Action;
 
+import java.util.Map;
+
+import org.apache.struts2.ServletActionContext;
+import org.arQam.AnnonceEfficace.Metier.Utilisateur;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CreateAction extends ActionSupport {
-	
-	private String username;
-	private String password;
-	
+public class DisconnectAction extends ActionSupport {	
+    private String username;
+    private String password;
+    
     public String execute() throws Exception {
-
-        if (isInvalid()) return INPUT;        
-        return SUCCESS;
+    	ServletActionContext.getRequest().getSession().invalidate();
+        return SUCCESS;       
     }
 
-    private boolean isInvalid() {
-    	// mettre le code de test d'invalidité ici
-        return true;
-    }    
+    private boolean isInvalid(String value) {
+        return (value == null || value.length() == 0);
+    }
+
 
     public String getUsername() {
         return username;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,7 +9,10 @@
 <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAA7A7Eu8gZ_mTslgWnRR9TGRQByQgPDcFg0q0wOb9u6rRtBOFyKBQD4QgfPHRxBFGL7JviJdz_jAlHfw" type="text/javascript"></script>
 <!-- Website title -->
 <title>Annonce Efficace</title>
-
+	
+	<!-- Struts2 - JQuery -->
+	<sj:head/>
+	
 	<!-- Favicon -->
 		<link rel="shortcut icon" href="favicon.ico" />
 
@@ -31,7 +35,7 @@
 	<!-- Begin JavaScript -->
     
     	<!-- jQuery -->
-		<script type="text/javascript" src="template/javascripts/jquery-1.9.0.min.js"></script>
+		<!--<script type="text/javascript" src="template/javascripts/jquery-1.9.0.min.js"></script>-->
         
         <!-- jQuery plugins -->
         <script type="text/javascript" src="template/javascripts/jquery.tipTip.minified.js"></script>
@@ -151,14 +155,14 @@
         <ul>
         	<li><a href="." class="selected">Acceuil</a></li>
         	<s:if test="%{#session.utilisateur!=null}">
-            	<li><a href="espaceUtilisateur">Mon espace</a></li>
+            	<li><a href="espaceUtilisateur" style="color:#fff;">Mon espace</a></li>
             </s:if>
             <li><a href="listeAnnonces">Annonces</a></li>            
             <s:if test="%{#session.utilisateur!=null}">
-            	<li><a href="publierAnnonce">Publier une annonce</a></li>
+            	<li><a href="publierAnnonce" style="color:#fff;">Publier une annonce</a></li>
             </s:if>
             <s:if test="%{#session.utilisateur!=null}">
-            	<li><a href="disconnect">Se deconnecter</a></li>
+            	<li><a href="disconnect" style="color:#fff;">Se deconnecter</a></li>
             </s:if>
             <s:if test="%{#session.utilisateur==null}">
             	<li><a href="connexion.jsp">Se connecter</a></li>
