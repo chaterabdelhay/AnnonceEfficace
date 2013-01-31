@@ -34,7 +34,8 @@ public class DisconnectAction extends ActionSupport {
     private String password;
     
     public String execute() throws Exception {
-    	ServletActionContext.getRequest().getSession().invalidate();
+    	//System.out.println(ServletActionContext.getRequest().getSession().);
+    	ActionContext.getContext().getSession().clear();
         return SUCCESS;       
     }
 

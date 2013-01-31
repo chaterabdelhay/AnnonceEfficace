@@ -29,7 +29,7 @@
     		<result name="input">/connexion.jsp</result>
       		<result name="success" type="redirect">/espaceUtilisateur</result>      		
     	</action>
-    	<action name="createcompte" class="org.arQam.AnnonceEfficace.Utilisateur.CreateCompteAction">
+    	<action name="createcompte" class="org.arQam.AnnonceEfficace.Action.CreateCompteAction">
     		<result name="input">/creerCompte.jsp</result>
       		<result name="success" >/saveCompte.jsp</result>      		
     	</action>
@@ -59,8 +59,13 @@
       		<result name="success">/publierAnnonce.jsp</result>      		
     	</action>
     	
-    	<action name="detailsAnnonce" class="com.opensymphony.xwork2.ActionSupport">    		
-      		<result name="success">/detailsAnnonce.jsp</result>      		
+    	<action name="detailsAnnonce" class="org.arQam.AnnonceEfficace.Action.DetailsAnnonceAction">    		
+      		<result name="success">/detailsAnnonce.jsp</result>  
+      		    		
+    	</action>
+    	<action name="evaluer" class="org.arQam.AnnonceEfficace.Action.EvaluateAction">    		
+      		<result name="input">/connexion.jsp</result>    
+      		<result name="success">/detailsAnnonce.jsp</result>    		
     	</action>
 	</package>	
 	
