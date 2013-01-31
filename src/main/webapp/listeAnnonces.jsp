@@ -153,12 +153,12 @@
 <div id="topGrayLayer2" class="topGrayLayer">
 	<div id="mapDiv">
 		<p class="whiteBG" style="margin-top:200px; padding: 10px;">				 
-    	<s:url id="ajaxTest" value="/getListeAnnonces.action?p=a"/>		 
+    	<s:url id="ajaxTest" value="/ajax_getListeAnnonces.action?p=a"/>		 
     	<sj:a id="link1" href="%{ajaxTest}" targets="boxes" onclick="$('#topGrayLayer2').fadeOut(300);">
       		Update with content 1
     	</sj:a>
     	
-    	<s:url id="ajaxTest2" value="/getListeAnnonces.action?p=b"/>		 
+    	<s:url id="ajaxTest2" value="/ajax_getListeAnnonces.action?p=b"/>		 
     	<sj:a id="link2" href="%{ajaxTest2}" targets="boxes" onclick="$('#topGrayLayer2').fadeOut(300);">
       		Update with Content 2
     	</sj:a>
