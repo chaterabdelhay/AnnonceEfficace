@@ -1,7 +1,6 @@
 <!-- Include the header -->
 <jsp:include page="header.jsp" />
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <!-- BEGIN : page body content -->
 
 <div id="sideBar">
@@ -152,13 +151,48 @@
 
 <div id="topGrayLayer2" class="topGrayLayer">
 	<div id="mapDiv">
-		<p class="whiteBG" style="margin-top:200px; padding: 10px;">				 
-    	<s:url id="ajaxTest" value="/ajax_getListeAnnonces.action?p=a"/>		 
-    	<sj:a id="link1" href="%{ajaxTest}" targets="boxes" onclick="$('#topGrayLayer2').fadeOut(300);">
-      		Update with content 1
-    	</sj:a>
-    	
-    	<s:url id="ajaxTest2" value="/ajax_getListeAnnonces.action?p=b"/>		 
+		<p class="whiteBG" style="margin-top:200px; padding: 10px;">				     	    
+
+			<a id="link1" href="#">update with content 1</a>
+			<a id="link2" href="#">update with content 2</a>
+			<script>
+				$("#link1")
+						.click(
+								function() {
+									$
+											.ajax({
+												type : "GET",
+												url : "ajax_getListeAnnonces.action?p=a",
+												error : function(msg) {
+													$('#boxes').html("Error !: " + msg);
+												},
+												success : function(data) {
+													//affiche le contenu du fichier dans le conteneur dédié
+													$('#boxes').html(data);
+													$('#topGrayLayer2').fadeOut(300);
+												}
+											});
+								});
+				$("#link2")
+				.click(
+						function() {
+							$
+									.ajax({
+										type : "GET",
+										url : "ajax_getListeAnnonces.action?p=b",
+										error : function(msg) {
+											$('#boxes').html("Error !: " + msg);
+										},
+										success : function(data) {
+											//affiche le contenu du fichier dans le conteneur dédié
+											$('#boxes').html(data);
+											$('#topGrayLayer2').fadeOut(300);
+										}
+									});
+						});
+			</script>
+
+			<s:url id="ajaxTest2" value="/ajax_getListeAnnonces.action?p=b"/>		 
     	<sj:a id="link2" href="%{ajaxTest2}" targets="boxes" onclick="$('#topGrayLayer2').fadeOut(300);">
       		Update with Content 2
     	</sj:a>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
 <!-- Include the header -->
 <jsp:include page="header.jsp" />
@@ -28,24 +27,36 @@
 											<span class="log-in">Création de compte</span>
 										</h1>
 										<p>
-											<label for="login">Username</label>
+											<label for="login">Nom d'utilisateur</label>
 											<s:textfield name="user.nomUtilisateur" maxlength="20"
-												id="user.nomUtilisateur" />
-											<s:url id="ajaxTest1"
-												value="ajax_createAccounctVerification?nomUtilisateur=" />
-											<p><sj:a id="link2" href="%{ajaxTest1}" targets="msg" onclick="options_link2.hrefparameter ='nomUtilisateur=' + $('#user.nomUtilisateur').value; alert(options_link2.hrefparameter);">
-      											Verifier la disponibilité
-    										</sj:a></p>
+												id="user_nomUtilisateur" />											
+    										<a id="link2" href="#">test</a>
+    										<script>
+    										$( "#link2" ).click(function(){
+    											alert("ajax_createAccounctVerification?nomUtilisateur=" + $('#user_nomUtilisateur').val());
+    										    $.ajax({
+    											   type: "GET",
+    											   url: "ajax_createAccounctVerification?nomUtilisateur=" + $('#user_nomUtilisateur').val(),
+    											   error:function(msg){
+    											     alert( "Error !: " + msg );
+    											   },
+    											   success:function(data){
+    											   	//affiche le contenu du fichier dans le conteneur dédié
+    												$('#msg').html(data);
+    											}});
+    										});
+    										</script>
+    										
     										<div id="msg"></div>
 										</p>
 										<p>
-											<label for="password">Password</label>
+											<label for="password">Mot de passe</label>
 											<s:textfield type="password" name="user.motDePasse"
 												maxlength="20" id="user.motDePasse"
 												placeholder="Mot de passe" class="showpassword" />
 										</p>
 										<p>
-											<label for="confirmPassword">Confirm the password</label>
+											<label for="confirmPassword">Confirmation du mot de passe</label>
 											<s:textfield type="password" name="confirmPassword"
 												maxlength="20" id="confirmPassword"
 												placeholder="reindiquez votre mot de passe"
@@ -179,7 +190,6 @@
 				</td>
 			</tr>
 		</table>
-
 	</div>
 
 	<!-- begin .grid_12 - COMMENTS -->
