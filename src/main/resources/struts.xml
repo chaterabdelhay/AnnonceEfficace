@@ -31,7 +31,7 @@
     	</action>
     	<action name="createcompte" class="org.arQam.AnnonceEfficace.Utilisateur.CreateCompteAction">
     		<result name="input">/creerCompte.jsp</result>
-      		<result name="success" >/listeAnnonces.jsp</result>      		
+      		<result name="success" >/saveCompte.jsp</result>      		
     	</action>
     	
     	<action name="creerCompte" class="com.opensymphony.xwork2.ActionSupport">    		
