@@ -54,6 +54,10 @@
     	<action name="publierAnnonce" class="com.opensymphony.xwork2.ActionSupport">    		
       		<result name="success">/publierAnnonce.jsp</result>      		
     	</action>
+    	
+    	<action name="detailsAnnonce" class="com.opensymphony.xwork2.ActionSupport">    		
+      		<result name="success">/detailsAnnonce.jsp</result>      		
+    	</action>
 	</package>	
 	
 	<package name="welcomePage" extends="struts-default">   

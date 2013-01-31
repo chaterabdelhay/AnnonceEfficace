@@ -44,6 +44,11 @@
         <script type="text/javascript" src="template/javascripts/jquery.bxSlider.min.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.ticker.js"></script>
         
+        <!-- JQUERY rating stars -->
+        
+        <script src='template/javascripts/jquery.rating.js' type="text/javascript" language="javascript"></script>
+ 		<link href='template/stylesheets/jquery.rating.css' type="text/css" rel="stylesheet"/>
+        
         <!-- jQuery plugin init -->
         <script type="text/javascript">
 		$(document).ready(function(){
