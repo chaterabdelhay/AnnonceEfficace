@@ -22,17 +22,17 @@ import org.arQam.AnnonceEfficace.HibernateUtil;;
 public class Utilisateur {
 	@Id
     @GeneratedValue
-	private int id;
+	private long id;
 	@Column
-	private String nomUtilisateur;
+	public String nomUtilisateur;
 	@Column
-	private String motDePasse;
+	public String motDePasse;
 	@Column
-	private String email;
+	public String email;
 	@Column
-	private String telephone;
+	public  String telephone;
 	@Column(nullable=true)	
-	private Integer villeId;
+	public Integer villeId;
 	
 	public Utilisateur(){
 		
@@ -115,7 +115,7 @@ public class Utilisateur {
     }	
 	    
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -145,7 +145,7 @@ public class Utilisateur {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	public int getVilleId() {
+	public Integer getVilleId() {
 		return villeId;
 	}
 	public void setVilleId(int villeId) {
