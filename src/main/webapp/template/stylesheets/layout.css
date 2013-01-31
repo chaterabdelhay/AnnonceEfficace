@@ -95,7 +95,7 @@ HEADER
 }
 
 #logo{
-	 margin:8px 0px 0px 200px;
+	 margin:3px 0px 0px 200px;
 }
 #navigation img{
 	float:right;
@@ -593,4 +593,10 @@ FOOTER
 .whiteBG{
 	background-color:white; margin-top : 20px; padding:5px;
 	border-radius: 4px; border:10px solid rgba(55,55,55,0.1);
+}
+
+.commentaire{
+	background-color:rgba(125,52,1,0.3);padding:5px;
+	border-left:5px solid rgba(0,0,0,0.1);
+	color:#fff; !important
 }

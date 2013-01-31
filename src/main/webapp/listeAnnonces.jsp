@@ -1,6 +1,7 @@
 <!-- Include the header -->
 <jsp:include page="header.jsp" />
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <!-- BEGIN : page body content -->
 
 <div id="sideBar">
@@ -19,7 +20,7 @@
 	       <td><img src="template/images/search.png"/></td>
 	       <td><p><a id="searchTool" href="#">Outil recherche</a></p></td>
 		  </tr>
-		</table>			
+		</table>		
 	</div>
     <!-- begin boxes -->
     <div id="boxes">
@@ -28,7 +29,9 @@
             <a href="template/images/slider/1.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/1.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
+            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
+            <a href="detailsAnnonce.action?id=1">Détails annonce&nbsp;&rarr;</a>
+            </p>
         </div><!-- end .grid_3 -->
         
         <!-- begin .grid_3 - BOX2 -->
@@ -36,7 +39,8 @@
             <a href="template/images/slider/2.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/2.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
+            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
+            <a href="detailsAnnonce.action?id=2">Détails annonce&nbsp;&rarr;</a></p>
         </div><!-- end .grid_3 -->
         
         <!-- begin .grid_3 - BOX3 -->
@@ -44,7 +48,8 @@
             <a href="template/images/slider/3.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/3.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
+            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
+            <a href="detailsAnnonce.action?id=3">Détails annonce&nbsp;&rarr;</a></p>
         </div><!-- end .grid_3 -->
         
         <!-- begin .grid_3 - BOX4 -->
@@ -147,7 +152,17 @@
 
 <div id="topGrayLayer2" class="topGrayLayer">
 	<div id="mapDiv">
-		<p class="whiteBG" style="margin-top:200px; padding: 10px;">
+		<p class="whiteBG" style="margin-top:200px; padding: 10px;">				 
+    	<s:url id="ajaxTest" value="/getListeAnnonces.action?p=a"/>		 
+    	<sj:a id="link1" href="%{ajaxTest}" targets="boxes" onclick="$('#topGrayLayer2').fadeOut(300);">
+      		Update with content 1
+    	</sj:a>
+    	
+    	<s:url id="ajaxTest2" value="/getListeAnnonces.action?p=b"/>		 
+    	<sj:a id="link2" href="%{ajaxTest2}" targets="boxes" onclick="$('#topGrayLayer2').fadeOut(300);">
+      		Update with Content 2
+    	</sj:a>
+    	<br/>
 			Outil de recherche doit être placé ici <br/>
 			<a href="#" id="searchToolRun">Lancer la recherche(Ajax)</a><br/>
  			<a href="#" id="searchToolClose">Fermer</a>
@@ -201,7 +216,6 @@
 		$("#topGrayLayer2").fadeOut(300);
 	});
 </script><!-- END GMapLayer -->
-
 <!-- END : page body content -->
 
 <!-- Include the footer -->
