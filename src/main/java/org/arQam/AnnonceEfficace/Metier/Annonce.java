@@ -23,16 +23,16 @@ public class Annonce {
 	@Column
 	private Date datePostulation;
 	@Column
-	private int positionGeographiqueId;
+	private long positionGeographiqueId;
 	@Column
-	private int objetId;
+	private long objetId;
 
 	public Annonce() {
 
 	}
 
 	public Annonce(String titre, String description, String type,
-			Date datePostulation, int positionGeographiqueId, int objetId) {
+			Date datePostulation, long positionGeographiqueId, long objetId) {
 		this.titre = titre;
 		this.description = description;
 		this.type = type;
@@ -81,7 +81,7 @@ public class Annonce {
 		this.datePostulation = datePostulation;
 	}
 
-	public int getPositionGeographiqueId() {
+	public long getPositionGeographiqueId() {
 		return positionGeographiqueId;
 	}
 
@@ -89,7 +89,7 @@ public class Annonce {
 		this.positionGeographiqueId = positionGeographiqueId;
 	}
 
-	public int getObjetId() {
+	public long getObjetId() {
 		return objetId;
 	}
 

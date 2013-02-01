@@ -181,18 +181,21 @@
 		<span id="opt1" class="option"> 
 			<span class="optionDescription" id="opt1Description">Voir les annonces</span> 
 			<img src="template/images/sideBar/options/opt1Normal.png" 
-					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" onclick=""/>
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+					onclick="window.location.replace('listeAnnonces');"/>
 		</span>	
 		<s:if test="%{#session.utilisateur!=null}">
 			<span id="opt3" class="option"> 
 				<span class="optionDescription" id="opt3Description">Publier une annonce rapidement</span> 
 				<img src="template/images/sideBar/options/opt3Normal.png" 
-					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" onclick=""/>
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+					onclick="window.location.replace('publierAnnonce');"/> 
 			</span>
 			<span id="opt2" class="option"> 
 				<span class="optionDescription" id="opt2Description">Participez au concours</span> 
 				<img src="template/images/sideBar/options/opt2Normal.png" 
-					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" onclick=""/>
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+					onclick="window.location.replace('participerConcours');"/>
 			</span>		
 		</s:if>
 			
