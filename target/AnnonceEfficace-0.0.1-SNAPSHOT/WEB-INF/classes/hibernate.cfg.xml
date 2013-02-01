@@ -27,7 +27,8 @@
         <property name="show_sql">false</property>
          
         
-  
+		<mapping class="org.arQam.AnnonceEfficace.Metier.Ville"/>
+  		<mapping class="org.arQam.AnnonceEfficace.Metier.PositionGeographique"/>
         <mapping class="org.arQam.AnnonceEfficace.Metier.Utilisateur"/>                           
     </session-factory>
 </hibernate-configuration>

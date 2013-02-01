@@ -7,7 +7,7 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/annonceefficace</property>
+        <property name="connection.url">jdbc:mysql://localhost:3307/annonceefficace</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
          
@@ -19,15 +19,14 @@
  
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
- 
         <!-- Disable the second-level cache  -->
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
          
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">false</property>
          
-        
-  
-        <mapping class="org.arQam.AnnonceEfficace.Metier.Utilisateur"/>                           
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Ville"/>
+  		<mapping class="org.arQam.AnnonceEfficace.Metier.PositionGeographique"/>
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Utilisateur"/>                                           
     </session-factory>
 </hibernate-configuration>

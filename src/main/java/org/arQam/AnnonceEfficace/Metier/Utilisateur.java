@@ -31,19 +31,22 @@ public class Utilisateur {
 	public String email;
 	@Column
 	public  String telephone;
-	@Column(nullable=true)	
+	@Column
 	public Integer villeId;
+	@Column	
+	public Integer positionGeographiqueId;
 	
 	public Utilisateur(){
 		
 	}
 	
-	public Utilisateur(String nomUtilisateur, String motDePasse, String email, String telephone, int villeId){
+	public Utilisateur(String nomUtilisateur, String motDePasse, String email, String telephone, int villeId, int positionGeographiqueId){
 		this.nomUtilisateur = nomUtilisateur;
 		this.motDePasse = motDePasse;
 		this.email = email;
 		this.telephone = telephone;
 		this.villeId = villeId;
+		this.positionGeographiqueId = positionGeographiqueId;
 	}
 	
 	public void save() {
@@ -85,8 +88,7 @@ public class Utilisateur {
        		   		.setParameter("a", username).list();
        if(result.size() > 0 ){        	       	
        	return  (Utilisateur) result.get(0);        	        	        
-       }	
-       System.out.println(result.size() );
+       }	      
        // n'existe pas 
   		return null;
   	}
@@ -167,6 +169,24 @@ public class Utilisateur {
 	public Set<Commentaire> getStockDailyRecords() {
 		return this.commentaires;
 	}*/
+	
+	public PositionGeographique getUserPositionGeographique(){		
+		 SessionFactory sf = HibernateUtil.getSessionFactory();
+	     Session session = sf.openSession();
+	     List result;
+	     if(positionGeographiqueId == null){
+	    	 result = session.createQuery("from org.arQam.AnnonceEfficace.Metier.PositionGeographique WHERE id = (postionGeographiqueId from Ville WHERE id = :a)")
+	    	 					   .setParameter("a", villeId).list();
+	     }
+	     else{
+	    	 result = session.createQuery("from PositionGeographique WHERE id = :a")
+			   .setParameter("a", positionGeographiqueId).list();
+		 }
+	     if(result.size() > 0 ){        	       	
+	       	return  (PositionGeographique) result.get(0);        	        	        
+	     }		     	     
+	  	 return null;
+	}
 
 	private void setInfos(Utilisateur user) {
 	    	this.id = user.id;
