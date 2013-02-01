@@ -1,6 +1,8 @@
 package org.arQam.AnnonceEfficace.Metier;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -13,16 +15,17 @@ public class Ville {
 	private int id;	
 	@Column
 	public String nom;
-	@Column	
-	public Integer positionGeographiqueId;
-	
+	@ManyToOne
+	@JoinColumn(name="positionGeographiqueId")
+	private PositionGeographique positionGeographique;
+
 	public Ville(){
 		
 	}
 	
 	public Ville(String nom,Integer positionGeographiqueId){
 		this.nom = nom;
-		this.positionGeographiqueId = positionGeographiqueId;
+		//this.positionGeographiqueId = positionGeographiqueId;
 	}
 	
 	public int getId() {
@@ -31,6 +34,14 @@ public class Ville {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public PositionGeographique getPositionGeographique() {
+		return positionGeographique;
+	}
+
+	public void setPositionGeographique(PositionGeographique positionGeographique) {
+		this.positionGeographique = positionGeographique;
 	}
 
 }

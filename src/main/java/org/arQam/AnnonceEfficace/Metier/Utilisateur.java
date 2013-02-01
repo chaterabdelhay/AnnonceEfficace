@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,10 +27,14 @@ public class Utilisateur {
 	public String email;
 	@Column
 	public  String telephone;
-	@Column
-	public Integer villeId;
-	@Column	
-	public Integer positionGeographiqueId;
+	//@Column
+	//public Integer villeId;
+	@ManyToOne
+    @JoinColumn(name="villeId")
+	public Ville ville;
+	@ManyToOne
+    @JoinColumn(name="positionGeographiqueId")	
+	private PositionGeographique positionGeographique;
 	
 	public Utilisateur(){
 		
@@ -38,9 +44,7 @@ public class Utilisateur {
 		this.nomUtilisateur = nomUtilisateur;
 		this.motDePasse = motDePasse;
 		this.email = email;
-		this.telephone = telephone;
-		this.villeId = villeId;
-		this.positionGeographiqueId = positionGeographiqueId;
+		this.telephone = telephone;		
 	}
 	
 	public void save() {
@@ -151,35 +155,17 @@ public class Utilisateur {
 	}
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
-	}
-	public Integer getVilleId() {
-		return villeId;
-	}
-	public void setVilleId(int villeId) {
-		this.villeId = villeId;
 	}	
-		
 	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
-	public Set<Commentaire> getStockDailyRecords() {
+	public Set<Commentaire> getCommentaires() {
 		return this.commentaires;
 	}*/
 	
-	public PositionGeographique getUserPositionGeographique(){		
-		 SessionFactory sf = HibernateUtil.getSessionFactory();
-	     Session session = sf.openSession();
-	     List result;
-	     if(positionGeographiqueId == null){
-	    	 result = session.createQuery("from PositionGeographique WHERE id = :a")
-	    	 					   .setParameter("a", villeId).list();
-	     }
-	     else{
-	    	 result = session.createQuery("from PositionGeographique WHERE id = :a")
-			   .setParameter("a", positionGeographiqueId).list();
-		 }
-	     if(result.size() > 0 ){        	       	
-	       	return  (PositionGeographique) result.get(0);        	        	        
-	     }		     	     
-	  	 return null;
+	public PositionGeographique getUserPositionGeographique(){
+		if(positionGeographique == null){
+			return ville.getPositionGeographique();
+		}
+		return positionGeographique;				
 	}
 
 	private void setInfos(Utilisateur user) {
@@ -188,6 +174,6 @@ public class Utilisateur {
 			this.motDePasse = user.motDePasse;
 			this.email = user.email;
 			this.telephone = user.telephone;
-			this.villeId = user.villeId;		
+			//this.villeId = user.villeId;		
 	  }
 }
