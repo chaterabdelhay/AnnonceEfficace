@@ -1,17 +1,11 @@
 package org.arQam.AnnonceEfficace.Metier;
 
-import java.sql.Date;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -175,7 +169,7 @@ public class Utilisateur {
 	     Session session = sf.openSession();
 	     List result;
 	     if(positionGeographiqueId == null){
-	    	 result = session.createQuery("from org.arQam.AnnonceEfficace.Metier.PositionGeographique WHERE id = (postionGeographiqueId from Ville WHERE id = :a)")
+	    	 result = session.createQuery("from PositionGeographique WHERE id = :a")
 	    	 					   .setParameter("a", villeId).list();
 	     }
 	     else{

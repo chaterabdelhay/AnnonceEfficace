@@ -19,16 +19,14 @@
  
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
- 
         <!-- Disable the second-level cache  -->
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
          
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">false</property>
          
-        
-		<mapping class="org.arQam.AnnonceEfficace.Metier.Ville"/>
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Ville"/>
   		<mapping class="org.arQam.AnnonceEfficace.Metier.PositionGeographique"/>
-        <mapping class="org.arQam.AnnonceEfficace.Metier.Utilisateur"/>                           
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Utilisateur"/>                                           
     </session-factory>
 </hibernate-configuration>

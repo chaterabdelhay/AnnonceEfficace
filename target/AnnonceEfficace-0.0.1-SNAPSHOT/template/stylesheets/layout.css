@@ -82,7 +82,7 @@ HEADER
 	width: 100%;	
 	position:fixed;
 	z-index:999;
-	background-color:rgba(0,0,0,0.6);
+	background-color:rgba(0,0,0,0.9);
 	border-bottom:6px solid rgba(255,255,255,0.8);	
 }
 
@@ -95,7 +95,7 @@ HEADER
 }
 
 #logo{
-	 margin:8px 0px 0px 200px;
+	 margin:3px 0px 0px 200px;
 }
 #navigation img{
 	float:right;
@@ -593,4 +593,10 @@ FOOTER
 .whiteBG{
 	background-color:white; margin-top : 20px; padding:5px;
 	border-radius: 4px; border:10px solid rgba(55,55,55,0.1);
+}
+
+.commentaire{
+	background-color:rgba(125,52,1,0.3);padding:5px;
+	border-left:5px solid rgba(0,0,0,0.1);
+	color:#fff; !important
 }
