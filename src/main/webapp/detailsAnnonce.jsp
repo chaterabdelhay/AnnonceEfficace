@@ -22,12 +22,12 @@
 					style="padding-bottom: 5px; border-bottom: 1px solid #ddd;">
 					<p>
 						<span style="font-weight: 800">[Type de l'annonce] : </span>Titre
-						annonce de l'annonce ici <span style="float: right"> <input
-							name="star1" type="radio" class="star" /> <input name="star1"
-							type="radio" class="star" /> <input name="star1" type="radio"
-							class="star" /> <input name="star1" type="radio" class="star" />
-							<input name="star1" type="radio" class="star" />
-							evaluation moyenne :4.5
+						annonce de l'annonce ici <span style="float: right"><s:a action="evaluer?ev.note=1&ev.annonceId=2"><input 
+							name="star1" type="radio" class="star" value="1"/></s:a><s:a action="evaluer?ev.note=2&ev.annonceId=2">  <input name="star2"
+							type="radio" class="star" value="2"/> </s:a><s:a action="evaluer?ev.note=3&ev.annonceId=2"><input  name="star3" type="radio"
+							class="star" value="3"/></s:a><s:a action="evaluer?ev.note=4&ev.annonceId=2"> <input  name="star4" type="radio" class="star" value="4"/></s:a>
+							
+							evaluation moyenne :<s:property value="%{average}"/>
 						</span>
 					</p>
 				</td>

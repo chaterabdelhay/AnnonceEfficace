@@ -31,14 +31,16 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport {	
     private String username;
     private String password;
-    
+   
     public String execute() throws Exception {
         if (isInvalid(getUsername())) return INPUT;
         if (isInvalid(getPassword())) return INPUT;
         Utilisateur user = Utilisateur.exists(username,password);
         if(user != null){
         	Map session = ActionContext.getContext().getSession();
-        	session.put("utilisateur", user);        	
+        	session.put("utilisateur", user);   
+        	session.put("id", user.getId()); 
+        	System.out.println(ActionContext.getContext().getSession().get("id"));
         	// mettre code pour tester si l'utilisateur existe !
             return SUCCESS;
         }        
