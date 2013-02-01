@@ -39,7 +39,7 @@
         <script type="text/javascript" src="template/javascripts/jquery.nivo.slider.pack.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.bxSlider.min.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.ticker.js"></script>
-        
+        <script type="text/javascript" src="template/javascripts/OptionPopupDescriptor.js"></script>
         <!-- JQUERY rating stars -->
         
         <script src='template/javascripts/jquery.rating.js' type="text/javascript" language="javascript"></script>
@@ -174,7 +174,38 @@
     <div class="clear"></div>
     
 </div><!-- END HEADER -->
-
+<!-- BEGIN SIDEBAR -->
 <div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
+	<div id="sideBarTopPart"></div>
+	<div id="sideBarMiddlePart">
+		<span id="opt1" class="option"> 
+			<span class="optionDescription" id="opt1Description">Voir les annonces</span> 
+			<img src="template/images/sideBar/options/opt1Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" onclick=""/>
+		</span>	
+		<s:if test="%{#session.utilisateur!=null}">
+			<span id="opt3" class="option"> 
+				<span class="optionDescription" id="opt3Description">Publier une annonce rapidement</span> 
+				<img src="template/images/sideBar/options/opt3Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" onclick=""/>
+			</span>
+			<span id="opt2" class="option"> 
+				<span class="optionDescription" id="opt2Description">Participez au concours</span> 
+				<img src="template/images/sideBar/options/opt2Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" onclick=""/>
+			</span>		
+		</s:if>
+			
+		
+	</div>		
+	<div id="sideBarBottomPart"></div>	
 </div>
+
+<table id="optionDescriptor" cellpadding="0" cellspacing="0">
+	<tr>
+		<td id="optionDescriptorLeftPart"></td>
+		<td id="optionDescriptorMiddlePart"><span id="optionDescriptorText">Texte de descr.</span></td>
+		<td id="optionDescriptorRightPart"></td>
+	</tr>
+</table>
+<!-- END SIDEBAR -->

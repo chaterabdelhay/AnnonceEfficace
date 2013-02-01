@@ -3,10 +3,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!-- BEGIN : page body content -->
 
-<div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
-</div>
-
 <!-- BEGIN CONTAINER -->
 <div class="container_12">	   
     <br/><br/><br/><br/><br/>      
