@@ -71,14 +71,25 @@ public class Utilisateur {
          List result = session.createQuery("from Utilisateur WHERE nomUtilisateur = :a AND motDePasse = :b")
         		   		.setParameter("a", username)
         		   		.setParameter("b", password).list();
-        if(result.size() > 0 ){        	
-        	System.out.println("helllo");
+        if(result.size() > 0 ){        	        	
         	return  (Utilisateur) result.get(0);        	        	        
-        }	
-        System.out.println("helllo2");
+        }	       
         // n'existe pas 
    		return null;
    	}      
+    
+    public static Utilisateur exists(String username) {
+     	 SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        List result = session.createQuery("from Utilisateur WHERE nomUtilisateur = :a")
+       		   		.setParameter("a", username).list();
+       if(result.size() > 0 ){        	       	
+       	return  (Utilisateur) result.get(0);        	        	        
+       }	
+       System.out.println(result.size() );
+       // n'existe pas 
+  		return null;
+  	}
 
 	public Utilisateur load(int id) {
    	 SessionFactory sf = HibernateUtil.getSessionFactory();
