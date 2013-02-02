@@ -45,7 +45,7 @@
 										</p>
 										<p>
 											<label for="villeId">Ville</label>
-											<s:textfield value="%{user.villeId}" disabled="true" />
+											<s:textfield value="%{user.ville.nom}" disabled="true" />
 </div>											
 										</p>																			
 										

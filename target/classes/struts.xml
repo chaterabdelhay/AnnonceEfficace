@@ -27,11 +27,11 @@
       		<result name="success" type="redirect">/espaceUtilisateur</result>      		
     	</action>
     	<action name="createcompte" class="org.arQam.AnnonceEfficace.Action.CreateCompteAction">
-    		<result name="input">/creerCompte.jsp</result>
+    		<result name="input" type="redirect">/creerCompte</result>
       		<result name="success" >/saveCompte.jsp</result>      		
     	</action>
     	
-    	<action name="creerCompte" class="com.opensymphony.xwork2.ActionSupport">    		
+    	<action name="creerCompte" class="org.arQam.AnnonceEfficace.Action.CreerCompteAction">    		
       		<result name="success">/creerCompte.jsp</result>      		
     	</action>    	    	
     	

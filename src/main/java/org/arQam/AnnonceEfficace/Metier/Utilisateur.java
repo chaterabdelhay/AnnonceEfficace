@@ -35,16 +35,21 @@ public class Utilisateur {
 	@ManyToOne
     @JoinColumn(name="positionGeographiqueId")	
 	private PositionGeographique positionGeographique;
-	
+		
 	public Utilisateur(){
 		
 	}
 	
-	public Utilisateur(String nomUtilisateur, String motDePasse, String email, String telephone, int villeId, int positionGeographiqueId){
+	public Utilisateur(String nomUtilisateur, String motDePasse, String email, String telephone, Ville ville, Integer positionGeographiqueId){
 		this.nomUtilisateur = nomUtilisateur;
 		this.motDePasse = motDePasse;
 		this.email = email;
-		this.telephone = telephone;		
+		this.telephone = telephone;			
+		this.ville = ville;
+	    
+		/*if(positionGeographiqueId != null){
+			positionGeographique = (Ville) session.load(Ville.class, villeId);
+		}*/
 	}
 	
 	public void save() {
@@ -155,7 +160,17 @@ public class Utilisateur {
 	}
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
-	}	
+	}
+	
+	public Ville getVille() {
+		return ville;
+	}
+
+	public void setVille(Ville ville) {
+		this.ville = ville;
+	}
+
+	
 	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
 	public Set<Commentaire> getCommentaires() {
 		return this.commentaires;

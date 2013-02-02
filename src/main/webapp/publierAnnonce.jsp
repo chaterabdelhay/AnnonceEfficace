@@ -20,15 +20,16 @@
 								<td>
 									<s:form action="login" theme="css_xhtml" style="width:350px">
 										<h1>
-											<span class="log-in">Création de compte</span>
+											<span class="log-in">Publier une annonce</span>
 										</h1>
 										<p>
 											<label for="typeAnnonce">Type</label>
 											<select id="typeAnnonce" name="field_nomville_value">
-												<option value="">Vente</option>
-												<option value="">Evenement</option>
-												<option value="">Offre d'emploi</option>
-												<option value="">Offre de stage</option>
+												<option value="V">Vente</option>
+												<option value="A">Achat</option>
+												<option value="E">Evenement</option>
+												<option value="OE">Offre d'emploi</option>
+												<option value="OS">Offre de stage</option>												
 											</select>
 										</p>	
 										<p>
