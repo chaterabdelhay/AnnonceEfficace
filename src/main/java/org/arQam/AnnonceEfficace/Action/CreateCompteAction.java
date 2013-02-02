@@ -23,7 +23,7 @@ public class CreateCompteAction extends ActionSupport {
         }
         else
         {
-        	user.ville = Ville.load(villeId);
+        	user.ville = Ville.load(villeId);        	
         	user.save();
     	    return SUCCESS;
         }        

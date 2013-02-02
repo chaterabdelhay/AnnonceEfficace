@@ -20,10 +20,10 @@ public class Ville {
 	@Id	
 	private int id;	
 	@Column
-	public String nom;
+	private String nom;
 	@ManyToOne
 	@JoinColumn(name="positionGeographiqueId")
-	private PositionGeographique positionGeographique;
+	private PositionGeographique positionGeographique;	
 
 	public Ville(){
 		
@@ -49,7 +49,19 @@ public class Ville {
 	public void setPositionGeographique(PositionGeographique positionGeographique) {
 		this.positionGeographique = positionGeographique;
 	}
+	
+	public String getNom() {
+		return nom;
+	}
 
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String toString(){
+		return this.nom;
+	}
+		
 	public static List select() {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
@@ -58,11 +70,7 @@ public class Ville {
         session.close();
 		return villes;
 	}
-	
-	public String toString(){
-		return this.nom;
-	}
-	
+		
 	public static Ville load(int id) {
 	   	 SessionFactory sf = HibernateUtil.getSessionFactory();
 	        Session session = sf.openSession();
