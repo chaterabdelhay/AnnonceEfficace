@@ -1,12 +1,18 @@
 package org.arQam.AnnonceEfficace.Metier;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.arQam.AnnonceEfficace.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.annotations.Entity;
 @Entity
 @Table(name="annonce")
@@ -22,23 +28,23 @@ public class Annonce {
 	private String type;
 	@Column
 	private Date datePostulation;
-	@Column
-	private long positionGeographiqueId;
-	@Column
-	private long objetId;
+	@ManyToOne
+	@JoinColumn(name="positionGeographiqueId")
+	private PositionGeographique positionGeographique;
+	@ManyToOne
+	@JoinColumn(name="objetId")
+	private Objet objet;
 
 	public Annonce() {
 
 	}
 
 	public Annonce(String titre, String description, String type,
-			Date datePostulation, long positionGeographiqueId, long objetId) {
+			Date datePostulation) {
 		this.titre = titre;
 		this.description = description;
 		this.type = type;
-		this.datePostulation = datePostulation;
-		this.positionGeographiqueId = positionGeographiqueId;
-		this.objetId = objetId;
+		this.datePostulation = datePostulation;		
 	}
 
 	public int getId() {
@@ -81,21 +87,30 @@ public class Annonce {
 		this.datePostulation = datePostulation;
 	}
 
-	public long getPositionGeographiqueId() {
-		return positionGeographiqueId;
+	public PositionGeographique getPositionGeographique() {
+		return positionGeographique;
 	}
 
-	public void setPositionGeographiqueId(int positionGeographiqueId) {
-		this.positionGeographiqueId = positionGeographiqueId;
+	public void setPositionGeographique(PositionGeographique positionGeographique) {
+		this.positionGeographique = positionGeographique;
 	}
 
-	public long getObjetId() {
-		return objetId;
+	public Objet getObjet() {
+		return objet;
 	}
 
-	public void setObjetId(int objetId) {
-		this.objetId = objetId;
+	public void setObjet(Objet objet) {
+		this.objet = objet;
 	}
-	
+
+	public static Annonce load(long id) {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+	     Session session = sf.openSession();
+	    
+	     List result = session.createQuery("from Annonce WHERE id = "+id).list();
+	     if(result != null)
+	      	return (Annonce) result.get(0);                        
+		 return null;		
+	}		
 	
 }

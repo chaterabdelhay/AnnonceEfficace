@@ -73,11 +73,11 @@ public class Ville {
 		
 	public static Ville load(int id) {
 	   	 SessionFactory sf = HibernateUtil.getSessionFactory();
-	        Session session = sf.openSession();
-	     
-	        List result = session.createQuery("from Ville WHERE id = "+id).list();
-	        if(result != null)
-	       	 	return (Ville) result.get(0);                        
-			return null;
+	     Session session = sf.openSession();
+	    
+	     List result = session.createQuery("from Ville WHERE id = "+id).list();
+	     if(result != null)
+	      	return (Ville) result.get(0);                        
+		 return null;
 	}
 }

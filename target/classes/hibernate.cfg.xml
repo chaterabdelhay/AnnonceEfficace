@@ -30,7 +30,8 @@
         <mapping class="org.arQam.AnnonceEfficace.Metier.Utilisateur"/>                           
         <mapping class="org.arQam.AnnonceEfficace.Metier.Evaluation"/> 
         <mapping class="org.arQam.AnnonceEfficace.Metier.Commentaire"/>
-        <mapping class="org.arQam.AnnonceEfficace.Metier.Annonce"/>
-                               
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Annonce"/>        
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Objet"/>
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Categorie"/>
     </session-factory>
 </hibernate-configuration>

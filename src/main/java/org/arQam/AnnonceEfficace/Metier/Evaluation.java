@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,28 +21,27 @@ import org.hibernate.SessionFactory;
 import org.arQam.AnnonceEfficace.HibernateUtil;;
  
 @Entity
-@Table(name="Evaluation")
+@Table(name="evaluation")
 public class Evaluation {
 	@Id
     @GeneratedValue
 	private int id;
 	@Column
 	public int note;
-	@Column
-	public int annonceId;
-	@Column
-	public long utilisateurId;
+	@ManyToOne
+	@JoinColumn(name="annonceId")
+	public Annonce annonce;
+	@ManyToOne
+	@JoinColumn(name="utilisateurId")
+	public Utilisateur utilisateur;
 	
 	
 	public Evaluation(){
 		
 	}
 	
-	public Evaluation(int note, int annonceId, int utilisateurId){
-		this.note = note;
-		this.annonceId = annonceId;
-		this.utilisateurId = utilisateurId;
-		
+	public Evaluation(int note){
+		this.note = note;				
 	}
 	
 	public void save() {
@@ -120,22 +121,25 @@ public class Evaluation {
 		this.note = note;
 	}
 
-	public int getAnnonceId() {
-		return annonceId;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-	public void setAnnonceId(int annonceId) {
-		this.annonceId = annonceId;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
-	public long getUtilisateurId() {
-		return utilisateurId;
+	public Annonce getAnnonce() {
+		return annonce;
 	}
 
-	public void setUtilisateurId(long utilisateurId) {
-		this.utilisateurId = utilisateurId;
+	public void setAnnonce(Annonce annonce) {
+		this.annonce = annonce;
 	}
 		
+	public String toString(){
+		return "Evaluation réalisé par l'utilisateur dont l'id est '"+ utilisateur.getId() +"'de l'annonce dont l'id est '" + annonce.getId() + "'"; 
+	}
 	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
 	public Set<Commentaire> getStockDailyRecords() {
 		return this.commentaires;
