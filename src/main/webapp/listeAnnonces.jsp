@@ -3,10 +3,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!-- BEGIN : page body content -->
 
-<div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
-</div>
-
 <!-- BEGIN CONTAINER -->
 <div class="container_12">	   
     <br/><br/><br/><br/><br/>      
@@ -166,11 +162,7 @@
 												error : function(msg) {
 													$('#boxes').html("Error !: " + msg);
 												},
-												success : function(data) {
-													//affiche le contenu du fichier dans le conteneur dédié
-													$('#boxes').html(data);
-													$('#topGrayLayer2').fadeOut(300);
-												}
+												
 											});
 								});
 				$("#link2")
@@ -186,16 +178,14 @@
 										success : function(data) {
 											//affiche le contenu du fichier dans le conteneur dédié
 											$('#boxes').html(data);
-											$('#topGrayLayer2').fadeOut(300);
+											$("#topGrayLayer2").fadeOut(500);
+											
 										}
 									});
-						});
+						});	
 			</script>
 
-			<s:url id="ajaxTest2" value="/ajax_getListeAnnonces.action?p=b"/>		 
-    	<sj:a id="link2" href="%{ajaxTest2}" targets="boxes" onclick="$('#topGrayLayer2').fadeOut(300);">
-      		Update with Content 2
-    	</sj:a>
+			
     	<br/>
 			Outil de recherche doit être placé ici <br/>
 			<a href="#" id="searchToolRun">Lancer la recherche(Ajax)</a><br/>

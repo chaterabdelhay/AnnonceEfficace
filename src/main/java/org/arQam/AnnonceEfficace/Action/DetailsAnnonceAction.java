@@ -19,7 +19,7 @@ public class DetailsAnnonceAction extends ActionSupport {
     public String execute() throws Exception {
     	
     	
-    		average=ev.avg();
+    		//average=ev.avg();
     		
     	
     		return SUCCESS;

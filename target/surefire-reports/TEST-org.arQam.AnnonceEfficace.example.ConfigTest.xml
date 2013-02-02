@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.993" errors="0" skipped="0" tests="1" name="org.arQam.AnnonceEfficace.example.ConfigTest">
+<testsuite failures="0" time="1.477" errors="0" skipped="0" tests="1" name="org.arQam.AnnonceEfficace.example.ConfigTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin"/>
@@ -25,7 +25,7 @@
     <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="C:\Users\Saladin\WORKSPACESRepository\workspace_j2ee\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf102051469469564739.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\Saladin\WORKSPACESRepository\workspace_j2ee\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf5045710918274847302.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1256"/>
     <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.6.0_31\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;c:\oraclexe\product\11.2.0\dbhome_1\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\ia32;C:\Program Files\Gimp-2.7.3\bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft Windows Performance Toolkit\;C:\Program Files (x86)\Android\android-sdk\tools;C:\Program Files (x86)\Common Files\Easysoft\Shared\;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\CodeBlocks\MinGW\bin;C:\QtSDK\Desktop\Qt\4.8.0\mingw\bin;C:\Program Files\TortoiseSVN\bin;E:\Projet\Outils\Wampee-2.1\bin\php\php5.3.5;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\oraclexe\product\11.2.0\dbhome_1\BIN;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Aqsis\bin;C:\Program Files (x86)\eclipse-jee-juno;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -59,5 +59,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.902" classname="org.arQam.AnnonceEfficace.example.ConfigTest" name="testConfig"/>
+  <testcase time="1.305" classname="org.arQam.AnnonceEfficace.example.ConfigTest" name="testConfig"/>
 </testsuite>

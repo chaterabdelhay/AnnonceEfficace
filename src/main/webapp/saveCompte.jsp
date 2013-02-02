@@ -6,9 +6,6 @@
 <jsp:include page="header.jsp" />
 
 <!-- BEGIN : page body content -->
-<div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
-</div>
 
 <!-- BEGIN CONTAINER -->
 <div class="container_12">

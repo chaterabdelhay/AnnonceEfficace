@@ -4,10 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
   	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-  	<constant name="struts.devMode" value="true"/>
-      
-   
-	<include file="example.xml"/>
+  	<constant name="struts.devMode" value="true"/>      	
 	
 	<package name="default" extends="struts-default">
 						
@@ -41,7 +38,7 @@
     	<action name="disconnect" class="org.arQam.AnnonceEfficace.Action.DisconnectAction">    		
       		<result name="success" type="redirect">/listeAnnonces</result>      		
     	</action>
-    	<action name="espaceUtilisateur" class="com.opensymphony.xwork2.ActionSupport">
+    	<action name="espaceUtilisateur" class="org.arQam.AnnonceEfficace.Action.EspaceUtilisateurAction">
     		<interceptor-ref name="login" />  	            
     		<result name="success">/espaceUtilisateur.jsp</result>
     	</action>
@@ -65,9 +62,14 @@
     		<result name="success">/ajax_getListeAnnonces.jsp</result>
     	</action>
     	
+    	  
     	<action name="ajax_createAccounctVerification" class="org.arQam.AnnonceEfficace.Action.CreateAccountVerificationAction">    			           
     		<result name="success">/ajax_createAccountVerification.jsp</result>
-    	</action>   
+    	</action>
+    	<action name="commenter" class="org.arQam.AnnonceEfficace.Action.CommentAction">    			           
+    		<result name="success">/ajax_comment.jsp</result>
+    	</action> 
+    	
 	</package>	
 	
 	<package name="welcomePage" extends="struts-default">   

@@ -6,11 +6,7 @@
 <jsp:include page="header.jsp" />
 
 <!-- BEGIN : page body content -->
-
-<div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
-</div>
-
+<link rel="stylesheet" type="text/css" href="styles.css" />
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
 	<br /> <br /> <br />
@@ -56,20 +52,78 @@
 			<tr>
 				<td colspan="2">
 					<div class="commentaire">
-						<table>
-							<tr>
-								<td><p>
-										<span style="font-weight: 800">par Saladin, le 11 juin
-											2013</span>
-									</p></td>
+						<div id="addCommentContainer">
+	<p>Add a Comment</p>
+	<form id="addCommentForm" method="post" action="">
+    	<div>
+        	<label for="name">Your Name</label>
+        	<input type="text" name="name" id="name" />
+            
+            <label for="email">Your Email</label>
+            <input type="text" name="email" id="email" />
+            
+            <label for="url">Website (not required)</label>
+            <input type="text" name="url" id="url" />
+            
+            <label for="body">Comment Body</label>
+            <textarea name="body" id="body" cols="20" rows="5"></textarea>
+            
+            <input type="submit" id="submit" value="Submit" />
+            
+           
+            
+        </div>
+        
+    </form>
+   	 
+  
 
-							</tr>
-							<tr>
-								<td style="padding-left: 20px;"><p>>> c'est quoi cette
-										annonce pourrie ? :D</p></td>
-							</tr>
-						</table>
+</div>
+
+</div>
+
+
+			
 					</div>
+					
+					 <a id="link1" href="#">update with content 1</a>
+			<a id="link2" href="#">update with content 2</a>
+			<script>
+				$("#link1")
+						.click(
+								function() {
+									$
+											.ajax({
+												type : "GET",
+												url : "commenter.action",
+												error : function(msg) {
+													alert('mes2');
+													$('#commentaire').html("Error !: " + msg);
+												},
+												
+											});
+								});
+				$("#link2")
+				.click(
+						function() {
+							$
+									.ajax({
+										type : "GET",
+										url : "commenter.action",
+										error : function(msg) {
+											$('#commentaire').html("Error !: " + msg);
+										},
+										success : function(data) {
+											alert("mes1");
+											//affiche le contenu du fichier dans le conteneur dédié
+											$('#commentaire').html(data);
+											
+											
+										}
+									});
+						});	
+			</script>
+
 				</td>
 			</tr>
 		</table>

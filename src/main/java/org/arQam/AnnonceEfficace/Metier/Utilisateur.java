@@ -1,17 +1,13 @@
 package org.arQam.AnnonceEfficace.Metier;
 
-import java.sql.Date;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -31,19 +27,24 @@ public class Utilisateur {
 	public String email;
 	@Column
 	public  String telephone;
-	@Column(nullable=true)	
-	public Integer villeId;
+	//@Column
+	//public Integer villeId;
+	@ManyToOne
+    @JoinColumn(name="villeId")
+	public Ville ville;
+	@ManyToOne
+    @JoinColumn(name="positionGeographiqueId")	
+	private PositionGeographique positionGeographique;
 	
 	public Utilisateur(){
 		
 	}
 	
-	public Utilisateur(String nomUtilisateur, String motDePasse, String email, String telephone, int villeId){
+	public Utilisateur(String nomUtilisateur, String motDePasse, String email, String telephone, int villeId, int positionGeographiqueId){
 		this.nomUtilisateur = nomUtilisateur;
 		this.motDePasse = motDePasse;
 		this.email = email;
-		this.telephone = telephone;
-		this.villeId = villeId;
+		this.telephone = telephone;		
 	}
 	
 	public void save() {
@@ -85,8 +86,7 @@ public class Utilisateur {
        		   		.setParameter("a", username).list();
        if(result.size() > 0 ){        	       	
        	return  (Utilisateur) result.get(0);        	        	        
-       }	
-       System.out.println(result.size() );
+       }	      
        // n'existe pas 
   		return null;
   	}
@@ -155,18 +155,18 @@ public class Utilisateur {
 	}
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
-	}
-	public Integer getVilleId() {
-		return villeId;
-	}
-	public void setVilleId(int villeId) {
-		this.villeId = villeId;
 	}	
-		
 	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
-	public Set<Commentaire> getStockDailyRecords() {
+	public Set<Commentaire> getCommentaires() {
 		return this.commentaires;
 	}*/
+	
+	public PositionGeographique getUserPositionGeographique(){
+		if(positionGeographique == null){
+			return ville.getPositionGeographique();
+		}
+		return positionGeographique;				
+	}
 
 	private void setInfos(Utilisateur user) {
 	    	this.id = user.id;
@@ -174,6 +174,6 @@ public class Utilisateur {
 			this.motDePasse = user.motDePasse;
 			this.email = user.email;
 			this.telephone = user.telephone;
-			this.villeId = user.villeId;		
+			//this.villeId = user.villeId;		
 	  }
 }

@@ -7,10 +7,6 @@
 
 <!-- BEGIN : page body content -->
 
-<div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
-</div>
-
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
 	<br /> <br /> <br />
@@ -30,10 +26,10 @@
 											<label for="login">Nom d'utilisateur</label>
 											<s:textfield name="user.nomUtilisateur" maxlength="20"
 												id="user_nomUtilisateur" />											
-    										<a id="link2" href="#">test</a>
+    										<p><a id="link2" href="#">jquery test disponibilité</a></p>
     										<script>
-    										$( "#link2" ).click(function(){
-    											alert("ajax_createAccounctVerification?nomUtilisateur=" + $('#user_nomUtilisateur').val());
+    										function ajaxQuery1(){
+    											//alert("ajax_createAccounctVerification?nomUtilisateur=" + $('#user_nomUtilisateur').val());
     										    $.ajax({
     											   type: "GET",
     											   url: "ajax_createAccounctVerification?nomUtilisateur=" + $('#user_nomUtilisateur').val(),
@@ -43,8 +39,29 @@
     											   success:function(data){
     											   	//affiche le contenu du fichier dans le conteneur dédié
     												$('#msg').html(data);
-    											}});
+    											   }
+    											});
+    										}
+    										
+    										$( "#link2" ).click(function(){ajaxQuery1()});    										
+    										
+    										var typingTimer;                //timer identifier
+    										var doneTypingInterval = 2000;  //time in ms, 5 second for example
+
+    										//on keyup, start the countdown
+    										$('#user_nomUtilisateur').keyup(function(){
+    										    typingTimer = setTimeout(doneTyping, doneTypingInterval);
     										});
+
+    										//on keydown, clear the countdown 
+    										$('#user_nomUtilisateur').keydown(function(){
+    										    clearTimeout(typingTimer);
+    										});
+
+    										//user is "finished typing," do something
+    										function doneTyping () {
+    											ajaxQuery1();
+    										}
     										</script>
     										
     										<div id="msg"></div>
