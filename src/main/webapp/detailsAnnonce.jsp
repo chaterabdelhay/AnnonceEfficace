@@ -60,11 +60,11 @@
 					<div class="commentaire">
 						<div id="addCommentContainer">
 							<p>Add a Comment</p>
-							<a id="link1" href="#">update with content 1</a> <a id="link2" href="#">update with content 2</a>
+							<a id="sendMsg" href="#">Send msg</a>
 							<p><div id="commentaire">
 							</div></p>		
 							<form id="addCommentForm" method="post" action="">
-								<s:textarea name="body" id="body"
+								<s:textarea name="body" id="msgTxt"
 									placeholder="Commentez cette annonce !" cols="80" rows="10" />
 								<s:submit id="submit" value="Submit" />
 							</form>							
@@ -73,30 +73,18 @@
 
 
 
-					<script>
-						$("#link1").click(function() {
+					<script>						
+						$("#sendMsg").click(function() {
 							$.ajax({
 								type : "GET",
-								url : "commenter.action",
-								error : function(msg) {
-									alert('mes2');
-									$('#commentaire').html("Error !: " + msg);
-								},
-
-							});
-						});
-						$("#link2").click(function() {
-							$.ajax({
-								type : "GET",
-								url : "commenter.action",
+								url : "commenter.action?contenuCommentaire=" +$("#msgTxt").val(),
 								error : function(msg) {
 									$('#commentaire').html("Error !: " + msg);
 								},
 								success : function(data) {
-									alert("mes1");
+									//alert("msg sended");
 									//affiche le contenu du fichier dans le conteneur dédié
 									$('#commentaire').html(data);
-
 								}
 							});
 						});

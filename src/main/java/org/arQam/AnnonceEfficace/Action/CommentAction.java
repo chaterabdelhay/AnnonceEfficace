@@ -27,6 +27,14 @@ public class CommentAction extends ActionSupport {
     	return SUCCESS;    
     	
     }
+
+	public String getContenuCommentaire() {
+		return contenuCommentaire;
+	}
+
+	public void setContenuCommentaire(String contenuCommentaire) {
+		this.contenuCommentaire = contenuCommentaire;
+	}
 	
 
 }

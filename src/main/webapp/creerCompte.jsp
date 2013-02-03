@@ -17,7 +17,7 @@
 					<div class="form-2">
 						<table>
 							<tr>
-								<td><s:form action="createcompte" theme="css_xhtml"
+								<td><s:form action="createCompte" theme="css_xhtml"
 										style="width:550px">
 										<h1>
 											<span class="log-in">Création de compte</span>

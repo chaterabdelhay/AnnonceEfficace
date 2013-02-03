@@ -1,5 +1,7 @@
 package org.arQam.AnnonceEfficace.Metier;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -7,6 +9,10 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import org.arQam.AnnonceEfficace.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
  
 @Entity
 @Table(name="objet")
@@ -73,6 +79,16 @@ public class Objet {
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+
+	public static Objet load(int id) {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+	     Session session = sf.openSession();
+	    
+	     List result = session.createQuery("from Objet WHERE id = "+id).list();
+	     if(result != null)
+	      	return (Objet) result.get(0);                        
+		 return null;	
 	}		
 
 }

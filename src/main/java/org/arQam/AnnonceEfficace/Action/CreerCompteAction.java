@@ -13,9 +13,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CreerCompteAction extends ActionSupport {	
     public List villes;    
-    
-	
-//test
+    	
+    //test
 	public String execute() throws Exception {
 		villes = Ville.select();
 		return SUCCESS;        

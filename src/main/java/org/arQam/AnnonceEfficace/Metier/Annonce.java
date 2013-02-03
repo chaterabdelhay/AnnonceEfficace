@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 import org.arQam.AnnonceEfficace.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.annotations.Entity;
+
 @Entity
 @Table(name="annonce")
 public class Annonce {
@@ -34,6 +35,9 @@ public class Annonce {
 	@ManyToOne
 	@JoinColumn(name="objetId")
 	private Objet objet;
+	@ManyToOne
+	@JoinColumn(name="utilisateurId")
+	private Utilisateur utilisateur;
 
 	public Annonce() {
 
@@ -101,16 +105,33 @@ public class Annonce {
 
 	public void setObjet(Objet objet) {
 		this.objet = objet;
+	}		
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	public static Annonce load(long id) {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
-	     Session session = sf.openSession();
-	    
-	     List result = session.createQuery("from Annonce WHERE id = "+id).list();
-	     if(result != null)
-	      	return (Annonce) result.get(0);                        
-		 return null;		
+		Session session = sf.openSession();
+
+		List result = session.createQuery("from Annonce WHERE id = "+id).list();
+		if(result != null)
+			return (Annonce) result.get(0);                        
+		return null;		
+	}
+
+	public void save() {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();    
+		long id = (Integer) session.save(this);             
+		session.getTransaction().commit();             
+		session.close();     
 	}		
 	
 }

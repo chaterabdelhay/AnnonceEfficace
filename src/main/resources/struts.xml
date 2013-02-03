@@ -26,7 +26,7 @@
     		<result name="input">/connexion.jsp</result>
       		<result name="success" type="redirect">/espaceUtilisateur</result>      		
     	</action>
-    	<action name="createcompte" class="org.arQam.AnnonceEfficace.Action.CreateCompteAction">
+    	<action name="createCompte" class="org.arQam.AnnonceEfficace.Action.CreateCompteAction">
     		<result name="input" type="redirect">/creerCompte</result>
       		<result name="success" >/saveCompte.jsp</result>      		
     	</action>
@@ -46,9 +46,13 @@
     		<!-- <interceptor-ref name="login" />  -->  	            
     		<result name="success">/listeAnnonces.jsp</result>
     	</action>    	     	    	    	    	    	    	
-    	<action name="publierAnnonce" class="com.opensymphony.xwork2.ActionSupport">    		
+    	<action name="publierAnnonce" class="org.arQam.AnnonceEfficace.Action.PublierAnnonceAction">    		
       		<interceptor-ref name="login" />
-      		<result name="success">/publierAnnonce.jsp</result>      		
+      		<interceptor-ref name="defaultStack">
+    			<param name="validation.excludeMethods">execute</param>
+			</interceptor-ref>      		          		
+      		<result name="input">/publierAnnonce.jsp</result>
+      		<result name="success">/publicationAnnonceRealisee.jsp</result>      		
     	</action>
     	
     	<action name="detailsAnnonce" class="org.arQam.AnnonceEfficace.Action.DetailsAnnonceAction">    		

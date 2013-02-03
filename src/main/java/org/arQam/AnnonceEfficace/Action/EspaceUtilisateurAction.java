@@ -14,7 +14,7 @@ public class EspaceUtilisateurAction extends ActionSupport {
 	       
 	        	Map session = ActionContext.getContext().getSession();
 	        	Utilisateur user = (Utilisateur) session.get("utilisateur");
-	        	session.put("userPositionGeographique",user.getUserPositionGeographique());	        	
+	        	//session.put("userPositionGeographique",user.getUserPositionGeographique());	        	
 	           
 	        return SUCCESS;
 	    }
