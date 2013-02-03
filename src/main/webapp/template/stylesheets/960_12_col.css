@@ -85,6 +85,9 @@ body {
 
 .container_12 .grid_3 {
   width: 220px;
+  height:240px;
+  min-height:240px;
+  max-height:240px;
 }
 
 .container_12 .grid_4 {

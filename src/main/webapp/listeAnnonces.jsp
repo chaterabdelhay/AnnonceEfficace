@@ -19,35 +19,28 @@
 	</div>
     <!-- begin boxes -->
     <div id="boxes">
-    	<!-- begin .grid_3 - BOX1 -->
-        <div class="grid_3">
+    	<div class="grid_3">
             <a href="template/images/slider/1.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/1.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
             <a href="detailsAnnonce.action?id=1">Détails annonce&nbsp;&rarr;</a>
             </p>
-        </div><!-- end .grid_3 -->
-        
-        <!-- begin .grid_3 - BOX2 -->
+        </div>                
         <div class="grid_3">
             <a href="template/images/slider/2.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/2.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
             <a href="detailsAnnonce.action?id=2">Détails annonce&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-        
-        <!-- begin .grid_3 - BOX3 -->
+        </div>                
         <div class="grid_3">
             <a href="template/images/slider/3.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/3.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
             <a href="detailsAnnonce.action?id=3">Détails annonce&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-        
-        <!-- begin .grid_3 - BOX4 -->
+        </div>                
         <div class="grid_3">
             <a href="template/images/slider/4.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/4.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
@@ -84,40 +77,33 @@
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-         <!-- begin .grid_3 - BOX4 -->
+        </div><!-- end .grid_3 -->         
         <div class="grid_3">
             <a href="template/images/slider/4.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/4.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-         <!-- begin .grid_3 - BOX4 -->
+        </div>         
         <div class="grid_3">
             <a href="template/images/slider/4.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/4.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-         <!-- begin .grid_3 - BOX4 -->
-        <div class="grid_3">
-            <a href="template/images/slider/4.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/4.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
-                    
-            <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-         <!-- begin .grid_3 - BOX4 -->
-        <div class="grid_3">
-            <a href="template/images/slider/4.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/4.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
-                    
-            <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-        
-        <div class="clear"></div>
-        
-    </div><!-- end boxes -->
-	    
+        </div>                             	
+    	<s:iterator value="annonces" id="annonce">               
+			<div class="grid_3">
+				<a href="uploadedImage/objet/<s:property value="%{#annonce.objet.image}"/>"
+					title="Maecenas pharetra egestas adipiscing." class="colorbox"><img
+					class="boxImage tiptop" src="uploadedImage/objet/<s:property value="%{#annonce.objet.image}"/>" alt=""
+					title="&plusmn;&nbsp;zoom" width="222px" height="142px"/></a>
+				<h3><s:property value="%{#annonce.titre}"/></h3>
+				<p>
+					<s:property value="%{#annonce.description}"/>.
+					<a href="detailsAnnonce.action?id=<s:property value="%{#annonce.id}"/>">Détails	annonce&nbsp;&rarr;</a>
+				</p>
+			</div>                    
+        </s:iterator>
+     </div><!-- end boxes -->    	        	    
 	
      <!-- begin .grid_12 - COMMENTS -->
      <div id="strip" class="grid_12">

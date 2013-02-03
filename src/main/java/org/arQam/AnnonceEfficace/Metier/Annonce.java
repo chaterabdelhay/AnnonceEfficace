@@ -114,7 +114,16 @@ public class Annonce {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-
+	
+	public static List list() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+     
+        List result = session.createQuery("from Annonce").list();
+        session.close();
+        return result;
+    }
+	
 	public static Annonce load(long id) {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();

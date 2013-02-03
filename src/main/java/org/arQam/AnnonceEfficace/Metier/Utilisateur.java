@@ -61,7 +61,7 @@ public class Utilisateur {
         session.close();     
     }
     
-    static List list() {
+    public static List list() {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
      
