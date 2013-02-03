@@ -1,6 +1,7 @@
 package org.arQam.AnnonceEfficace.Metier;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -114,7 +115,35 @@ public class Annonce {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-
+	
+	public static List list() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+     
+        List result = session.createQuery("from Annonce").list();
+        session.close();
+        return result;
+    }
+	
+	public static List listOrderByDistance(String type, double latitude, double longitude) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        String hqlRequest = "Select a, sqrt(power(a.positionGeographique.latitude-"+latitude+",2) + " +
+        					"power(a.positionGeographique.longitude-"+longitude+",2)) from Annonce a ORDER BY 2";
+        if(!type.isEmpty()){
+        	hqlRequest = "Select a, sqrt(power(a.positionGeographique.latitude-"+latitude+",2) + " +
+        				"power(a.positionGeographique.longitude-"+longitude+",2)) from Annonce a WHERE a.type='"+type+"' ORDER BY 2";
+        }
+        List resultList = session.createQuery(hqlRequest).list();        
+        return resultList;
+        /*List annonces = new ArrayList();
+        for (Object result : resultList) {        	
+        	annonces.add(((Object[]) result)[0]);            
+        }
+        session.close();
+        return annonces;*/
+    }
+	
 	public static Annonce load(long id) {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();

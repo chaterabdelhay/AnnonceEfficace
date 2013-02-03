@@ -31,13 +31,12 @@ import org.arQam.AnnonceEfficace.Metier.Utilisateur;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class GetListeAnnoncesAction extends ActionSupport {	
-    private String p;    
+public class ListeAnnoncesAction extends ActionSupport {	
     private List annonces;    
     private Double posGeoLatitude;
     private Double posGeoLongitude;
-    private String type;    
     public String execute() throws Exception {
+    	//setAnnonces(Annonce.list());
     	// set positionGeographique
     	Map session = ActionContext.getContext().getSession();
     	if(session.get("utilisateur") != null){
@@ -51,16 +50,16 @@ public class GetListeAnnoncesAction extends ActionSupport {
     		posGeoLongitude = (double) 0;
     	}
     	// set annonces
-    	setAnnonces(Annonce.listOrderByDistance(type,posGeoLatitude,posGeoLongitude));
+    	setAnnonces(Annonce.listOrderByDistance("",posGeoLatitude,posGeoLongitude));
         return SUCCESS;       
     }
 
-	public String getP() {
-		return p;
+	public List getAnnonces() {
+		return annonces;
 	}
 
-	public void setP(String p) {
-		this.p = p;
+	public void setAnnonces(List annonces) {
+		this.annonces = annonces;
 	}
 
 	public Double getPosGeoLatitude() {
@@ -71,28 +70,12 @@ public class GetListeAnnoncesAction extends ActionSupport {
 		this.posGeoLatitude = posGeoLatitude;
 	}
 
-	public List getAnnonces() {
-		return annonces;
-	}
-
-	public void setAnnonces(List annonces) {
-		this.annonces = annonces;
-	}
-
 	public Double getPosGeoLongitude() {
 		return posGeoLongitude;
 	}
 
 	public void setPosGeoLongitude(Double posGeoLongitude) {
 		this.posGeoLongitude = posGeoLongitude;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 }

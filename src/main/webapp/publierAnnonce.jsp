@@ -10,19 +10,37 @@
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
 	<br /> <br /> <br />
-	<div style="margin-left: 160px;">
-		<table id="login">
+	<div>
+		<table>
 			<tr>
 				<td>
-					<div class="form-2">
+					<div class="form-2"  style="width:800px">
+					<s:form action="publierAnnonce" theme="css_xhtml" >
 						<table>
-							<tr  valign="top">
-								<td>
-									<s:form action="publierAnnonce" theme="css_xhtml" style="width:350px">
-										<h1>
-											<span class="log-in">Publier une annonce</span>
-										</h1>
+							<tr>
+								<td colspan="2">
+									<h1>
+										<span class="log-in">Publier une annonce</span>
+									</h1>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<s:iterator value="errorMessages" id="errorMsg">
+										<p style="color: red;">
+											>
+											<s:property value="%{#errorMsg}" /><p>
 										
+									</s:iterator>										
+										<s:if test="%{errorMessages.size > 0}">
+										<hr />											
+										</s:if>
+								</td>
+
+							</tr>
+							<tr style="width:400px" valign="top">						
+								<td>
+																																																																				
 										<p>
 											<label for="typeAnnonce">Type</label>
 											<s:select  
@@ -44,15 +62,36 @@
 										<s:hidden name="posGeoLongitude" id="posGeoLongitude" value=""/>																																					
 										<p class="clearfix">
 											<input type="submit" value="Créer">
-										</p>
-										<s:property value="errorMessage"/>
-									</s:form>
-								</td>
-								<td>
+										</p>																				
 									
-								</td>							
+								</td>		
+								<td>
+									<p>
+											<label for="typeAnnonce">Catègorie</label>
+											<s:select headerKey="-1" headerValue="Selectionnez"
+												list="#{'1':'Computer', '2':'Telephone'}"
+												name="categorieObjet" />
+										</p>
+										<p>
+											<label for="titre">Nom</label>
+											<s:textfield name="nomObjet" maxlength="20" id="titre"
+												placeholder="Nom de l'objet" />
+										</p>
+										<p>
+											<label for="titre">image</label>
+											<s:textfield name="imageObjet" maxlength="20" id="titre"
+												placeholder="image de l'objet" />
+											<s:hidden name="nomObjet"/>
+										</p>
+										<p>
+											<label for="titre">description</label>
+											<s:textfield name="descriptionObjet" maxlength="20" id="titre"
+												placeholder="descripotion de l'objet" />
+										</p>										
+								</td>												
 							</tr>
 						</table>
+					  </s:form>	
 					</div>
 				</td>
 			</tr>

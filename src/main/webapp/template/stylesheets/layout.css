@@ -132,7 +132,7 @@ HEADER
 	max-height:28px;
 }
 #optionDescriptor  #optionDescriptorLeftPart{
-	min-width:13px; max-height:28px;
+	width:13px; height:28px;
 	background-image:url('../images/sideBar/optionDescriptor/LeftPart.png');
 	background-repeat: no-repeat;
 }
@@ -149,7 +149,7 @@ HEADER
 #optionDescriptor  #optionDescriptorRightPart{
 	background-image:url('../images/sideBar/optionDescriptor/RightPart.png');
 	background-repeat: no-repeat;
-	min-width:4px; max-height:28px;
+	width:4px; height:28px;
 }
 
 .optionDescription{

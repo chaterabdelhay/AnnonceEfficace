@@ -1,0 +1,193 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x6d99769a, pid=5900, tid=6020
+#
+# JRE version: 6.0_31-b05
+# Java VM: Java HotSpot(TM) Client VM (20.6-b01 mixed mode windows-x86 )
+# Problematic frame:
+# V  [jvm.dll+0xd769a]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00511000):  JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_in_vm, id=6020, stack(0x18c70000,0x18cc0000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x00000000
+
+Registers:
+EAX=0x1abc4ef0, EBX=0x000000bc, ECX=0x187cf6c0, EDX=0x00000000
+ESP=0x18cbf8f4, EBP=0x18cbf998, ESI=0x00000000, EDI=0x00511000
+EIP=0x6d99769a, EFLAGS=0x00010246
+
+Top of Stack: (sp=0x18cbf8f4)
+0x18cbf8f4:   18cbfbc8 00510e98 00511000 6d93118f
+0x18cbf904:   0100001e 1abc4ef0 00000001 18cbfbc8
+0x18cbf914:   00000001 18cbf950 6d996ffe 1abc4f84
+0x18cbf924:   18cbf984 00000015 00511000 00000028
+0x18cbf934:   1abc4f64 1abc4f60 0000001a 18cbfbc8
+0x18cbf944:   00511000 1abc4ecc 18cbf988 00511000
+0x18cbf954:   1abc4ecc 18cbf988 6d995517 00511000
+0x18cbf964:   00000000 00511000 1abc4ecc 00511000 
+
+Instructions: (pc=0x6d99769a)
+0x6d99767a:   5d 10 57 6a 00 53 e8 4b c3 f8 ff 83 c4 0c 50 57
+0x6d99768a:   8d 4d 14 e8 4e ba f2 ff 8b 45 0c 8b 08 8b 75 14
+0x6d99769a:   8b 16 8b 49 24 89 4a 24 8b 10 52 57 8d 4d 14 e8
+0x6d9976aa:   32 ba f2 ff 8b 45 14 57 6a 01 56 4b 53 6a 01 50 
+
+
+Register to memory mapping:
+
+EAX=0x1abc4ef0 is an unknown value
+EBX=0x000000bc is an unknown value
+ECX=0x187cf6c0 is an oop
+
+[error occurred during error reporting (printing register info), id 0xe0000000]
+
+Stack: [0x18c70000,0x18cc0000],  sp=0x18cbf8f4,  free space=318k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0xd769a]
+V  [jvm.dll+0xd9406]
+V  [jvm.dll+0xd974b]
+V  [jvm.dll+0xd9c25]
+V  [jvm.dll+0xc2a64]
+V  [jvm.dll+0x193cb0]
+C  [jdwp.dll+0x7d56]
+C  [jdwp.dll+0xba32]  Agent_OnLoad+0x9a7
+C  [jdwp.dll+0x17d55]  Agent_OnLoad+0xccca
+V  [jvm.dll+0x140ffc]
+C  [msvcr71.dll+0x9565]  endthreadex+0xa0
+C  [kernel32.dll+0x13677]  BaseThreadInitThunk+0x12
+C  [ntdll.dll+0x39f02]  RtlInitializeExceptionChain+0x63
+C  [ntdll.dll+0x39ed5]  RtlInitializeExceptionChain+0x36
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x19a54000 JavaThread "Timer-12" daemon [_thread_blocked, id=6284, stack(0x19f10000,0x19f60000)]
+  0x19a55800 JavaThread "MySQL Statement Cancellation Timer" daemon [_thread_blocked, id=5328, stack(0x1a150000,0x1a1a0000)]
+  0x19a54800 JavaThread "MySQL Statement Cancellation Timer" daemon [_thread_blocked, id=4756, stack(0x1a030000,0x1a080000)]
+  0x19a56000 JavaThread "MySQL Statement Cancellation Timer" daemon [_thread_blocked, id=5876, stack(0x1a4b0000,0x1a500000)]
+  0x19a55400 JavaThread "19930884@qtp-450123-11" [_thread_blocked, id=6224, stack(0x1a0c0000,0x1a110000)]
+  0x19a54c00 JavaThread "MySQL Statement Cancellation Timer" daemon [_thread_blocked, id=4508, stack(0x1a420000,0x1a470000)]
+  0x193dd000 JavaThread "MySQL Statement Cancellation Timer" daemon [_thread_blocked, id=1032, stack(0x1a390000,0x1a3e0000)]
+  0x19866400 JavaThread "Timer-1" daemon [_thread_blocked, id=6168, stack(0x1a1e0000,0x1a230000)]
+  0x195ee800 JavaThread "18816786@qtp-450123-1 - Acceptor0 SelectChannelConnector@0.0.0.0:8080" [_thread_in_native, id=2872, stack(0x19fa0000,0x19ff0000)]
+  0x00526400 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=6276, stack(0x18f10000,0x18f60000)]
+  0x00523c00 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=1080, stack(0x18e80000,0x18ed0000)]
+  0x00515400 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=4408, stack(0x18df0000,0x18e40000)]
+  0x00513400 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=6024, stack(0x18d60000,0x18db0000)]
+=>0x00511000 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_in_vm, id=6020, stack(0x18c70000,0x18cc0000)]
+  0x004dfc00 JavaThread "Attach Listener" daemon [_thread_blocked, id=6912, stack(0x188a0000,0x188f0000)]
+  0x004dcc00 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=5148, stack(0x18810000,0x18860000)]
+  0x004d0800 JavaThread "Finalizer" daemon [_thread_blocked, id=4404, stack(0x02760000,0x027b0000)]
+  0x004cbc00 JavaThread "Reference Handler" daemon [_thread_blocked, id=1884, stack(0x026d0000,0x02720000)]
+  0x027cac00 JavaThread "main" [_thread_blocked, id=6136, stack(0x001f0000,0x00240000)]
+
+Other Threads:
+  0x004c7800 VMThread [stack: 0x02640000,0x02690000] [id=360]
+  0x00529c00 WatcherThread [stack: 0x18fa0000,0x18ff0000] [id=4416]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 11456K, used 2K [0x047d0000, 0x05430000, 0x09d20000)
+  eden space 10240K,   0% used [0x047d0000, 0x047d0800, 0x051d0000)
+  from space 1216K,   0% used [0x05300000, 0x05300000, 0x05430000)
+  to   space 1216K,   0% used [0x051d0000, 0x051d0000, 0x05300000)
+ tenured generation   total 25304K, used 14362K [0x09d20000, 0x0b5d6000, 0x147d0000)
+   the space 25304K,  56% used [0x09d20000, 0x0ab26bc0, 0x0ab26c00, 0x0b5d6000)
+ compacting perm gen  total 65536K, used 65535K [0x147d0000, 0x187d0000, 0x187d0000)
+   the space 65536K,  99% used [0x147d0000, 0x187cfe28, 0x187d0000, 0x187d0000)
+No shared spaces configured.
+
+Code Cache  [0x027d0000, 0x02c70000, 0x047d0000)
+ total_blobs=2345 nmethods=2183 adapters=104 free_code_cache=28739648 largest_free_block=384
+
+Dynamic libraries:
+0x00400000 - 0x00425000 	C:\Program Files (x86)\Java\jdk1.6.0_31\bin\javaw.exe
+0x77cd0000 - 0x77e50000 	C:\Windows\SysWOW64\ntdll.dll
+0x756c0000 - 0x757c0000 	C:\Windows\syswow64\kernel32.dll
+0x75650000 - 0x75696000 	C:\Windows\syswow64\KERNELBASE.dll
+0x76d70000 - 0x76e10000 	C:\Windows\syswow64\ADVAPI32.dll
+0x75860000 - 0x7590c000 	C:\Windows\syswow64\msvcrt.dll
+0x76f10000 - 0x76f29000 	C:\Windows\SysWOW64\sechost.dll
+0x77320000 - 0x77410000 	C:\Windows\syswow64\RPCRT4.dll
+0x753c0000 - 0x75420000 	C:\Windows\syswow64\SspiCli.dll
+0x753b0000 - 0x753bc000 	C:\Windows\syswow64\CRYPTBASE.dll
+0x75420000 - 0x75520000 	C:\Windows\syswow64\USER32.dll
+0x770e0000 - 0x77170000 	C:\Windows\syswow64\GDI32.dll
+0x75b90000 - 0x75b9a000 	C:\Windows\syswow64\LPK.dll
+0x757c0000 - 0x7585d000 	C:\Windows\syswow64\USP10.dll
+0x76fc0000 - 0x77020000 	C:\Windows\system32\IMM32.DLL
+0x75ac0000 - 0x75b8c000 	C:\Windows\syswow64\MSCTF.dll
+0x7c340000 - 0x7c396000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\msvcr71.dll
+0x6d8c0000 - 0x6db6f000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\client\jvm.dll
+0x73630000 - 0x73662000 	C:\Windows\system32\WINMM.dll
+0x713b0000 - 0x713fb000 	C:\Windows\system32\apphelp.dll
+0x6d870000 - 0x6d87c000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\verify.dll
+0x6d3d0000 - 0x6d3ef000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\java.dll
+0x6d420000 - 0x6d449000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\jdwp.dll
+0x6d740000 - 0x6d746000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\npt.dll
+0x6d8b0000 - 0x6d8bf000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\zip.dll
+0x6d2b0000 - 0x6d2b7000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\dt_socket.dll
+0x76e40000 - 0x76e75000 	C:\Windows\syswow64\WS2_32.dll
+0x76ba0000 - 0x76ba6000 	C:\Windows\syswow64\NSI.dll
+0x71870000 - 0x71880000 	C:\Windows\system32\NLAapi.dll
+0x73310000 - 0x7334c000 	C:\Windows\System32\mswsock.dll
+0x73420000 - 0x73464000 	C:\Windows\system32\DNSAPI.dll
+0x71860000 - 0x71868000 	C:\Windows\System32\winrnr.dll
+0x71850000 - 0x71860000 	C:\Windows\system32\napinsp.dll
+0x71390000 - 0x713a2000 	C:\Windows\system32\pnrpnsp.dll
+0x71380000 - 0x7138d000 	C:\Windows\system32\wshbth.dll
+0x72c80000 - 0x72ca4000 	C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live\WLIDNSP.DLL
+0x75ab0000 - 0x75ab5000 	C:\Windows\syswow64\PSAPI.DLL
+0x76e80000 - 0x76ed7000 	C:\Windows\syswow64\SHLWAPI.dll
+0x73ac0000 - 0x73adc000 	C:\Windows\system32\IPHLPAPI.DLL
+0x73ab0000 - 0x73ab7000 	C:\Windows\system32\WINNSI.DLL
+0x71740000 - 0x71778000 	C:\Windows\System32\fwpuclnt.dll
+0x72c70000 - 0x72c76000 	C:\Windows\system32\rasadhlp.dll
+0x73680000 - 0x73685000 	C:\Windows\System32\wshtcpip.dll
+0x6d6b0000 - 0x6d6c3000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\net.dll
+0x72cb0000 - 0x72cb6000 	C:\Windows\System32\wship6.dll
+0x6d6d0000 - 0x6d6d9000 	C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin\nio.dll
+0x73810000 - 0x73826000 	C:\Windows\system32\CRYPTSP.dll
+0x736c0000 - 0x736fb000 	C:\Windows\system32\rsaenh.dll
+0x73af0000 - 0x73b07000 	C:\Windows\system32\USERENV.dll
+0x73ae0000 - 0x73aeb000 	C:\Windows\system32\profapi.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:53538 -Dmaven.home=EMBEDDED -Dclassworlds.conf=C:\Users\Saladin\WORKSPACESRepository\workspace_j2ee\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf5328234270276677452.tmp -Dfile.encoding=Cp1256 
+java_command: org.codehaus.plexus.classworlds.launcher.Launcher -B -s C:\Users\Saladin\.m2\settings.xml jetty:run
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.5.0_22
+CLASSPATH=.;C:\Program Files (x86)\Weka-3-6\jdbc\postgresql-9.0-801.jdbc4.jar;C:\Program Files (x86)\Weka-3-6\jdbc\mysql-connector-java-5.1.16-bin.jar;C:\Program Files (x86)\Java\jre7\lib\ext\QTJava.zip;C:\Users\Saladin\Desktop\Qualit‚ du Logiciel\S3\Genie Logiciel\_JML\JML4C (JML4Compiler)\jml4c.jar;
+PATH=C:\Program Files (x86)\Java\jdk1.6.0_31\jre\bin;C:/Program Files (x86)/Java/jre7/bin/client;C:/Program Files (x86)/Java/jre7/bin;C:/Program Files (x86)/Java/jre7/lib/i386;c:\oraclexe\product\11.2.0\dbhome_1\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\ia32;C:\Program Files\Gimp-2.7.3\bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft Windows Performance Toolkit\;C:\Program Files (x86)\Android\android-sdk\tools;C:\Program Files (x86)\Common Files\Easysoft\Shared\;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\CodeBlocks\MinGW\bin;C:\QtSDK\Desktop\Qt\4.8.0\mingw\bin;C:\Program Files\TortoiseSVN\bin;E:\Projet\Outils\Wampee-2.1\bin\php\php5.3.5;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\oraclexe\product\11.2.0\dbhome_1\BIN;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Aqsis\bin;C:\Program Files (x86)\eclipse-jee-juno;
+USERNAME=Saladin
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 37 Stepping 5, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7600 
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 37 stepping 5, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, ht
+
+Memory: 4k page, physical 3004272k(1176420k free), swap 6006648k(2058040k free)
+
+vm_info: Java HotSpot(TM) Client VM (20.6-b01) for windows-x86 JRE (1.6.0_31-b05), built on Feb  3 2012 18:44:09 by "java_re" with MS VC++ 7.1 (VS2003)
+
+time: Sun Feb 03 20:22:33 2013
+elapsed time: 10983 seconds
+

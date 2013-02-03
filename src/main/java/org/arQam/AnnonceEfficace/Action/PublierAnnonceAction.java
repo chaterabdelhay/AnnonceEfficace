@@ -20,7 +20,7 @@ public class PublierAnnonceAction extends ActionSupport {
 	private String titre;
 	private String description;
 	private String type;    
-    private String errorMessage;
+    private List errorMessages;
     private Double posGeoLatitude;
     private Double posGeoLongitude;
     
@@ -29,16 +29,9 @@ public class PublierAnnonceAction extends ActionSupport {
 	}
 	public String execute() throws Exception {	
 		if(titre == null || description == null || type== null) // nouvelle saisie
-			return INPUT;
-		System.out.println("titre" + titre);
-		if(titre.isEmpty() || description.isEmpty() || type.isEmpty()){ // champs vides{
-			errorMessage = "veuillez remplir tous les champs svp ";
-			return INPUT;
-		}	
-		if(type.equals("-1")){
-			errorMessage = "veuillez choisir le type de votre annonce";
-			return INPUT;
-		}			
+			return INPUT;		
+		// validate();
+		if(!isValid()) return INPUT;
 		Annonce annonce = new Annonce();
         annonce.setTitre(titre);
         annonce.setType(type);
@@ -87,13 +80,7 @@ public class PublierAnnonceAction extends ActionSupport {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-	public String getErrorMessage() {
-		return errorMessage;
-	}
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
+	}	
 	public double getPosGeoLatitude() {
 		return posGeoLatitude;
 	}
@@ -107,5 +94,32 @@ public class PublierAnnonceAction extends ActionSupport {
 		this.posGeoLongitude = posGeoLongitude;
 	}
 	
-	
+	public List getErrorMessages() {
+		return errorMessages;
+	}
+	public void setErrorMessages(List errorMessages) {
+		this.errorMessages = errorMessages;
+	}
+	public boolean isValid(){
+		boolean errorExists= false;
+		errorMessages = new ArrayList();
+		if(titre.isEmpty() || description.isEmpty() || type.isEmpty()){ // champs vides{
+			errorMessages.add("veuillez remplir tous les champs svp ");
+			errorExists = true;
+		}	
+		if(type.equals("-1")){
+			errorMessages.add("veuillez choisir le type de votre annonce");
+			errorExists = true;
+		}
+		if(titre.length() < 10){
+			errorMessages.add("Votre titre doit être composé d'au moins 10 caractères ");
+			errorExists = true;
+		}
+		if(description.length() < 40){
+			errorMessages.add("Votre description doit être composée d'au moins 40 caractères ");
+			errorExists = true;
+		}			
+		if(errorExists) return false;
+		return true; 
+	}
 }

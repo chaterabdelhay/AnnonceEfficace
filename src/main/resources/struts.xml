@@ -42,8 +42,8 @@
     		<interceptor-ref name="login" />  	            
     		<result name="success">/espaceUtilisateur.jsp</result>
     	</action>
-    	<action name="listeAnnonces" class="com.opensymphony.xwork2.ActionSupport">
-    		<!-- <interceptor-ref name="login" />  -->  	            
+    	<action name="listeAnnonces" class="org.arQam.AnnonceEfficace.Action.ListeAnnoncesAction">
+    		<!-- <interceptor-ref name="login" /> -->  	            
     		<result name="success">/listeAnnonces.jsp</result>
     	</action>    	     	    	    	    	    	    	
     	<action name="publierAnnonce" class="org.arQam.AnnonceEfficace.Action.PublierAnnonceAction">    		

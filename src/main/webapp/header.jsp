@@ -198,9 +198,7 @@
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
 					onclick="window.location.replace('participerConcours');"/>
 			</span>		
-		</s:if>
-			
-		
+		</s:if>					
 	</div>		
 	<div id="sideBarBottomPart"></div>	
 </div>

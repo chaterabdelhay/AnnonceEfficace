@@ -40,7 +40,7 @@ public class LoginAction extends ActionSupport {
         	Map session = ActionContext.getContext().getSession();
         	session.put("utilisateur", user);   
         	session.put("id", user.getId()); 
-        	System.out.println(ActionContext.getContext().getSession().get("id"));
+        	//System.out.println(ActionContext.getContext().getSession().get("id"));
         	// mettre code pour tester si l'utilisateur existe !
             return SUCCESS;
         }        
