@@ -162,7 +162,12 @@
 												error : function(msg) {
 													$('#boxes').html("Error !: " + msg);
 												},
-												
+												success : function(data) {
+													//affiche le contenu du fichier dans le conteneur dédié
+													$('#boxes').html(data);
+													$("#topGrayLayer2").fadeOut(500);
+													
+												}
 											});
 								});
 				$("#link2")

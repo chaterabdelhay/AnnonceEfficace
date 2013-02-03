@@ -39,7 +39,9 @@
 											<s:textfield name="description" maxlength="20"
 												id="description" placeholder="Desription"/>
 										</p>																												
-										<p><a href="#" id="setPosition">Selectionner la position</a></p>																																													
+										<p><a href="#" id="setPosition">Selectionner la position</a></p>
+										<s:hidden name="posGeoLatitude" id="posGeoLatitude" value=""/>
+										<s:hidden name="posGeoLongitude" id="posGeoLongitude" value=""/>																																					
 										<p class="clearfix">
 											<input type="submit" value="Créer">
 										</p>
@@ -62,7 +64,12 @@
 			<div id="mapa"></div>
 			<div class="eventtext">				
 				<div id="mapDivBottomBar">
-					<p><span style="font-weight:800;">Position actuelle : </span><span id="latlongclicked"></span><a href="#"  id="GMapConfirmPosition">Confirmer</a></p>
+					<p>
+						<span style="font-weight:800;">Position actuelle : </span>
+						<span id="selectedLatitude"></span>;<span id="selectedLongitude"></span>
+						<a href="#" id="GMapCancel">Annuler</a>
+						<a href="#" id="GMapConfirmPosition">Confirmer</a>
+					</p>
 				</div>				
 			</div>
 		</div>
@@ -78,9 +85,11 @@
 				map.addControl(new GMapTypeControl(3));
 				map.setCenter(new GLatLng(initLatitude,initLongitude ), 11, 0);
 				map.setZoom(8);				
-				document.getElementById('latlongclicked').innerHTML = initLatitude + ', ' + initLongitude;
+				document.getElementById('selectedLatitude').innerHTML = initLatitude;
+				document.getElementById('selectedLongitude').innerHTML = initLongitude;
 				GEvent.addListener(map, 'click', function(overlay, point) {
-					document.getElementById('latlongclicked').innerHTML = point.lat() + ', ' + point.lng();
+				document.getElementById('selectedLatitude').innerHTML = point.lat();
+				document.getElementById('selectedLongitude').innerHTML = point.lng();
 				});							
 			}
 		}						
@@ -92,8 +101,12 @@
 				GMapInitialized = true;
 			} 	
 		});
-		
+		$("#GMapCancel").click(function () {
+			$("#topGrayLayer1").fadeOut(300);
+		});
 		$("#GMapConfirmPosition").click(function () {
+			$("#posGeoLatitude").val($("#selectedLatitude").html());
+			$("#posGeoLongitude").val($("#selectedLongitude").html());
   			$("#topGrayLayer1").fadeOut(300);  			
 		});	
 	</script>

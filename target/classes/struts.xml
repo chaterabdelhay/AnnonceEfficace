@@ -52,12 +52,14 @@
     			<param name="validation.excludeMethods">execute</param>
 			</interceptor-ref>      		          		
       		<result name="input">/publierAnnonce.jsp</result>
-      		<result name="success">/publicationAnnonceRealisee.jsp</result>      		
+      		<result name="success" type="redirect">/operationReussie?operation=publier annonce</result>      		
+    	</action>
+    	<action name="operationReussie" class="org.arQam.AnnonceEfficace.Action.OperationReussieAction">    		
+      		<result name="success">/operationReussie.jsp</result>        		    		
     	</action>
     	
     	<action name="detailsAnnonce" class="org.arQam.AnnonceEfficace.Action.DetailsAnnonceAction">    		
-      		<result name="success">/detailsAnnonce.jsp</result>  
-      		    		
+      		<result name="success">/detailsAnnonce.jsp</result>        		    		
     	</action>
     	<action name="evaluer" class="org.arQam.AnnonceEfficace.Action.EvaluateAction">    		
       		<!-- <interceptor-ref name="login" /> -->

@@ -9,6 +9,7 @@ import javax.persistence.Column;
 
 import org.arQam.AnnonceEfficace.Metier.Annonce;
 import org.arQam.AnnonceEfficace.Metier.Objet;
+import org.arQam.AnnonceEfficace.Metier.PositionGeographique;
 import org.arQam.AnnonceEfficace.Metier.Utilisateur;
 import org.arQam.AnnonceEfficace.Metier.Ville;
 
@@ -20,6 +21,8 @@ public class PublierAnnonceAction extends ActionSupport {
 	private String description;
 	private String type;    
     private String errorMessage;
+    private Double posGeoLatitude;
+    private Double posGeoLongitude;
     
 	public String input() throws Exception {
 		return INPUT;
@@ -35,8 +38,7 @@ public class PublierAnnonceAction extends ActionSupport {
 		if(type.equals("-1")){
 			errorMessage = "veuillez choisir le type de votre annonce";
 			return INPUT;
-		}	
-		
+		}			
 		Annonce annonce = new Annonce();
         annonce.setTitre(titre);
         annonce.setType(type);
@@ -49,12 +51,15 @@ public class PublierAnnonceAction extends ActionSupport {
         // set user, position and the object
         Map session = ActionContext.getContext().getSession();
         Utilisateur user = (Utilisateur) session.get("utilisateur");
-        annonce.setUtilisateur(user);
-        System.out.println("user" + user);
-        annonce.setPositionGeographique(user.getUserPositionGeographique());
-        System.out.println("positionGeo" + annonce.getPositionGeographique());
-        annonce.setObjet(Objet.load(1));
-        System.out.println("objet : " + annonce.getObjet());
+        annonce.setUtilisateur(user);   
+        // get PositionGeographique
+        PositionGeographique positionGeographique = user.getUserPositionGeographique();
+        if(posGeoLatitude != null && posGeoLongitude != null){
+        	positionGeographique = new PositionGeographique(posGeoLatitude, posGeoLongitude);
+        	positionGeographique.save();
+        }        
+        annonce.setPositionGeographique(positionGeographique);        
+        annonce.setObjet(Objet.load(1));        
         annonce.save();        
              
         return SUCCESS;
@@ -88,6 +93,18 @@ public class PublierAnnonceAction extends ActionSupport {
 	}
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
+	}
+	public double getPosGeoLatitude() {
+		return posGeoLatitude;
+	}
+	public void setPosGeoLatitude(double posGeoLatitude) {
+		this.posGeoLatitude = posGeoLatitude;
+	}
+	public double getPosGeoLongitude() {
+		return posGeoLongitude;
+	}
+	public void setPosGeoLongitude(double posGeoLongitude) {
+		this.posGeoLongitude = posGeoLongitude;
 	}
 	
 	
