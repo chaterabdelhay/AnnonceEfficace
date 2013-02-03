@@ -21,12 +21,37 @@
 
 package org.arQam.AnnonceEfficace.Action;
 
+import java.util.List;
+import java.util.Map;
+
+import org.arQam.AnnonceEfficace.Metier.Annonce;
+import org.arQam.AnnonceEfficace.Metier.PositionGeographique;
+import org.arQam.AnnonceEfficace.Metier.Utilisateur;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class GetListeAnnoncesAction extends ActionSupport {	
     private String p;    
-    
-    public String execute() throws Exception {    	
+    private List annonces;    
+    private Double posGeoLatitude;
+    private Double posGeoLongitude;
+    private String type;    
+    public String execute() throws Exception {
+    	// set positionGeographique
+    	Map session = ActionContext.getContext().getSession();
+    	if(session.get("utilisateur") != null){
+    		Utilisateur user = (Utilisateur) session.get("utilisateur");          
+        	// get PositionGeographique
+        	PositionGeographique positionGeographique = user.getUserPositionGeographique();
+        	posGeoLatitude = positionGeographique.getLatitude();
+        	posGeoLongitude = positionGeographique.getLongitude();
+    	}else{
+    		posGeoLatitude = (double) 0;
+    		posGeoLongitude = (double) 0;
+    	}
+    	// set annonces
+    	setAnnonces(Annonce.listOrderByDistance(type,posGeoLatitude,posGeoLongitude));
         return SUCCESS;       
     }
 
@@ -36,6 +61,38 @@ public class GetListeAnnoncesAction extends ActionSupport {
 
 	public void setP(String p) {
 		this.p = p;
+	}
+
+	public Double getPosGeoLatitude() {
+		return posGeoLatitude;
+	}
+
+	public void setPosGeoLatitude(Double posGeoLatitude) {
+		this.posGeoLatitude = posGeoLatitude;
+	}
+
+	public List getAnnonces() {
+		return annonces;
+	}
+
+	public void setAnnonces(List annonces) {
+		this.annonces = annonces;
+	}
+
+	public Double getPosGeoLongitude() {
+		return posGeoLongitude;
+	}
+
+	public void setPosGeoLongitude(Double posGeoLongitude) {
+		this.posGeoLongitude = posGeoLongitude;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

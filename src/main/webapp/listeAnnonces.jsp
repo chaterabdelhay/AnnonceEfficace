@@ -90,16 +90,17 @@
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
         </div>                             	
-    	<s:iterator value="annonces" id="annonce">               
+    	<s:iterator value="annonces" var="resultObject">               
 			<div class="grid_3">
-				<a href="uploadedImage/objet/<s:property value="%{#annonce.objet.image}"/>"
+				<a href="uploadedImage/objet/<s:property value="#resultObject[0].objet.image"/>"
 					title="Maecenas pharetra egestas adipiscing." class="colorbox"><img
-					class="boxImage tiptop" src="uploadedImage/objet/<s:property value="%{#annonce.objet.image}"/>" alt=""
+					class="boxImage tiptop" src="uploadedImage/objet/<s:property value="#resultObject[0].objet.image"/>" alt=""
 					title="&plusmn;&nbsp;zoom" width="222px" height="142px"/></a>
-				<h3><s:property value="%{#annonce.titre}"/></h3>
+				<h3><s:property value="#resultObject[0].titre"/></h3>
+				<h3>distance : <s:property value="#resultObject[1]"/></h3>
 				<p>
-					<s:property value="%{#annonce.description}"/>.
-					<a href="detailsAnnonce.action?id=<s:property value="%{#annonce.id}"/>">Détails	annonce&nbsp;&rarr;</a>
+					<s:property value="#resultObject[0].description"/>.
+					<a href="detailsAnnonce.action?id=<s:property value="#resultObject[0].id"/>">Détails	annonce&nbsp;&rarr;</a>
 				</p>
 			</div>                    
         </s:iterator>
@@ -133,10 +134,11 @@
 
 <div id="topGrayLayer2" class="topGrayLayer">
 	<div id="mapDiv">
-		<p class="whiteBG" style="margin-top:200px; padding: 10px;">				     	    
+		<div class="whiteBG" style="margin-top:200px; padding: 10px;">				     	    
 
-			<a id="link1" href="#">update with content 1</a>
-			<a id="link2" href="#">update with content 2</a>
+			<p><a id="link1" href="#">Annonces de vente</a></p>
+			<p><a id="link2" href="#">Annonces d'achat</a></p>
+			<p><a id="link3" href="#">Evenements</a></p>
 			<script>
 				$("#link1")
 						.click(
@@ -144,7 +146,7 @@
 									$
 											.ajax({
 												type : "GET",
-												url : "ajax_getListeAnnonces.action?p=a",
+												url : "ajax_getListeAnnonces.action?type=V",
 												error : function(msg) {
 													$('#boxes').html("Error !: " + msg);
 												},
@@ -162,7 +164,25 @@
 							$
 									.ajax({
 										type : "GET",
-										url : "ajax_getListeAnnonces.action?p=b",
+										url : "ajax_getListeAnnonces.action?type=A",
+										error : function(msg) {
+											$('#boxes').html("Error !: " + msg);
+										},
+										success : function(data) {
+											//affiche le contenu du fichier dans le conteneur dédié
+											$('#boxes').html(data);
+											$("#topGrayLayer2").fadeOut(500);
+											
+										}
+									});
+						});
+				$("#link3")
+				.click(
+						function() {
+							$
+									.ajax({
+										type : "GET",
+										url : "ajax_getListeAnnonces.action?type=E",
 										error : function(msg) {
 											$('#boxes').html("Error !: " + msg);
 										},
@@ -181,7 +201,7 @@
 			Outil de recherche doit être placé ici <br/>
 			<a href="#" id="searchToolRun">Lancer la recherche(Ajax)</a><br/>
  			<a href="#" id="searchToolClose">Fermer</a>
-		</p>
+ 		</div>		
 	</div>
 </div>
 <script type="text/javascript">
@@ -217,8 +237,7 @@
 		$("#topGrayLayer1").fadeOut(300);
 	});
 	
-	$("#searchTool").click(function() {
-		alert("Une couche tel que celle de google maps doit s'afficher pour l'outil de recherche");
+	$("#searchTool").click(function() {		
 		$("#topGrayLayer2").fadeIn(300);
 	});
 	
