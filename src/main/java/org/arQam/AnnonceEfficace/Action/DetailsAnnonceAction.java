@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
+import org.arQam.AnnonceEfficace.Metier.Annonce;
 import org.arQam.AnnonceEfficace.Metier.Evaluation;
 import org.arQam.AnnonceEfficace.Metier.Utilisateur;
 
@@ -16,14 +17,21 @@ public class DetailsAnnonceAction extends ActionSupport {
    
 	Evaluation ev=new Evaluation();
 	public double average;
+	Annonce a=new Annonce();
+	int b;
     public String execute() throws Exception {
     	
-    	
+    	if ((Utilisateur) ActionContext.getContext().getSession().get("utilisateur")!=null)
     		//average=ev.avg();
-    		
+    	{
     	
     		return SUCCESS;
         }
+    	else 
+    		{
+    		return INPUT;
+    		}
+    		}
         	
     	
     	

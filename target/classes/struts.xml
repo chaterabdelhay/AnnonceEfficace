@@ -59,7 +59,8 @@
     	</action>
     	
     	<action name="detailsAnnonce" class="org.arQam.AnnonceEfficace.Action.DetailsAnnonceAction">    		
-      		<result name="success">/detailsAnnonce.jsp</result>        		    		
+      		<result name="success">/detailsAnnonce.jsp</result>  
+      		<result name="input">/detailsAnnonce_without_comment.jsp</result>       		    		
     	</action>
     	<action name="evaluer" class="org.arQam.AnnonceEfficace.Action.EvaluateAction">    		
       		<!-- <interceptor-ref name="login" /> -->
@@ -76,6 +77,7 @@
     	</action>
     	<action name="commenter" class="org.arQam.AnnonceEfficace.Action.CommentAction">    			           
     		<result name="success">/ajax_comment.jsp</result>
+    		
     	</action> 
     	
 	</package>	

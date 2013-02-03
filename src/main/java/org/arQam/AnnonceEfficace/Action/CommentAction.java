@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
+import org.arQam.AnnonceEfficace.Metier.Annonce;
 import org.arQam.AnnonceEfficace.Metier.Commentaire;
 import org.arQam.AnnonceEfficace.Metier.Evaluation;
 import org.arQam.AnnonceEfficace.Metier.Utilisateur;
@@ -16,17 +17,11 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CommentAction extends ActionSupport {	
    	private int annonceId;   	
-	private String contenuCommentaire;
+   //	Commentaire commentaire;
+	String contenuCommentaire;
+    
+
 	
-    public String execute() throws Exception {
-    	Map session = ActionContext.getContext().getSession();        
-    	Utilisateur user = (Utilisateur) session.get("utilisateur") ;
-    	Date date = new Date(100000);
-    	//Commentaire commentaire= new Commentaire(date,contenuCommentaire,user.getId(),annonceId);
-    	//commentaire.save();
-    	return SUCCESS;    
-    	
-    }
 
 	public String getContenuCommentaire() {
 		return contenuCommentaire;
@@ -35,6 +30,38 @@ public class CommentAction extends ActionSupport {
 	public void setContenuCommentaire(String contenuCommentaire) {
 		this.contenuCommentaire = contenuCommentaire;
 	}
+
+	public String execute() throws Exception {
+    	if ((Utilisateur) ActionContext.getContext().getSession().get("utilisateur")==null)
+    	{
+    		return INPUT;
+    	}
+    	else
+    	{
+    	/*Date date = new Date(100000);
+    	commentaire.setAnnonce(Annonce.load(3));
+		
+    	commentaire.setUtilisateur((Utilisateur) ActionContext.getContext().getSession().get("utilisateur"));
+    	commentaire.setDatePostulation(date);
+    	//Commentaire commentaire= new Commentaire(date,contenuCommentaire,user.getId(),annonceId);
+    	commentaire.save();*/
+    		//a=commentaire.getContenu();
+    	return SUCCESS; 
+    	}
+    	
+    }
+
+	public int getAnnonceId() {
+		return annonceId;
+	}
+
+	public void setAnnonceId(int annonceId) {
+		this.annonceId = annonceId;
+	}
+
+	
+
+	
 	
 
 }

@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.arQam.AnnonceEfficace.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
  
 @Entity
 @Table(name="commentaire")
@@ -31,9 +35,11 @@ public class Commentaire {
 		
 	}
 	
-	public Commentaire(Date datePostulation, String contenu){
+	public Commentaire(Date datePostulation, String contenu,Utilisateur utilisateur,Annonce annonce){
 		this.datePostulation = datePostulation;
-		this.contenu = contenu;			
+		this.contenu = contenu;	
+		this.utilisateur=utilisateur;
+		this.annonce=annonce;
 	}
 	
 	public long getId() {
@@ -75,5 +81,13 @@ public class Commentaire {
 	public void setAnnonce(Annonce annonce) {
 		this.annonce = annonce;
 	}
+	public void save() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();    
+        Long id = (Long) session.save(this);             
+        session.getTransaction().commit();             
+        session.close();     
+    }
 		
 }
