@@ -34,10 +34,11 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ListeAnnoncesAction extends ActionSupport {	
     private List annonces;    
     private Double posGeoLatitude;
-    private Double posGeoLongitude;
+    private Double posGeoLongitude;    
+    
     public String execute() throws Exception {
     	//setAnnonces(Annonce.list());
-    	// set positionGeographique
+    	// set positionGeographique    	
     	Map session = ActionContext.getContext().getSession();
     	if(session.get("utilisateur") != null){
     		Utilisateur user = (Utilisateur) session.get("utilisateur");          
@@ -45,12 +46,9 @@ public class ListeAnnoncesAction extends ActionSupport {
         	PositionGeographique positionGeographique = user.getUserPositionGeographique();
         	posGeoLatitude = positionGeographique.getLatitude();
         	posGeoLongitude = positionGeographique.getLongitude();
-    	}else{
-    		posGeoLatitude = (double) 0;
-    		posGeoLongitude = (double) 0;
-    	}
-    	// set annonces
-    	setAnnonces(Annonce.listOrderByDistance("",posGeoLatitude,posGeoLongitude));
+        	// set annonces
+        	setAnnonces(Annonce.listOrderByDistance("%",posGeoLatitude,posGeoLongitude));
+    	}    	
         return SUCCESS;       
     }
 

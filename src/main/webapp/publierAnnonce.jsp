@@ -49,12 +49,12 @@
 										</p>	
 										<p>
 											<label for="titre">Titre</label>
-											<s:textfield name="titre" maxlength="20" id="titre"
+											<s:textfield name="titre" maxlength="30" id="titre"
 												placeholder="Titre de l'annonce" />
 										</p>
 										<p>
 											<label for="password">Description</label>
-											<s:textfield name="description" maxlength="20"
+											<s:textfield name="description" 
 												id="description" placeholder="Desription"/>
 										</p>																												
 										<p><a href="#" id="setPosition">Selectionner la position</a></p>
@@ -74,18 +74,18 @@
 										</p>
 										<p>
 											<label for="titre">Nom</label>
-											<s:textfield name="nomObjet" maxlength="20" id="titre"
+											<s:textfield name="nomObjet" maxlength="30" id="titre"
 												placeholder="Nom de l'objet" />
 										</p>
 										<p>
 											<label for="titre">image</label>
-											<s:textfield name="imageObjet" maxlength="20" id="titre"
+											<s:textfield name="imageObjet" id="titre"
 												placeholder="image de l'objet" />
 											<s:hidden name="nomObjet"/>
 										</p>
 										<p>
 											<label for="titre">description</label>
-											<s:textfield name="descriptionObjet" maxlength="20" id="titre"
+											<s:textfield name="descriptionObjet" id="titre"
 												placeholder="descripotion de l'objet" />
 										</p>										
 								</td>												

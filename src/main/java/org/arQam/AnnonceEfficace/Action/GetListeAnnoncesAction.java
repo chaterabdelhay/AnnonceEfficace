@@ -34,8 +34,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public class GetListeAnnoncesAction extends ActionSupport {	
     private String p;    
     private List annonces;    
-    private Double posGeoLatitude;
-    private Double posGeoLongitude;
+    private String posGeoLatitude;
+    private String posGeoLongitude;
     private String type;    
     public String execute() throws Exception {
     	// set positionGeographique
@@ -44,14 +44,15 @@ public class GetListeAnnoncesAction extends ActionSupport {
     		Utilisateur user = (Utilisateur) session.get("utilisateur");          
         	// get PositionGeographique
         	PositionGeographique positionGeographique = user.getUserPositionGeographique();
-        	posGeoLatitude = positionGeographique.getLatitude();
-        	posGeoLongitude = positionGeographique.getLongitude();
-    	}else{
-    		posGeoLatitude = (double) 0;
-    		posGeoLongitude = (double) 0;
+        	posGeoLatitude = String.valueOf(positionGeographique.getLatitude());
+        	posGeoLongitude = String.valueOf(positionGeographique.getLongitude());
     	}
+    	if(posGeoLatitude == null || posGeoLongitude == null){
+    		return SUCCESS;
+    	}
+    	System.out.println("pos :" + posGeoLatitude + "," + posGeoLongitude);    	
     	// set annonces
-    	setAnnonces(Annonce.listOrderByDistance(type,posGeoLatitude,posGeoLongitude));
+    	setAnnonces(Annonce.listOrderByDistance(type,Double.valueOf(posGeoLatitude),Double.valueOf(posGeoLongitude)));
         return SUCCESS;       
     }
 
@@ -63,14 +64,7 @@ public class GetListeAnnoncesAction extends ActionSupport {
 		this.p = p;
 	}
 
-	public Double getPosGeoLatitude() {
-		return posGeoLatitude;
-	}
-
-	public void setPosGeoLatitude(Double posGeoLatitude) {
-		this.posGeoLatitude = posGeoLatitude;
-	}
-
+	
 	public List getAnnonces() {
 		return annonces;
 	}
@@ -78,12 +72,21 @@ public class GetListeAnnoncesAction extends ActionSupport {
 	public void setAnnonces(List annonces) {
 		this.annonces = annonces;
 	}
+	
 
-	public Double getPosGeoLongitude() {
+	public String getPosGeoLatitude() {
+		return posGeoLatitude;
+	}
+
+	public void setPosGeoLatitude(String posGeoLatitude) {
+		this.posGeoLatitude = posGeoLatitude;
+	}
+
+	public String getPosGeoLongitude() {
 		return posGeoLongitude;
 	}
 
-	public void setPosGeoLongitude(Double posGeoLongitude) {
+	public void setPosGeoLongitude(String posGeoLongitude) {
 		this.posGeoLongitude = posGeoLongitude;
 	}
 

@@ -126,14 +126,12 @@ public class Annonce {
     }
 	
 	public static List listOrderByDistance(String type, double latitude, double longitude) {
+		if(type == null || type.isEmpty() || type.equals("All")) type="%";
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
         String hqlRequest = "Select a, sqrt(power(a.positionGeographique.latitude-"+latitude+",2) + " +
-        					"power(a.positionGeographique.longitude-"+longitude+",2)) from Annonce a ORDER BY 2";
-        if(!type.isEmpty()){
-        	hqlRequest = "Select a, sqrt(power(a.positionGeographique.latitude-"+latitude+",2) + " +
-        				"power(a.positionGeographique.longitude-"+longitude+",2)) from Annonce a WHERE a.type='"+type+"' ORDER BY 2";
-        }
+        				"power(a.positionGeographique.longitude-"+longitude+",2)) from Annonce a WHERE a.type LIKE'"+type+"' ORDER BY 2";
+        
         List resultList = session.createQuery(hqlRequest).list();        
         return resultList;
         /*List annonces = new ArrayList();
