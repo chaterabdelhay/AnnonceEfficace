@@ -6,7 +6,6 @@
 <jsp:include page="header.jsp" />
 
 <!-- BEGIN : page body content -->
-<link rel="stylesheet" type="text/css" href="styles.css" />
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
 	<br /> <br /> <br />
@@ -18,13 +17,12 @@
 					style="padding-bottom: 5px; border-bottom: 1px solid #ddd;">
 					<p>
 						<span style="font-weight: 800">Type de l'annonce : <s:property value="%{typeAnnonce}"/><br/>Titre : <s:property value="%{annonce.titre}"/></span>
-						<span style="float: right">
-							
-						<input name="star1" type="radio" class="star"/>
-<input name="star1" type="radio" class="star"/>
-<input name="star1" type="radio" class="star"/>
-<input name="star1" type="radio" class="star"/>
-<input name="star1" type="radio" class="star"/>
+						<span style="float: right">							
+							<input name="star1" type="radio" class="star"/>
+							<input name="star1" type="radio" class="star"/>
+							<input name="star1" type="radio" class="star"/>
+							<input name="star1" type="radio" class="star"/>
+							<input name="star1" type="radio" class="star"/>
 							 evaluation moyenne :<s:property value="%{average}" />
 						</span>
 					</p>

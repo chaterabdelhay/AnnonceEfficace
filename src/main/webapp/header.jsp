@@ -21,8 +21,7 @@
         <link rel="stylesheet" href="template/stylesheets/nivoslider/nivo-slider.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/nivoslider/default/default.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/bx_styles/bx_styles.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="template/stylesheets/top_panel.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="template/stylesheets/comment.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="template/stylesheets/top_panel.css" type="text/css" media="screen" />        
 	<!-- End Stylesheets -->
     
     <!-- Begin Google Web Fonts -->
@@ -32,7 +31,7 @@
 	<!-- Begin JavaScript -->
     
     	<!-- jQuery -->
-		<script type="text/javascript" src="template/javascripts/jquery-1.9.0.min.js"></script>
+		<script type="text/javascript" src="template/javascripts/jquery-1.6.4.min.js"></script>
         
         <!-- jQuery plugins -->
         <script type="text/javascript" src="template/javascripts/jquery.tipTip.minified.js"></script>
@@ -43,8 +42,8 @@
         <script type="text/javascript" src="template/javascripts/OptionPopupDescriptor.js"></script>
         <!-- JQUERY rating stars -->
         
-        <script src='template/javascripts/jquery.rating.js' type="text/javascript" language="javascript"></script>
- 		<link href='template/stylesheets/jquery.rating.css' type="text/css" rel="stylesheet"/>
+        <script type="text/javascript" src="template/javascripts/jquery.rating.pack.js"></script>
+ 		<link href="template/stylesheets/jquery.rating.css" rel="stylesheet"/>
         
         <!-- jQuery plugin init -->
         <script type="text/javascript">
