@@ -77,7 +77,7 @@
     	</action>
     	<action name="commenter" class="org.arQam.AnnonceEfficace.Action.CommentAction">    			           
     		<result name="success">/ajax_comment.jsp</result>
-    		
+    		<result name="input">/connexion.jsp</result>
     	</action> 
     	
 	</package>	

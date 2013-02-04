@@ -1,6 +1,7 @@
 package org.arQam.AnnonceEfficace.Metier;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,11 +36,10 @@ public class Commentaire {
 		
 	}
 	
-	public Commentaire(Date datePostulation, String contenu,Utilisateur utilisateur,Annonce annonce){
+	public Commentaire(Date datePostulation, String contenu){
 		this.datePostulation = datePostulation;
 		this.contenu = contenu;	
-		this.utilisateur=utilisateur;
-		this.annonce=annonce;
+		
 	}
 	
 	public long getId() {
@@ -85,9 +85,19 @@ public class Commentaire {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
         session.beginTransaction();    
-        Long id = (Long) session.save(this);             
+        long id = (Long) session.save(this);             
         session.getTransaction().commit();             
         session.close();     
+    }
+	public  static List listComments(long A) {
+		
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        String hqlRequest = "Select c.contenu from Commentaire c  WHERE annonceId= "+A;
+        
+        List resultList = session.createQuery(hqlRequest).list();        
+        return resultList;
+        
     }
 		
 }

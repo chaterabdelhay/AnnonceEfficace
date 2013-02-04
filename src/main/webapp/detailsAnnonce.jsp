@@ -48,16 +48,20 @@
 							<p>Add a Comment</p>
 							
 							<p><div id="commentaire">
-							</div></p>		
+							</div></p>	
+							<s:iterator value="commentaires" var="resultObject">
+							<div class="commentaire" style="margin-bottom: 20px;"><s:property value="#resultObject"/> </div>
+							</s:iterator>	
 							<form id="addCommentForm" method="post" action="">
-								<s:textarea name="a" id="msgTxt"
+								<s:textarea name="contenu" id="msgTxt"
 									placeholder="Commentez cette annonce !" cols="80" rows="10" />
 								<s:submit id="submit" value="Submit" />
+								
 							</form>							
 						</div>										
 					</div>
 
-
+<s:textfield type="hidden" id="annonceId" value="%{annonceId}" />
 
 					<script>						
 					
@@ -66,14 +70,14 @@
 						
 							$.ajax({
 								type : "GET",
-								url : "commenter.action?contenuCommentaire=" +$("#msgTxt").val(),
+								url : "commenter.action?contenu=" + $("#msgTxt").val()+"&annonceId="+ $("#annonceId").val(),
 								error : function(msg) {
 									$('#commentaire').html("Error !: " + msg);
 								},
 								success : function(data) {
 									//alert("msg sended");
 									//affiche le contenu du fichier dans le conteneur dédié
-									$("<div>").html(data).insertAfter("#addCommentContainer").hide().slideDown("slow");
+									$("<div>").html(data).insertAfter("#commentaire").hide().slideDown("slow");
 									//$('#commentaire').html(data).insertBefore('#commentaire').slideDown();
 								}
 							});

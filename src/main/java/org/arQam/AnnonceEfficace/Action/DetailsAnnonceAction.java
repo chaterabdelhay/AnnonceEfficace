@@ -1,5 +1,6 @@
 package org.arQam.AnnonceEfficace.Action;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 import org.arQam.AnnonceEfficace.Metier.Annonce;
+import org.arQam.AnnonceEfficace.Metier.Commentaire;
 import org.arQam.AnnonceEfficace.Metier.Evaluation;
 import org.arQam.AnnonceEfficace.Metier.Utilisateur;
 
@@ -17,9 +19,14 @@ public class DetailsAnnonceAction extends ActionSupport {
    
 	Evaluation ev=new Evaluation();
 	public double average;
-	private Integer annonceId;
+	public Integer annonceId;
 	private Annonce annonce;
 	private String typeAnnonce;
+
+	private List commentaires;
+	
+
+	
 	public String execute() throws Exception {				
 		if(annonceId !=null) 
 			setAnnonce(Annonce.load(annonceId));
@@ -30,6 +37,8 @@ public class DetailsAnnonceAction extends ActionSupport {
 			if(annonce.getType().equals("OE")) setTypeAnnonce("Offre d'emploi");
 			if(annonce.getType().equals("OS")) setTypeAnnonce("Offre de stage");
 		}
+		
+		  setCommentaires(Commentaire.listComments(annonceId));
 		return SUCCESS;		
 	}		
         	
@@ -38,6 +47,16 @@ public class DetailsAnnonceAction extends ActionSupport {
 	}
 
 
+
+	
+
+	public List getCommentaires() {
+		return commentaires;
+	}
+
+	public void setCommentaires(List commentaires) {
+		this.commentaires = commentaires;
+	}
 
 	public void setAnnonceId(Integer annonceId) {
 		this.annonceId = annonceId;
