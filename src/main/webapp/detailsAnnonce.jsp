@@ -17,42 +17,30 @@
 				<td colspan="2"
 					style="padding-bottom: 5px; border-bottom: 1px solid #ddd;">
 					<p>
-						<span style="font-weight: 800">[Type de l'annonce] : </span>Titre
-						annonce de l'annonce ici <span style="float: right"><s:a
-								action="evaluer?ev.note=1&ev.annonceId=2">
-								<input name="star1" type="radio" class="star" value="1" />
-							</s:a>
-							<s:a action="evaluer?ev.note=2&ev.annonceId=2">
-								<input name="star2" type="radio" class="star" value="2" />
-							</s:a>
-							<s:a action="evaluer?ev.note=3&ev.annonceId=2">
-								<input name="star3" type="radio" class="star" value="3" />
-							</s:a>
-							<s:a action="evaluer?ev.note=4&ev.annonceId=2">
-								<input name="star4" type="radio" class="star" value="4" />
-							</s:a> evaluation moyenne :<s:property value="%{average}" /> </span>
+						<span style="font-weight: 800">Type de l'annonce : <s:property value="%{typeAnnonce}"/><br/>Titre : <s:property value="%{annonce.titre}"/></span>
+						<span style="float: right">
+							
+						<input name="star1" type="radio" class="star"/>
+<input name="star1" type="radio" class="star"/>
+<input name="star1" type="radio" class="star"/>
+<input name="star1" type="radio" class="star"/>
+<input name="star1" type="radio" class="star"/>
+							 evaluation moyenne :<s:property value="%{average}" />
+						</span>
 					</p>
 				</td>
 			</tr>
 			<tr>
-				<td style="padding-top: 10px;"><img class="boxImage tiptop"
-					src="template/images/boxes/2.jpg" alt="" title="&plusmn;&nbsp;zoom" />
+				<td style="padding-top: 10px;"><img class="boxImage tiptop" width="222px" height="142px"
+					src="uploadedImage/objet/<s:property value="%{annonce.objet.image}"/>" alt="" title="&plusmn;&nbsp;zoom" />
 				</td>
 				<td
 					style="vertical-align: top; padding-left: 10px; padding-top: 10px;">
 					<p>
-						<span style="font-weight: 800">Publiée le 22 juin 2012, par
-							Saladin </span>
+						<span style="font-weight: 800">Publiée par <s:property value="%{annonce.utilisateur.nomUtilisateur}"/>, le <s:property value="%{annonce.datePostulation}"/></span>
 					</p>
 					<p style="font-weight: 800">Description</p>
-					<p>Maecenas pharetra egestas adipiscing. Nullam consequat velit
-						in felis sodales in facilisis justo fringilla. Pellentesque nec
-						lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
-						adipiscing. Nullam consequat velit in felis sodales in facilisis
-						justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi
-						eu magna dapibu adipiscing. Nullam consequat velit in felis
-						sodales in facilisis justo fringilla. Pellentesque nec lobortis
-						dolor. Praesent et mi eu magna dapibu</p>
+					<p><s:property value="%{annonce.description}"/></p>
 				</td>
 			</tr>
 			<tr>

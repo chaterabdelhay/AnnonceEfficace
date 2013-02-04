@@ -17,25 +17,34 @@ public class DetailsAnnonceAction extends ActionSupport {
    
 	Evaluation ev=new Evaluation();
 	public double average;
-	Annonce a=new Annonce();
-	int b;
-    public String execute() throws Exception {
-    	
-    	if ((Utilisateur) ActionContext.getContext().getSession().get("utilisateur")!=null)
-    		//average=ev.avg();
-    	{
-    	
-    		return SUCCESS;
-        }
-    	else 
-    		{
-    		return INPUT;
-    		}
-    		}
+	private Integer annonceId;
+	private Annonce annonce;
+	private String typeAnnonce;
+	public String execute() throws Exception {				
+		if(annonceId !=null) 
+			setAnnonce(Annonce.load(annonceId));
+		if(annonce != null){
+			if(annonce.getType().equals("A")) setTypeAnnonce("Achat");					  
+			if(annonce.getType().equals("V")) setTypeAnnonce("Vente");
+			if(annonce.getType().equals("E")) setTypeAnnonce("Evenement");
+			if(annonce.getType().equals("OE")) setTypeAnnonce("Offre d'emploi");
+			if(annonce.getType().equals("OS")) setTypeAnnonce("Offre de stage");
+		}
+		return SUCCESS;		
+	}		
         	
-    	
-    	
-   
+	public Integer getAnnonceId() {
+		return annonceId;
+	}
+
+
+
+	public void setAnnonceId(Integer annonceId) {
+		this.annonceId = annonceId;
+	}
+
+
+
 	public double getAverage() {
 		return average;
 	}
@@ -47,6 +56,22 @@ public class DetailsAnnonceAction extends ActionSupport {
 	}
 	public void setEv(Evaluation ev) {
 		this.ev = ev;
+	}
+
+	public Annonce getAnnonce() {
+		return annonce;
+	}
+
+	public void setAnnonce(Annonce annonce) {
+		this.annonce = annonce;
+	}
+
+	public String getTypeAnnonce() {
+		return typeAnnonce;
+	}
+
+	public void setTypeAnnonce(String typeAnnonce) {
+		this.typeAnnonce = typeAnnonce;
 	}
 
 }

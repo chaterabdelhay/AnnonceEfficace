@@ -26,7 +26,7 @@
 		<p>
 			<s:property value="#resultObject[0].description" />
 			. <a
-				href="detailsAnnonce.action?id=<s:property value="#resultObject[0].id"/>">Détails
+				href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>">Détails
 				annonce&nbsp;&rarr;</a>
 		</p>
 	</div>
