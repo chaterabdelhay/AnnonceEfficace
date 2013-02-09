@@ -7,7 +7,7 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3307/annonceefficace</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/annonceefficace</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
          
@@ -26,7 +26,12 @@
         <property name="show_sql">false</property>
          
         <mapping class="org.arQam.AnnonceEfficace.Metier.Ville"/>
-  		<mapping class="org.arQam.AnnonceEfficace.Metier.PositionGeographique"/>
-        <mapping class="org.arQam.AnnonceEfficace.Metier.Utilisateur"/>                                           
+		<mapping class="org.arQam.AnnonceEfficace.Metier.PositionGeographique"/>
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Utilisateur"/>                           
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Evaluation"/> 
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Commentaire"/>
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Annonce"/>        
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Objet"/>
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Categorie"/>
     </session-factory>
 </hibernate-configuration>

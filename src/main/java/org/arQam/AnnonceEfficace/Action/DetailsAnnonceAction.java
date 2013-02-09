@@ -37,8 +37,6 @@ public class DetailsAnnonceAction extends ActionSupport {
 		return annonceId;
 	}
 
-
-
 	public void setAnnonceId(Integer annonceId) {
 		this.annonceId = annonceId;
 	}

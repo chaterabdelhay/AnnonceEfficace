@@ -158,6 +158,9 @@
         	<s:if test="%{#session.utilisateur!=null}">
             	<li><a href="espaceUtilisateur" style="color:#fff;">Mon espace</a></li>
             </s:if>
+            <s:if test="%{#session.utilisateur!=null}">
+            	<li><a href="listeMessages" style="color:#fff;">Mes messages</a></li>
+            </s:if>
             <li><a href="listeAnnonces">Annonces</a></li>            
             <s:if test="%{#session.utilisateur!=null}">
             	<li><a href="publierAnnonce" style="color:#fff;">Publier une annonce</a></li>

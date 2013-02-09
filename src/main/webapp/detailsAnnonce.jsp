@@ -23,7 +23,7 @@
 							<input name="star1" type="radio" class="star"/>
 							<input name="star1" type="radio" class="star"/>
 							<input name="star1" type="radio" class="star"/>
-							 evaluation moyenne :<s:property value="%{average}" />
+							Evaluation moyenne :<s:property value="%{average}" />
 						</span>
 					</p>
 				</td>

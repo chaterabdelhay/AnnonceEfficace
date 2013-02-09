@@ -6,10 +6,6 @@
 
 <!-- BEGIN : page body content -->
 
-<div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
-</div>
-
 <!-- BEGIN CONTAINER -->
 <div class="container_12">	   
     <br/><br/><br/>      	   	    	
@@ -18,8 +14,9 @@
 			<tr>
 				<td>
 				
-					<h2>Bienvenu dans votre espace personnel, M. <s:property value="%{#session.utilisateur.nomUtilisateur}"/></h2>
-					<h3>Votre position géographique : <s:property value="%{#session.userPositionGeographique.longitude}"/></h3>
+					<h2>Bienvenu dans votre espace personnel, M. <s:property value="%{#session.utilisateur.nomUtilisateur}"/></h2>					
+					<h3>Votre Ville  : <s:property value="%{#session.utilisateur.ville.nom}"/></h3>
+					<h3>Votre position géographique : [<s:property value="%{#session.utilisateur.userPositionGeographique.latitude}"/>, <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>]</h3>
 					<a href="publierAnnonce">Voulez-vous publier une annonce</a>
 				</td>
 				<td>

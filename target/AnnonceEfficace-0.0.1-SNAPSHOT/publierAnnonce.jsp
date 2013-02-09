@@ -7,55 +7,91 @@
 
 <!-- BEGIN : page body content -->
 
-<div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
-</div>
-
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
 	<br /> <br /> <br />
-	<div style="margin-left: 160px;">
-		<table id="login">
+	<div>
+		<table>
 			<tr>
 				<td>
-					<div class="form-2">
+					<div class="form-2"  style="width:800px">
+					<s:form action="publierAnnonce" theme="css_xhtml" >
 						<table>
-							<tr  valign="top">
+							<tr>
+								<td colspan="2">
+									<h1>
+										<span class="log-in">Publier une annonce</span>
+									</h1>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<s:iterator value="errorMessages" id="errorMsg">
+										<p style="color: red;">
+											>
+											<s:property value="%{#errorMsg}" /><p>
+										
+									</s:iterator>										
+										<s:if test="%{errorMessages.size > 0}">
+										<hr />											
+										</s:if>
+								</td>
+
+							</tr>
+							<tr style="width:400px" valign="top">						
 								<td>
-									<s:form action="login" theme="css_xhtml" style="width:350px">
-										<h1>
-											<span class="log-in">Création de compte</span>
-										</h1>
+																																																																				
 										<p>
 											<label for="typeAnnonce">Type</label>
-											<select id="typeAnnonce" name="field_nomville_value">
-												<option value="">Vente</option>
-												<option value="">Evenement</option>
-												<option value="">Offre d'emploi</option>
-												<option value="">Offre de stage</option>
-											</select>
+											<s:select  
+												headerKey="-1" headerValue="Selectionnez" list="#{'V':'Vente', 'A':'Achat', 'E':'Evenement', 'OE':'Offre emploi'}" 												
+												name="type" />												
 										</p>	
 										<p>
-											<label for="login">Titre</label>
-											<s:textfield name="username" maxlength="20" id="username"
+											<label for="titre">Titre</label>
+											<s:textfield name="titre" maxlength="30" id="titre"
 												placeholder="Titre de l'annonce" />
 										</p>
 										<p>
 											<label for="password">Description</label>
-											<s:textfield type="password" name="password" maxlength="20"
-												id="username" placeholder="Mot de passe" class="showpassword" />
+											<s:textfield name="description" 
+												id="description" placeholder="Desription"/>
 										</p>																												
-										<p><a href="#" id="setPosition">Selectionner la position</a></p>																																													
+										<p><a href="#" id="setPosition">Selectionner la position</a></p>
+										<s:hidden name="posGeoLatitude" id="posGeoLatitude" value=""/>
+										<s:hidden name="posGeoLongitude" id="posGeoLongitude" value=""/>																																					
 										<p class="clearfix">
 											<input type="submit" value="Créer">
-										</p>
-									</s:form>
-								</td>
-								<td>
+										</p>																				
 									
-								</td>							
+								</td>		
+								<td>
+									<p>
+											<label for="typeAnnonce">Catègorie</label>
+											<s:select headerKey="-1" headerValue="Selectionnez"
+												list="#{'1':'Computer', '2':'Telephone'}"
+												name="categorieObjet" />
+										</p>
+										<p>
+											<label for="titre">Nom</label>
+											<s:textfield name="nomObjet" maxlength="30" id="titre"
+												placeholder="Nom de l'objet" />
+										</p>
+										<p>
+											<label for="titre">image</label>
+											<s:textfield name="imageObjet" id="titre"
+												placeholder="image de l'objet" />
+											<s:hidden name="nomObjet"/>
+										</p>
+										<p>
+											<label for="titre">description</label>
+											<s:textfield name="descriptionObjet" id="titre"
+												placeholder="descripotion de l'objet" />
+										</p>										
+								</td>												
 							</tr>
 						</table>
+					  </s:form>	
 					</div>
 				</td>
 			</tr>
@@ -67,7 +103,12 @@
 			<div id="mapa"></div>
 			<div class="eventtext">				
 				<div id="mapDivBottomBar">
-					<p><span style="font-weight:800;">Position actuelle : </span><span id="latlongclicked"></span><a href="#"  id="GMapConfirmPosition">Confirmer</a></p>
+					<p>
+						<span style="font-weight:800;">Position actuelle : </span>
+						<span id="selectedLatitude"></span>;<span id="selectedLongitude"></span>
+						<a href="#" id="GMapCancel">Annuler</a>
+						<a href="#" id="GMapConfirmPosition">Confirmer</a>
+					</p>
 				</div>				
 			</div>
 		</div>
@@ -83,9 +124,11 @@
 				map.addControl(new GMapTypeControl(3));
 				map.setCenter(new GLatLng(initLatitude,initLongitude ), 11, 0);
 				map.setZoom(8);				
-				document.getElementById('latlongclicked').innerHTML = initLatitude + ', ' + initLongitude;
+				document.getElementById('selectedLatitude').innerHTML = initLatitude;
+				document.getElementById('selectedLongitude').innerHTML = initLongitude;
 				GEvent.addListener(map, 'click', function(overlay, point) {
-					document.getElementById('latlongclicked').innerHTML = point.lat() + ', ' + point.lng();
+				document.getElementById('selectedLatitude').innerHTML = point.lat();
+				document.getElementById('selectedLongitude').innerHTML = point.lng();
 				});							
 			}
 		}						
@@ -97,8 +140,12 @@
 				GMapInitialized = true;
 			} 	
 		});
-		
+		$("#GMapCancel").click(function () {
+			$("#topGrayLayer1").fadeOut(300);
+		});
 		$("#GMapConfirmPosition").click(function () {
+			$("#posGeoLatitude").val($("#selectedLatitude").html());
+			$("#posGeoLongitude").val($("#selectedLongitude").html());
   			$("#topGrayLayer1").fadeOut(300);  			
 		});	
 	</script>

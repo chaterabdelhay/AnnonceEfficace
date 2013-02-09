@@ -26,12 +26,12 @@
     		<result name="input">/connexion.jsp</result>
       		<result name="success" type="redirect">/espaceUtilisateur</result>      		
     	</action>
-    	<action name="createcompte" class="org.arQam.AnnonceEfficace.Action.CreateCompteAction">
-    		<result name="input">/creerCompte.jsp</result>
+    	<action name="createCompte" class="org.arQam.AnnonceEfficace.Action.CreateCompteAction">
+    		<result name="input" type="redirect">/creerCompte</result>
       		<result name="success" >/saveCompte.jsp</result>      		
     	</action>
     	
-    	<action name="creerCompte" class="com.opensymphony.xwork2.ActionSupport">    		
+    	<action name="creerCompte" class="org.arQam.AnnonceEfficace.Action.CreerCompteAction">    		
       		<result name="success">/creerCompte.jsp</result>      		
     	</action>    	    	
     	
@@ -42,24 +42,44 @@
     		<interceptor-ref name="login" />  	            
     		<result name="success">/espaceUtilisateur.jsp</result>
     	</action>
-    	<action name="listeAnnonces" class="com.opensymphony.xwork2.ActionSupport">
-    		<!-- <interceptor-ref name="login" />  -->  	            
+    	<action name="listeAnnonces" class="org.arQam.AnnonceEfficace.Action.ListeAnnoncesAction">
+    		<!-- <interceptor-ref name="login" /> -->  	            
     		<result name="success">/listeAnnonces.jsp</result>
     	</action>    	     	    	    	    	    	    	
-    	<action name="publierAnnonce" class="com.opensymphony.xwork2.ActionSupport">    		
-      		<result name="success">/publierAnnonce.jsp</result>      		
+    	<action name="publierAnnonce" class="org.arQam.AnnonceEfficace.Action.PublierAnnonceAction">    		
+      		<interceptor-ref name="login" />
+      		<interceptor-ref name="defaultStack">
+    			<param name="validation.excludeMethods">execute</param>
+			</interceptor-ref>      		          		
+      		<result name="input">/publierAnnonce.jsp</result>
+      		<result name="success" type="redirect">/operationReussie?operation=publier annonce</result>      		
+    	</action>
+    	<action name="operationReussie" class="org.arQam.AnnonceEfficace.Action.OperationReussieAction">    		
+      		<result name="success">/operationReussie.jsp</result>        		    		
     	</action>
     	
-    	<action name="detailsAnnonce" class="com.opensymphony.xwork2.ActionSupport">    		
-      		<result name="success">/detailsAnnonce.jsp</result>      		
+    	<action name="detailsAnnonce" class="org.arQam.AnnonceEfficace.Action.DetailsAnnonceAction">    		
+      		<result name="success">/detailsAnnonce.jsp</result>  
+      		<result name="input">/detailsAnnonce_without_comment.jsp</result>       		    		
+    	</action>
+    	<action name="evaluer" class="org.arQam.AnnonceEfficace.Action.EvaluateAction">    		
+      		<!-- <interceptor-ref name="login" /> -->
+      		<result name="input">/connexion.jsp</result>    
+      		<result name="success">/detailsAnnonce.jsp</result>    		
     	</action>
     	<action name="ajax_getListeAnnonces" class="org.arQam.AnnonceEfficace.Action.GetListeAnnoncesAction">    			           
     		<result name="success">/ajax_getListeAnnonces.jsp</result>
     	</action>
     	
+    	  
     	<action name="ajax_createAccounctVerification" class="org.arQam.AnnonceEfficace.Action.CreateAccountVerificationAction">    			           
     		<result name="success">/ajax_createAccountVerification.jsp</result>
-    	</action>   
+    	</action>
+    	<action name="commenter" class="org.arQam.AnnonceEfficace.Action.CommentAction">    			           
+    		<result name="success">/ajax_comment.jsp</result>
+    		
+    	</action> 
+    	
 	</package>	
 	
 	<package name="welcomePage" extends="struts-default">   
