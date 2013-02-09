@@ -21,13 +21,23 @@
 					style="padding-bottom: 5px; border-bottom: 1px solid #ddd;">
 					<p>
 						<span style="font-weight: 800">Type de l'annonce : <s:property value="%{typeAnnonce}"/><br/>Titre : <s:property value="%{annonce.titre}"/></span>
+<<<<<<< HEAD
+						<span style="float: right">							
+							<input name="star1" type="radio" class="star"/>
+							<input name="star1" type="radio" class="star"/>
+							<input name="star1" type="radio" class="star"/>
+							<input name="star1" type="radio" class="star"/>
+							<input name="star1" type="radio" class="star"/>
+							Evaluation moyenne :<s:property value="%{average}" />
+						</span>
+=======
 						<span style="float: right">	
 											
 					
 
 					
 <div id="demo">
-							Evaluation moyenne :<s:property value="%{average}" />
+
 	<div id="rating_cont">	
 	
 		<div id="rating_btns">
@@ -62,6 +72,7 @@
 							 
 		<div class="avg"> evaluation moyenne </div> </span>			
 						
+>>>>>>> origin/master
 					</p>
 				</td>
 			</tr>

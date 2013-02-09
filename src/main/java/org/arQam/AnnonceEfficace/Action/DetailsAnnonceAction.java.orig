@@ -46,6 +46,9 @@ public class DetailsAnnonceAction extends ActionSupport {
 		return annonceId;
 	}
 
+<<<<<<< HEAD
+=======
+
 
 	
 
@@ -56,6 +59,8 @@ public class DetailsAnnonceAction extends ActionSupport {
 	public void setCommentaires(List commentaires) {
 		this.commentaires = commentaires;
 	}
+
+>>>>>>> origin/master
 	public void setAnnonceId(Integer annonceId) {
 		this.annonceId = annonceId;
 	}
