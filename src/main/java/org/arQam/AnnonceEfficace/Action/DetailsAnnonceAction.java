@@ -22,9 +22,10 @@ public class DetailsAnnonceAction extends ActionSupport {
 	public Integer annonceId;
 	private Annonce annonce;
 	private String typeAnnonce;
-
 	private List commentaires;
+	public Boolean userConnected=false;
 	
+	private Boolean evaluatedByUser = false;
 
 	
 	public String execute() throws Exception {				
@@ -38,6 +39,16 @@ public class DetailsAnnonceAction extends ActionSupport {
 			if(annonce.getType().equals("OS")) setTypeAnnonce("Offre de stage");
 		}
 		
+		Map session = ActionContext.getContext().getSession();
+	
+    	if(session.get("utilisateur") != null){
+    		userConnected=true;
+    		Utilisateur user = (Utilisateur) session.get("utilisateur");
+    		Evaluation eval = Evaluation.load(annonceId, user.getId());
+    		if(eval != null) setEvaluatedByUser(true);
+    		System.out.println("Eval: " + evaluatedByUser + ", eval obj : " + eval);
+    	}	
+		average = Evaluation.avg(annonceId);
 		  setCommentaires(Commentaire.listComments(annonceId));
 		return SUCCESS;		
 	}		
@@ -91,6 +102,14 @@ public class DetailsAnnonceAction extends ActionSupport {
 
 	public void setTypeAnnonce(String typeAnnonce) {
 		this.typeAnnonce = typeAnnonce;
+	}
+
+	public Boolean getEvaluatedByUser() {
+		return evaluatedByUser;
+	}
+
+	public void setEvaluatedByUser(Boolean evaluatedByUser) {
+		this.evaluatedByUser = evaluatedByUser;
 	}
 
 }

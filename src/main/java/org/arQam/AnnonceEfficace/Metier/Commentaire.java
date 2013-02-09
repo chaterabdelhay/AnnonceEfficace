@@ -93,7 +93,7 @@ public class Commentaire {
 		
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
-        String hqlRequest = "Select c.contenu from Commentaire c  WHERE annonceId= "+A;
+        String hqlRequest = "Select c.contenu,c.utilisateur.nomUtilisateur from Commentaire c  WHERE annonceId= "+A;
         
         List resultList = session.createQuery(hqlRequest).list();        
         return resultList;

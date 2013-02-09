@@ -27,7 +27,7 @@ public class Evaluation {
     @GeneratedValue
 	private int id;
 	@Column
-	public int note;
+	public float note;
 	@ManyToOne
 	@JoinColumn(name="annonceId")
 	public Annonce annonce;
@@ -40,7 +40,7 @@ public class Evaluation {
 		
 	}
 	
-	public Evaluation(int note){
+	public Evaluation(float note){
 		this.note = note;				
 	}
 	
@@ -65,16 +65,16 @@ public class Evaluation {
     
     
 
-	public Evaluation load(Long id) {
-   	 SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session session = sf.openSession();
-     
-        List result = session.createQuery("from Evaluation WHERE id = "+id).list();
-        if(result != null)
-       	 	return (Evaluation) result.get(0);                        
-		return null;
-	}
     
+	public static Evaluation load(Integer annonceId,Long userId) {
+	   	 SessionFactory sf = HibernateUtil.getSessionFactory();
+	        Session session = sf.openSession();
+	     
+	        List result = session.createQuery("from Evaluation WHERE annonceId = "+annonceId + " AND utilisateurId=" + userId).list();
+	        if(result != null && result.size() > 0)
+	       	 	return (Evaluation) result.get(0);                        
+			return null;
+		}
     public void update() {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
@@ -98,12 +98,14 @@ public class Evaluation {
         session.getTransaction().commit();     
         session.close();
     }	
-    public double avg() {
+    public static double avg(long annonceId) {
     	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        String avgHql = "Select avg(emp.note) FROM Evaluation emp";
+        String avgHql = "Select avg(emp.note) FROM Evaluation emp WHERE annonceId = " + annonceId;
         Query avgQuery = session.createQuery(avgHql);
-       return (Double) avgQuery.list().get(0);
+        if(avgQuery != null && avgQuery.list() != null && avgQuery.list().get(0) != null)
+        	return (Double) avgQuery.list().get(0);
+        return 0;
     }	   
 	
 	public long getId() {
@@ -113,11 +115,11 @@ public class Evaluation {
 		this.id = id;
 	}
 
-	public int getNote() {
+	public float getNote() {
 		return note;
 	}
 
-	public void setNote(int note) {
+	public void setNote(float note) {
 		this.note = note;
 	}
 

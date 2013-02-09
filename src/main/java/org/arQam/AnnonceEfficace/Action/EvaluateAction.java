@@ -24,11 +24,11 @@ public class EvaluateAction extends ActionSupport {
 		this.annonceId = annonceId;
 	}
 
-	public int getNote() {
+	public float getNote() {
 		return note;
 	}
 
-	public void setNote(int note) {
+	public void setNote(float note) {
 		this.note = note;
 	}
 
@@ -45,22 +45,21 @@ public class EvaluateAction extends ActionSupport {
 	}
 
 	public long annonceId;
-	public int note;
+	public float note;
 	public double average;
 	private Annonce annonce;
 	
     public String execute() throws Exception {  
-    	 System.out.println("try1");
-    	 Evaluation ev=new Evaluation();
+    	System.out.println("try1");
+    	Evaluation ev=new Evaluation();
     	setAnnonce(Annonce.load(annonceId));
-    	 Map session = ActionContext.getContext().getSession();
-         Utilisateur user = (Utilisateur) session.get("utilisateur");
-         ev.setUtilisateur(user); 
-         ev.setAnnonce(annonce);
-    	average=ev.avg();
-		ev.setNote(note);    		
-		
-		ev.save();    	    	
+    	Map session = ActionContext.getContext().getSession();
+        Utilisateur user = (Utilisateur) session.get("utilisateur");
+        ev.setUtilisateur(user); 
+        ev.setAnnonce(annonce);
+        ev.setNote(note);    		 		
+ 		ev.save();
+    	average=Evaluation.avg(annonceId);		    	    	
 		return SUCCESS;    		        
     }
     
