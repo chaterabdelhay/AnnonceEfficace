@@ -46,6 +46,18 @@
     		<!-- <interceptor-ref name="login" /> -->  	            
     		<result name="success">/listeAnnonces.jsp</result>
     	</action>    	     	    	    	    	    	    	
+    	<action name="listeMessages" class="org.arQam.AnnonceEfficace.Action.ListeMessagesAction">
+    		<interceptor-ref name="login" />  	            
+    		<result name="success">/listeMessages.jsp</result>
+    	</action>
+    	<action name="envoyerMessage" class="org.arQam.AnnonceEfficace.Action.EnvoyerMessageAction">    		
+      		<interceptor-ref name="login" />
+      		<interceptor-ref name="defaultStack">
+    			<param name="validation.excludeMethods">execute</param>
+			</interceptor-ref>      		          		
+      		<result name="input">/envoyerMessage.jsp</result>
+      		<result name="success" type="redirect">/operationReussie?operation=envoi de message</result>      		
+    	</action>
     	<action name="publierAnnonce" class="org.arQam.AnnonceEfficace.Action.PublierAnnonceAction">    		
       		<interceptor-ref name="login" />
       		<interceptor-ref name="defaultStack">
@@ -63,9 +75,9 @@
       		<result name="input">/detailsAnnonce_without_comment.jsp</result>       		    		
     	</action>
     	<action name="evaluer" class="org.arQam.AnnonceEfficace.Action.EvaluateAction">    		
-      		<!-- <interceptor-ref name="login" /> -->
-      		<result name="input">/connexion.jsp</result>    
-      		<result name="success">/detailsAnnonce.jsp</result>    		
+      		
+      		  
+      		<result name="success">/ajax_evaluate.jsp</result>    		
     	</action>
     	<action name="ajax_getListeAnnonces" class="org.arQam.AnnonceEfficace.Action.GetListeAnnoncesAction">    			           
     		<result name="success">/ajax_getListeAnnonces.jsp</result>
@@ -77,7 +89,7 @@
     	</action>
     	<action name="commenter" class="org.arQam.AnnonceEfficace.Action.CommentAction">    			           
     		<result name="success">/ajax_comment.jsp</result>
-    		
+    		<result name="input">/connexion.jsp</result>
     	</action> 
     	
 	</package>	

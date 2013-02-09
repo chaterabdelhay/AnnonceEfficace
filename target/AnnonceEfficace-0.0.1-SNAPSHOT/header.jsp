@@ -21,7 +21,8 @@
         <link rel="stylesheet" href="template/stylesheets/nivoslider/nivo-slider.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/nivoslider/default/default.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/bx_styles/bx_styles.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="template/stylesheets/top_panel.css" type="text/css" media="screen" />        
+        <link rel="stylesheet" href="template/stylesheets/top_panel.css" type="text/css" media="screen" />  
+         <link rel="stylesheet" href="template/stylesheets/star_rating.css" type="text/css" media="screen" />        
 	<!-- End Stylesheets -->
     
     <!-- Begin Google Web Fonts -->
@@ -44,7 +45,9 @@
         
         <script type="text/javascript" src="template/javascripts/jquery.rating.pack.js"></script>
  		<link href="template/stylesheets/jquery.rating.css" rel="stylesheet"/>
-        
+        <!-- JQUERY rating stars2 -->
+         <script type="text/javascript" src="template/javascripts/jquery.ticker.js"></script>
+        <script type="text/javascript" src="template/javascripts/OptionPopupDescriptor.js"></script>
         <!-- jQuery plugin init -->
         <script type="text/javascript">
 		$(document).ready(function(){
@@ -159,7 +162,7 @@
             	<li><a href="espaceUtilisateur" style="color:#fff;">Mon espace</a></li>
             </s:if>
             <s:if test="%{#session.utilisateur!=null}">
-            	<li><a href="messagerie" style="color:#fff;">Messagerie</a></li>
+            	<li><a href="listeMessages" style="color:#fff;">Mes messages</a></li>
             </s:if>
             <li><a href="listeAnnonces">Annonces</a></li>            
             <s:if test="%{#session.utilisateur!=null}">
