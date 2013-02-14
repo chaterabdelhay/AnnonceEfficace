@@ -10,6 +10,13 @@
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
 	<br /> <br /> <br />
+	<div id="updatePosition">
+		<table cellpadding="4" style="display:inline;">
+	      <tr>	       
+	       <td><p>Il est obligatoire d'utiliser sonnar durant la présentation (on execute le projet et on laisse la main à sonnar pour créer les differentes statistiques !</p></td>	      
+		  </tr>
+		</table>		
+	</div>
 	<div style="margin-left: 160px;">
 		<table id="login">
 			<tr>
