@@ -28,11 +28,16 @@
 					
 <div id="demo">
 
+
 		
 		<s:if test="%{!evaluatedByUser}">
 		<s:if test="%{userConnected}">
-		<div id="rating_cont">
 		
+
+							
+	<div id="rating_cont">	
+	
+
 		<div id="rating_btns">
 			<ul>
 				<li>0.5</li>

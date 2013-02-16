@@ -21,7 +21,8 @@
         <link rel="stylesheet" href="template/stylesheets/nivoslider/nivo-slider.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/nivoslider/default/default.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/bx_styles/bx_styles.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="template/stylesheets/top_panel.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="template/stylesheets/top_panel.css" type="text/css" media="screen" />  
+         <link rel="stylesheet" href="template/stylesheets/star_rating.css" type="text/css" media="screen" />        
 	<!-- End Stylesheets -->
     
     <!-- Begin Google Web Fonts -->
@@ -31,7 +32,7 @@
 	<!-- Begin JavaScript -->
     
     	<!-- jQuery -->
-		<script type="text/javascript" src="template/javascripts/jquery-1.9.0.min.js"></script>
+		<script type="text/javascript" src="template/javascripts/jquery-1.6.4.min.js"></script>
         
         <!-- jQuery plugins -->
         <script type="text/javascript" src="template/javascripts/jquery.tipTip.minified.js"></script>
@@ -39,12 +40,14 @@
         <script type="text/javascript" src="template/javascripts/jquery.nivo.slider.pack.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.bxSlider.min.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.ticker.js"></script>
-        
+        <script type="text/javascript" src="template/javascripts/OptionPopupDescriptor.js"></script>
         <!-- JQUERY rating stars -->
         
-        <script src='template/javascripts/jquery.rating.js' type="text/javascript" language="javascript"></script>
- 		<link href='template/stylesheets/jquery.rating.css' type="text/css" rel="stylesheet"/>
-        
+        <script type="text/javascript" src="template/javascripts/jquery.rating.pack.js"></script>
+ 		<link href="template/stylesheets/jquery.rating.css" rel="stylesheet"/>
+        <!-- JQUERY rating stars2 -->
+         <script type="text/javascript" src="template/javascripts/jquery.ticker.js"></script>
+        <script type="text/javascript" src="template/javascripts/OptionPopupDescriptor.js"></script>
         <!-- jQuery plugin init -->
         <script type="text/javascript">
 		$(document).ready(function(){
@@ -158,6 +161,9 @@
         	<s:if test="%{#session.utilisateur!=null}">
             	<li><a href="espaceUtilisateur" style="color:#fff;">Mon espace</a></li>
             </s:if>
+            <s:if test="%{#session.utilisateur!=null}">
+            	<li><a href="listeMessages" style="color:#fff;">Mes messages</a></li>
+            </s:if>
             <li><a href="listeAnnonces">Annonces</a></li>            
             <s:if test="%{#session.utilisateur!=null}">
             	<li><a href="publierAnnonce" style="color:#fff;">Publier une annonce</a></li>
@@ -174,7 +180,39 @@
     <div class="clear"></div>
     
 </div><!-- END HEADER -->
-
+<!-- BEGIN SIDEBAR -->
 <div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
+	<div id="sideBarTopPart"></div>
+	<div id="sideBarMiddlePart">
+		<span id="opt1" class="option"> 
+			<span class="optionDescription" id="opt1Description">Voir les annonces</span> 
+			<img src="template/images/sideBar/options/opt1Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+					onclick="window.location.replace('listeAnnonces');"/>
+		</span>	
+		<s:if test="%{#session.utilisateur!=null}">
+			<span id="opt3" class="option"> 
+				<span class="optionDescription" id="opt3Description">Publier une annonce rapidement</span> 
+				<img src="template/images/sideBar/options/opt3Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+					onclick="window.location.replace('publierAnnonce');"/> 
+			</span>
+			<span id="opt2" class="option"> 
+				<span class="optionDescription" id="opt2Description">Participez au concours</span> 
+				<img src="template/images/sideBar/options/opt2Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+					onclick="window.location.replace('participerConcours');"/>
+			</span>		
+		</s:if>					
+	</div>		
+	<div id="sideBarBottomPart"></div>	
 </div>
+
+<table id="optionDescriptor" cellpadding="0" cellspacing="0">
+	<tr>
+		<td id="optionDescriptorLeftPart"></td>
+		<td id="optionDescriptorMiddlePart"><span id="optionDescriptorText">Texte de descr.</span></td>
+		<td id="optionDescriptorRightPart"></td>
+	</tr>
+</table>
+<!-- END SIDEBAR -->

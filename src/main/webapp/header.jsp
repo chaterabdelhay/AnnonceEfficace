@@ -13,6 +13,7 @@
 		<link rel="shortcut icon" href="favicon.ico" />
 
 	<!-- Begin Stylesheets -->
+	<link rel="stylesheet" href="template/stylesheets/message.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="template/stylesheets/reset.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/960_12_col.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/layout.css" type="text/css" media="screen" />
@@ -160,6 +161,9 @@
         	<li><a href="." class="selected">Acceuil</a></li>
         	<s:if test="%{#session.utilisateur!=null}">
             	<li><a href="espaceUtilisateur" style="color:#fff;">Mon espace</a></li>
+            </s:if>
+            <s:if test="%{#session.utilisateur!=null}">
+            	<li><a href="listeMessages" style="color:#fff;">Mes messages</a></li>
             </s:if>
             <li><a href="listeAnnonces">Annonces</a></li>            
             <s:if test="%{#session.utilisateur!=null}">

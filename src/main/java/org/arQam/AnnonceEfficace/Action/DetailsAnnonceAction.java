@@ -58,7 +58,6 @@ public class DetailsAnnonceAction extends ActionSupport {
 	}
 
 
-
 	
 
 	public List getCommentaires() {
@@ -68,7 +67,6 @@ public class DetailsAnnonceAction extends ActionSupport {
 	public void setCommentaires(List commentaires) {
 		this.commentaires = commentaires;
 	}
-
 	public void setAnnonceId(Integer annonceId) {
 		this.annonceId = annonceId;
 	}

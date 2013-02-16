@@ -86,13 +86,76 @@ HEADER
 	border-bottom:6px solid rgba(255,255,255,0.8);	
 }
 
+/*###### BEGIN : sideBar ####################### */
 #sideBar{	
 	position:absolute;
 	top:90px;
-	left:40px;	
+	left:80px;	
 	position:fixed;
 	z-index:999;	
+	/*background-image:url('../images/sideMenu.png');*/	
 }
+
+#sideBar .option{		
+	display:block;	
+	height:62px;
+	width:48px;
+}
+
+#sideBar .option img{		
+	cursor:pointer;		
+}
+
+#sideBar #sideBarTopPart{
+	width:67px;
+	height:34px;
+	background-image:url('../images/sideBar/layout/sideBarTopPart.png');	
+}
+
+#sideBar #sideBarMiddlePart{
+	width:67px;	
+	padding:18px 10px 2px 10px;	
+	background:url('../images/sideBar/layout/sideBarMiddlePart.png') repeat-y;	
+}
+
+#sideBar #sideBarBottomPart{	
+	width:67px;
+	height:4px;
+	background-image:url('../images/sideBar/layout/sideBarBottomPart.png');	
+}
+
+#optionDescriptor {
+	display:none;
+	position:absolute;
+	z-index:1000;
+	width:auto;
+	max-height:28px;
+}
+#optionDescriptor  #optionDescriptorLeftPart{
+	width:13px; height:28px;
+	background-image:url('../images/sideBar/optionDescriptor/LeftPart.png');
+	background-repeat: no-repeat;
+}
+#optionDescriptor  #optionDescriptorMiddlePart{
+	width:auto; height:28px;
+	background-image:url('../images/sideBar/optionDescriptor/MiddlePart.png');
+	background-repeat: repeat-X;
+	padding:0px 6px 0px 6px;
+	vertical-align:middle;	
+	color:white; 
+	font-size:10px; 
+	font-weight:800;
+}
+#optionDescriptor  #optionDescriptorRightPart{
+	background-image:url('../images/sideBar/optionDescriptor/RightPart.png');
+	background-repeat: no-repeat;
+	width:4px; height:28px;
+}
+
+.optionDescription{
+	display:none;
+}
+/*###### END : sideBar ####################### */
 
 #logo{
 	 margin:3px 0px 0px 200px;

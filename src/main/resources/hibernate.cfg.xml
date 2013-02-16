@@ -33,5 +33,6 @@
         <mapping class="org.arQam.AnnonceEfficace.Metier.Annonce"/>        
         <mapping class="org.arQam.AnnonceEfficace.Metier.Objet"/>
         <mapping class="org.arQam.AnnonceEfficace.Metier.Categorie"/>
+         <mapping class="org.arQam.AnnonceEfficace.Metier.MessagePrive"/>
     </session-factory>
 </hibernate-configuration>

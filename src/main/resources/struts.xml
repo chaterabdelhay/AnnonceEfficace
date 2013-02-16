@@ -46,6 +46,13 @@
     		<!-- <interceptor-ref name="login" /> -->  	            
     		<result name="success">/listeAnnonces.jsp</result>
     	</action>    	     	    	    	    	    	    	
+    	
+    	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.EnvoiAction">    		
+      		          		
+      		 <result name="input">/envoyerMessage.jsp</result>
+      		<result name="success">/operationReussie?operation=envoi de message</result>      		
+    	</action>
+    	
     	<action name="publierAnnonce" class="org.arQam.AnnonceEfficace.Action.PublierAnnonceAction">    		
       		<interceptor-ref name="login" />
       		<interceptor-ref name="defaultStack">
@@ -77,6 +84,10 @@
     	</action>
     	<action name="commenter" class="org.arQam.AnnonceEfficace.Action.CommentAction">    			           
     		<result name="success">/ajax_comment.jsp</result>
+    		<result name="input">/connexion.jsp</result>
+    	</action> 
+    	<action name="listeMessages" class="org.arQam.AnnonceEfficace.Action.ListeMessagesAction">    			           
+    		<result name="success">/listeMessages.jsp</result>
     		<result name="input">/connexion.jsp</result>
     	</action> 
     	

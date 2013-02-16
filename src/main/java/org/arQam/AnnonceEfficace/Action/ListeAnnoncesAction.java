@@ -43,11 +43,13 @@ public class ListeAnnoncesAction extends ActionSupport {
     	if(session.get("utilisateur") != null){
     		Utilisateur user = (Utilisateur) session.get("utilisateur");          
         	// get PositionGeographique
-        	PositionGeographique positionGeographique = user.getUserPositionGeographique();
-        	posGeoLatitude = positionGeographique.getLatitude();
-        	posGeoLongitude = positionGeographique.getLongitude();
-        	// set annonces
-        	setAnnonces(Annonce.listOrderByDistance("%",posGeoLatitude,posGeoLongitude));
+    		PositionGeographique positionGeographique = user.getUserPositionGeographique();
+    		if(positionGeographique != null){
+    			posGeoLatitude = positionGeographique.getLatitude();
+            	posGeoLongitude = positionGeographique.getLongitude();
+            	// set annonces
+            	setAnnonces(Annonce.listOrderByDistance("%",posGeoLatitude,posGeoLongitude));
+    		}        	
     	}    	
         return SUCCESS;       
     }

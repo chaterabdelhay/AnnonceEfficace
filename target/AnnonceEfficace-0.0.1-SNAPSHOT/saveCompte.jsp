@@ -6,9 +6,6 @@
 <jsp:include page="header.jsp" />
 
 <!-- BEGIN : page body content -->
-<div id="sideBar">
-	<img id="quickMenu" src="template/images/sideMenu.png" />
-</div>
 
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
@@ -48,8 +45,7 @@
 										</p>
 										<p>
 											<label for="villeId">Ville</label>
-											<s:textfield value="%{user.villeId}" disabled="true" />
-</div>											
+											<s:textfield value="%{user.ville}" disabled="true" />																				
 										</p>																			
 										
 									</s:form>

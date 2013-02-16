@@ -96,7 +96,7 @@ public class Utilisateur {
     	return null;
   	}
 
-	public Utilisateur load(int id) {
+	public static Utilisateur load(int id) {
    	 	SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
      
@@ -191,4 +191,5 @@ public class Utilisateur {
 			this.telephone = user.telephone;
 			//this.villeId = user.villeId;		
 	  }
+	
 }

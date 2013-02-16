@@ -74,7 +74,7 @@
 										</p>
 										<p>
 											<label for="ville">Ville</label> 
-											<s:select  
+											<s:select
 												headerKey="-1" headerValue="Selectionnez" list="villes" listKey="id" listValue="nom" 												
 												name="villeId" />																															
 										</p>
