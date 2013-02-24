@@ -33,11 +33,17 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class EnvoyerMessageAction extends ActionSupport {	
-    private String contenuMessage;
-    public int userId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public String contenuMessage;
+    private int userId;
    // private String recepteur; // nom de l'utilisateur pour lequel il faut trouver l'id
     
-    public String execute() throws Exception {
+    
+
+	public String execute() throws Exception {
     	//int a=Utilisateur.load(userId);
     	/* 	MessagePrive mp = new MessagePrive();
 		Calendar calendar = Calendar.getInstance();
@@ -67,6 +73,12 @@ public class EnvoyerMessageAction extends ActionSupport {
 		this.contenuMessage = contenuMessage;
 	}
 
-	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 }

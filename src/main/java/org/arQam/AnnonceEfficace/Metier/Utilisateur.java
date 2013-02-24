@@ -191,5 +191,16 @@ public class Utilisateur {
 			this.telephone = user.telephone;
 			//this.villeId = user.villeId;		
 	  }
+	public static int loadByName(String s) {
+   	 	SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+     
+        List result = session.createQuery("from Utilisateur WHERE nomUtilisateur = :a")
+    			.setParameter("a", s).list();
+    			
+        return  (int) ((Utilisateur) result.get(0)).id;
+                              
+		
+	}
 	
 }

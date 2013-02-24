@@ -10,13 +10,48 @@
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
 	<br /> <br /> <br />
+	
 	<div style="margin-left: 160px;">
+	
 		<table id="login">
 			<tr>
+			
 				<td>
 					<div class="form-2">
 						Charger la liste des messages ici<br/>
-						<a href="envoyerMessage">envoyer message</a>
+						<a href="#" class="show_hide">envoyer message</a>
+						<div class="slidingDiv">
+<s:form action="envoyerMessage" method="post">
+
+      <s:textarea name="contenuMessage" rows="10" cols="40" />
+      <table>
+     								<tr><td>	<label>destinataire</label> </td>
+     								</tr>
+     								<tr>
+										<td><s:select list="users" name="userId"/>
+													</td>																														
+										</tr>
+										
+										<tr><td><input type="submit" value="envoyer"></td></tr>
+										</table>
+										
+										
+      </s:form>
+    </div>
+    <script>
+	$(document).ready(function(){
+
+
+    $(".slidingDiv").hide();
+	$(".show_hide").show();
+	
+	$('.show_hide').click(function(){
+	$(".slidingDiv").slideToggle();
+	});
+
+});
+	
+	</script>
 					</div>
 					
 				</td>

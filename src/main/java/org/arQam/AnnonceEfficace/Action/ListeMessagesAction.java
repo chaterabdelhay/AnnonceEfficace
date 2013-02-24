@@ -35,11 +35,16 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ListeMessagesAction extends ActionSupport {	
 	ArrayList messages;
-	 public List users; 
+	 public List users;
+	 public List usersEmetters;
     
     public String execute() throws Exception {
     	//System.out.println(ServletActionContext.getRequest().getSession().); 
-    	users = MessagePrive.listUsers();
+    	users = (List)MessagePrive.listUsers();
+    	 Map session = ActionContext.getContext().getSession();
+         Utilisateur user = (Utilisateur) session.get("utilisateur");
+         usersEmetters=MessagePrive.listMessages(user.getId());
+         
 		   
         return SUCCESS;       
     }
