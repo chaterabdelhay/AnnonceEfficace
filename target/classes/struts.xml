@@ -101,8 +101,7 @@
     	</action> -->            
   	</package>
   	
-  	<package name="utilisateur" extends="struts-default">
-	  
+  	<package name="utilisateur" extends="struts-default">	  
   	</package>
       
 </struts>

@@ -13,6 +13,7 @@
 		<link rel="shortcut icon" href="favicon.ico" />
 
 	<!-- Begin Stylesheets -->
+	<link rel="stylesheet" href="template/stylesheets/message.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="template/stylesheets/reset.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/960_12_col.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/layout.css" type="text/css" media="screen" />

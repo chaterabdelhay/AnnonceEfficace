@@ -23,11 +23,7 @@
 			distance :
 			<s:property value="#resultObject[1]" />
 		</h3>
-		<p>
-			<s:property value="#resultObject[0].description" />
-			. <a
-				href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>">Détails
-				annonce&nbsp;&rarr;</a>
+		<p><a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>">Détails annonce&nbsp;&rarr;</a>
 		</p>
 	</div>
 </s:iterator>

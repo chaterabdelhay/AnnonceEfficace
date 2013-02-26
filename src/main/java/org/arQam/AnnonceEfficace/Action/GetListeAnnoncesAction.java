@@ -21,6 +21,7 @@
 
 package org.arQam.AnnonceEfficace.Action;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +39,9 @@ public class GetListeAnnoncesAction extends ActionSupport {
     private String posGeoLongitude;
     private String type;    
     public String execute() throws Exception {
+    	//do what you want to do before sleeping
+		  Thread.currentThread().sleep(5000);//sleep for 1000 ms
+		  //do what you want to do after sleeptig
     	// set positionGeographique
     	Map session = ActionContext.getContext().getSession();
     	if(session.get("utilisateur") != null){
