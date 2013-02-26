@@ -254,6 +254,7 @@ IMAGE SLIDER
 }
 #sliderPar{
 	margin-bottom:10px;
+	text-align: justify;
 }
 
 /* ----------------
@@ -307,7 +308,7 @@ COMMENTS
 	padding-right:100px;
 }
 #comments li{
-	font-size:16px;
+	font-size:12px;
 	line-height:22px;
 	font-style:italic;
 	color:#999;

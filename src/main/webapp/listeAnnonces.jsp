@@ -15,7 +15,7 @@
 		<table cellpadding="4" style="display:inline;">
 	      <tr>
 	       <td><img src="template/images/marker.png"/></td>
-	       <td><p><a href="#" id="setPosition">Modifier votre position géographique</a></p></td>
+	       <td><p><a href="#" id="setPosition">Modifier votre position g�ographique</a></p></td>
 	       <td style="width:605px"></td>
 	       <td><img src="template/images/search.png"/></td>
 	       <td><p><a id="searchTool" href="#">Outil recherche</a></p></td>
@@ -66,10 +66,7 @@
 					title="&plusmn;&nbsp;zoom" width="222px" height="142px"/></a>
 				<h3><s:property value="#resultObject[0].titre"/></h3>
 				<h3>distance : <s:property value="#resultObject[1]"/></h3>
-				<p>
-					<s:property value="#resultObject[0].description"/>.
-					<a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>">Détails	annonce&nbsp;&rarr;</a>
-				</p>
+				<p><a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>">Consulter</a></p>
 			</div>                    
         </s:iterator>
      </div><!-- end boxes -->    	        	    

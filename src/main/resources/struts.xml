@@ -18,7 +18,7 @@
    			<result name="connexionPage">/connexion.jsp</result>
 		</global-results>
 			            
-    	<action name="acceuil" class="com.opensymphony.xwork2.ActionSupport">    		
+    	<action name="acceuil" class="org.arQam.AnnonceEfficace.Action.IndexAction">    		
       		<result name="success">/index.jsp</result>      		
     	</action>
     	
