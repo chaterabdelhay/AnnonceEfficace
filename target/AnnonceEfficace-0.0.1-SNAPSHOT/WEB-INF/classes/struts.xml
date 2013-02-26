@@ -47,12 +47,10 @@
     		<result name="success">/listeAnnonces.jsp</result>
     	</action>    	     	    	    	    	    	    	
     	
-    	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.EnvoyerMessageAction">    		
-			<interceptor-ref name="defaultStack">
-    			<param name="validation.excludeMethods">execute</param>
-			</interceptor-ref>      		           		          		
-      		<result name="input">/envoyerMessage.jsp</result>
-      		<result name="success" type="redirect">/operationReussie?operation=envoi de message</result>      		
+    	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.MessageAction">    		
+      		          		
+      		 <result name="success" >/envoyerMessage.jsp</result>
+      	<result name="input">/operationReussie.jsp?operation=envoi de message</result>      		
     	</action>
     	
     	<action name="publierAnnonce" class="org.arQam.AnnonceEfficace.Action.PublierAnnonceAction">    		
@@ -101,7 +99,8 @@
     	</action> -->            
   	</package>
   	
-  	<package name="utilisateur" extends="struts-default">	  
+  	<package name="utilisateur" extends="struts-default">
+	  
   	</package>
       
 </struts>

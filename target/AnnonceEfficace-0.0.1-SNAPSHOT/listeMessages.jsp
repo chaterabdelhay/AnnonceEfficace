@@ -21,9 +21,9 @@
 						Charger la liste des messages ici<br/>
 						<a href="#" class="show_hide">envoyer message</a>
 						<div class="slidingDiv">
-<s:form action="envoyerMessage">
+<s:form action="envoyerMessage" method="post">
 
-      <s:textarea name="contenuMessage" rows="10" cols="40"/>
+      <s:textarea name="contenuMessage" rows="10" cols="40" />
       <table>
      								<tr><td>	<label>destinataire</label> </td>
      								</tr>

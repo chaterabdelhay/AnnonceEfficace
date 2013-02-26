@@ -7,6 +7,8 @@
   	<constant name="struts.devMode" value="true"/>      	
 	
 	<package name="default" extends="struts-default">
+	  		
+      		
 						
 		<interceptors>
     		<interceptor name="login" class="org.arQam.AnnonceEfficace.Interceptors.LoginInterceptor"/>    	
@@ -20,6 +22,10 @@
 			            
     	<action name="acceuil" class="org.arQam.AnnonceEfficace.Action.IndexAction">    		
       		<result name="success">/index.jsp</result>      		
+    	</action>
+    	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.MessageAction">            		
+      <result name="input" >/envoyerMessage.jsp</result>
+      	<result name="success">/operationReussie.jsp</result>      		
     	</action>
     	
     	<action name="login" class="org.arQam.AnnonceEfficace.Action.LoginAction">
@@ -47,13 +53,35 @@
     		<result name="success">/listeAnnonces.jsp</result>
     	</action>    	     	    	    	    	    	    	
     	
-    	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.EnvoyerMessageAction">    		
-			<interceptor-ref name="defaultStack">
+    	
+    	<action name="login" class="org.arQam.AnnonceEfficace.Action.LoginAction">
+    		<result name="input">/connexion.jsp</result>
+      		<result name="success" type="redirect">/espaceUtilisateur</result>      		
+    	</action>
+    	<action name="createCompte" class="org.arQam.AnnonceEfficace.Action.CreateCompteAction">
+    		<result name="input" type="redirect">/creerCompte</result>
+      		<result name="success" >/saveCompte.jsp</result>      		
+    	</action>
+    	
+    	<action name="creerCompte" class="org.arQam.AnnonceEfficace.Action.CreerCompteAction">    		
+      		<result name="success">/creerCompte.jsp</result>      		
+    	</action>    	    	
+    	
+    	<action name="disconnect" class="org.arQam.AnnonceEfficace.Action.DisconnectAction">    		
+      		<result name="success" type="redirect">/listeAnnonces</result>      		
+    	</action>
+    	<action name="espaceUtilisateur" class="org.arQam.AnnonceEfficace.Action.EspaceUtilisateurAction">
+    		<interceptor-ref name="login" />  	            
+    		<result name="success">/espaceUtilisateur.jsp</result>
+    	</action>
+    	<action name="listeAnnonces" class="org.arQam.AnnonceEfficace.Action.ListeAnnoncesAction">
+    		<!-- <interceptor-ref name="login" /> -->  	            
+    		<result name="success">/listeAnnonces.jsp</result>
+    	</action>    	     	    	    	    	    	    	
+    	
+    	
     			<param name="validation.excludeMethods">execute</param>
 			</interceptor-ref>      		           		          		
-      		<result name="input">/envoyerMessage.jsp</result>
-      		<result name="success" type="redirect">/operationReussie?operation=envoi de message</result>      		
-    	</action>
     	
     	<action name="publierAnnonce" class="org.arQam.AnnonceEfficace.Action.PublierAnnonceAction">    		
       		<interceptor-ref name="login" />
@@ -101,7 +129,8 @@
     	</action> -->            
   	</package>
   	
-  	<package name="utilisateur" extends="struts-default">	  
+  	<package name="utilisateur" extends="struts-default">
+	  
   	</package>
       
 </struts>

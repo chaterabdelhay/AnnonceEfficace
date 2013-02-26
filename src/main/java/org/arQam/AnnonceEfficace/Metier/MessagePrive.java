@@ -112,5 +112,15 @@ public class MessagePrive {
         return resultList;
         
     }
+public  static List listMessages(long a) {
+		
+	SessionFactory sf = HibernateUtil.getSessionFactory();
+    Session session = sf.openSession();
+    String hqlRequest = "Select c.objet,c.message,c.utilisateur1 from MessagePrive c  WHERE recepteurId= "+a;
+    
+    List resultList = session.createQuery(hqlRequest).list();        
+    return resultList;
+        
+    }
 		
 }

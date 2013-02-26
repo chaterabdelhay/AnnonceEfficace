@@ -7,6 +7,8 @@
   	<constant name="struts.devMode" value="true"/>      	
 	
 	<package name="default" extends="struts-default">
+	  		
+      		
 						
 		<interceptors>
     		<interceptor name="login" class="org.arQam.AnnonceEfficace.Interceptors.LoginInterceptor"/>    	
@@ -18,8 +20,12 @@
    			<result name="connexionPage">/connexion.jsp</result>
 		</global-results>
 			            
-    	<action name="acceuil" class="org.arQam.AnnonceEfficace.Action.IndexAction">    		
+    	<action name="acceuil" class="com.opensymphony.xwork2.ActionSupport">    		
       		<result name="success">/index.jsp</result>      		
+    	</action>
+    	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.MessageAction">            		
+      <result name="input" >/envoyerMessage.jsp</result>
+      	<result name="success">/operationReussie.jsp</result>      		
     	</action>
     	
     	<action name="login" class="org.arQam.AnnonceEfficace.Action.LoginAction">
@@ -47,13 +53,7 @@
     		<result name="success">/listeAnnonces.jsp</result>
     	</action>    	     	    	    	    	    	    	
     	
-    	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.EnvoyerMessageAction">    		
-			<interceptor-ref name="defaultStack">
-    			<param name="validation.excludeMethods">execute</param>
-			</interceptor-ref>      		           		          		
-      		<result name="input">/envoyerMessage.jsp</result>
-      		<result name="success" type="redirect">/operationReussie?operation=envoi de message</result>      		
-    	</action>
+    	
     	
     	<action name="publierAnnonce" class="org.arQam.AnnonceEfficace.Action.PublierAnnonceAction">    		
       		<interceptor-ref name="login" />
@@ -101,7 +101,8 @@
     	</action> -->            
   	</package>
   	
-  	<package name="utilisateur" extends="struts-default">	  
+  	<package name="utilisateur" extends="struts-default">
+	  
   	</package>
       
 </struts>
