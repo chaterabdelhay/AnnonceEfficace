@@ -24,8 +24,8 @@
       		<result name="success">/index.jsp</result>      		
     	</action>
     	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.MessageAction">            		
-      <result name="input" >/envoyerMessage.jsp</result>
-      	<result name="success">/operationReussie.jsp</result>      		
+     	 <result name="input">/envoyerMessage.jsp</result>
+      	 <result name="success">/operationReussie.jsp</result>      		
     	</action>
     	
     	<action name="login" class="org.arQam.AnnonceEfficace.Action.LoginAction">
