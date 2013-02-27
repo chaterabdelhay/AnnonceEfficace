@@ -165,6 +165,7 @@
             <s:if test="%{#session.utilisateur!=null}">
             	<li><a href="listeMessages" style="color:#fff;">Mes messages</a></li>
             </s:if>
+           
             <li><a href="listeAnnonces">Annonces</a></li>            
             <s:if test="%{#session.utilisateur!=null}">
             	<li><a href="publierAnnonce" style="color:#fff;">Publier une annonce</a></li>
@@ -172,6 +173,7 @@
             <s:if test="%{#session.utilisateur!=null}">
             	<li><a href="disconnect" style="color:#fff;">Se deconnecter</a></li>
             </s:if>
+           
             <s:if test="%{#session.utilisateur==null}">
             	<li><a href="connexion.jsp">Se connecter</a></li>
             </s:if>                                               
@@ -199,12 +201,20 @@
 					onclick="window.location.replace('publierAnnonce');"/> 
 			</span>
 			<span id="opt2" class="option"> 
-				<span class="optionDescription" id="opt2Description">Participez au concours</span> 
+				<span class="optionDescription" id="opt2Description">liste d'utilisateurs</span> 
 				<img src="template/images/sideBar/options/opt2Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+<<<<<<< HEAD
+					onclick="window.location.replace('listUsers');"/>
+			</span>	
+			
+			
+		</s:if>					
+=======
 					onclick="window.location.replace('participerConcours');"/>
 			</span>		
 		
+>>>>>>> 9b1cdd58151c302387ff7b5bb1353866dea4adb1
 	</div>		
 	<div id="sideBarBottomPart"></div>
 		

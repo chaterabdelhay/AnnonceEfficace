@@ -120,6 +120,14 @@
     		<result name="success">/listeMessages.jsp</result>
     		<result name="input">/connexion.jsp</result>
     	</action> 
+    	<action name="listUsers" class="org.arQam.AnnonceEfficace.Action.ListUsersAction">    			           
+    		<result name="success">/listUsers.jsp</result>
+    		<result name="input">/connexion.jsp</result>
+    	</action> 
+    	<action name="suivre" class="org.arQam.AnnonceEfficace.Action.SuivreAction">    			           
+    		<result name="success">/connexion.jsp</result>
+    		<result name="input">/connexion.jsp</result>
+    	</action> 
     	
 	</package>	
 	
