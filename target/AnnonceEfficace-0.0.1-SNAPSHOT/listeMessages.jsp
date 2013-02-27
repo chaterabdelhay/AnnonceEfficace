@@ -12,24 +12,46 @@
 	<br /> <br /> <br />
 	
 	<div style="margin-left: 160px;">
-	
+	 
 		<table id="login">
+		
 			<tr>
 			
 				<td>
 					<div class="form-2">
-						Charger la liste des messages ici<br/>
+					Liste des messages:
+					<table  width="600">
+						<th>objet</th> <th>message</th><th>emetteur</th>
+			<s:iterator value="usersEmetters" var="resultObject"> 
+		<tr><td><s:property value="#resultObject[0]"/></td>
+						<td><s:property value="#resultObject[1]"/></td>
+						<td><s:property value="#resultObject[2].nomUtilisateur"/></td></tr>
+						
+						</s:iterator>
+						
+		</table>
+					
+									
+		
+						
+
+
+
+						<br/>
 						<a href="#" class="show_hide">envoyer message</a>
 						<div class="slidingDiv">
-<s:form action="envoyerMessage" method="post">
-
-      <s:textarea name="contenuMessage" rows="10" cols="40" />
-      <table>
-     								<tr><td>	<label>destinataire</label> </td>
+<s:form action="envoyerMessage">
+     <table>
+     <tr><td colspan="2"><label>objet :</label></td></tr> <tr><td><s:textfield name="objet"/> </td></tr>
+     <tr><td> <s:textarea name="contenuMessage" rows="10" cols="40" /></td></tr>
+      
+      
+     								<tr style="width:400px" valign="top"><td>	<label>destinataire</label> </td>
      								</tr>
      								<tr>
-										<td><s:select list="users" name="userId"/>
-													</td>																														
+										<td><s:select headerKey="-1"  list="users" 												
+												name="userdestinataire" />	
+													</td>																													
 										</tr>
 										
 										<tr><td><input type="submit" value="envoyer"></td></tr>
@@ -37,7 +59,9 @@
 										
 										
       </s:form>
-    </div>
+      
+          </div>
+          
     <script>
 	$(document).ready(function(){
 
@@ -57,8 +81,10 @@
 				</td>
 			</tr>
 		</table>
-
-	</div>
+	
+		</div>
+		
+	
 
 	<!-- begin .grid_12 - COMMENTS -->
 	<div id="strip" class="grid_12">

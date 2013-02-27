@@ -200,21 +200,18 @@
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
 					onclick="window.location.replace('publierAnnonce');"/> 
 			</span>
-			<span id="opt2" class="option"> 
-				<span class="optionDescription" id="opt2Description">liste d'utilisateurs</span> 
+			<span id="opt4" class="option"> 
+				<span class="optionDescription" id="opt4Description">liste d'utilisateurs</span> 
 				<img src="template/images/sideBar/options/opt2Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
-<<<<<<< HEAD
 					onclick="window.location.replace('listUsers');"/>
 			</span>	
-			
-			
-		</s:if>					
-=======
+			<span id="opt2" class="option"> 
+				<span class="optionDescription" id="opt2Description">Participer au concours</span> 
+				<img src="template/images/sideBar/options/opt2Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();"									
 					onclick="window.location.replace('participerConcours');"/>
-			</span>		
-		
->>>>>>> 9b1cdd58151c302387ff7b5bb1353866dea4adb1
+			</span>			
 	</div>		
 	<div id="sideBarBottomPart"></div>
 		

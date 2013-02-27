@@ -29,7 +29,7 @@
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
-            <a href="detailsAnnonce.action?id=1">Détails annonce&nbsp;&rarr;</a>
+            <a href="detailsAnnonce.action?id=1">DÃ©tails annonce&nbsp;&rarr;</a>
             </p>
         </div>                
         <div class="grid_3">
@@ -37,17 +37,17 @@
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
-            <a href="detailsAnnonce.action?id=2">Détails annonce&nbsp;&rarr;</a></p>
+            <a href="detailsAnnonce.action?id=2">DÃ©tails annonce&nbsp;&rarr;</a></p>
         </div>                
         <div class="grid_3">
             <a href="template/images/slider/3.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/3.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
                     
             <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
             <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
-            <a href="detailsAnnonce.action?id=3">Détails annonce&nbsp;&rarr;</a></p>
+            <a href="detailsAnnonce.action?id=3">DÃ©tails annonce&nbsp;&rarr;</a></p>
         </div>-->                
         <s:if test="%{posGeoLatitude == null}">
-        	<p>Le système n'arrive pas à charger votre position géographique, <a href="#" id="unauthenifiedUserSetPosition">Selectionnez la position</a> où vous voulez trouver des annonces. Et le système vous va chercher les annonces les plus proches de cet emplacement.</p>
+        	<p>Le système n'arrive pas à  charger votre position gèographique, <a href="#" id="unauthenifiedUserSetPosition">Selectionnez la position</a> où vous voulez trouver des annonces. Et le système va vous chercher les annonces les plus proches de vous.</p>
         	<script>
         	$("#unauthenifiedUserSetPosition").click(function() {
         		$("#topGrayLayer1").fadeIn(500);
@@ -66,10 +66,7 @@
 					title="&plusmn;&nbsp;zoom" width="222px" height="142px"/></a>
 				<h3><s:property value="#resultObject[0].titre"/></h3>
 				<h3>distance : <s:property value="#resultObject[1]"/></h3>
-				<p>
-					<s:property value="#resultObject[0].description"/>.
-					<a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>">Détails	annonce&nbsp;&rarr;</a>
-				</p>
+				<p><a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>">Consulter</a></p>
 			</div>                    
         </s:iterator>
      </div><!-- end boxes -->    	        	    
@@ -78,8 +75,8 @@
      <div id="strip" class="grid_12">
          <img id="users" src="template/images/users.png" alt="" />
          <ul id="comments">
-             <li>"Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum."<br /><span class="signature">John Doe - 4 October 2011</span></li>
-             <li>"Ut dapibus fringilla volutpat. Sed ullamcorper augue nec risus facilisis eu venenatis metus tristique. In hac habitasse platea dictumst. Aenean at lacus urna. Donec pretium mattis gravida."<br /><span class="signature">John Doe - 4 October 2011</span></li>
+             <li>"Choisir un bon titre pour son annonce serait un atout majeur pour pousser les internautes à consulter votre annonce."</li>
+             <li>"L'image que vous joignez à votre annonce est à choisir avec attention car sa qualité peut rendre votre annonce encore plus efficace."</li>
          </ul>
      </div><!-- end .grid_12 -->
 
@@ -114,6 +111,7 @@
 					alert("Vous devez d'abord selectionner votre postion depuis la carte");
 					return;
 				}
+				$('#boxes').html('<center>Chargement en cours...<br/><img width="24" height="24" src="template/images/load.gif"/></center>');
 				$.ajax({
 							type : "GET",
 							url : "ajax_getListeAnnonces.action?type=" + $("#currentAnnonceType").val() + "&posGeoLatitude=" + $("#currentPosGeoLatitude").val() +

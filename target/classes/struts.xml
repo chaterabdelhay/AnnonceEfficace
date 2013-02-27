@@ -77,11 +77,7 @@
     	<action name="listeAnnonces" class="org.arQam.AnnonceEfficace.Action.ListeAnnoncesAction">
     		<!-- <interceptor-ref name="login" /> -->  	            
     		<result name="success">/listeAnnonces.jsp</result>
-    	</action>    	     	    	    	    	    	    	
-    	
-    	
-    			<param name="validation.excludeMethods">execute</param>
-			</interceptor-ref>      		           		          		
+    	</action>    	     	    	    	    	    	    	    	        		  		           		          	
     	
     	<action name="publierAnnonce" class="org.arQam.AnnonceEfficace.Action.PublierAnnonceAction">    		
       		<interceptor-ref name="login" />
@@ -99,9 +95,7 @@
       		<result name="success">/detailsAnnonce.jsp</result>  
       		<result name="input">/detailsAnnonce_without_comment.jsp</result>       		    		
     	</action>
-    	<action name="evaluer" class="org.arQam.AnnonceEfficace.Action.EvaluateAction">    		
-      		
-      		  
+    	<action name="evaluer" class="org.arQam.AnnonceEfficace.Action.EvaluateAction">    		      		      		 
       		<result name="success">/ajax_evaluate.jsp</result>    		
     	</action>
     	<action name="ajax_getListeAnnonces" class="org.arQam.AnnonceEfficace.Action.GetListeAnnoncesAction">    			           

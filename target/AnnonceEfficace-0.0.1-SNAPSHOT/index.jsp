@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <!-- Include the header -->
 <jsp:include page="header.jsp" />
 
@@ -11,8 +14,10 @@
     
     	<!-- begin .grid_4 - SLIDER TEXT -->
         <div id="sliderText" class="grid_4">
-            <h1>Lorem ipsum dolor sit amet, eu consectetur. Ut dapibus fringilla volutpat.</h1>
-            <p id="sliderPar">Ut dapibus fringilla volutpat. Sed ullamcorper augue nec risus facilisis eu venenatis metus tristique. In hac habitasse platea dictumst. Aenean at lacus urna. Donec pretium mattis gravida. Integer eu nisl erat, eu tempus nisi. Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla.</p>
+            <h1>Qu'est ce que "Annonce Efficace" ?</h1>
+            <p id="sliderPar">Annonce Efficace (AE) est un site web qui offre plusieurs fonctionnalités pour rendre l'action d'annoncer plus efficace. Vous aurez la possibilité de consulter les annonces à proximté de votre emplacement ou d'indiquer l'emplacement où vous désirez mettre en vente un objet, trouver un job...
+            le site web offre la possiblité de créer divers types d'annonces : de vente, d'offre d'emploi, évenement...
+            Avec AE les annonces n'ont jamais été aussi efficaces</p>
             <a href="#"><img src="template/images/download.png" alt="" /></a>&nbsp;<a href="http://www.youtube.com/embed/jk2cJTbwm04?rel=0&amp;hd=1" class="watch">or watch the video&nbsp;&nbsp;<img src="template/images/video.png" alt="" /></a>
         </div><!-- end .grid_4 -->
 
@@ -53,38 +58,22 @@
     <br/>
 	
     <!-- begin boxes -->
-    <div id="boxes">
-    	<!-- begin .grid_3 - BOX1 -->
-        <div class="grid_3">
-            <a href="template/images/slider/1.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/1.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
-                    
-            <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-        
-        <!-- begin .grid_3 - BOX2 -->
-        <div class="grid_3">
-            <a href="template/images/slider/2.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/2.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
-                    
-            <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-        
-        <!-- begin .grid_3 - BOX3 -->
-        <div class="grid_3">
-            <a href="template/images/slider/3.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/3.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
-                    
-            <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
-        
-        <!-- begin .grid_3 - BOX4 -->
-        <div class="grid_3">
-            <a href="template/images/slider/4.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/4.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
-                    
-            <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;<a href="#">Read more&nbsp;&rarr;</a></p>
-        </div><!-- end .grid_3 -->
+    <div id="boxes" style="margin-top:30px;">
+    	<s:iterator value="annonces" var="resultObject">
+			<div class="grid_3">
+				<a
+					href="uploadedImage/objet/<s:property value="#resultObject.objet.image"/>"
+					title="Maecenas pharetra egestas adipiscing." class="colorbox"><img
+					class="boxImage tiptop"
+					src="uploadedImage/objet/<s:property value="#resultObject.objet.image"/>"
+					alt="" title="&plusmn;&nbsp;zoom" width="222px" height="142px" /></a>
+				<h3>
+					<a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject.id"/>">
+						<s:property value="#resultObject.titre" />
+					</a>
+				</h3>								
+			</div>
+		</s:iterator>
         
         <div class="clear"></div>
         
@@ -136,12 +125,12 @@
         
      </div>
 	
-     <!-- begin .grid_12 - COMMENTS -->
+      <!-- begin .grid_12 - COMMENTS -->
      <div id="strip" class="grid_12">
          <img id="users" src="template/images/users.png" alt="" />
          <ul id="comments">
-             <li>"Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum."<br /><span class="signature">John Doe - 4 October 2011</span></li>
-             <li>"Ut dapibus fringilla volutpat. Sed ullamcorper augue nec risus facilisis eu venenatis metus tristique. In hac habitasse platea dictumst. Aenean at lacus urna. Donec pretium mattis gravida."<br /><span class="signature">John Doe - 4 October 2011</span></li>
+             <li>"Choisir un bon titre pour son annonce serait un atout majeur pour pousser les internautes à consulter votre annonce."</li>
+             <li>"L'image que vous joignez à votre annonce est à choisir avec attention car sa qualité peut rendre votre annonce encore plus efficace."</li>
          </ul>
      </div><!-- end .grid_12 -->
 
