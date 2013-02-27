@@ -65,7 +65,7 @@ public class Utilisateur {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
      
-        List employees = session.createQuery("from utilisateur").list();
+        List employees = session.createQuery("from Utilisateur").list();
         session.close();
         return employees;
     }
