@@ -40,7 +40,7 @@
 						<br/>
 						<a href="#" class="show_hide">envoyer message</a>
 						<div class="slidingDiv">
-<s:form action="envoyerMessage" method="post">
+<s:form action="envoyerMessage">
      <table>
      <tr><td colspan="2"><label>objet :</label></td></tr> <tr><td><s:textfield name="objet"/> </td></tr>
      <tr><td> <s:textarea name="contenuMessage" rows="10" cols="40" /></td></tr>

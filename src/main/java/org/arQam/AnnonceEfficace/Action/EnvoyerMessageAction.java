@@ -53,16 +53,16 @@ public class EnvoyerMessageAction extends ActionSupport {
         Map session = ActionContext.getContext().getSession();
         Utilisateur user = (Utilisateur) session.get("utilisateur");
         mp.setUtilisateur1(user); 
-       // Utilisateur user1=Utilisateur.load(userId);
-       // mp.setUtilisateur2(Utilisateur.load(userId));
+       	// Utilisateur user1=Utilisateur.load(userId);
+       	// mp.setUtilisateur2(Utilisateur.load(userId));
         mp.setMessage(contenuMessage);
         
-       System.out.println(contenuMessage);
-       System.out.println("dezded");
-      // System.out.println(contenuMessage);
-	mp.save();*/
+       	System.out.println(contenuMessage);
+       	System.out.println("dezded");
+      	// System.out.println(contenuMessage);
+		mp.save();*/
     	 System.out.println("zy");
-        return SUCCESS;       
+    	 return SUCCESS;       
     }
 
 	public String getContenuMessage() {
@@ -71,6 +71,14 @@ public class EnvoyerMessageAction extends ActionSupport {
 
 	public void setContenuMessage(String contenuMessage) {
 		this.contenuMessage = contenuMessage;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getUserId() {

@@ -184,6 +184,7 @@
     
 </div><!-- END HEADER -->
 <!-- BEGIN SIDEBAR -->
+<s:if test="%{#session.utilisateur!=null}">
 <div id="sideBar">
 	<div id="sideBarTopPart"></div>
 	<div id="sideBarMiddlePart">
@@ -192,8 +193,7 @@
 			<img src="template/images/sideBar/options/opt1Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
 					onclick="window.location.replace('listeAnnonces');"/>
-		</span>	
-		<s:if test="%{#session.utilisateur!=null}">
+		</span>			
 			<span id="opt3" class="option"> 
 				<span class="optionDescription" id="opt3Description">Publier une annonce rapidement</span> 
 				<img src="template/images/sideBar/options/opt3Normal.png" 
@@ -204,15 +204,22 @@
 				<span class="optionDescription" id="opt2Description">liste d'utilisateurs</span> 
 				<img src="template/images/sideBar/options/opt2Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+<<<<<<< HEAD
 					onclick="window.location.replace('listUsers');"/>
 			</span>	
 			
 			
 		</s:if>					
+=======
+					onclick="window.location.replace('participerConcours');"/>
+			</span>		
+		
+>>>>>>> 9b1cdd58151c302387ff7b5bb1353866dea4adb1
 	</div>		
-	<div id="sideBarBottomPart"></div>	
+	<div id="sideBarBottomPart"></div>
+		
 </div>
-
+</s:if>					
 <table id="optionDescriptor" cellpadding="0" cellspacing="0">
 	<tr>
 		<td id="optionDescriptorLeftPart"></td>

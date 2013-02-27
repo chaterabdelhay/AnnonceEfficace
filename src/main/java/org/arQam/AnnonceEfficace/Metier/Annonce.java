@@ -159,6 +159,15 @@ public class Annonce {
 		long id = (Integer) session.save(this);             
 		session.getTransaction().commit();             
 		session.close();     
+	}
+
+	public static List FourLastAnnonces() {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+     
+        List result = session.createQuery("from Annonce limit").setMaxResults(4).list();
+        session.close();
+        return result;
 	}		
 	
 }
