@@ -122,7 +122,11 @@
     	<action name="suivre" class="org.arQam.AnnonceEfficace.Action.SuivreAction">
     	    <!-- <interceptor-ref name="login" />  -->
     	    <result name="success">/blank.jsp</result>
-    	</action>    			               		    	    	
+    	</action> 
+    	<action name="userProfile" class="org.arQam.AnnonceEfficace.Action.ProfileAction">
+    	    <!-- <interceptor-ref name="login" />  -->
+    	    <result name="success">/profile.jsp</result>
+    	</action> 		               		    	    	
     	
 	</package>	
 	

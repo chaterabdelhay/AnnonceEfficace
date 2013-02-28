@@ -7,7 +7,7 @@
 <div class="container_12">	   
     <br/><br/><br/><br/><br/>  
     
-	
+
     <!-- begin boxes -->
     <div id="boxes">
     	<!--<div class="grid_3">
@@ -35,14 +35,14 @@
                	
     	<s:iterator value="users" var="resultObject">               
 			<div class="grid_3">
-				
+
 				<img
 					class="boxImage tiptop" src="uploadedImage/objet/<s:property value="#resultObject[0]"/>" alt=""
 					title="&plusmn;&nbsp;zoom" width="222px" height="142px"/>
 				<h3><s:property value="#resultObject[0]"/></h3>
 				<h3>name : <s:property value="#resultObject.nomUtilisateur"/></h3>
-				<h3><a href="details"/>details</a></h3>
-				
+				<h3><a href="userProfile?suiviId=<s:property value="#resultObject.id"/>">details</a></h3>
+
 				<form id="suiviForm" method="post" action="suivre?suiviId=<s:property value="#resultObject.id"/>">
 				<a id="buttonsend" class="notsosmall pink button">
      <span>
@@ -58,9 +58,9 @@
       </form>
  
  
-				
+
 			</div>  
-			            
+
         </s:iterator>
         <script>
 			function suivre(suivitId, remove) {				
