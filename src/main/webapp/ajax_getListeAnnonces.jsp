@@ -7,7 +7,6 @@
 	<p>posGeoLatitude param value : <s:property value="posGeoLatitude" /></p>
 	<p>posGeoLongitude param value : <s:property value="posGeoLongitude" /></p>
 </s:if>
-
 <s:iterator value="annonces" var="resultObject">
 	<div class="grid_3">
 		<a
@@ -23,6 +22,6 @@
 			distance :
 			<s:property value="#resultObject[1]" />
 		</h3>
-		<p><a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>">Consulter</a></p>
+		<p><a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>&type=<s:property value="#resultObject[0].type"/>">Consulter</a></p>
 	</div>
 </s:iterator>

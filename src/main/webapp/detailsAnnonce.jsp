@@ -21,14 +21,7 @@
 					style="padding-bottom: 5px; border-bottom: 1px solid #ddd;">
 					<p>
 						<span style="font-weight: 800">Type de l'annonce : <s:property value="%{typeAnnonce}"/><br/>Titre : <s:property value="%{annonce.titre}"/></span>
-						<span style="float: right">	
-											
-					
-
-					
-<div id="demo">
-
-
+						<span style="float: right">																				
 		
 		<s:if test="%{!evaluatedByUser}">
 		<s:if test="%{userConnected}">
@@ -205,7 +198,7 @@ $.ajax({
 
 		 
 							 
-		<div id="avg"> average of ratings: <s:property value="average"/></div> </span>			
+		<span id="avg" style="float:right;">Evaluation moyenne : <s:property value="average"/></div> </span>			
 						
 					</p>
 				</td>
@@ -219,6 +212,20 @@ $.ajax({
 					<p>
 						<span style="font-weight: 800">Publiée par <s:property value="%{annonce.utilisateur.nomUtilisateur}"/>, le <s:property value="%{annonce.datePostulation}"/></span>
 					</p>
+					<s:if test="%{annonce.type == \"E\"}">
+						<p><span style="font-weight: 800">Type de l'évenement : </span><s:property value="%{annonceExtraInfos[1]}"/></p>	
+						<p><span style="font-weight: 800">Date : </span><s:property value="%{annonceExtraInfos[2]}"/></p>
+						<p><span style="font-weight: 800">Heure : </span><s:property value="%{annonceExtraInfos[3]}"/></p>
+					</s:if>
+					<s:if test="%{annonce.type == \"V\"}">
+						<p><span style="font-weight: 800">Prix : </span><s:property value="%{annonceExtraInfos[1]}"/> Dhs</p>
+						<s:if test="%{annonceExtraInfos[2] == 1}">
+							<p>Négociable</p>
+						</s:if>
+						<s:if test="%{annonceExtraInfos[2] == 0}">
+							<p>Non Négociable</p>
+						</s:if>							
+					</s:if>
 					<p style="font-weight: 800">Description</p>
 					<p><s:property value="%{annonce.description}"/></p>
 				</td>

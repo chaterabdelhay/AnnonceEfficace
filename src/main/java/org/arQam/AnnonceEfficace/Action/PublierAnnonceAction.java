@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Column;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts2.ServletActionContext;
 import org.arQam.AnnonceEfficace.Metier.Annonce;
 import org.arQam.AnnonceEfficace.Metier.Objet;
 import org.arQam.AnnonceEfficace.Metier.PositionGeographique;
@@ -27,8 +30,12 @@ public class PublierAnnonceAction extends ActionSupport {
 	public String input() throws Exception {
 		return INPUT;
 	}
-	public String execute() throws Exception {	
-		if(titre == null || description == null || type== null) // nouvelle saisie
+	public String execute() throws Exception {
+		if(type == null){
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.sendRedirect("selectAnnonceType");
+		}
+		if(titre == null || description == null) // nouvelle saisie
 			return INPUT;		
 		// validate();
 		if(!isValid()) return INPUT;
@@ -54,7 +61,6 @@ public class PublierAnnonceAction extends ActionSupport {
         annonce.setPositionGeographique(positionGeographique);        
         annonce.setObjet(Objet.load(1));        
         annonce.save();        
-             
         return SUCCESS;
     }
 

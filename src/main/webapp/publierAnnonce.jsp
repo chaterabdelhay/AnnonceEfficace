@@ -41,12 +41,12 @@
 							<tr style="width:400px" valign="top">						
 								<td>
 																																																																				
-										<p>
+										<!--<p>
 											<label for="typeAnnonce">Type</label>
 											<s:select  
 												headerKey="-1" headerValue="Selectionnez" list="#{'V':'Vente', 'A':'Achat', 'E':'Evenement', 'OE':'Offre emploi'}" 												
 												name="type" />												
-										</p>	
+										</p> -->	
 										<p>
 											<label for="titre">Titre</label>
 											<s:textfield name="titre" maxlength="30" id="titre"
@@ -65,10 +65,10 @@
 										</p>																				
 									
 								</td>
-								<s:if test="%{type=='V'}">								
-								<td>
+								<s:if test="%{type == \"V\"}">								
+								<td style="padding-left:50px;">
 									<p>
-											<label for="typeAnnonce">Catègorie</label>
+											<label for="categorieObjet">Catègorie</label>
 											<s:select headerKey="-1" headerValue="Selectionnez"
 												list="#{'1':'Computer', '2':'Telephone'}"
 												name="categorieObjet" />
@@ -90,7 +90,28 @@
 												placeholder="descripotion de l'objet" />
 										</p>										
 								</td>
-								</s:if>												
+								</s:if>	
+								<s:if test="%{type == \"E\"}">								
+								<td style="padding-left:50px;">
+									<p>
+											<label for="typeEvenement">Type de l'évenement</label>
+											<s:select headerKey="-1" headerValue="Selectionnez"
+												list="#{'1':'Séminaire', '2':'Conférence' ,'3':'Culturel', '4':'Festival','5':'Autre'}"
+												name="typeEvenement" />
+										</p>
+										<p>
+											<label for="dateEvenement">Date</label>
+											<s:textfield name="dateEvenement" maxlength="30" id="titre"
+												placeholder="Date de l'annonce" />
+										</p>
+										<p>
+											<label for="heureEvenement">Heure</label>
+											<s:textfield name="heureEvenement" id="titre"
+												placeholder="Heure de l'évenement" />
+											<s:hidden name="nomObjet"/>
+										</p>																		
+								</td>
+								</s:if>										
 							</tr>
 						</table>
 					  </s:form>	
