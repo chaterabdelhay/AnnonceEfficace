@@ -37,12 +37,12 @@
 										<p>
 											<label for="login"><i class="icon-user"></i>Nom d'utilisateur</label>
 											<s:textfield name="username" maxlength="20" id="username"
-												placeholder="nom d'utilisateur" />
+												placeholder="nom d'utilisateur" value="saladin"/>
 										</p>
 										<p>
 											<label for="password"><i class="icon-lock"></i>Mot de passe</label>
 											<s:textfield type="password" name="password" maxlength="20"
-												id="username" placeholder="mot de passe" class="showpassword" />
+												id="username" placeholder="mot de passe" class="showpassword" value="123"/>
 										</p>
 										<p class="clearfix">
 											<input type="submit" value="Login">
