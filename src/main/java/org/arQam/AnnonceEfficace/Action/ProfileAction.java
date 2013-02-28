@@ -2,7 +2,10 @@ package org.arQam.AnnonceEfficace.Action;
 
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
 import org.arQam.AnnonceEfficace.HibernateUtil;
 import org.arQam.AnnonceEfficace.Metier.Suivi;
 import org.arQam.AnnonceEfficace.Metier.Utilisateur;
@@ -18,19 +21,26 @@ public class ProfileAction extends ActionSupport {
 	public List users;
 	public List annonces;
 	public List suivis;
+	public List control;
 	//private int remove = 0;
 	
 	public String execute() throws Exception {
 		 SessionFactory sf = HibernateUtil.getSessionFactory();
-	        Session session = sf.openSession();
+	        Session session1 = sf.openSession();
 	     
-	        users = session.createQuery("from Utilisateur where Id="+suiviId).list();
-	        annonces=session.createQuery("from Annonce where utilisateurId="+suiviId).list();
+	        users = session1.createQuery("from Utilisateur where Id="+suiviId).list();
+	        annonces=session1.createQuery("from Annonce where utilisateurId="+suiviId).list();
 	       // session.beginTransaction();
-	      suivis=session.createSQLQuery("select * from suivi where suiveurId="+suiviId).list();
-	      System.out.println("select * from suivi where suiveurId="+suiviId);
+	      suivis=session1.createSQLQuery("select * from utilisateur,suivi  where suivi.suivitId=utilisateur.id and suiveurId="+suiviId).list();
+	      Map session = ActionContext.getContext().getSession();
+        Utilisateur user = (Utilisateur) session.get("utilisateur");
+       // session1.close();
+        
+       // control=session2.createSQLQuery("select * from utilisateur").list();
+	      control=session1.createSQLQuery("select suiveurId from suivi  where suivitId="+suiviId).list();
+	    System.out.println("select * from suivi  where suiveurId="+user.getId()+" and suivitId="+suiviId);
 	     // session.getTransaction().commit();
-	        session.close();
+	        session1.close();
 	        
        return SUCCESS;
 	}

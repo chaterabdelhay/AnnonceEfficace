@@ -13,8 +13,43 @@
 		<table id="login">
 			<tr>
 				<td>
-				<s:iterator value="users" var="resultObject">               
+				<s:iterator value="users" var="resultObject">  
+				<s:if test="%{control.size()=0}">	             
+			<form id="suiviForm" method="post" action="suivre?suiviId=<s:property value="#resultObject.id"/>">
 			
+				<a id="buttonsend" class="notsosmall pink button">
+     <span>
+     	<a href="#" id="suivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,0);">
+     	S'abonner
+     	</a>
+     </span>
+      <a href="#" style="display:none" id="annulerSuivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,1);">
+     	Se désabonner
+     	</a>
+     	
+      
+     
+      </form>
+      </s:if>
+      
+      
+      <s:else>
+      <form id="suiviForm" method="post" action="suivre?suiviId=<s:property value="#resultObject.id"/>">
+			
+				<a id="buttonsend" class="notsosmall pink button">
+     <span>
+     	
+     	 <a href="#" style="display:none" id="annulerSuivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,1);">
+     	Se désabonner
+     	</a>
+     </span>
+     <a href="#" id="suivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,0);">
+     	S'abonner
+     	</a>
+     	</a>
+     	</form>
+     	</s:else>
+ 
 				<img
 					class="boxImage tiptop" src="uploadedImage/objet/<s:property value="#resultObject[0]"/>" alt=""
 					title="&plusmn;&nbsp;zoom" width="222px" height="142px"/>
@@ -208,17 +243,36 @@
 			});
 		</script>
 		</s:if>
-						<h3>les utilisateurs suivi</h3><br/>
-						
+		<script>
+			function suivre(suivitId, remove) {				
+				$.ajax({
+							type : "GET",
+							url : "suivre.action?suivitId=" + suivitId + "&remove="+ remove,
+							error : function(msg) {
+								$('#boxes').html("Error !: " + msg);
+							},
+							success : function(data) {
+								//affiche le contenu du fichier dans le conteneur dédié
+								//$('#boxes').html(data);
+								if(remove==0){
+									$('#suivre_' + suivitId).hide();
+									$('#annulerSuivre_' + suivitId).show();	
+								}else{
+									$('#suivre_' + suivitId).show();
+									$('#annulerSuivre_' + suivitId).hide();
+								}								
+							}
+						});
+			}			
+ 		</script>   
+						<h3>les utilisateurs suivi</h3>
+				<ul>		
 				<s:iterator value="suivis" var="resultObject">  
-					<s:property value="#resultObject.suivitId"/>
 				
+				<li><a href="#"></a><s:property value="#resultObject[1]"/> </a></li>
 				
-
-		
-			
-			
 					</s:iterator>
+					</ul>
 				</div>
 			
 					
