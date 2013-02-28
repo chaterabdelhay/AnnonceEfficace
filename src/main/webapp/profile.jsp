@@ -211,13 +211,7 @@
 						<h3>les utilisateurs suivi</h3><br/>
 						
 				<s:iterator value="suivis" var="resultObject">  
-					<s:property value="#resultObject.suivitId"/>
-				
-				
-
-		
-			
-			
+					<s:property value="#resultObject[1]"/>
 					</s:iterator>
 				</div>
 			

@@ -21,18 +21,16 @@ public class ProfileAction extends ActionSupport {
 	//private int remove = 0;
 	
 	public String execute() throws Exception {
-		 SessionFactory sf = HibernateUtil.getSessionFactory();
-	        Session session = sf.openSession();
-	     
-	        users = session.createQuery("from Utilisateur where Id="+suiviId).list();
-	        annonces=session.createQuery("from Annonce where utilisateurId="+suiviId).list();
-	       // session.beginTransaction();
-	      suivis=session.createSQLQuery("select * from suivi where suiveurId="+suiviId).list();
-	      System.out.println("select * from suivi where suiveurId="+suiviId);
-	     // session.getTransaction().commit();
-	        session.close();
-	        
-       return SUCCESS;
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		users = session.createQuery("from Utilisateur where Id="+suiviId).list();
+		annonces=session.createQuery("from Annonce where utilisateurId="+suiviId).list();
+		// session.beginTransaction();
+		suivis=session.createSQLQuery("select * from suivi where suiveurId="+suiviId).list();
+		System.out.println("select * from suivi where suiveurId="+suiviId);
+		// session.getTransaction().commit();
+		session.close();	        
+		return SUCCESS;
 	}
 	
 	
