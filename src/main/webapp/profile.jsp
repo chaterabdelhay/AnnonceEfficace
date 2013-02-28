@@ -13,8 +13,12 @@
 		<table id="login">
 			<tr>
 				<td>
+				
 				<s:iterator value="users" var="resultObject">  
-				<s:if test="%{control.size()=0}">	             
+				
+			<s:if test="%{control.size()==0}">	
+			  <s:property value="ffr"/> 
+			  dede         
 			<form id="suiviForm" method="post" action="suivre?suiviId=<s:property value="#resultObject.id"/>">
 			
 				<a id="buttonsend" class="notsosmall pink button">
@@ -32,23 +36,23 @@
       </form>
       </s:if>
       
-      
-      <s:else>
+      <s:if test="%{control.size()!=0}">
+     
       <form id="suiviForm" method="post" action="suivre?suiviId=<s:property value="#resultObject.id"/>">
 			
 				<a id="buttonsend" class="notsosmall pink button">
      <span>
      	
-     	 <a href="#" style="display:none" id="annulerSuivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,1);">
+     	 <a href="#"  id="annulerSuivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,1);">
      	Se désabonner
      	</a>
      </span>
-     <a href="#" id="suivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,0);">
+     <a href="#" style="display:none" id="suivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,0);">
      	S'abonner
      	</a>
-     	</a>
+     	
      	</form>
-     	</s:else>
+     	</s:if>
  
 				<img
 					class="boxImage tiptop" src="uploadedImage/objet/<s:property value="#resultObject[0]"/>" alt=""

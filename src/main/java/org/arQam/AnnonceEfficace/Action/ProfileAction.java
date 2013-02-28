@@ -37,8 +37,8 @@ public class ProfileAction extends ActionSupport {
        // session1.close();
         
        // control=session2.createSQLQuery("select * from utilisateur").list();
-	      control=session1.createSQLQuery("select suiveurId from suivi  where suivitId="+suiviId).list();
-	    System.out.println("select * from suivi  where suiveurId="+user.getId()+" and suivitId="+suiviId);
+	      control=session1.createSQLQuery("select suiveurId from suivi  where suiveurId="+user.getId()+" and suivitId="+suiviId).list();
+	  //  System.out.println("select * from suivi  where suiveurId="+user.getId()+" and suivitId="+suiviId);
 	     // session.getTransaction().commit();
 	        session1.close();
 	        
