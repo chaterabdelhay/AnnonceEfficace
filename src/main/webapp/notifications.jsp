@@ -9,15 +9,29 @@
 
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
-	<br /> <br /> <br />
+	<br/><br/><br/><br/><br/><br/>
 	
 	<div>
 	 
-				<div class="form-2">
-					<h3>Vos notifications</h3>
-					<hr/><br/>										
-						<s:iterator value="notifications" var="resultObject"> 							
-							<p><s:property value="#resultObject.contenu"/></p>						
+				<div>
+					<h3>Vos notifications</h3><br/>											
+						<s:iterator value="notifications" var="resultObject"> 														
+								<s:if test="%{#resultObject.id == 3}">
+									<div  class="notification_unreaded">
+										<p>
+											<s:property value="#resultObject.contenu"/>
+											<a style="float:right" href="#">>></a>
+										</p>
+									</div>
+								</s:if>																					
+								<s:if test="%{#resultObject.id != 3}">
+									<div  class="notification_readed">
+										<p>
+											<s:property value="#resultObject.contenu"/>
+											<a style="float:right" href="#">>></a>
+										</p>
+									</div>
+								</s:if>
 						</s:iterator>											
 				</div>				
 	</div>

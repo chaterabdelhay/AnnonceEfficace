@@ -191,6 +191,16 @@
 <div id="sideBar">
 	<div id="sideBarTopPart"></div>
 	<div id="sideBarMiddlePart">
+		<div id="noti_Container">
+			<span id="opt0" class="option">
+				<span class="optionDescription" id="opt0Description">Notifications</span>
+								
+					<img src="template/images/sideBar/options/opt0Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();"									
+					onclick="window.location.replace('notifications');"/>										    				    											
+			</span>
+				<div class="noti_bubble"><s:property value="%{#session.nbrOfNotifications}"/></div>
+			</div>
 		<span id="opt1" class="option"> 
 			<span class="optionDescription" id="opt1Description">Voir les annonces</span> 
 			<img src="template/images/sideBar/options/opt1Normal.png" 
@@ -214,17 +224,7 @@
 				<img src="template/images/sideBar/options/opt2Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();"									
 					onclick="window.location.replace('participerConcours');"/>
-			</span>
-			<div id="noti_Container">
-			<span id="opt0" class="option">
-				<span class="optionDescription" id="opt0Description">Notifications</span>
-								
-					<img src="template/images/sideBar/options/opt0Normal.png" 
-					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();"									
-					onclick="window.location.replace('notifications');"/>										    				    											
-			</span>
-			<div class="noti_bubble"><s:property value="%{#session.nbrOfNotifications}"/></div>
-			</div>				
+			</span>						
 	</div>		
 	<div id="sideBarBottomPart"></div>
 		

@@ -692,3 +692,28 @@ FOOTER
     width:16px;    
     text-align:center;    
 }
+
+
+.notification_unreaded {
+    /* Size and position */    
+    margin: 0px auto 10px;
+    padding: 5px 10px;
+    position: relative;
+    /* Styles */
+    background: #cfefce;
+    border-radius: 4px;
+    border : solid 2px rgba(0,0,0,0.1);
+    color: #7e7975;     
+}
+
+.notification_readed {
+    /* Size and position */    
+    margin: 0px auto 10px;
+    padding: 5px 10px;
+    position: relative;
+    /* Styles */    
+    background: #fffaf6;
+    border-radius: 4px;
+    border : solid 2px rgba(0,0,0,0.1);
+    color: #7e7975;     
+}
