@@ -14,56 +14,36 @@
 			<tr>
 				<td>
 				
-				<s:iterator value="users" var="resultObject">  
-				
-			<s:if test="%{control.size()==0}">	
-			  <s:property value="ffr"/> 
-			  dede         
-			<form id="suiviForm" method="post" action="suivre?suiviId=<s:property value="#resultObject.id"/>">
-			
-				<a id="buttonsend" class="notsosmall pink button">
-     <span>
-     	<a href="#" id="suivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,0);">
-     	S'abonner
-     	</a>
-     </span>
-      <a href="#" style="display:none" id="annulerSuivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,1);">
-     	Se désabonner
-     	</a>
-     	
-      
-     
-      </form>
-      </s:if>
-      
-      <s:if test="%{control.size()!=0}">
-     
-      <form id="suiviForm" method="post" action="suivre?suiviId=<s:property value="#resultObject.id"/>">
-			
-				<a id="buttonsend" class="notsosmall pink button">
-     <span>
-     	
-     	 <a href="#"  id="annulerSuivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,1);">
-     	Se désabonner
-     	</a>
-     </span>
-     <a href="#" style="display:none" id="suivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,0);">
-     	S'abonner
-     	</a>
-     	
-     	</form>
-     	</s:if>
- 
-				<img
-					class="boxImage tiptop" src="uploadedImage/objet/<s:property value="#resultObject[0]"/>" alt=""
+	 <s:iterator value="users" var="resultObject"> 								
+					<h2>Bienvenu dans le profile de, M. <s:property value="#resultObject.nomUtilisateur"/></h2>
+					<img
+					class="boxImage tiptop" src="template/images/noImg.png" alt=""
 					title="&plusmn;&nbsp;zoom" width="222px" height="142px"/>
-				
-					<h2>Bienvenu dans le profile de, M. <s:property value="#resultObject.nomUtilisateur"/></h2>					
+					<h3>						  
+	   <s:if test="%{#session.utilisateur!=null && #session.utilisateur.id != id}">		
+		  <s:if test="%{abonneToThisUser == 0}">				 			  						    
+     		<a href="#" id="suivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,0);">
+     		S'abonner
+     		</a>     
+	        <a href="#" style="display:none" id="annulerSuivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,1);">
+    	 	Se désabonner
+     	 	</a>     	                 
+      	  </s:if>
+      	   <s:if test="%{abonneToThisUser == 1}">				 			  						    
+     		<a href="#"  style="display:none" id="suivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,0);">
+     		S'abonner
+     		</a>     
+	        <a href="#"id="annulerSuivre_<s:property value="#resultObject.id"/>" onclick="suivre(<s:property value="#resultObject.id"/>,1);">
+    	 	Se désabonner
+     	 	</a>     	                 
+      	  </s:if>
+      </s:if>		
+      </h3>			
 					<h3>Ville  : <s:property value="#resultObject.ville.nom"/></h3>
 					<h3>Email  : <s:property value="#resultObject.email"/></h3>
 					<h3>Telephone  : <s:property value="#resultObject.telephone"/></h3>
 					<h3>Votre position géographique : [<s:property value="#resultObject.userPositionGeographique.latitude"/>, <s:property value="#resultObject.userPositionGeographique.longitude"/>]</h3>
-					 </s:iterator>
+			</s:iterator>
 				</td>
 				<td>
 					<div id="createAccount" style="line-height:30px;width:250px; font-size:13px; margin-left:50px; color:#555">

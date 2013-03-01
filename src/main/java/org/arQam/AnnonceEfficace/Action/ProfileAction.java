@@ -17,33 +17,28 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ProfileAction extends ActionSupport {	 
-	public long suiviId;
+	public long id;
 	public List users;
 	public List annonces;
 	public List suivis;
-	public List control;
+	public boolean abonneToThisUser = false;
 	//private int remove = 0;
 	
 	public String execute() throws Exception {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
-	        Session session1 = sf.openSession();
-	     
-	        users = session1.createQuery("from Utilisateur where Id="+suiviId).list();
-	        annonces=session1.createQuery("from Annonce where utilisateurId="+suiviId).list();
-		// session.beginTransaction();
-	      suivis=session1.createSQLQuery("select * from utilisateur,suivi  where suivi.suivitId=utilisateur.id and suiveurId="+suiviId).list();
-	      Map session = ActionContext.getContext().getSession();
-        Utilisateur user = (Utilisateur) session.get("utilisateur");
-       // session1.close();
-        
-       // control=session2.createSQLQuery("select * from utilisateur").list();
-	      control=session1.createSQLQuery("select suiveurId from suivi  where suiveurId="+user.getId()+" and suivitId="+suiviId).list();
-	  //  System.out.println("select * from suivi  where suiveurId="+user.getId()+" and suivitId="+suiviId);
-		// session.getTransaction().commit();
-	     // session.getTransaction().commit();
-	        session1.close();
-	        
-       return SUCCESS;
+		Session session1 = sf.openSession();
+		users = session1.createQuery("from Utilisateur where Id="+id).list();
+		annonces=session1.createQuery("from Annonce where utilisateurId="+id).list();
+		suivis=session1.createSQLQuery("select * from utilisateur,suivi  where suivi.suivitId=utilisateur.id and suiveurId="+id).list();
+		Map session = ActionContext.getContext().getSession();
+		Utilisateur user = (Utilisateur) session.get("utilisateur");
+		if(user != null){
+			List result =session1.createSQLQuery("select suiveurId from suivi  where suiveurId="+user.getId()+" and suivitId="+id).list();
+			if(result.size() > 0)
+				abonneToThisUser = true;
+		}
+		session1.close();
+		return SUCCESS;
 	}
 	
 	
