@@ -14,7 +14,7 @@
 					class="boxImage tiptop" src="template/images/noImg.png" alt=""
 					title="&plusmn;&nbsp;zoom" width="128px" height="90px"
 					 style="margin:0"/>				
-				<h3><a href="userProfile?suiviId=<s:property value="#resultObject.id"/>"><s:property value="#resultObject.nomUtilisateur"/></a>				
+				<h3><a href="userProfile?id=<s:property value="#resultObject.id"/>"><s:property value="#resultObject.nomUtilisateur"/></a>				
      				<br/>
      				<a href="#" id="suivre_<s:property value="#resultObject.id"/>" class="abonnementLink" 
      					onclick="suivre(<s:property value="#resultObject.id"/>,0);" style="fonti-size:9px">
