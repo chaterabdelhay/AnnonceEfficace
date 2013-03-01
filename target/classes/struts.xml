@@ -130,6 +130,10 @@
     	<action name="userProfile" class="org.arQam.AnnonceEfficace.Action.ProfileAction">
     	    <!-- <interceptor-ref name="login" />  -->
     	    <result name="success">/profile.jsp</result>
+    	</action> 	
+    	<action name="userSearch" class="org.arQam.AnnonceEfficace.Action.UserSearchAction">
+    	    <!-- <interceptor-ref name="login" />  -->
+    	    <result name="success">/userSearch_ajax.jsp</result>
     	</action> 		               		    	    	        	
     	
 	</package>	

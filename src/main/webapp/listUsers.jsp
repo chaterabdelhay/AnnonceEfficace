@@ -4,9 +4,26 @@
 <!-- BEGIN : page body content -->
 
 <!-- BEGIN CONTAINER -->
-<div class="container_12">	   
+
+<div class="container_12">
     <br/><br/><br/><br/><br/><br/>                
-               	
+         <div id="updatePosition">
+		<table cellpadding="4" style="display:inline;">
+	      <tr>
+	       <td><img src="template/images/marker.png"/></td>
+	       <td><p><form class="ajax" action="search.php" method="get">
+	<p>
+		<label for="q">Rechercher un user</label>
+		<input type="text" name="q" id="q" />
+	</p>
+</form></p></td>
+	       <td style="width:605px"></td>
+	       <td><img src="template/images/search.png"/></td>
+	       <td><p><a id="searchTool" href="#">Outil recherche</a></p></td>
+		  </tr>
+		</table>		
+	</div>	
+	<div id="contenu">         	
     	<s:iterator value="users" var="resultObject">               
 			<div class="grid_2">
 				<img
@@ -27,6 +44,7 @@
       </div>  
 
         </s:iterator>
+        </div>
         <script>
 			function suivre(suivitId, remove) {				
 				$.ajax({
@@ -48,7 +66,37 @@
 							}
 						});
 			}			
- 		</script>      
+ 		</script> 
+ 		<!-- script de recherche --> 
+ 		<script>
+ 		$(document).ready( function() {
+ 			  // détection de la saisie dans le champ de recherche
+ 			  $('#q').keyup( function(){
+ 			    $field = $(this);
+ 			    $('#results').html(''); // on vide les resultats
+ 			    $('#ajax-loader').remove(); // on retire le loader
+ 			 
+ 			    // on commence à traiter à partir du 2ème caractère saisie
+ 			    if( $field.val().length > 0 )
+ 			    {
+ 			      // on envoie la valeur recherché en GET au fichier de traitement
+ 			      $.ajax({
+ 			  	type : 'GET', // envoi des données en GET ou POST
+ 			  	//data : 'q='+$(this).val(),
+ 				url : "userSearch.action?"+$(this).val(), // url du fichier de traitement
+ 				data : 'q='+$(this).val() , // données à envoyer en  GET ou POST
+ 				beforeSend : function() { // traitements JS à faire AVANT l'envoi
+ 					$field.after('<img src="template/images/ajax-loader.gif" alt="loader" id="ajax-loader" />'); // ajout d'un loader pour signifier l'action
+ 				},
+ 				success : function(data){ // traitements JS à faire APRES le retour d'ajax-search.php
+ 					$('#ajax-loader').remove(); // on enleve le loader
+ 					$('#contenu').html(data); // affichage des résultats dans le bloc
+ 				}
+ 			      });
+ 			    }		
+ 			  });
+ 			});
+ 		</script>
     </div><!-- end boxes -->    	        	       
 </div><!-- END CONTAINER -->
 <!-- Include the footer -->

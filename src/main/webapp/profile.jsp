@@ -87,7 +87,7 @@
 				});
 				
 				//work out duration of anim based on number of images (1 second for each image)
-				var duration = $(".wrapper").length * 1000;
+				var duration = $(".wrapper").length * 3000;
 				
 				//store speed for later (distance / time)
 				var speed = (parseInt($("div#container").width()) + parseInt($("div#viewer").width())) / duration;
