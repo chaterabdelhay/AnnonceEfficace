@@ -1,9 +1,7 @@
 
 <!-- BEGIN FOOTER -->
-<div id="footer">
-    <div class="container_12">
-    
-    	<!-- begin .grid_6 - SOCIAL -->
+<!--<div id="footer">
+    <div class="container_12">      
         <div class="grid_6">
         	<h4>Our social</h4>
             <div id="social">
@@ -14,16 +12,13 @@
                 <a class="tip" title="Dribbble" href="#"><img class="socialIcon" src="template/images/social/dribble.png" alt="" /></a>
                 <a class="tip" title="Facebook" href="#"><img class="socialIcon" src="template/images/social/facebook.png" alt="" /></a>
             </div>
-        </div><!-- end .grid_6 -->
-        
-        <!-- begin .grid_3 - MAP -->
+        </div>
         <div class="grid_3">
         	<h4>Where we are</h4>
         	<img id="map" src="template/images/map.png" alt="" />
             <p>Donec pretium mattis gravida. Integer eu nisl erat, <a href="#">eu tempus</a> nisi.</p>
-        </div><!-- end .grid_3 --> 
-        
-        <!-- begin .grid_3 - FORM -->
+        </div>      
+       
         <div class="grid_3">
         	<h4>Newsletter</h4>
             <p>Sed ullamcorper augue nec risus facilisis eu venenatis metus tristique. In hac habitasse platea dictumst. Aenean at lacus urna.</p>
@@ -31,12 +26,12 @@
                 <input type="text" class="input" id="newsletterInput" value="your mail address" />
                 <input type="submit" class="submit" id="subscribe" value="Subscribe" /><input type="submit" class="submit" id="unsubscribe" value="Unsubscribe" />
             </form>
-        </div><!-- end .grid_3 -->
+        </div>
         
         <div class="clear"></div>
         
     </div>
-</div><!-- END FOOTER -->
+</div>-->
 
 </body>
 </html>

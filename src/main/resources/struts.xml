@@ -136,6 +136,11 @@
     	    <result name="success">/userSearch_ajax.jsp</result>
     	</action> 		               		    	    	        	
     	
+    	<action name="notifications" class="org.arQam.AnnonceEfficace.Action.NotificationsAction">
+    	    <interceptor-ref name="login" />
+    	    <result name="success">/notifications.jsp</result>
+    	</action>
+    	
 	</package>	
 	
 	<package name="welcomePage" extends="struts-default">   
