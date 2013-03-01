@@ -9,7 +9,6 @@
                	
     	<s:iterator value="users" var="resultObject">               
 			<div class="grid_2">
-
 				<img
 					class="boxImage tiptop" src="template/images/noImg.png" alt=""
 					title="&plusmn;&nbsp;zoom" width="128px" height="90px"
