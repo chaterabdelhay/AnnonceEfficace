@@ -664,3 +664,8 @@ FOOTER
 	border-left:5px solid rgba(0,0,0,0.1);
 	color:#fff; !important
 }
+
+.abonnementLink{
+	font-weight:0 !important;
+	font-size:10px;		
+}

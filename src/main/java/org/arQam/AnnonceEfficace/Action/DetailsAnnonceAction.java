@@ -3,10 +3,6 @@ package org.arQam.AnnonceEfficace.Action;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.struts2.ServletActionContext;
 import org.arQam.AnnonceEfficace.Metier.Annonce;
 import org.arQam.AnnonceEfficace.Metier.Commentaire;
 import org.arQam.AnnonceEfficace.Metier.Evaluation;
@@ -18,20 +14,20 @@ import com.opensymphony.xwork2.ActionSupport;
 public class DetailsAnnonceAction extends ActionSupport {	
    
 	Evaluation ev=new Evaluation();
+	public String type;
 	public double average;
 	public Integer annonceId;
 	private Annonce annonce;
 	private String typeAnnonce;
 	private List commentaires;
-	public Boolean userConnected=false;
-	
+	public Boolean userConnected=false;	
 	private Boolean evaluatedByUser = false;
-
+	private Object[] annonceExtraInfos;
 	
 	public String execute() throws Exception {				
-		if(annonceId !=null) 
+		if(annonceId !=null){
 			setAnnonce(Annonce.load(annonceId));
-		if(annonce != null){
+			setAnnonceExtraInfos(annonce.getExtraInformations());		
 			if(annonce.getType().equals("A")) setTypeAnnonce("Achat");					  
 			if(annonce.getType().equals("V")) setTypeAnnonce("Vente");
 			if(annonce.getType().equals("E")) setTypeAnnonce("Evenement");
@@ -49,7 +45,7 @@ public class DetailsAnnonceAction extends ActionSupport {
     		System.out.println("Eval: " + evaluatedByUser + ", eval obj : " + eval);
     	}	
 		average = Evaluation.avg(annonceId);
-		  setCommentaires(Commentaire.listComments(annonceId));
+		setCommentaires(Commentaire.listComments(annonceId));
 		return SUCCESS;		
 	}		
         	
@@ -108,6 +104,14 @@ public class DetailsAnnonceAction extends ActionSupport {
 
 	public void setEvaluatedByUser(Boolean evaluatedByUser) {
 		this.evaluatedByUser = evaluatedByUser;
+	}
+
+	public Object[] getAnnonceExtraInfos() {
+		return annonceExtraInfos;
+	}
+
+	public void setAnnonceExtraInfos(Object[] annonceExtraInfos) {
+		this.annonceExtraInfos = annonceExtraInfos;
 	}
 
 }

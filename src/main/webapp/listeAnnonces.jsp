@@ -23,29 +23,7 @@
 		</table>		
 	</div>
     <!-- begin boxes -->
-    <div id="boxes">
-    	<!--<div class="grid_3">
-            <a href="template/images/slider/1.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/1.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
-                    
-            <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
-            <a href="detailsAnnonce.action?id=1">DÃ©tails annonce&nbsp;&rarr;</a>
-            </p>
-        </div>                
-        <div class="grid_3">
-            <a href="template/images/slider/2.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/2.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
-                    
-            <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
-            <a href="detailsAnnonce.action?id=2">DÃ©tails annonce&nbsp;&rarr;</a></p>
-        </div>                
-        <div class="grid_3">
-            <a href="template/images/slider/3.jpg" title="Maecenas pharetra egestas adipiscing." class="colorbox"><img class="boxImage tiptop" src="template/images/boxes/3.jpg" alt="" title="&plusmn;&nbsp;zoom" /></a>
-                    
-            <h3>Morbi fermentum sollicitudin diam vel vehicula</h3>
-            <p>Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum.&nbsp;
-            <a href="detailsAnnonce.action?id=3">DÃ©tails annonce&nbsp;&rarr;</a></p>
-        </div>-->                
+    <div id="boxes">    	                   
         <s:if test="%{posGeoLatitude == null}">
         	<p>Le système n'arrive pas à  charger votre position gèographique, <a href="#" id="unauthenifiedUserSetPosition">Selectionnez la position</a> où vous voulez trouver des annonces. Et le système va vous chercher les annonces les plus proches de vous.</p>
         	<script>
@@ -66,7 +44,7 @@
 					title="&plusmn;&nbsp;zoom" width="222px" height="142px"/></a>
 				<h3><s:property value="#resultObject[0].titre"/></h3>
 				<h3>distance : <s:property value="#resultObject[1]"/></h3>
-				<p><a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>">Consulter</a></p>
+				<p><a href="detailsAnnonce.action?annonceId=<s:property value="#resultObject[0].id"/>&type=<s:property value="#resultObject[0].type"/>">Consulter</a></p>
 			</div>                    
         </s:iterator>
      </div><!-- end boxes -->    	        	    

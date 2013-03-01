@@ -168,6 +168,25 @@ public class Annonce {
         List result = session.createQuery("from Annonce limit").setMaxResults(4).list();
         session.close();
         return result;
+	}
+
+	public Object[] getExtraInformations() {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        String table = "";
+        if(type.equals("E")){
+        	table = "annonceevenement";
+        }else if(type.equals("V")){
+        	table = "annoncevente";
+        }else if(type.equals("OS")){
+        	table = "annonceoffrestage";
+        }
+        Object[] result = (Object[]) session.createSQLQuery("SELECT * FROM "+table+" WHERE annonceId= :a")
+					 			.setParameter("a", this.id)
+					 			.list().get(0);
+        System.out.println("dddd" + result[1]);
+	    session.close();
+		return result;
 	}		
 	
 }

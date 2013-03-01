@@ -25,93 +25,22 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2">
-									<s:iterator value="errorMessages" id="errorMsg">
-										<p style="color: red;">
-											>
-											<s:property value="%{#errorMsg}" /><p>
-										
-									</s:iterator>										
-										<s:if test="%{errorMessages.size > 0}">
-										<hr />											
-										</s:if>
-								</td>
-
-							</tr>
-							<tr style="width:400px" valign="top">						
 								<td>
-																																																																				
-										<!--<p>
-											<label for="typeAnnonce">Type</label>
-											<s:select  
-												headerKey="-1" headerValue="Selectionnez" list="#{'V':'Vente', 'A':'Achat', 'E':'Evenement', 'OE':'Offre emploi'}" 												
-												name="type" />												
-										</p> -->	
-										<p>
-											<label for="titre">Titre</label>
-											<s:textfield name="titre" maxlength="30" id="titre"
-												placeholder="Titre de l'annonce" />
-										</p>
-										<p>
-											<label for="password">Description</label>
-											<s:textfield name="description" 
-												id="description" placeholder="Desription"/>
-										</p>																												
-										<p><a href="#" id="setPosition">Selectionner la position</a></p>
-										<s:hidden name="posGeoLatitude" id="posGeoLatitude" value=""/>
-										<s:hidden name="posGeoLongitude" id="posGeoLongitude" value=""/>																																					
-										<p class="clearfix">
-											<input type="submit" value="Créer">
-										</p>																				
-									
+									<a href="publierAnnonce.action?type=V">
+										<img src="template/images/annonceType/vente.png"/>
+									</a>
 								</td>
-								<s:if test="%{type == \"V\"}">								
-								<td style="padding-left:50px;">
-									<p>
-											<label for="categorieObjet">Catègorie</label>
-											<s:select headerKey="-1" headerValue="Selectionnez"
-												list="#{'1':'Computer', '2':'Telephone'}"
-												name="categorieObjet" />
-										</p>
-										<p>
-											<label for="titre">Nom</label>
-											<s:textfield name="nomObjet" maxlength="30" id="titre"
-												placeholder="Nom de l'objet" />
-										</p>
-										<p>
-											<label for="titre">image</label>
-											<s:textfield name="imageObjet" id="titre"
-												placeholder="image de l'objet" />
-											<s:hidden name="nomObjet"/>
-										</p>
-										<p>
-											<label for="titre">description</label>
-											<s:textfield name="descriptionObjet" id="titre"
-												placeholder="descripotion de l'objet" />
-										</p>										
+								<td style="padding-left:20px">
+									<a href="publierAnnonce.action?type=E">
+										<img src="template/images/annonceType/evenement.png"/>
+									</a>
+								</td>																			
+								<td  style="padding-left:20px">
+									<a href="publierAnnonce.action?type=OS">
+										<img src="template/images/annonceType/offreStage.png"/>
+									</a>
 								</td>
-								</s:if>	
-								<s:if test="%{type == \"E\"}">								
-								<td style="padding-left:50px;">
-									<p>
-											<label for="typeEvenement">Type de l'évenement</label>
-											<s:select headerKey="-1" headerValue="Selectionnez"
-												list="#{'1':'Séminaire', '2':'Conférence' ,'3':'Culturel', '4':'Festival','5':'Autre'}"
-												name="typeEvenement" />
-										</p>
-										<p>
-											<label for="dateEvenement">Date</label>
-											<s:textfield name="dateEvenement" maxlength="30" id="titre"
-												placeholder="Date de l'annonce" />
-										</p>
-										<p>
-											<label for="heureEvenement">Heure</label>
-											<s:textfield name="heureEvenement" id="titre"
-												placeholder="Heure de l'évenement" />
-											<s:hidden name="nomObjet"/>
-										</p>																		
-								</td>
-								</s:if>										
+								
 							</tr>
 						</table>
 					  </s:form>	
