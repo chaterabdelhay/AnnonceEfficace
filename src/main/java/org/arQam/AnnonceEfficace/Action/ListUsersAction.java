@@ -40,7 +40,7 @@ public class ListUsersAction extends ActionSupport {
     	//setAnnonces(Annonce.list());
     	// set positionGeographique    	
     	users=Utilisateur.list();
-    	 	
+    		
         return SUCCESS;       
     }
 

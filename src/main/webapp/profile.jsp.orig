@@ -274,8 +274,7 @@
 				<s:iterator value="suivis" var="resultObject">  
 				
 				<li><a href="#"></a><s:property value="#resultObject[1]"/> </a></li>
-
-								
+				
 					</s:iterator>
 					</ul>
 				</div>

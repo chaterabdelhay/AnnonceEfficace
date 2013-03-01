@@ -25,12 +25,24 @@ public class ProfileAction extends ActionSupport {
 	//private int remove = 0;
 	
 	public String execute() throws Exception {
+<<<<<<< HEAD
 		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		users = session.createQuery("from Utilisateur where Id="+suiviId).list();
+		annonces=session.createQuery("from Annonce where utilisateurId="+suiviId).list();
+		// session.beginTransaction();
+		suivis=session.createSQLQuery("select * from suivi where suiveurId="+suiviId).list();
+		System.out.println("select * from suivi where suiveurId="+suiviId);
+		// session.getTransaction().commit();
+		session.close();	        
+		return SUCCESS;
+=======
+		 SessionFactory sf = HibernateUtil.getSessionFactory();
 	        Session session1 = sf.openSession();
 	     
 	        users = session1.createQuery("from Utilisateur where Id="+suiviId).list();
 	        annonces=session1.createQuery("from Annonce where utilisateurId="+suiviId).list();
-		// session.beginTransaction();
+	       // session.beginTransaction();
 	      suivis=session1.createSQLQuery("select * from utilisateur,suivi  where suivi.suivitId=utilisateur.id and suiveurId="+suiviId).list();
 	      Map session = ActionContext.getContext().getSession();
         Utilisateur user = (Utilisateur) session.get("utilisateur");
@@ -39,11 +51,11 @@ public class ProfileAction extends ActionSupport {
        // control=session2.createSQLQuery("select * from utilisateur").list();
 	      control=session1.createSQLQuery("select suiveurId from suivi  where suiveurId="+user.getId()+" and suivitId="+suiviId).list();
 	  //  System.out.println("select * from suivi  where suiveurId="+user.getId()+" and suivitId="+suiviId);
-		// session.getTransaction().commit();
 	     // session.getTransaction().commit();
 	        session1.close();
 	        
        return SUCCESS;
+>>>>>>> a76a84d11dea208bf828ac3e41c522567c557f3a
 	}
 	
 	
