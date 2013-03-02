@@ -134,6 +134,14 @@
     	<action name="userSearch" class="org.arQam.AnnonceEfficace.Action.UserSearchAction">
     	    <!-- <interceptor-ref name="login" />  -->
     	    <result name="success">/userSearch_ajax.jsp</result>
+    	</action> 	
+    	<action name="createProduct" class="org.arQam.AnnonceEfficace.Action.CreateProductAction">
+    	    <!-- <interceptor-ref name="login" />  -->
+    	    <result name="success">/createProduit.jsp</result>
+    	</action> 	
+    	<action name="saveProduct" class="org.arQam.AnnonceEfficace.Action.SaveProductAction">
+    	    <!-- <interceptor-ref name="login" />  -->
+    	    <result name="success">/connexion.jsp</result>
     	</action> 		               		    	    	        	
     	
 	</package>	
