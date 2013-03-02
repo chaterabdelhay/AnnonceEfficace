@@ -12,12 +12,45 @@
 	<div style="margin:100px 0px 160px 10px;">
 		<table id="login">
 			<tr>
-				<td>
-				
+				<td>				
 					<h2>Bienvenu dans votre espace personnel, M. <s:property value="%{#session.utilisateur.nomUtilisateur}"/></h2>					
 					<h3>Votre Ville  : <s:property value="%{#session.utilisateur.ville.nom}"/></h3>
 					<h3>Votre position géographique : [<s:property value="%{#session.utilisateur.userPositionGeographique.latitude}"/>, <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>]</h3>
-					<a href="publierAnnonce">Voulez-vous publier une annonce</a>
+					<div style="width:400px; height:300px; margin:0px;">
+						<div id="mapa"></div>
+					</div>
+					<script type="text/javascript">
+		var GMapInitialized = false;
+		var initLatitude  = <s:property value="%{#session.utilisateur.userPositionGeographique.latitude}"/>;
+		var initLongitude = <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>;		
+		var drawnMarker = new GMarker(new GLatLng(initLatitude,initLongitude));
+		function initGMap(){		
+			if (GBrowserIsCompatible()) {
+				map = new GMap2(document.getElementById("mapa"));				
+				map.addControl(new GLargeMapControl());
+				map.addControl(new GMapTypeControl(3));
+				map.setCenter(new GLatLng(initLatitude,initLongitude ), 11, 0);
+				map.setZoom(6);				
+				//document.getElementById('selectedLatitude').innerHTML = initLatitude;
+				//document.getElementById('selectedLongitude').innerHTML = initLongitude;
+								
+				map.addOverlay(drawnMarker);
+				GEvent.addListener(map, 'click', function(overlay, point) {
+					//var map = new GMap2(document.getElementById("mapa"));
+					var answer = confirm("Modifer votre position vers le nouveau point selectionné ?\n--------------------------------------------------------\nPS : Si vous voulez naviguer dans la carte vous devez maitenir le button gauche de la souris enfoncé et déplacer la souris")
+					if (answer){
+						map.removeOverlay(drawnMarker)
+						newMarker = new GMarker(point)
+						map.addOverlay(newMarker);
+						drawnMarker = newMarker;
+						alert('we should save the new position using ajax');
+					}					
+				});							
+			}
+		}	
+		initGMap();		
+		
+		</script>					
 				</td>
 				<td>
 					<div id="createAccount" style="line-height:30px;width:250px; font-size:13px; margin-left:50px; color:#555">

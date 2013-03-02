@@ -24,6 +24,15 @@ h1{
 	line-height:34px;
 	color:#FFF;
 }
+
+h1.gray{
+	margin-bottom:15px;
+	font-weight:normal;
+	font-family:'Lobster', sans-serif;
+	font-size:28px;
+	line-height:34px;
+	color:rgba(0,0,0,0.3);
+}
 h2{
 	margin-bottom:15px;
 	font-family:'Lobster', sans-serif;
