@@ -15,7 +15,8 @@
 			<tr>
 				<td>
 					<div class="form-2"  style="width:800px">
-					<s:form action="publierAnnonce" theme="css_xhtml" >
+					<s:form action="publierAnnonce.action" theme="css_xhtml" >
+						<input type="hidden" name="type" value="<s:property value="%{type}" />"/>
 						<table>
 							<tr>
 								<td colspan="2">
@@ -27,8 +28,7 @@
 							<tr>
 								<td colspan="2">
 									<s:iterator value="errorMessages" id="errorMsg">
-										<p style="color: red;">
-											>
+										<p style="color: red;">											
 											<s:property value="%{#errorMsg}" /><p>
 										
 									</s:iterator>										
@@ -112,6 +112,56 @@
 										</p>																		
 								</td>
 								</s:if>										
+								<s:if test="%{type == \"OE\"}">								
+								<td style="padding-left:50px;">
+										<p>
+											<label for="poste">Poste</label>
+											<s:textfield name="poste" maxlength="30" id="titre"
+												placeholder="Le poste" />
+										</p>
+										<p>
+											<label for="competences">Competences</label>
+											<s:textfield name="competences" maxlength="30" id="titre"
+												placeholder="Les compètences" />
+										</p>
+										<p>
+											<label for="dateEvenement">Type de contrat</label>
+											<s:select headerKey="-1" headerValue="Selectionnez"
+												list="#{'1':'CDI', '2':'CTP'}"
+												name="typeContrat" />
+										</p>
+										<p>
+											<label for="heureEvenement">Salaire</label>
+											<s:textfield name="salaire" id="titre"
+												placeholder="Le salaire" />											
+										</p>																		
+								</td>
+								</s:if>
+								<s:if test="%{type == \"OS\"}">								
+								<td style="padding-left:50px;">										
+										<p>
+											<label for="competences">Competences</label>
+											<s:textfield name="competences" maxlength="30" id="titre"
+												placeholder="Les compètences" />
+										</p>
+										<p>
+											<label for="poste">Durée</label>
+											<s:textfield name="duree" maxlength="30" id="titre"
+												placeholder="La durée du stage" />
+										</p>
+										<p>
+											Rémuneration : <input type="checkbox"	name="rumenere" />
+										</p>
+										<p>
+											<label for="poste">Montant</label>
+											<s:textfield name="montant" maxlength="30" id="titre"
+												placeholder="Le montant" />
+										</p>
+										<p>											
+											Préembauche : <input type="checkbox"	name="preembauche" />								
+										</p>																		
+								</td>
+								</s:if>								
 							</tr>
 						</table>
 					  </s:form>	

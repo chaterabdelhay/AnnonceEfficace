@@ -16,11 +16,10 @@ public class UserSearchAction extends ActionSupport {
 	public List recherche;
 	
 	public String execute() throws Exception {
+		Thread.currentThread().sleep(1000);//sleep for 1000 ms		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session1 = sf.openSession();
-		
-		recherche=session1.createQuery("from Utilisateur where nomUtilisateur like '%"+q+"%'").list();
-		
+		Session session1 = sf.openSession();		
+		recherche=session1.createQuery("from Utilisateur where nomUtilisateur like '%"+q+"%'").list();		
 		session1.close();
 		return SUCCESS;
 	}

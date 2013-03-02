@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<s:if test="%{posGeoLatitude==null}">
+<s:if test="%{posGeoLatitude == null}">
 	<p style="color:red;">La position (latitude, longitude) indiquée est nulle !!!</p>
 	<p>Type param value : <s:property value="type" /></p>
 	<p>posGeoLatitude param value : <s:property value="posGeoLatitude" /></p>

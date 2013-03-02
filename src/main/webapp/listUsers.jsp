@@ -10,28 +10,28 @@
          <div id="updatePosition">
 		<table cellpadding="4" style="display:inline;">
 	      <tr>
-	       <td><img src="template/images/marker.png"/></td>
-	       <td><p><form class="ajax" action="search.php" method="get">
-	<p>
-		<label for="q">Rechercher un user</label>
-		<input type="text" name="q" id="q" />
-	</p>
-</form></p></td>
-	       <td style="width:605px"></td>
-	       <td><img src="template/images/search.png"/></td>
-	       <td><p><a id="searchTool" href="#">Outil recherche</a></p></td>
+	       
+	       <td>
+	       <form class="ajax" action="search.php" method="get">
+				<p>		
+					<input type="text" name="q" id="q" />
+				</p>
+			</form>
+			</td>
+		<td><img src="template/images/search.png"/></td>
+	       <td style="width:605px"></td>	       
 		  </tr>
 		</table>		
 	</div>	
+	<br/><br/>
 	<div id="contenu">         	
     	<s:iterator value="users" var="resultObject">               
 			<div class="grid_2">
-
 				<img
 					class="boxImage tiptop" src="template/images/noImg.png" alt=""
 					title="&plusmn;&nbsp;zoom" width="128px" height="90px"
 					 style="margin:0"/>				
-				<h3><a href="userProfile?suiviId=<s:property value="#resultObject.id"/>"><s:property value="#resultObject.nomUtilisateur"/></a>				
+				<h3><a href="userProfile?id=<s:property value="#resultObject.id"/>"><s:property value="#resultObject.nomUtilisateur"/></a>				
      				<br/>
      				<a href="#" id="suivre_<s:property value="#resultObject.id"/>" class="abonnementLink" 
      					onclick="suivre(<s:property value="#resultObject.id"/>,0);" style="fonti-size:9px">
@@ -87,7 +87,7 @@
  				url : "userSearch.action?"+$(this).val(), // url du fichier de traitement
  				data : 'q='+$(this).val() , // données à envoyer en  GET ou POST
  				beforeSend : function() { // traitements JS à faire AVANT l'envoi
- 					$field.after('<img src="template/images/ajax-loader.gif" alt="loader" id="ajax-loader" />'); // ajout d'un loader pour signifier l'action
+ 					$('#contenu').html('<br/><br/><center><img src="template/images/loader.gif" alt="loader" id="ajax-loader" /></center><br/><br/><br/>'); // ajout d'un loader pour signifier l'action
  				},
  				success : function(data){ // traitements JS à faire APRES le retour d'ajax-search.php
  					$('#ajax-loader').remove(); // on enleve le loader

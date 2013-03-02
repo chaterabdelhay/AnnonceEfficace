@@ -9,7 +9,7 @@
 
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
-	<br /> <br /> <br />
+	<br /> <br /> <br /><br/><br/><br/>
 	<div>
 		<table>
 			<tr>
@@ -18,10 +18,11 @@
 					<s:form action="publierAnnonce" theme="css_xhtml" >
 						<table>
 							<tr>
-								<td colspan="2">
+								<td colspan="4">
 									<h1>
-										<span class="log-in">Publier une annonce</span>
+										<span class="log-in">Selectionnez le type de votre annonce</span>
 									</h1>
+									<br/>
 								</td>
 							</tr>
 							<tr>
@@ -34,13 +35,22 @@
 									<a href="publierAnnonce.action?type=E">
 										<img src="template/images/annonceType/evenement.png"/>
 									</a>
-								</td>																			
+								</td>
+								<td  style="padding-left:20px">
+									<a href="publierAnnonce.action?type=OE">
+										<img src="template/images/annonceType/offreStage.png"/>
+									</a>
+								</td>																				
 								<td  style="padding-left:20px">
 									<a href="publierAnnonce.action?type=OS">
 										<img src="template/images/annonceType/offreStage.png"/>
 									</a>
+								</td>														
+							</tr>
+							<tr>
+								<td colspan="4">
+									<br/>
 								</td>
-								
 							</tr>
 						</table>
 					  </s:form>	
@@ -100,28 +110,9 @@
 			$("#posGeoLongitude").val($("#selectedLongitude").html());
   			$("#topGrayLayer1").fadeOut(300);  			
 		});	
-	</script>
-
-	<!-- begin .grid_12 - COMMENTS -->
-	<div id="strip" class="grid_12">
-		<img id="users" src="template/images/users.png" alt="" />
-		<ul id="comments">
-			<li>"Maecenas pharetra egestas adipiscing. Nullam consequat
-				velit in felis sodales in facilisis justo fringilla. Pellentesque
-				nec lobortis dolor. Praesent et mi eu magna dapibus condimentum."<br />
-				<span class="signature">John Doe - 4 October 2011</span>
-			</li>
-			<li>"Ut dapibus fringilla volutpat. Sed ullamcorper augue nec
-				risus facilisis eu venenatis metus tristique. In hac habitasse
-				platea dictumst. Aenean at lacus urna. Donec pretium mattis
-				gravida."<br /> <span class="signature">John Doe - 4 October
-					2011</span>
-			</li>
-		</ul>
-	</div>
-	<!-- end .grid_12 -->
-
+	</script>	
 </div>
+<br/><br/><br/><br/><br/>
 <!-- END CONTAINER -->
 
 <!-- END : page body content -->

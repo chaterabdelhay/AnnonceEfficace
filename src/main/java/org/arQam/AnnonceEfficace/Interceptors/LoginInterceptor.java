@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.StrutsStatics;
+import org.arQam.AnnonceEfficace.Metier.Notification;
+import org.arQam.AnnonceEfficace.Metier.Utilisateur;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
@@ -17,11 +19,14 @@ public class LoginInterceptor implements Interceptor{
  
     public String intercept(ActionInvocation invocation) throws Exception {
  
-    	// ####### code executé avant l'invocation de l'actio    	    	
+    	// ####### code executï¿½ avant l'invocation de l'actio    	    	
+    	    	
     	
         Map session = ActionContext.getContext().getSession();        
-        if(session.get("utilisateur") != null){        	
-             String result = invocation.invoke();          
+        if(session.get("utilisateur") != null){
+        	Utilisateur user = (Utilisateur) session.get("utilisateur");        	        	
+        	session.put("nbrOfNotifications", Notification.count(user.getId()));
+            String result = invocation.invoke();          
         }
         
        /* HttpServletRequest request = (HttpServletRequest) invocation.  
@@ -34,7 +39,7 @@ public class LoginInterceptor implements Interceptor{
           
        response.sendRedirect("login");  
         
-        // code executé après l'invocation de l'actio
+        // code executï¿½ aprï¿½s l'invocation de l'actio
               
         return "connexionPage"; // not used : return a global result name 
     }
