@@ -15,8 +15,24 @@
 			<tr>
 				<td>
 					<div class="form-2"  style="width:800px">
-					<s:form action="saveProduct" theme="css_xhtml" id="form1" >
+					<s:form action="createProduct" theme="css_xhtml" id="form1" >
 						<table>
+						<tr>
+						
+								<td colspan="2">
+								
+									<s:iterator value="errorMessages" id="errorMsg">
+										<p style="color: red;">	
+										dddd										
+											<s:property value="%{#errorMsg}" /><p>
+										
+									</s:iterator>										
+										<s:if test="%{errorMessages.size > 0}">
+										<hr />											
+										</s:if>
+								</td>
+
+							</tr>
 							<tr>
 								<td colspan="2">
 									<h1>

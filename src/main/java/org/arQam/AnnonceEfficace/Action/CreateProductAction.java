@@ -12,9 +12,9 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateProductAction extends ActionSupport {	
-	//ArrayList messages;
+	
 	 public List vitres;
-	// public List usersEmetters;
+	
    
    public String execute() throws Exception {
    	//System.out.println(ServletActionContext.getRequest().getSession().); 
@@ -27,6 +27,5 @@ public class CreateProductAction extends ActionSupport {
        return SUCCESS;       
    }
 
-	
-
+  
 }

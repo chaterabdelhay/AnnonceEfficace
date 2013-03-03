@@ -13,36 +13,45 @@
 	
 	<div style="margin-left: 160px;">
 	 
-		<table id="login">
 		
-			<tr>
+		
 			
-				<td>
 					<div class="form-2">
 					Liste des messages:
-					<table  width="600">
-						<th>objet</th> <th>message</th><th>emetteur</th>
+					<div class="demo_jui">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+<thead>
+		<tr>
+			<td>objet</td> <td>message</td><td>emetteur</td>
+		</tr>
+	</thead>					
 			<s:iterator value="usersEmetters" var="resultObject"> 
-		<tr><td><s:property value="#resultObject[0]"/></td>
+		<tr class="gradeX"><td><s:property value="#resultObject[0]"/></td>
 						<td><s:property value="#resultObject[1]"/></td>
 						<td><s:property value="#resultObject[2].nomUtilisateur"/></td></tr>
 						
 						</s:iterator>
 						
 		</table>
-					
+		
+			</div>
+			
+			
+			
+			
+			
 									
 		
 						
 
 
 
-						<br/>
-						<a href="#" class="show_hide">envoyer message</a>
+						
+						<a href="#" class="show">envoyer message</a>
 						<div class="slidingDiv">
 <s:form action="envoyerMessage">
      <table>
-     <tr><td colspan="2"><label>objet :</label></td></tr> <tr><td><s:textfield name="objet"/> </td></tr>
+     <tr><td><label>objet :</label></td><td><s:textfield name="objet"/> </td></tr>
      <tr><td> <s:textarea name="contenuMessage" rows="10" cols="40" /></td></tr>
       
       
@@ -67,9 +76,9 @@
 
 
     $(".slidingDiv").hide();
-	$(".show_hide").show();
+	$(".show").show();
 	
-	$('.show_hide').click(function(){
+	$('.show').click(function(){
 	$(".slidingDiv").slideToggle();
 	});
 
@@ -106,6 +115,7 @@
 	<!-- end .grid_12 -->
 
 </div>
+
 <!-- END CONTAINER -->
 
 <!-- END : page body content -->
