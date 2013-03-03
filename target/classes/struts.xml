@@ -141,6 +141,11 @@
     	    <result name="success">/notifications.jsp</result>
     	</action>
     	
+    	<action name="readNotification" class="org.arQam.AnnonceEfficace.Action.ReadNotificationAction">
+    	    <!-- <interceptor-ref name="login" />  -->
+    	        	    
+    	</action>
+    	
 	</package>	
 	
 	<package name="welcomePage" extends="struts-default">   

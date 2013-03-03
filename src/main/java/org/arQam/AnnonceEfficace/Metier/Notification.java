@@ -1,5 +1,6 @@
 package org.arQam.AnnonceEfficace.Metier;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.util.List;
 
@@ -92,19 +93,20 @@ public class Notification {
         Session session = sf.openSession();
 
         //List notifications = session.createQuery("from Notification Order by date DESC").list();
-        List notifications = session.createSQLQuery("select n.* from Notification n, recevoirnotification rn WHERE n.id = rn.notificationId AND rn.utilisateurId = "+idUtilisateur+" Order by date DESC").list();
+        List notifications = session.createSQLQuery("select n.*, rn.read from Notification n, recevoirnotification rn WHERE n.id = rn.notificationId AND rn.utilisateurId = "+idUtilisateur+" Order by date DESC").list();
         session.close();
 		return notifications;
 	}
 	
-	public static Long count(long idUtilisateur) {
+	public static int count(long idUtilisateur) {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
      
-        List notifications = session.createQuery("Select count(*) from Notification").list();
+        //List notifications = session.createQuery("Select count(*) from Notification").list();
+        List notifications = session.createSQLQuery("select count(distinct n.id) from Notification n, recevoirnotification rn WHERE n.id = rn.notificationId AND rn.utilisateurId = "+idUtilisateur+" AND rn.read IS NULL").list();
         Object result = notifications.get(0);
         session.close();
-		return (Long) result;
+		return ((BigInteger) result).intValue();
 	}
 			
 }

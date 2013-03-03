@@ -60,8 +60,7 @@ public class EnvoyerMessageAction extends ActionSupport {
        	System.out.println(contenuMessage);
        	System.out.println("dezded");
       	// System.out.println(contenuMessage);
-		mp.save();*/
-    	 System.out.println("zy");
+		mp.save();*/    	 
     	 return SUCCESS;       
     }
 
