@@ -34,7 +34,14 @@
         <mapping class="org.arQam.AnnonceEfficace.Metier.Objet"/>
         <mapping class="org.arQam.AnnonceEfficace.Metier.Categorie"/>
         <mapping class="org.arQam.AnnonceEfficace.Metier.MessagePrive"/>
-        <mapping class="org.arQam.AnnonceEfficace.Metier.Notification"/>
+
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Vitrine"/>
+        <mapping class="org.arQam.AnnonceEfficace.Metier.Produit"/>
+          <mapping class="org.arQam.AnnonceEfficace.Metier.EspaceProfessionnel"/>
+             <mapping class="org.arQam.AnnonceEfficace.Metier.ModeleAffichage"/>
+        
+       <mapping class="org.arQam.AnnonceEfficace.Metier.Notification"/>
+
         <!--<mapping class="org.arQam.AnnonceEfficace.Metier.Suivi"/>-->
     </session-factory>
 </hibernate-configuration>

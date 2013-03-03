@@ -134,6 +134,16 @@
     	<action name="userSearch" class="org.arQam.AnnonceEfficace.Action.UserSearchAction">
     	    <!-- <interceptor-ref name="login" />  -->
     	    <result name="success">/userSearch_ajax.jsp</result>
+    	</action> 	
+    	
+    	<action name="createProduct" class="org.arQam.AnnonceEfficace.Action.SaveProductAction">
+    	    <interceptor-ref name="login" />
+      		<interceptor-ref name="defaultStack">
+    			<param name="validation.excludeMethods">execute</param>
+			</interceptor-ref>      		          		
+      		<result name="input">/createProduit.jsp</result>
+      		<result name="success" type="redirect">/operationReussie?operation=ajout produit</result>      	
+    	    	
     	</action> 		               		    	    	        	
     	
     	<action name="notifications" class="org.arQam.AnnonceEfficace.Action.NotificationsAction">

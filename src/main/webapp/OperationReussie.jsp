@@ -17,6 +17,11 @@
 			<p><a href="listeAnnonces">consulter la liste des annonces</a></p>
 			<p><a href="publierAnnonce">publier une autre annonce</a></p>		
 		</s:if>		
+		<s:if test="%{operation == 'ajout produit'}">
+			Votre produit a été ajouté !
+			<p><a href="listeProducts">consulter la liste des produits</a></p>
+			<p><a href="createProduct">ajouter un produit</a></p>		
+		</s:if>		
 	</div>	
 </div>
 <!-- END CONTAINER -->
