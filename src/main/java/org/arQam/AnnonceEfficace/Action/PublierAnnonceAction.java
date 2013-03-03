@@ -1,5 +1,6 @@
 package org.arQam.AnnonceEfficace.Action;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.arQam.AnnonceEfficace.Metier.Annonce;
+import org.arQam.AnnonceEfficace.Metier.Notification;
 import org.arQam.AnnonceEfficace.Metier.Objet;
 import org.arQam.AnnonceEfficace.Metier.PositionGeographique;
 import org.arQam.AnnonceEfficace.Metier.Utilisateur;
@@ -60,7 +62,12 @@ public class PublierAnnonceAction extends ActionSupport {
         }        
         annonce.setPositionGeographique(positionGeographique);        
         annonce.setObjet(Objet.load(1));        
-        annonce.save();        
+        long annonceId = annonce.save();           
+        Notification notification = new Notification();
+        notification.setDate(date);
+        notification.setContenu("L'utilisateur '"+user.getNomUtilisateur()+"' a publié une nouvelle annonce '"+annonce.getTitre()+"'");
+        notification.setLien("detailsAnnonce.action?annonceId=" + annonceId);
+        notification.save(user.getId());
         return SUCCESS;
     }
 

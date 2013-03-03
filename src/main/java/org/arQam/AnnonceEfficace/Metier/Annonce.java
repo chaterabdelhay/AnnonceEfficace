@@ -152,13 +152,14 @@ public class Annonce {
 		return null;		
 	}
 
-	public void save() {
+	public long save() {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();    
 		long id = (Integer) session.save(this);             
 		session.getTransaction().commit();             
-		session.close();     
+		session.close();
+		return id;
 	}
 
 	public static List FourLastAnnonces() {

@@ -19,21 +19,30 @@ import org.hibernate.SessionFactory;
 @Table(name="notification")
 public class Notification {
 	@Id	
-	private int id;	
+	@GeneratedValue
+	private long id;	
 	@Column
 	private Date date;
 	@Column
 	private String contenu;	
-
+	@Column
+	private String lien;
+	
 	public Notification(){
 		
 	}
+	
+	public Notification(Date date, String contenu, String lien){
+		this.date = date;
+		this.contenu = contenu;
+		this.lien = lien;
+	}
 		
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
@@ -52,12 +61,38 @@ public class Notification {
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}	
+	
+	
 		
+	public String getLien() {
+		return lien;
+	}
+
+	public void setLien(String lien) {
+		this.lien = lien;
+	}
+	
+	public long save(long idAnnoncePosterUser) { /* idAnnoncePosterUser : l'id de celui qui a posté l'annonce*/
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();    
+        long id = (Long) session.save(this);
+        List resultSuivis =session.createSQLQuery("select suiveurId from suivi  where suivitId="+idAnnoncePosterUser).list();
+        for (Object suiveurId : resultSuivis){        	
+        	System.out.println("test...." + suiveurId);
+        	session.createSQLQuery("insert into recevoirnotification (utilisateurId,notificationId) values("+suiveurId+","+id+")").executeUpdate();
+        }
+        session.getTransaction().commit();             
+        session.close();
+        return id;
+    }
+
 	public static List liste(long idUtilisateur) {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
-     
-        List notifications = session.createQuery("from Notification Order by date DESC").list();
+
+        //List notifications = session.createQuery("from Notification Order by date DESC").list();
+        List notifications = session.createSQLQuery("select n.* from Notification n, recevoirnotification rn WHERE n.id = rn.notificationId AND rn.utilisateurId = "+idUtilisateur+" Order by date DESC").list();
         session.close();
 		return notifications;
 	}

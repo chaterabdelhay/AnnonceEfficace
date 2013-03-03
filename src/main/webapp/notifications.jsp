@@ -16,19 +16,19 @@
 				<div>
 					<h3>Vos notifications</h3><br/>											
 						<s:iterator value="notifications" var="resultObject"> 														
-								<s:if test="%{#resultObject.id == 3}">
+								<s:if test="%{#resultObject[0] == 3}">
 									<div  class="notification_unreaded">
 										<p>
-											<s:property value="#resultObject.contenu"/>
-											<a style="float:right" href="#">>></a>
+											<s:property value="#resultObject[2]"/>
+											<a style="float:right" href="<s:property value="#resultObject[3]"/>">>></a>
 										</p>
 									</div>
 								</s:if>																					
-								<s:if test="%{#resultObject.id != 3}">
+								<s:if test="%{#resultObject[0] != 3}">
 									<div  class="notification_readed">
 										<p>
-											<s:property value="#resultObject.contenu"/>
-											<a style="float:right" href="#">>></a>
+											<s:property value="#resultObject[2]"/>
+											<a style="float:right" href="<s:property value="#resultObject[3]"/>">>></a>
 										</p>
 									</div>
 								</s:if>

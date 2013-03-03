@@ -17,8 +17,7 @@
             <h1>Qu'est ce que "Annonce Efficace" ?</h1>
             <p id="sliderPar">Annonce Efficace (AE) est un site web qui offre plusieurs fonctionnalités pour rendre l'action d'annoncer plus efficace. Vous aurez la possibilité de consulter les annonces à proximté de votre emplacement ou d'indiquer l'emplacement où vous désirez mettre en vente un objet, trouver un job...
             le site web offre la possiblité de créer divers types d'annonces : de vente, d'offre d'emploi, évenement...
-            Avec AE les annonces n'ont jamais été aussi efficaces</p>
-            <a href="#"><img src="template/images/download.png" alt="" /></a>&nbsp;<a href="http://www.youtube.com/embed/jk2cJTbwm04?rel=0&amp;hd=1" class="watch">or watch the video&nbsp;&nbsp;<img src="template/images/video.png" alt="" /></a>
+            Avec AE les annonces n'ont jamais été aussi efficaces</p>           
         </div><!-- end .grid_4 -->
 
 		<!-- begin .grid_8 - IMAGE SLIDER -->
@@ -127,7 +126,7 @@
 	
       <!-- begin .grid_12 - COMMENTS -->
      <div id="strip" class="grid_12">
-         <img id="users" src="template/images/users.png" alt="" />
+         <img id="users" src="template/images/users.png" alt=""/>
          <ul id="comments">
              <li>"Choisir un bon titre pour son annonce serait un atout majeur pour pousser les internautes à consulter votre annonce."</li>
              <li>"L'image que vous joignez à votre annonce est à choisir avec attention car sa qualité peut rendre votre annonce encore plus efficace."</li>
