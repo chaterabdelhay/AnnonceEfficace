@@ -15,16 +15,14 @@
 			<tr>
 				<td>
 					<div class="form-2"  style="width:800px">
-					<s:form action="createProduct" theme="css_xhtml" id="form1" >
+					<s:form action="createProduct" theme="css_xhtml" id="form1" method="POST" enctype="multipart/form-data">
 						<table>
 						<tr>
 						
 								<td colspan="2">
 								
 									<s:iterator value="errorMessages" id="errorMsg">
-										<p style="color: red;">	
-										dddd										
-											<s:property value="%{#errorMsg}" /><p>
+										<p style="color: red;"><s:property value="%{#errorMsg}" /><p>
 										
 									</s:iterator>										
 										<s:if test="%{errorMessages.size > 0}">
@@ -67,18 +65,13 @@
 											
 											  <s:file name="productimage" label="Product Image" />
 										</p>
-										<p>
-										<label for="password">vitrine:</label>
-										<s:select headerKey="-1"  list="vitres" 												
-												name="vitre" />	
-																																									
+										<p>										
+										<s:hidden name="vitrineId" value="1"/>																																																			
 										</p>																												
 										<br>																																			
 										<p class="clearfix">
 											<input type="submit" id="submit" value="Créer">
-										</p>																				
-									
-										
+										</p>																																							
 							</tr>
 						</table>
 					  </s:form>	
