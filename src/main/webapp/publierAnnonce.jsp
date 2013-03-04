@@ -133,7 +133,7 @@
 										<p>
 											<label for="dateEvenement">Type de contrat</label>
 											<s:select headerKey="-1" headerValue="Selectionnez"
-												list="#{'1':'CDI', '2':'CTP'}"
+												list="#{'CDI':'CDI', 'CTP':'CTP'}"
 												name="typeContrat" />
 										</p>
 										<p>

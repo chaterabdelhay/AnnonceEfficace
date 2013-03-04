@@ -14,14 +14,14 @@
 		<table>
 			<tr>
 				<td>
-					<div class="form-2"  style="width:800px">
+					<div style="width:800px">
 					<s:form action="publierAnnonce" theme="css_xhtml" >
 						<table>
 							<tr>
 								<td colspan="4">
-									<h1>
-										<span class="log-in">Selectionnez le type de votre annonce</span>
-									</h1>
+									<h3>
+										<span>Selectionnez le type de votre annonce</span>
+									</h3>
 									<br/>
 								</td>
 							</tr>
