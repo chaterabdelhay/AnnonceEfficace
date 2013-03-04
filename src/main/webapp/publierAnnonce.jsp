@@ -70,7 +70,7 @@
 									<p>
 											<label for="categorieObjet">Catègorie</label>
 											<s:select headerKey="-1" headerValue="Selectionnez"
-												list="#{'Computer':'Computer', 'Telephone':'Telephone','Autre','Autre'}"
+												list="#{'Computer':'Computer', 'Telephone':'Telephone','Autre':'Autre'}"
 												name="categorieObjet" />
 										</p>
 										<p>
@@ -183,10 +183,12 @@
 			<div class="eventtext">				
 				<div id="mapDivBottomBar">
 					<p>
-						<span style="font-weight:800;">Position actuelle : </span>
-						<span id="selectedLatitude"></span>;<span id="selectedLongitude"></span>
-						<a href="#" id="GMapCancel">Annuler</a>
-						<a href="#" id="GMapConfirmPosition">Confirmer</a>
+						<span><a href="#" id="GMapGetCurrentPos">Position actuelle</a></span>
+						<span id="selectedLatitude" style="display:none;"></span><span id="selectedLongitude" style="display:none;"></span>&nbsp;|&nbsp;
+						<a href="#" id="centerMapOnSelectPos">Centrer sur la position selectionnée</a>&nbsp;|&nbsp;
+						<a href="#" id="ZoomMode" title="Double click pour zoomer" style="font-weight:800">Mode zoom</a>&nbsp;|&nbsp;
+						<a href="#" id="SelectPositionMode" title="Click pour choisir la position">Mode selection de position</a>						
+						<span id="GMapRightActions"><a href="#" id="GMapCancel">Fermer</a>&nbsp;|&nbsp;<a href="#" id="GMapConfirmPosition">Confirmer</a></span>
 					</p>
 				</div>				
 			</div>
@@ -194,8 +196,12 @@
 	</div>
 	<script type="text/javascript">
 		var GMapInitialized = false;
-		var initLatitude  = 32.99023555965106;
-		var initLongitude = -7.3828125;
+		var initLatitude  = <s:property value="%{#session.utilisateur.userPositionGeographique.latitude}"/>;
+		var initLongitude = <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>;
+		var drawnMarker = new GMarker(new GLatLng(initLatitude,initLongitude));
+		var doubleClick = false;
+		var GMap = null;
+		var GMapControlMode = 1; // 1: ZoomMode, 2: SelectPositionMode
 		function initGMap(){		
 			if (GBrowserIsCompatible()) {
 				map = new GMap2(document.getElementById("mapa"));				
@@ -205,10 +211,31 @@
 				map.setZoom(8);				
 				document.getElementById('selectedLatitude').innerHTML = initLatitude;
 				document.getElementById('selectedLongitude').innerHTML = initLongitude;
+				map.addOverlay(drawnMarker);
+				//map.setOptions({disableDoubleClickZoom:true});
+				GMap = map;
+				GEvent.addListener(map,'dblclick', function(overlay, point) {
+					//doubleClick = true;
+			    });
 				GEvent.addListener(map, 'click', function(overlay, point) {
-				document.getElementById('selectedLatitude').innerHTML = point.lat();
-				document.getElementById('selectedLongitude').innerHTML = point.lng();
-				});							
+					//if(doubleClick){
+					//	doubleClick = false;
+					//	return;
+					//}
+					if(!(GMapControlMode == 2)){
+						return;
+					}
+					var answer = confirm("Modifer l'emplacement de l'annonce vers le nouveau point selectionné ?\n--------------------------------------------------------\nPS : Si vous voulez naviguer dans la carte vous devez maitenir le button gauche de la souris enfoncé et déplacer la souris")
+					if (answer){
+						map.removeOverlay(drawnMarker)
+						newMarker = new GMarker(point)
+						map.addOverlay(newMarker);
+						drawnMarker = newMarker;
+						document.getElementById('selectedLatitude').innerHTML = point.lat();
+						document.getElementById('selectedLongitude').innerHTML = point.lng();
+						//alert('we should save the new position using ajax');
+					}	
+				});			
 			}
 		}						
 							
@@ -219,9 +246,26 @@
 				GMapInitialized = true;
 			} 	
 		});
+		$("#GMapGetCurrentPos").click(function () {
+			alert(initLatitude + "," + initLongitude);
+		});
 		$("#GMapCancel").click(function () {
 			$("#topGrayLayer1").fadeOut(300);
 		});
+		$("#ZoomMode").click(function () {
+			GMapControlMode = 1;
+			$("#SelectPositionMode").css("font-weight","400");
+			$("#ZoomMode").css("font-weight","800");
+		});
+		$("#SelectPositionMode").click(function () {
+			GMapControlMode = 2;
+			//GMap.setOptions({draggableCursor:'crosshair'});
+			$("#SelectPositionMode").css("font-weight","800");
+			$("#ZoomMode").css("font-weight","400");
+		});	
+		$("#centerMapOnSelectPos").click(function () {
+			map.setCenter(new GLatLng(initLatitude,initLongitude ), 6, 0);
+		});	
 		$("#GMapConfirmPosition").click(function () {
 			$("#posGeoLatitude").val($("#selectedLatitude").html());
 			$("#posGeoLongitude").val($("#selectedLongitude").html());
