@@ -70,7 +70,7 @@
 									<p>
 											<label for="categorieObjet">Catègorie</label>
 											<s:select headerKey="-1" headerValue="Selectionnez"
-												list="#{'1':'Computer', '2':'Telephone'}"
+												list="#{'Computer':'Computer', 'Telephone':'Telephone','Autre','Autre'}"
 												name="categorieObjet" />
 										</p>
 										<p>
@@ -88,7 +88,15 @@
 											<label for="titre">description</label>
 											<s:textfield name="descriptionObjet" id="titre"
 												placeholder="descripotion de l'objet" />
-										</p>										
+										</p>	
+										<p>
+											<label for="poste">Prix (ex: 1500,00)</label>
+											<s:textfield name="prix" id="titre"
+												placeholder="Le prix" />
+										</p>
+										<p>											
+											 <s:checkbox name="negociable" fieldValue="false" label="Négociable"/>																		
+										</p>																		
 								</td>
 								</s:if>	
 								<s:if test="%{type == \"E\"}">								
@@ -96,19 +104,17 @@
 									<p>
 											<label for="typeEvenement">Type de l'évenement</label>
 											<s:select headerKey="-1" headerValue="Selectionnez"
-												list="#{'1':'Séminaire', '2':'Conférence' ,'3':'Culturel', '4':'Festival','5':'Autre'}"
+												list="#{'Séminaire':'Séminaire', 'Conférence':'Conférence' ,'Culturel':'Culturel', 'Festival':'Festival','Autre':'Autre'}"
 												name="typeEvenement" />
 										</p>
 										<p>
 											<label for="dateEvenement">Date</label>
-											<s:textfield name="dateEvenement" maxlength="30" id="titre"
-												placeholder="Date de l'annonce" />
+											<s:date name="currentDate" var="formattedDate" format="dd/MM/yyyy"/> 
+											<s:textfield name="dateEvenement" value="%{formattedDate}"/>											
 										</p>
 										<p>
-											<label for="heureEvenement">Heure</label>
-											<s:textfield name="heureEvenement" id="titre"
-												placeholder="Heure de l'évenement" />
-											<s:hidden name="nomObjet"/>
+											<label for="heureEvenement">Heure (ex: 10:30:00)</label>
+											<s:textfield name="heureEvenement" id="titre"/>											
 										</p>																		
 								</td>
 								</s:if>										
@@ -150,7 +156,7 @@
 												placeholder="La durée du stage" />
 										</p>
 										<p>
-											Rémuneration : <input type="checkbox"	name="rumenere" />
+											Rémuneration : <s:checkbox name="remuneration" fieldValue="false"/>
 										</p>
 										<p>
 											<label for="poste">Montant</label>
@@ -158,7 +164,7 @@
 												placeholder="Le montant" />
 										</p>
 										<p>											
-											Préembauche : <input type="checkbox"	name="preembauche" />								
+											Préembauche : <s:checkbox name="preembauche" fieldValue="false"/>								
 										</p>																		
 								</td>
 								</s:if>								
@@ -223,24 +229,14 @@
 		});	
 	</script>
 
-	<!-- begin .grid_12 - COMMENTS -->
-	<div id="strip" class="grid_12">
-		<img id="users" src="template/images/users.png" alt="" />
-		<ul id="comments">
-			<li>"Maecenas pharetra egestas adipiscing. Nullam consequat
-				velit in felis sodales in facilisis justo fringilla. Pellentesque
-				nec lobortis dolor. Praesent et mi eu magna dapibus condimentum."<br />
-				<span class="signature">John Doe - 4 October 2011</span>
-			</li>
-			<li>"Ut dapibus fringilla volutpat. Sed ullamcorper augue nec
-				risus facilisis eu venenatis metus tristique. In hac habitasse
-				platea dictumst. Aenean at lacus urna. Donec pretium mattis
-				gravida."<br /> <span class="signature">John Doe - 4 October
-					2011</span>
-			</li>
-		</ul>
-	</div>
-	<!-- end .grid_12 -->
+	 <!-- begin .grid_12 - COMMENTS -->
+     <div id="strip" class="grid_12">
+         <img id="users" src="template/images/users.png" alt=""/>
+         <ul id="comments">
+             <li>"Choisir un bon titre pour son annonce serait un atout majeur pour pousser les internautes à consulter votre annonce."</li>
+             <li>"L'image que vous joignez à votre annonce est à choisir avec attention car sa qualité peut rendre votre annonce encore plus efficace."</li>
+         </ul>
+     </div><!-- end .grid_12 -->
 
 </div>
 <!-- END CONTAINER -->

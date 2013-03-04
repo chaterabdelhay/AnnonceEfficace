@@ -9,49 +9,40 @@
 
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
-	<br /> <br /> <br />
+	<br /> <br /> <br /><br /> <br /> <br />
 	
-	<div style="margin-left: 160px;">
+	<div>
 	 
+		<table id="login">
 		
-		
+			<tr>
 			
-					<div class="form-2">
-					Liste des messages:
-					<div class="demo_jui">
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
-<thead>
-		<tr>
-			<td>objet</td> <td>message</td><td>emetteur</td>
-		</tr>
-	</thead>					
-			<s:iterator value="usersEmetters" var="resultObject"> 
-		<tr class="gradeX"><td><s:property value="#resultObject[0]"/></td>
-						<td><s:property value="#resultObject[1]"/></td>
-						<td><s:property value="#resultObject[2].nomUtilisateur"/></td></tr>
-						
+				<td>
+					<div>
+					<div>
+						<h1 class="gray">Liste des messages</h1>
+					</div>
+					<table style="width:600px">
+						<tr>
+							<td><h3>Par</h3></td><td><h3>Titre</h3></td><td><h3>Message</h3></td>
+						</tr>
+						<s:if test="%{usersEmetters.size() == 0}">
+							<tr><td colspan="3" style="padding-left:50px;"><p>Aucun message</p></td></tr>
+						</s:if>
+						<s:iterator value="usersEmetters" var="resultObject"> 
+							<tr>
+								<td><p><s:property value="#resultObject[0]"/></p></td>
+								<td><p><s:property value="#resultObject[1]"/></p></td>
+								<td><p><s:property value="#resultObject[2].nomUtilisateur"/></p></td></tr>												
 						</s:iterator>
 						
-		</table>
-		
-			</div>
-			
-			
-			
-			
-			
-									
-		
-						
-
-
-
-						
-						<a href="#" class="show">envoyer message</a>
+					</table>					
+						<br/>
+						<h3><a href="#" class="show_hide">Envoyer un message</a></h3>
 						<div class="slidingDiv">
 <s:form action="envoyerMessage">
      <table>
-     <tr><td><label>objet :</label></td><td><s:textfield name="objet"/> </td></tr>
+     <tr><td colspan="2"><label>objet :</label></td></tr> <tr><td><s:textfield name="objet"/> </td></tr>
      <tr><td> <s:textarea name="contenuMessage" rows="10" cols="40" /></td></tr>
       
       
@@ -76,9 +67,9 @@
 
 
     $(".slidingDiv").hide();
-	$(".show").show();
+	$(".show_hide").show();
 	
-	$('.show').click(function(){
+	$('.show_hide').click(function(){
 	$(".slidingDiv").slideToggle();
 	});
 
@@ -92,30 +83,9 @@
 		</table>
 	
 		</div>
-		
-	
-
-	<!-- begin .grid_12 - COMMENTS -->
-	<div id="strip" class="grid_12">
-		<img id="users" src="template/images/users.png" alt="" />
-		<ul id="comments">
-			<li>"Maecenas pharetra egestas adipiscing. Nullam consequat
-				velit in felis sodales in facilisis justo fringilla. Pellentesque
-				nec lobortis dolor. Praesent et mi eu magna dapibus condimentum."<br />
-				<span class="signature">John Doe - 4 October 2011</span>
-			</li>
-			<li>"Ut dapibus fringilla volutpat. Sed ullamcorper augue nec
-				risus facilisis eu venenatis metus tristique. In hac habitasse
-				platea dictumst. Aenean at lacus urna. Donec pretium mattis
-				gravida."<br /> <span class="signature">John Doe - 4 October
-					2011</span>
-			</li>
-		</ul>
-	</div>
-	<!-- end .grid_12 -->
+			
 
 </div>
-
 <!-- END CONTAINER -->
 
 <!-- END : page body content -->

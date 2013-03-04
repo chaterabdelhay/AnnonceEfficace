@@ -40,9 +40,7 @@ public class ReadNotificationAction extends ActionSupport {
         //redirect to see the link
 		response.sendRedirect(lien);
         //System.out.println("ddddd" + notificationId);
-		//System.out.println("ddddd" + lien);
-		
-		
+		//System.out.println("ddddd" + lien);				
         return SUCCESS;
 	}
 	

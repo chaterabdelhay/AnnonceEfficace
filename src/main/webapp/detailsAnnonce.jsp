@@ -232,19 +232,17 @@ $.ajax({
 			</tr>
 			<tr>
 				<td colspan="2">
-					<div class="commentaire">
-						<div id="addCommentContainer">
-							<p>Add a Comment</p>
-							
-							<p><div id="commentaire">
-							</div></p>	
+					<div class="commentairesContainer">
+						<h3>Liste des commentaires</h3>
+						<div id="addCommentContainer">																					
 							<s:iterator value="commentaires" var="resultObject">
-							<div class="commentaire" style="margin-bottom: 20px;"><s:property value="#resultObject[1]"/>:<s:property value="#resultObject[0]"/> </div>
+							<div class="commentaire" style="margin-bottom: 20px;"><p><span class="auteur"><s:property value="#resultObject[1]"/></span> a dit :<br/><span class="contenu"><s:property value="#resultObject[0]"/></span></p></div>
 							</s:iterator>	
 							<form id="addCommentForm" method="post" action="">
+								<p  style="float:right;">Nouveau commentaire</p>
 								<s:textarea name="contenu" id="msgTxt"
-									placeholder="Commentez cette annonce !" cols="80" rows="10" />
-								<s:submit id="submit" value="Submit" />
+									placeholder="Commentez cette annonce !" cols="80" rows="4" />
+								<s:submit id="submit" value="Envoyer" />
 								
 							</form>							
 						</div>										

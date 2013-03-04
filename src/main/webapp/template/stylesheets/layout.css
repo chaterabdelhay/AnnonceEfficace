@@ -668,10 +668,27 @@ FOOTER
 	border-radius: 4px; border:10px solid rgba(55,55,55,0.1);
 }
 
+.commentairesContainer{
+	background-color:rgba(255,255,255,0.4);
+	border-left:5px solid rgba(0,0,0,0.05);
+	padding-left:4px;	
+}
+
 .commentaire{
-	background-color:rgba(125,52,1,0.3);padding:5px;
-	border-left:5px solid rgba(0,0,0,0.1);
-	color:#fff; !important
+	background-color:rgba(255,255,255,0.4);padding-top:5px;
+	border-left:5px solid rgba(0,0,0,0.05);	padding-left:5px;
+}
+
+.commentaire p{	
+	color:#rgba(0,0,0,0.5);
+}
+
+.commentaire .auteur{	
+	font-weight:800;
+}
+
+.commentaire .contenu{	
+	padding-left:10px;	
 }
 
 .abonnementLink{
