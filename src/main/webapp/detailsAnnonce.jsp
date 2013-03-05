@@ -21,6 +21,16 @@
 					style="padding-bottom: 5px; border-bottom: 1px solid #ddd;">
 					<p>
 						<span style="font-weight: 800">Type de l'annonce : <s:property value="%{typeAnnonce}"/><br/>Titre : <s:property value="%{annonce.titre}"/></span>
+						<div>
+							<table cellpadding="4" style="display: inline; margin-left:5px;">
+								<tr>									
+									<td>
+											<h3><a href="#" id="voirPosition">Position géographique</a></h3>
+										</td>
+									<td><img src="template/images/marker.png" /></td>
+								</tr>
+							</table>
+						</div>
 						<span style="float: right">																				
 		
 		<s:if test="%{!evaluatedByUser}">
@@ -185,8 +195,7 @@ $.ajax({
 		<div id="rated">
 			<div id="rating" style="height: 17px; line-height: 17px;"><s:property value="average"/></div>
 			<div> - &nbsp;</div>
-			<div id="small_stars">&nbsp;</div>
-			
+			<div id="small_stars">&nbsp;</div>			
 		</div>
 		</div>
 		</s:if>
@@ -194,10 +203,7 @@ $.ajax({
 	
 	
 	<input type="hidden" id="rating_output" name="rating_output" value="not rated" />
-</div>
-
-		 
-							 
+</div>	 
 		<span id="avg" style="float:right;">Evaluation moyenne : <s:property value="average"/></div> </span>			
 						
 					</p>
@@ -251,7 +257,7 @@ $.ajax({
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="2">					
 					<div class="commentairesContainer">
 						<h3>Liste des commentaires</h3>
 						<div id="addCommentContainer">																					
@@ -290,16 +296,93 @@ $.ajax({
 							});
 						});
 						//fin commentaire javascript
-						
-						
-						
-						
 					</script>
 				</td>
 			</tr>
 		</table>
 	</div>
 </div>
+
+<div id="topGrayLayer1" class="topGrayLayer">
+		<div id="mapDiv">
+			<div id="mapa"></div>
+			<div class="eventtext">				
+				<div id="mapDivBottomBar">
+					<p>						
+						<!-- BEGIN condition for user marker-->
+						<s:if test="%{#session.utilisateur!=null}">
+						<a href="#" id="centerMapOnUserPos">Centrer sur votre position</a>&nbsp;|&nbsp;
+						</s:if>						
+						<a href="#" id="centerMapOnAnnoncePos">Centrer sur la position de l'annonce</a>						
+						<span id="GMapRightActions"><a href="#" id="GMapCancel">Fermer</a></span>
+					</p>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+				
+		var GMapInitialized = false;
+		<!-- BEGIN condition for user marker-->
+		<s:if test="%{#session.utilisateur!=null}">
+		var userLatitude  = <s:property value="%{#session.utilisateur.userPositionGeographique.latitude}"/>;
+		var userLongitude = <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>;
+		var userIcon = new GIcon(G_DEFAULT_ICON);		
+		userIcon.image = "template/images/GMap/markers/user.png";		
+		var userMarkerOptions = { icon:userIcon, width:24, height:21};
+		var UserMarker = new GMarker(new GLatLng(userLatitude,userLongitude),userMarkerOptions);
+		</s:if> 
+		<!-- END condition for user marker-->
+		var annonceLatitude = <s:property value="%{annonce.positionGeographique.latitude}"/>;
+		var annonceLongitude = <s:property value="%{annonce.positionGeographique.longitude}"/>;
+		var annonceIcon = new GIcon(G_DEFAULT_ICON);
+		annonceIcon.image = "template/images/GMap/markers/annonce.png";		
+		var annonceMarkerOptions = { icon:annonceIcon , width:24, height:21};
+		var AnnonceMarker = new GMarker(new GLatLng(annonceLatitude,annonceLongitude),annonceMarkerOptions);
+		var doubleClick = false;
+		var GMap = null;
+		var GMapControlMode = 1; // 1: ZoomMode, 2: SelectPositionMode
+		function initGMap(){		
+			if (GBrowserIsCompatible()) {
+				map = new GMap2(document.getElementById("mapa"));				
+				map.addControl(new GLargeMapControl());
+				map.addControl(new GMapTypeControl(3));
+				map.setCenter(new GLatLng(annonceLatitude,annonceLongitude ), 11, 0);
+				map.setZoom(8);								
+				<!-- BEGIN condition for user marker-->
+				<s:if test="%{#session.utilisateur!=null}">
+				map.addOverlay(UserMarker);
+				</s:if>
+				map.addOverlay(AnnonceMarker);
+				//map.setOptions({disableDoubleClickZoom:true});
+				GMap = map;
+				GEvent.addListener(map,'dblclick', function(overlay, point) {
+					//doubleClick = true;
+			    });
+				GEvent.addListener(map, 'click', function(overlay, point) {								
+				});			
+			}
+		}	
+		$("#voirPosition").click(function () {
+  			$("#topGrayLayer1").fadeIn(500);
+  			if(GMapInitialized == false){
+				initGMap();
+				GMapInitialized = true;
+			} 	
+		});
+		$("#GMapCancel").click(function () {
+			$("#topGrayLayer1").fadeOut(300);
+		});		
+		<!-- BEGIN condition for user marker-->
+		<s:if test="%{#session.utilisateur!=null}">
+		$("#centerMapOnUserPos").click(function () {
+			map.setCenter(new GLatLng(userLatitude,userLongitude ), 6, 0);			
+		});
+		</s:if>
+		$("#centerMapOnAnnoncePos").click(function () {
+			map.setCenter(new GLatLng(annonceLatitude,annonceLongitude ), 6, 0);			
+		});			
+	</script>
 
 <!-- END CONTAINER -->
 

@@ -105,7 +105,9 @@
     	<action name="ajax_getListeAnnonces" class="org.arQam.AnnonceEfficace.Action.GetListeAnnoncesAction">    			           
     		<result name="success">/ajax_getListeAnnonces.jsp</result>
     	</action>
-    	
+    	<action name="GMapAnnoncesExplorer" class="org.arQam.AnnonceEfficace.Action.GetListeAnnoncesAction">    			           
+    		<result name="success">/GMapAnnoncesExplorer.jsp</result>
+    	</action>
     	  
     	<action name="ajax_createAccounctVerification" class="org.arQam.AnnonceEfficace.Action.CreateAccountVerificationAction">    			           
     		<result name="success">/ajax_createAccountVerification.jsp</result>
