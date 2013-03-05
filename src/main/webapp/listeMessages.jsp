@@ -6,6 +6,7 @@
 <jsp:include page="header.jsp" />
 
 	<link rel="stylesheet" href="template/stylesheets/style.css" type="text/css" media="print, projection, screen" />
+	<link rel="stylesheet" href="template/stylesheets/jNotify.jquery.css" type="text/css" media="print, projection, screen" />
 
 	<script type="text/javascript" src="template/javascripts/jquery-latest.js"></script>
 	<script type="text/javascript" src="template/javascripts/jquery.tablesorter.js"></script>
@@ -60,6 +61,7 @@
 					
 						<br/>
 						<h3><a href="#" class="show_hide">Envoyer un message</a></h3>
+						<a href="#" class="success">It's a success !</a><br />
 						<div class="t">
 						
 <div class="container_12">
@@ -69,8 +71,8 @@
 			<tr>
 				<td>
 					<div class="form-2"  style="width:800px">
-					<s:form action="envoyerMessage" theme="css_xhtml" >
-						<input type="hidden" name="type" value="<s:property value="%{type}" />"/>
+					<s:form action="envoyerMessage" theme="css_xhtml" id="messageForm">
+						
 						<table>
 							<tr>
 								<td colspan="2">
@@ -104,7 +106,7 @@
 												name="userdestinataire" />	</p>
 												<br>																																			
 										<p class="clearfix">
-											<input type="submit" value="Envoi">
+										<input type="submit" id="submit" value="Envoi">
 										</p>																				
 									
 								</td>
@@ -139,6 +141,37 @@
 });
 
 	</script>
+	
+<script type="text/javascript" src="template/javascripts/jNotify.jquery.js"></script>
+<script type="text/javascript">
+$('#messageForm').submit(function(e) {
+	e.preventDefault();
+		/** success **/
+		
+		$.ajax({
+			type : "GET",
+			url : "envoyerMessage.action",
+			error : function(msg) {
+				alert("rien");
+			},
+			success : function(e) {
+				//e.preventDefault();
+				//alert("bien");
+				//$("a").click(function(e){
+					//e.preventDefault();
+					//alert("bien");
+					jSuccess('message envoyé');
+					
+									}
+							}); 
+							
+				
+					
+			
+	});
+		
+	
+</script>
 					</div>
 					
     </div>  
