@@ -52,14 +52,9 @@
         <script type="text/javascript" src="template/javascripts/jquery.bxSlider.min.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.ticker.js"></script>
         <script type="text/javascript" src="template/javascripts/OptionPopupDescriptor.js"></script>
-         <script type="text/javascript" src="template/javascripts/jquery.js"></script>
-             <script type="text/javascript" src="template/javascripts/jquery.dataTables.js"></script>
-              <script type="text/javascript" src="template/javascripts/jquery.dataTables.min.js"></script>
-              
-          
-              
-            
-       
+        
+        <script type="text/javascript" src="template/javascripts/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="template/javascripts/jquery.dataTables.min.js"></script>                                                        
         <!-- JQUERY rating stars -->
         
         <script type="text/javascript" src="template/javascripts/jquery.rating.pack.js"></script>
@@ -184,10 +179,7 @@
             	<li><a href="listeMessages" style="color:#fff;">Mes messages</a></li>
             </s:if>
            
-            <li><a href="listeAnnonces">Annonces</a></li>            
-            <s:if test="%{#session.utilisateur!=null}">
-            	<li><a href="publierAnnonce" style="color:#fff;">Publier une annonce</a></li>
-            </s:if>
+            <li><a href="listeAnnonces">Annonces</a></li>                        
             <s:if test="%{#session.utilisateur!=null}">
             	<li><a href="disconnect" style="color:#fff;">Se deconnecter</a></li>
             </s:if>
@@ -199,9 +191,7 @@
     </div><!-- end .grid_9 -->
     
     <div class="clear"></div>
-    
-</div><!-- END HEADER -->
-<!-- BEGIN SIDEBAR -->
+    <!-- BEGIN SIDEBAR -->
 <s:if test="%{#session.utilisateur!=null}">
 <div id="sideBar">
 	<div id="sideBarTopPart"></div>
@@ -253,3 +243,4 @@
 	</tr>
 </table>
 <!-- END SIDEBAR -->
+</div><!-- END HEADER -->
