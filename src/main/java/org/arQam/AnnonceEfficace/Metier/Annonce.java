@@ -179,7 +179,10 @@ public class Annonce {
         	table = "annonceevenement";
         }else if(type.equals("V")){
         	table = "annoncevente";
-        }else if(type.equals("OS")){
+        }else if(type.equals("OE")){
+        	table = "annonceoffreemploi";
+        }
+        else if(type.equals("OS")){
         	table = "annonceoffrestage";
         }
         Object[] result = (Object[]) session.createSQLQuery("SELECT * FROM "+table+" WHERE annonceId= :a")

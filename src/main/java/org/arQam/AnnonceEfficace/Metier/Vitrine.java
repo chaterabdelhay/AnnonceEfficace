@@ -73,12 +73,10 @@ public class Vitrine {
 	public void setEsp(EspaceProfessionnel esp) {
 		this.esp = esp;
 	}
-	public static List listVitres() {
-		
+	public static List listVitres() {		
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
-        String hqlRequest = "Select c.nom from Vitrine c";
-        
+        String hqlRequest = "Select c.nom from Vitrine c";        
         List resultList = session.createQuery(hqlRequest).list();        
         return resultList;
         

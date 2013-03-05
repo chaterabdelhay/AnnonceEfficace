@@ -226,6 +226,26 @@ $.ajax({
 							<p>Non Négociable</p>
 						</s:if>							
 					</s:if>
+					<s:if test="%{annonce.type == \"OE\"}">
+						<p><span style="font-weight: 800">Poste : </span><s:property value="%{annonceExtraInfos[1]}"/></p>
+						<p><span style="font-weight: 800">Compètences : </span><s:property value="%{annonceExtraInfos[2]}"/></p>
+						<p><span style="font-weight: 800">Type du contrat : </span><s:property value="%{annonceExtraInfos[3]}"/></p>
+						<p><span style="font-weight: 800">Salaire : </span><s:property value="%{annonceExtraInfos[4]}"/> Dhs</p>						
+					</s:if>
+					<s:if test="%{annonce.type == \"OS\"}">
+						<p><span style="font-weight: 800">Compètences : </span><s:property value="%{annonceExtraInfos[1]}"/></p>
+						<p><span style="font-weight: 800">Durée : </span><s:property value="%{annonceExtraInfos[2]}"/></p>
+						<s:if test="%{annonceExtraInfos[3] == 1}">						
+							<p>Stage rémunéré</p>
+						</s:if>
+						<s:if test="%{annonceExtraInfos[3] == 0}">
+							<p>Stage non rémunéré</p>
+						</s:if>
+						<p><span style="font-weight: 800">Rémuneration : </span><s:property value="%{annonceExtraInfos[4]}"/> Dhs</p>							
+						<s:if test="%{annonceExtraInfos[5] == 1}">						
+							<p>Préembauche</p>
+						</s:if>						
+					</s:if>
 					<p style="font-weight: 800">Description</p>
 					<p><s:property value="%{annonce.description}"/></p>
 				</td>

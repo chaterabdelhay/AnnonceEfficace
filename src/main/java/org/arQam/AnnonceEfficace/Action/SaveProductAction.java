@@ -1,64 +1,72 @@
 package org.arQam.AnnonceEfficace.Action;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-import org.arQam.AnnonceEfficace.Metier.Annonce;
-import org.arQam.AnnonceEfficace.Metier.Objet;
-import org.arQam.AnnonceEfficace.Metier.PositionGeographique;
+import javax.servlet.http.HttpServletRequest;
 import org.arQam.AnnonceEfficace.Metier.Produit;
-import org.arQam.AnnonceEfficace.Metier.Utilisateur;
 import org.arQam.AnnonceEfficace.Metier.Vitrine;
-
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.File;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.interceptor.ServletRequestAware;
 
-public class SaveProductAction extends ActionSupport {		
-	public String nom;
-	public String productimage;
-	public float prix;
-	public String vitre;
-	 public List vitres;
-	private String type; 
-	 public List errorMessages;
+
+public class SaveProductAction extends ActionSupport implements ServletRequestAware {
+	private HttpServletRequest servletRequest;
 	
-	 public String input() throws Exception {
+	
+	public String nom;
+	public File productimage;
+	public String productimageContentType; // filled automaticly
+	public String productimageFileName;// filled automaticly
+	//public String productimageFileName;
+	public float prix;
+	public String vitrineId;	
+	private String type; 
+	public List errorMessages;	
+	
+	public String execute() throws Exception {				
+		if(!isValid()) {					
 			return INPUT;
 		}
-	public String execute() throws Exception {
-		if(nom == null || productimage == null||Float.toString(prix)==null||vitre.isEmpty()) // nouvelle saisie
-		 	{vitres = (List)Vitrine.listVitres();
-			return INPUT;	}	
-		// validate();
-		if(!isValid()) {System.out.print("e");return INPUT;}
-	
+		// upload the file
+		try {
+            String filePath = servletRequest.getSession().getServletContext().getRealPath("/") + "\\uploadedImage";
+            System.out.println("Server path:" + filePath);
+            System.out.println("Image name:" + productimage.getPath());
+            File fileToCreate = new File(filePath, productimageFileName);            
+            FileUtils.copyFile(this.productimage, fileToCreate);
+            System.out.println("new file :" + fileToCreate.getPath());
+            System.out.println("new file :" + productimageFileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            addActionError(e.getMessage()); 
+            return INPUT;
+        }
+		// save the product entity to database
 		Produit pr = new Produit();
-      pr.setNom(nom);
-        pr.setPhoto(productimage);
+        pr.setNom(nom);
+        pr.setPhoto(productimageFileName);
         pr.setPrix(prix);
         // set current date
-        pr.setVitrine(Vitrine.load(Vitrine.loadByName(vitre)));
-        System.out.print(vitre);
+        int vitrineId = Integer.valueOf(this.vitrineId);
+        pr.setVitrine(Vitrine.load(vitrineId));
+        System.out.print(vitrineId);
         pr.save();
         return SUCCESS;
     }
 	 public List getErrorMessages() {
-			return errorMessages;
-		}
-		public void setErrorMessages(List errorMessages) {
-			this.errorMessages = errorMessages;
-		}
-		public boolean isValid(){
-			boolean errorExists= false;
-			if(nom != null & productimage != null & Float.toString(prix)!=null & vitre!=null)
-			{
+		return errorMessages;
+	}
+	public void setErrorMessages(List errorMessages) {
+		this.errorMessages = errorMessages;
+	}
+	public boolean isValid(){
+		boolean errorExists= false;
+		if(nom != null & productimage != null & Float.toString(prix)!=null & vitrineId!=null)
+		{
 			errorMessages = new ArrayList();
-			if(nom.isEmpty() || productimage.isEmpty()||Float.toString(prix).isEmpty() ){ // champs vides{
+			if(nom.isEmpty() || productimage == null||Float.toString(prix).isEmpty() ){ // champs vides{
 				errorMessages.add("veuillez remplir tous les champs svp ");
 				errorExists = true;
 				System.out.print("a");
@@ -68,8 +76,8 @@ public class SaveProductAction extends ActionSupport {
 				errorExists = true;
 				System.out.print("b");
 			}
-			if(productimage.isEmpty()){
-				errorMessages.add("Vous devez entrer une image");
+			if(productimage == null){
+				errorMessages.add("Selectionnez l'image du produit");
 				errorExists = true;
 				System.out.print("c");
 			}
@@ -78,10 +86,15 @@ public class SaveProductAction extends ActionSupport {
 				errorExists = true;
 				System.out.print("d");
 			}
-			}	
-			if(errorExists) return false;
-			return true; 
-			
+		}else{
+			return false;
 		}
+		if(errorExists) return false;
+			return true; 			
 	}
-
+	
+	public void setServletRequest(HttpServletRequest servletRequest) {
+		this.servletRequest = servletRequest;			
+	}
+		
+}

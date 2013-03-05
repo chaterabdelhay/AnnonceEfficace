@@ -11,21 +11,21 @@ import org.arQam.AnnonceEfficace.Metier.Vitrine;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CreateProductAction extends ActionSupport {	
-	
-	 public List vitres;
-	
-   
-   public String execute() throws Exception {
-   	//System.out.println(ServletActionContext.getRequest().getSession().); 
-   	vitres = (List)Vitrine.listVitres();//listUsers();
-   	 Map session = ActionContext.getContext().getSession();
-        Utilisateur user = (Utilisateur) session.get("utilisateur");
-        //usersEmetters=MessagePrive.listMessages(user.getId());
-        
-		   
+public class CreateProductAction extends ActionSupport {		
+	private String vitrineId;
+  	public String execute() throws Exception {
+  		//System.out.println(ServletActionContext.getRequest().getSession().); 
+   	   /*setVitres((List)Vitrine.listVitres());//listUsers();
+   	   Map session = ActionContext.getContext().getSession();
+       Utilisateur user = (Utilisateur) session.get("utilisateur");
+       //usersEmetters=MessagePrive.listMessages(user.getId());*/        		   
        return SUCCESS;       
-   }
-
+  	}
+	public String getVitrineId() {
+		return vitrineId;
+	}
+	public void setVitrineId(String vitrineId) {
+		this.vitrineId = vitrineId;
+	}
   
 }
