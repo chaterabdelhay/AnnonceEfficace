@@ -59,26 +59,9 @@ public class Produit {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
      
-        List result = session.createQuery("from Annonce").list();
+        List result = session.createQuery("from Produit").list();
         session.close();
         return result;
-    }
-	
-	public static List listOrderByDistance(String type, double latitude, double longitude) {
-		if(type == null || type.isEmpty() || type.equals("All")) type="%";
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session session = sf.openSession();
-        String hqlRequest = "Select a, sqrt(power(a.positionGeographique.latitude-"+latitude+",2) + " +
-        				"power(a.positionGeographique.longitude-"+longitude+",2)) from Annonce a WHERE a.type LIKE'"+type+"' ORDER BY 2";
-        
-        List resultList = session.createQuery(hqlRequest).list();        
-        return resultList;
-        /*List annonces = new ArrayList();
-        for (Object result : resultList) {        	
-        	annonces.add(((Object[]) result)[0]);            
-        }
-        session.close();
-        return annonces;*/
     }
 	
 	public static Produit load(long id) {

@@ -102,13 +102,14 @@ public class Vitrine {
 		
 	}
 
-	public static List getEspaceProfesionnelVitrines(int espaceProfessionnelId) {
+	public static List getEspaceProfessionnelVitrines(int espaceProfessionnelId) {
 		 SessionFactory sf = HibernateUtil.getSessionFactory();
 	        Session session = sf.openSession();
 	        String hqlRequest = "from Vitrine WHERE espaceprofessionnelId = " + espaceProfessionnelId;        
 	        List resultList = session.createQuery(hqlRequest).list();        
 	        return resultList;
-	}	    
+	}
+	  
 }
 	
 	

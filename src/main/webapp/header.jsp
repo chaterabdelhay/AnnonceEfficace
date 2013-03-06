@@ -23,17 +23,14 @@
         <link rel="stylesheet" href="template/stylesheets/nivoslider/default/default.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/bx_styles/bx_styles.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="template/stylesheets/top_panel.css" type="text/css" media="screen" />  
-         <link rel="stylesheet" href="template/stylesheets/star_rating.css" type="text/css" media="screen" /> 
-         <link rel="stylesheet" href="template/stylesheets/imageScroller.css" type="text/css" media="screen" />
-         <link rel="stylesheet" href="template/stylesheets/demo_page.css" type="text/css" media="screen" /> 
-         <link rel="stylesheet" href="template/stylesheets/demo_table.css" type="text/css" media="screen" /> 
-            <link rel="stylesheet" href="template/stylesheets/demo_table_jui.css .css" type="text/css" media="screen" />
-               <link rel="stylesheet" href="template/stylesheets/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
-              <link rel="stylesheet" href="template/stylesheets/jquery.dataTables.css" type="text/css" media="screen" />
-              <link rel="stylesheet" href="template/stylesheets/jquery.dataTables.css" type="text/css" media="screen" />
-          
-         
-         
+        <link rel="stylesheet" href="template/stylesheets/star_rating.css" type="text/css" media="screen" /> 
+        <link rel="stylesheet" href="template/stylesheets/imageScroller.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="template/stylesheets/demo_page.css" type="text/css" media="screen" /> 
+        <link rel="stylesheet" href="template/stylesheets/demo_table.css" type="text/css" media="screen" /> 
+        <link rel="stylesheet" href="template/stylesheets/demo_table_jui.css .css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="template/stylesheets/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="template/stylesheets/jquery.dataTables.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="template/stylesheets/jquery.dataTables.css" type="text/css" media="screen" />
 	<!-- End Stylesheets -->
     
     <!-- Begin Google Web Fonts -->
