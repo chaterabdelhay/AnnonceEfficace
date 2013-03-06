@@ -40,7 +40,7 @@ public class GetListeAnnoncesAction extends ActionSupport {
     private String type;    
     public String execute() throws Exception {
     	//do what you want to do before sleeping
-		  Thread.currentThread().sleep(5000);//sleep for 1000 ms
+		  Thread.currentThread().sleep(1000);//sleep for 1000 ms
 		  //do what you want to do after sleeptig
     	// set positionGeographique
     	Map session = ActionContext.getContext().getSession();

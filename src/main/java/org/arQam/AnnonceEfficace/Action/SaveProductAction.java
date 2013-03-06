@@ -55,9 +55,11 @@ public class SaveProductAction extends ActionSupport implements ServletRequestAw
         pr.save();
         return SUCCESS;
     }
-	 public List getErrorMessages() {
+	
+	public List getErrorMessages() {
 		return errorMessages;
 	}
+	 
 	public void setErrorMessages(List errorMessages) {
 		this.errorMessages = errorMessages;
 	}

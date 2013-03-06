@@ -23,8 +23,7 @@
 		<!-- begin .grid_8 - IMAGE SLIDER -->
         <div class="grid_8">
             <!-- NIVO SLIDER -->
-            <div class="slider-wrapper theme-default">
-                <div class="ribbon"></div>
+            <div class="slider-wrapper theme-default">                
                 <div id="slider" class="nivoSlider">
                     <img src="template/images/slider/1.jpg" alt="" title="1# This is an example of a caption" />
                     <img src="template/images/slider/2.jpg" alt="" title="2# This is an example of a caption" />

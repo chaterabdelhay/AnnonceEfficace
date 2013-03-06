@@ -1,5 +1,7 @@
 package org.arQam.AnnonceEfficace.Metier;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,22 +25,18 @@ public class EspaceProfessionnel {
 	@Column
 	private String logo;
 	@Column
-	private String description;
-	
+	private String description;	
 	@ManyToOne
 	@JoinColumn(name="utilisateurId")
-	private Utilisateur user;
+	private Utilisateur utilisateur;
 	@ManyToOne
 	@JoinColumn(name="modeleAffichageId")
-	private ModeleAffichage ma;
+	private ModeleAffichage modeleAffichage;
 	
-
 	public EspaceProfessionnel() {
 
 	}
-
 	
-
 	public int getId() {
 		return id;
 	}
@@ -83,33 +81,31 @@ public class EspaceProfessionnel {
 		this.description = description;
 	}
 
-
-
-	public Utilisateur getUser() {
-		return user;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-
-
-	public void setUser(Utilisateur user) {
-		this.user = user;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
-
-
-	public ModeleAffichage getMa() {
-		return ma;
+	public ModeleAffichage getModeleAffichage() {
+		return modeleAffichage;
 	}
 
-
-
-	public void setMa(ModeleAffichage ma) {
-		this.ma = ma;
+	public void setModeleAffichage(ModeleAffichage modeleAffichage) {
+		this.modeleAffichage = modeleAffichage;
 	}
 
-	
-	
-	
+	public static EspaceProfessionnel getUserEspaceProfessionnel(long utilisateurId) {
+   	 	SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+     
+        List result = session.createQuery("from EspaceProfessionnel WHERE utilisateurId = "+utilisateurId).list();
+        if(result != null)
+       	 	return (EspaceProfessionnel) result.get(0);                        
+		return null;
+	}	
 	
 }
 

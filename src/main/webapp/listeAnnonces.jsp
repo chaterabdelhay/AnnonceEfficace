@@ -15,10 +15,19 @@
 		<table cellpadding="4" style="display:inline;">
 	      <tr>
 	       <td><img src="template/images/marker.png"/></td>
-	       <td><p><a href="#" id="setPosition">Modifier votre position géographique</a></p></td>
-	       <td style="width:605px"></td>
+	       <td><p>&nbsp;<a href="#" id="setPosition">Modifier votre emplacement</a></p></td>
+	       <s:if test="%{#session.utilisateur!=null}">
+	       <td>&nbsp;&nbsp;&nbsp;<img src="template/images/gmap.png"/></td>
+	       <td><p>&nbsp;&nbsp;<a href="GMapAnnoncesExplorer">Explorer avec Google Maps</a></p></td>	       
+	       <td style="width:410px"></td>
 	       <td><img src="template/images/search.png"/></td>
 	       <td><p><a id="searchTool" href="#">Outil recherche</a></p></td>
+	       </s:if>
+	       <s:if test="%{#session.utilisateur==null}">
+	       <td style="width:640px"></td>
+	       <td><img src="template/images/search.png"/></td>
+	       <td><p><a id="searchTool" href="#">Outil recherche</a></p></td>
+	       </s:if>
 		  </tr>
 		</table>		
 	</div>
@@ -48,18 +57,7 @@
 			</div>                    
         </s:iterator>
      </div><!-- end boxes -->    	        	    
-	
-     <!-- begin .grid_12 - COMMENTS -->
-     <div id="strip" class="grid_12">
-         <img id="users" src="template/images/users.png" alt="" />
-         <ul id="comments">
-             <li>"Choisir un bon titre pour son annonce serait un atout majeur pour pousser les internautes à consulter votre annonce."</li>
-             <li>"L'image que vous joignez à votre annonce est à choisir avec attention car sa qualité peut rendre votre annonce encore plus efficace."</li>
-         </ul>
-     </div><!-- end .grid_12 -->
-
 </div><!-- END CONTAINER -->
-
 <!-- BEGIN GMapLayer -->
 <div id="topGrayLayer1" class="topGrayLayer">
 	<div id="mapDiv">
@@ -69,7 +67,7 @@
 				<p>
 					<span style="font-weight: 800;">Position actuelle : </span>
 					<span id="selectedLatitude"></span>;<span id="selectedLongitude"></span>
-					<a href="#" id="GMapCancel">Annuler</a><a href="#" id="GMapConfirmPosition">Confirmer</a>
+					<span id="GMapRightActions"><a href="#" id="GMapCancel">Fermer</a>&nbsp;|&nbsp;<a href="#" id="GMapConfirmPosition">Confirmer</a></span>
 				</p>
 			</div>
 		</div>
@@ -116,8 +114,26 @@
 			$("#link3").click(	function(){
 					$("#currentAnnonceType").val("E");
 					ajaxGetListAnnonces();
-					$("#topGrayLayer2").fadeOut(500);
+					$("#topGrayLayer2").fadeOut(500);										
 			});	
+			// related to : explorer les annonces using GMap 
+			function ajaxLoadGoogleMapAnnoncesExplorer() {			
+				$('#boxes').html('<center>Chargement en cours...<br/><img width="24" height="24" src="template/images/load.gif"/></center>');
+				$.ajax({
+							type : "GET",
+							url : "ajax_useGMapAnnoncesExplorer.action",
+							error : function(msg) {
+								$('#boxes').html("Error !: " + msg);
+							},
+							success : function(data) {
+								//affiche le contenu du fichier dans le conteneur dédié
+								$('#boxes').html(data);															
+							}
+						});
+			}
+			$("#toggleUseGMap").click(	function(){
+				ajaxLoadGoogleMapAnnoncesExplorer();
+			});				
 			</script>			
     		<br/>			
  			<a href="#" id="searchToolClose">Fermer</a>
@@ -126,20 +142,37 @@
 </div>
 <script type="text/javascript">
 	var GMapInitialized = false;
-	var initLatitude  = <s:if test="%{posGeoLatitude == null}">33.742612777346885</s:if><s:else><s:property value="posGeoLatitude"/></s:else>;
-	var initLongitude = <s:if test="%{posGeoLongitude == null}">-6.053466796875</s:if><s:else><s:property value="posGeoLongitude"/></s:else>;
+	<s:if test="%{#session.utilisateur!=null}">
+	var userLatitude  = <s:property value="%{#session.utilisateur.userPositionGeographique.latitude}"/>;
+	var userLongitude = <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>;
+	var userIcon = new GIcon(G_DEFAULT_ICON);		
+	userIcon.image = "template/images/GMap/markers/user.png";		
+	var userMarkerOptions = { icon:userIcon};
+	var UserMarker = new GMarker(new GLatLng(userLatitude,userLongitude),userMarkerOptions);
+	</s:if> 
+	<s:if test="%{#session.utilisateur==null}">
+	var userLatitude  = 33.742612777346885;
+	var userLongitude = -6.053466796875;
+	</s:if> 
 	function initGMap() {
 		if (GBrowserIsCompatible()) {
 			map = new GMap2(document.getElementById("mapa"));
 			map.addControl(new GLargeMapControl());
 			map.addControl(new GMapTypeControl(3));
-			map.setCenter(new GLatLng(initLatitude, initLongitude), 4, 0);
+			map.setCenter(new GLatLng(userLatitude, userLongitude), 4, 0);
 			map.setZoom(8);
-			document.getElementById('selectedLatitude').innerHTML = initLatitude;
-			document.getElementById('selectedLongitude').innerHTML = initLongitude;
+			document.getElementById('selectedLatitude').innerHTML = userLatitude;
+			document.getElementById('selectedLongitude').innerHTML = userLatitude;
+			<s:if test="%{#session.utilisateur!=null}">
+			map.addOverlay(UserMarker);
+			</s:if>
 			GEvent.addListener(map, 'click', function(overlay, point) {
 				document.getElementById('selectedLatitude').innerHTML = point.lat();
-				document.getElementById('selectedLongitude').innerHTML = point.lng();				
+				document.getElementById('selectedLongitude').innerHTML = point.lng();
+				map.removeOverlay(UserMarker);
+				newMarker = new GMarker(point,userMarkerOptions);
+				map.addOverlay(newMarker);
+				UserMarker = newMarker;
 			});
 		}
 	}	
