@@ -262,7 +262,7 @@ $.ajax({
 					</table>					
 					<div class="commentairesContainer">
 						<h3>Liste des commentaires</h3>
-						<div id="addCommentContainer">																					
+						<div id="CommentsContainer">																					
 							<s:iterator value="commentaires" var="resultObject">
 							<div class="commentaire" style="margin-bottom: 20px;"><p><span class="auteur"><s:property value="#resultObject[1]"/></span> a dit :<br/><span class="contenu"><s:property value="#resultObject[0]"/></span></p></div>
 							</s:iterator>	
@@ -289,9 +289,9 @@ $.ajax({
 									$('#commentaire').html("Error !: " + msg);
 								},
 								success : function(data) {
-									//alert("msg sended");
+									//alert(data);
 									//affiche le contenu du fichier dans le conteneur dédié
-									$("<div>").html(data).insertAfter("#commentaire").hide().slideDown("slow");
+									$("#CommentsContainer").append(data).fadein();
 									//$('#commentaire').html(data).insertBefore('#commentaire').slideDown();
 								}
 							});
