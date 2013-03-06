@@ -164,7 +164,11 @@
     	
     	<action name="readNotification" class="org.arQam.AnnonceEfficace.Action.ReadNotificationAction">
     	    <!-- <interceptor-ref name="login" />  -->    	        	   
-    	</action>    	
+    	</action>  
+    	<action name="userGuide" class="com.opensymphony.xwork2.ActionSupport">
+    	    <interceptor-ref name="login" />
+    	    <result name="success">/userGuide.jsp</result>
+    	</action>  	
 	</package>		
 	<package name="welcomePage" extends="struts-default">   
     	<!-- <action name="*" class="com.opensymphony.xwork2.ActionSupport">
