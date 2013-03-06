@@ -18,44 +18,32 @@
 		<table id="login">
 			<tr>
 				<td colspan="2"
-					style="padding-bottom: 5px; border-bottom: 1px solid #ddd;">
-					<p>
-						<span style="font-weight: 800">Type de l'annonce : <s:property value="%{typeAnnonce}"/><br/>Titre : <s:property value="%{annonce.titre}"/></span>
-						<div>
-							<table cellpadding="4" style="display: inline; margin-left:5px;">
-								<tr>									
-									<td>
-											<h3><a href="#" id="voirPosition">Position géographique</a></h3>
-										</td>
-									<td><img src="template/images/marker.png" /></td>
-								</tr>
-							</table>
-						</div>
-						<span style="float: right">																				
-		
-		<s:if test="%{!evaluatedByUser}">
-		<s:if test="%{userConnected}">
-		
+					style="padding-bottom: 5px; border-bottom: 1px solid #ddd;">					
+						<div style="float:right"> 
+						<p>Evaluation moyenne : <s:property value="average"/> </p>
+						<s:if
+									test="%{!evaluatedByUser}">
+									<s:if test="%{userConnected}">									
 
-							
-	<div id="rating_cont">	
-	
+	<div>
+	<div id="rating_cont">
 
-		<div id="rating_btns">
-			<ul>
-				<li>0.5</li>
-				<li>1.0</li>
-				<li>1.5</li>
-				<li>2.0</li>
-				<li>2.5</li>
-				<li>3.0</li>
-				<li>3.5</li>
-				<li>4.0</li>
-				<li>4.5</li>
-				<li>5.0</li>
-			</ul>
-		</div>
-		<script>
+
+											<div id="rating_btns">
+												<ul>
+													<li>0.5</li>
+													<li>1.0</li>
+													<li>1.5</li>
+													<li>2.0</li>
+													<li>2.5</li>
+													<li>3.0</li>
+													<li>3.5</li>
+													<li>4.0</li>
+													<li>4.5</li>
+													<li>5.0</li>
+												</ul>
+											</div>
+											<script>
 
 			//rating java script
 			$(document).ready(
@@ -191,22 +179,30 @@ $.ajax({
 					});
 			//fin rating java script
 		</script>
-		<div id="rating_on" >&nbsp;</div>
-		<div id="rated">
-			<div id="rating" style="height: 17px; line-height: 17px;"><s:property value="average"/></div>
-			<div> - &nbsp;</div>
-			<div id="small_stars">&nbsp;</div>			
-		</div>
-		</div>
-		</s:if>
-		</s:if>		
-	
-	
-	<input type="hidden" id="rating_output" name="rating_output" value="not rated" />
-</div>	 
-		<span id="avg" style="float:right;">Evaluation moyenne : <s:property value="average"/></div> </span>			
-						
-					</p>
+											<div id="rating_on">&nbsp;</div>
+											<div id="rated">
+												<div id="rating" style="height: 17px; line-height: 17px;">
+													<s:property value="average" />
+												</div>
+												<div>- &nbsp;</div>
+												<div id="small_stars">&nbsp;</div>
+											</div>
+										</div>
+									</div>
+									</s:if>
+								</s:if> <input type="hidden" id="rating_output" name="rating_output"
+								value="not rated" />
+							</div>						
+						<div style="float:left;">
+							<h3>Type de l'annonce : <s:property value="%{typeAnnonce}"/><br/>Titre : <s:property value="%{annonce.titre}"/></h3>
+							<div>																											
+											<h3><a href="#" id="cloturer?annonceId=<s:property value="%{annonce.id}"/>">Cloturer</a></h3>
+											<h3><a href="#" id="supprimer.action?annonceId=<s:property value="%{annonce.id}"/>">Supprimer</a></h3>
+											<h3><a href="#" id="modifier.action?annonceId=<s:property value="%{annonce.id}"/>">Modifier</a></h3>
+											<h3><a href="#" id="signaler.action?annonceId=<s:property value="%{annonce.id}"/>">Signaler</a></h3>																											
+											<h3><a href="#" id="advertise.action?annonceId=<s:property value="%{annonce.id}"/>">faire de la publicité</a></h3>
+							</div>							
+						</div> 														
 				</td>
 			</tr>
 			<tr>
@@ -257,7 +253,13 @@ $.ajax({
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">					
+				<td colspan="2">
+					<table>
+					   <tr>
+							<td><img src="template/images/marker.png" /></td>
+							<td><h3><a href="#" id="voirPosition">Position géographique</a></h3></td>
+					   </tr>	
+					</table>					
 					<div class="commentairesContainer">
 						<h3>Liste des commentaires</h3>
 						<div id="addCommentContainer">																					
@@ -268,8 +270,7 @@ $.ajax({
 								<p  style="float:right;">Nouveau commentaire</p>
 								<s:textarea name="contenu" id="msgTxt"
 									placeholder="Commentez cette annonce !" cols="80" rows="4" />
-								<s:submit id="submit" value="Envoyer" />
-								
+								<s:submit id="submit" value="Envoyer" />								
 							</form>							
 						</div>										
 					</div>

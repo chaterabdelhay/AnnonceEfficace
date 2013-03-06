@@ -16,11 +16,18 @@
 	      <tr>
 	       <td><img src="template/images/marker.png"/></td>
 	       <td><p>&nbsp;<a href="#" id="setPosition">Modifier votre emplacement</a></p></td>
+	       <s:if test="%{#session.utilisateur!=null}">
 	       <td>&nbsp;&nbsp;&nbsp;<img src="template/images/gmap.png"/></td>
-	       <td><p>&nbsp;&nbsp;<a href="GMapAnnoncesExplorer">Explorer avec Google Maps</a></p></td>
+	       <td><p>&nbsp;&nbsp;<a href="GMapAnnoncesExplorer">Explorer avec Google Maps</a></p></td>	       
 	       <td style="width:410px"></td>
 	       <td><img src="template/images/search.png"/></td>
 	       <td><p><a id="searchTool" href="#">Outil recherche</a></p></td>
+	       </s:if>
+	       <s:if test="%{#session.utilisateur==null}">
+	       <td style="width:640px"></td>
+	       <td><img src="template/images/search.png"/></td>
+	       <td><p><a id="searchTool" href="#">Outil recherche</a></p></td>
+	       </s:if>
 		  </tr>
 		</table>		
 	</div>

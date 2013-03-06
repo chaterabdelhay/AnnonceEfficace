@@ -23,11 +23,11 @@
     	<action name="acceuil" class="org.arQam.AnnonceEfficace.Action.IndexAction">    		
       		<result name="success">/index.jsp</result>      		
     	</action>
-    	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.MessageAction">            		
-     	 <result name="input">/envoyerMessage.jsp</result>
-      	 <result name="success">/operationReussie.jsp</result>      		
-    	</action>
-    	
+    	<action name="envoyerMessage"  class="org.arQam.AnnonceEfficace.Action.MessageAction">
+    	            		
+     		 <result name="input">/envoyerMessage.jsp</result>
+      	 	<result name="success">/operationReussie.jsp</result>      		
+    	</action>    	
     	<action name="login" class="org.arQam.AnnonceEfficace.Action.LoginAction">
     		<result name="input">/connexion.jsp</result>
       		<result name="success" type="redirect">/espaceUtilisateur</result>      		
@@ -41,13 +41,17 @@
       		<result name="success">/creerCompte.jsp</result>      		
     	</action>    	    	
     	
-    	<action name="disconnect" class="org.arQam.AnnonceEfficace.Action.DisconnectAction">    		
+    	<action name="disconnect" class="org.arQam.AnnonceEfficace.Action.DisconnectAction">    		    	
       		<result name="success" type="redirect">/listeAnnonces</result>      		
     	</action>
     	<action name="espaceUtilisateur" class="org.arQam.AnnonceEfficace.Action.EspaceUtilisateurAction">
     		<interceptor-ref name="login" />  	            
     		<result name="success">/espaceUtilisateur.jsp</result>
     	</action>
+    	<action name="espaceProfessionnel" class="org.arQam.AnnonceEfficace.Action.EspaceProfesionnelAction">
+    		<interceptor-ref name="login" />  	            
+    		<result name="success">/espaceProfesionnel.jsp</result>
+    	</action>    	
     	<action name="listeAnnonces" class="org.arQam.AnnonceEfficace.Action.ListeAnnoncesAction">
     		<!-- <interceptor-ref name="login" /> -->  	            
     		<result name="success">/listeAnnonces.jsp</result>
@@ -159,18 +163,14 @@
     	</action>
     	
     	<action name="readNotification" class="org.arQam.AnnonceEfficace.Action.ReadNotificationAction">
-    	    <!-- <interceptor-ref name="login" />  -->
-    	        	    
-    	</action>
-    	
-	</package>	
-	
+    	    <!-- <interceptor-ref name="login" />  -->    	        	   
+    	</action>    	
+	</package>		
 	<package name="welcomePage" extends="struts-default">   
     	<!-- <action name="*" class="com.opensymphony.xwork2.ActionSupport">
       		<result>/index.jsp</result>
     	</action> -->            
-  	</package>
-  	
+  	</package>  	
   	<package name="utilisateur" extends="struts-default">
 	  
   	</package>

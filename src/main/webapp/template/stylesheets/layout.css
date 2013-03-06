@@ -748,3 +748,33 @@ FOOTER
     border : solid 2px rgba(0,0,0,0.1);
     color: #7e7975;     
 }
+
+.espaceProfessionnel{	
+	width:900px;
+}
+
+.espaceProfessionnel .header{
+	margin:50px;
+	padding:10px;
+	border:5px solid black;
+	border-radius:5px;
+	background-color:rgba(255,255,255,0.8);	
+}
+
+.espaceProfessionnel .header .logo{
+	width:128px;
+	height:128px;
+	float:right;
+}
+
+.espaceProfessionnel .header .description{
+	margin-right:180px;
+}
+
+.espaceProfessionnel .left{
+	background-color:rgba(255,255,255,0.6);
+}
+
+.espaceProfessionnel .right{
+	background-color:rgba(255,255,255,0.4);
+}

@@ -38,25 +38,20 @@
     
     <!-- Begin Google Web Fonts -->
     	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
-	<!-- End Google Web Fonts -->
-    
-	<!-- Begin JavaScript -->
-    
+	<!-- End Google Web Fonts -->    
+	<!-- Begin JavaScript -->    
     	<!-- jQuery -->
-		<script type="text/javascript" src="template/javascripts/jquery-1.6.4.min.js"></script>
-        
+		<script type="text/javascript" src="template/javascripts/jquery-1.6.4.min.js"></script>        
         <!-- jQuery plugins -->
         <script type="text/javascript" src="template/javascripts/jquery.tipTip.minified.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.colorbox-min.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.nivo.slider.pack.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.bxSlider.min.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.ticker.js"></script>
-        <script type="text/javascript" src="template/javascripts/OptionPopupDescriptor.js"></script>
-        
+        <script type="text/javascript" src="template/javascripts/OptionPopupDescriptor.js"></script>        
         <script type="text/javascript" src="template/javascripts/jquery.dataTables.js"></script>
         <script type="text/javascript" src="template/javascripts/jquery.dataTables.min.js"></script>                                                        
-        <!-- JQUERY rating stars -->
-        
+        <!-- JQUERY rating stars -->        
         <script type="text/javascript" src="template/javascripts/jquery.rating.pack.js"></script>
  		<link href="template/stylesheets/jquery.rating.css" rel="stylesheet"/>
         <!-- JQUERY rating stars2 -->
@@ -138,7 +133,7 @@
 </head>
 <body>
 <!-- Begin top panel -->
-<div id="toppanel">
+<!--<div id="toppanel">
     <div id="panel">
     	<div id="panel_contents">
         	<h1>Colors</h1>
@@ -158,7 +153,7 @@
     </div>
     <div class="panel_button" id="expand_button"><img src="template/images/expand.png"  alt="expand"/></div>
     <div class="panel_button" id="hide_button"><img src="template/images/collapse.png" alt="collapse" /></div>
-</div><!-- End top panel -->
+</div>--><!-- End top panel -->
 
 <!-- BEGIN HEADER -->
 <div id="header">
@@ -174,6 +169,9 @@
         	<li><a href="." class="selected">Acceuil</a></li>        	
         	<s:if test="%{#session.utilisateur!=null}">
             	<li><a href="espaceUtilisateur" style="color:#fff;">Mon espace</a></li>
+            </s:if>
+            <s:if test="%{#session.utilisateur!=null}">
+            	<li><a href="espaceProfessionnel" style="color:#fff;">Espace professionnel</a></li>
             </s:if>
             <s:if test="%{#session.utilisateur!=null}">
             	<li><a href="listeMessages" style="color:#fff;">Mes messages</a></li>
@@ -206,18 +204,18 @@
 			</span>
 				<div class="noti_bubble"><s:property value="%{#session.nbrOfNotifications}"/></div>
 			</div>
-		<span id="opt1" class="option"> 
-			<span class="optionDescription" id="opt1Description">Voir les annonces</span> 
-			<img src="template/images/sideBar/options/opt1Normal.png" 
-					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
-					onclick="window.location.replace('listeAnnonces');"/>
-		</span>			
 			<span id="opt3" class="option"> 
 				<span class="optionDescription" id="opt3Description">Publier une annonce rapidement</span> 
 				<img src="template/images/sideBar/options/opt3Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
 					onclick="window.location.replace('publierAnnonce');"/> 
 			</span>
+		<span id="opt1" class="option"> 
+			<span class="optionDescription" id="opt1Description">Voir les annonces</span> 
+			<img src="template/images/sideBar/options/opt1Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+					onclick="window.location.replace('listeAnnonces');"/>
+		</span>						
 			<span id="opt4" class="option"> 
 				<span class="optionDescription" id="opt4Description">liste d'utilisateurs</span> 
 				<img src="template/images/sideBar/options/opt2Normal.png" 
