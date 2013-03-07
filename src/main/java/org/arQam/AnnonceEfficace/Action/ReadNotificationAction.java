@@ -27,7 +27,8 @@ public class ReadNotificationAction extends ActionSupport {
 	
 	public String execute() throws Exception {
 		Suivi mp=new Suivi();
-        Map session = ActionContext.getContext().getSession();
+		if(ActionContext.getContext() == null) return INPUT;
+        Map session = ActionContext.getContext().getSession();        
         Utilisateur user = (Utilisateur) session.get("utilisateur");
         if(user == null) return INPUT;
         // set notifcation as read

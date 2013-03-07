@@ -30,17 +30,18 @@ public class SaveNewPositionAction extends ActionSupport {
 	public String execute() throws Exception {
 		//System.out.println(posGeoLatitude +"dddd");
         //System.out.println(posGeoLongitude);       
-        Map session = ActionContext.getContext().getSession();
-        Utilisateur user = (Utilisateur) session.get("utilisateur");
-        if(user == null) return INPUT;
-        // set new Position
-        
-        PositionGeographique posGeo = new PositionGeographique();
-        posGeo.setLatitude(posGeoLatitude);
-        posGeo.setLongitude(posGeoLongitude);
-        posGeo.save();
-        user.setPositionGeographique(posGeo);
-        user.update();
+		if(ActionContext.getContext() != null){
+			Map session = ActionContext.getContext().getSession();
+	        Utilisateur user = (Utilisateur) session.get("utilisateur");
+	        if(user == null) return INPUT;
+	        // set new Position	        
+	        PositionGeographique posGeo = new PositionGeographique();
+	        posGeo.setLatitude(posGeoLatitude);
+	        posGeo.setLongitude(posGeoLongitude);
+	        posGeo.save();
+	        user.setPositionGeographique(posGeo);
+	        user.update();
+		}        
         return SUCCESS;
 	}
 

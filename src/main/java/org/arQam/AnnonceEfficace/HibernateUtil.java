@@ -9,6 +9,7 @@ public class HibernateUtil {
  
     private static SessionFactory buildSessionFactory() {
         try {
+        	System.err.println("Hibernate Session created");
             // Create the SessionFactory from hibernate.cfg.xml
             return new AnnotationConfiguration()
             		.configure()

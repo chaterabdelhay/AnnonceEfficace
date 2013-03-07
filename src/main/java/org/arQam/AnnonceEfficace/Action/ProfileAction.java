@@ -25,19 +25,22 @@ public class ProfileAction extends ActionSupport {
 	//private int remove = 0;
 	
 	public String execute() throws Exception {
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session1 = sf.openSession();
-		users = session1.createQuery("from Utilisateur where Id="+id).list();
-		annonces=session1.createQuery("from Annonce where utilisateurId="+id).list();
-		suivis=session1.createSQLQuery("select * from utilisateur,suivi  where suivi.suivitId=utilisateur.id and suiveurId="+id).list();
-		Map session = ActionContext.getContext().getSession();
-		Utilisateur user = (Utilisateur) session.get("utilisateur");
-		if(user != null){
-			List result =session1.createSQLQuery("select suiveurId from suivi  where suiveurId="+user.getId()+" and suivitId="+id).list();
-			if(result.size() > 0)
-				abonneToThisUser = true;
+		if(ActionContext.getContext() != null){
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			Session session1 = sf.openSession();
+			users = session1.createQuery("from Utilisateur where Id="+id).list();
+			annonces=session1.createQuery("from Annonce where utilisateurId="+id).list();
+			suivis=session1.createSQLQuery("select * from utilisateur,suivi  where suivi.suivitId=utilisateur.id and suiveurId="+id).list();		
+			
+			Map session = ActionContext.getContext().getSession();
+			Utilisateur user = (Utilisateur) session.get("utilisateur");		
+			if(user != null){
+				List result =session1.createSQLQuery("select suiveurId from suivi  where suiveurId="+user.getId()+" and suivitId="+id).list();
+				if(result.size() > 0)
+					abonneToThisUser = true;
+			}
+			session1.close();
 		}
-		session1.close();
 		return SUCCESS;
 	}
 	

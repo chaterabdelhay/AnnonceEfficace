@@ -22,15 +22,18 @@ public class SuivreAction extends ActionSupport {
 	
 	public String execute() throws Exception {
 		Suivi mp=new Suivi();
-        Map session = ActionContext.getContext().getSession();
-        Utilisateur user = (Utilisateur) session.get("utilisateur");        
-        long suiveurId = user.getId();        
-        if(remove==0){
-        	suivre(suiveurId, suivitId);
-        }else{
-        	annulerSuivre(suiveurId, suivitId);
-        }
-       return SUCCESS;
+		Utilisateur user = null;
+		if(ActionContext.getContext() != null){
+			Map session = ActionContext.getContext().getSession();
+			user = (Utilisateur) session.get("utilisateur");
+			long suiveurId = user.getId();        
+        	if(remove==0){
+        		suivre(suiveurId, suivitId);
+        	}else{
+        		annulerSuivre(suiveurId, suivitId);
+        	}
+		}
+        return SUCCESS;
 	}
 	
 	public void suivre(long suiveurId, long suivitId){

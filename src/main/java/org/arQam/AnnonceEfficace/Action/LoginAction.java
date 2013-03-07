@@ -33,13 +33,16 @@ public class LoginAction extends ActionSupport {
     private String password;
    
     public String execute() throws Exception {
+    	System.out.println(getUsername());
         if (isInvalid(getUsername())) return INPUT;
         if (isInvalid(getPassword())) return INPUT;
-        Utilisateur user = Utilisateur.exists(username,password);
+        Utilisateur user = Utilisateur.exists(username,password);        
         if(user != null){
-        	Map session = ActionContext.getContext().getSession();
-        	session.put("utilisateur", user);   
-        	session.put("id", user.getId()); 
+        	if(ActionContext.getContext() != null){
+        		Map session = ActionContext.getContext().getSession();
+        		session.put("utilisateur", user);   
+        		session.put("id", user.getId()); 
+        	}
         	//System.out.println(ActionContext.getContext().getSession().get("id"));
         	// mettre code pour tester si l'utilisateur existe !
             return SUCCESS;
