@@ -72,7 +72,18 @@
 				var AnnonceMarker = new GMarker(new GLatLng(<s:property value="#resultObject[0].positionGeographique.latitude"/>,<s:property value="#resultObject[0].positionGeographique.longitude"/>),annonceMarkerOptions);				
 				map.addOverlay(AnnonceMarker);
 				GEvent.addListener(AnnonceMarker, "click", function(point) {
-				    var myHtml = '<h3><s:property value="#resultObject[0].titre"/><br/><a href="detailsAnnonce?annonceId=<s:property value="#resultObject[0].id"/>">Voir</a></h3>';				    
+					<s:if test="%{#resultObject[0].type == \"E\"}">
+					var myHtml = '<h3>Evenement : <s:property value="#resultObject[0].titre"/><br/><a href="detailsAnnonce?annonceId=<s:property value="#resultObject[0].id"/>">Voir</a></h3>';
+					</s:if>
+					<s:if test="%{#resultObject[0].type == \"V\"}">
+					var myHtml = '<h3>Vente : <s:property value="#resultObject[0].titre"/><br/><a href="detailsAnnonce?annonceId=<s:property value="#resultObject[0].id"/>">Voir</a></h3>';
+					</s:if>				    				  
+					<s:if test="%{#resultObject[0].type == \"OE\"}">
+					var myHtml = '<h3>Offre d\'emploi : <s:property value="#resultObject[0].titre"/><br/><a href="detailsAnnonce?annonceId=<s:property value="#resultObject[0].id"/>">Voir</a></h3>';
+					</s:if>				    				  
+					<s:if test="%{#resultObject[0].type == \"OS\"}">
+					var myHtml = '<h3>Offre de stage : <s:property value="#resultObject[0].titre"/><br/><a href="detailsAnnonce?annonceId=<s:property value="#resultObject[0].id"/>">Voir</a></h3>';
+					</s:if>				    				  
 				    map.openInfoWindowHtml(point, myHtml);
 				  });
 				</s:iterator>
