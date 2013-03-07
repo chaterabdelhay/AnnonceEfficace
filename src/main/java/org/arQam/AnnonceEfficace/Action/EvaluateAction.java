@@ -14,7 +14,11 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class EvaluateAction extends ActionSupport {	
-   
+	
+	public long annonceId;
+	public float note;
+	public double average;
+	private Annonce annonce;
 	
 	public long getAnnonceId() {
 		return annonceId;
@@ -44,10 +48,7 @@ public class EvaluateAction extends ActionSupport {
 		this.average = average;
 	}
 
-	public long annonceId;
-	public float note;
-	public double average;
-	private Annonce annonce;
+	
 	
     public String execute() throws Exception {  
     	System.out.println("try1");
@@ -59,7 +60,8 @@ public class EvaluateAction extends ActionSupport {
         ev.setAnnonce(annonce);
         ev.setNote(note);    		 		
  		ev.save();
-    	average=Evaluation.avg(annonceId);		    	    	
+    	average=Evaluation.avg(annonceId);
+    	System.out.println(Evaluation.avg(annonceId));
 		return SUCCESS;    		        
     }
     
