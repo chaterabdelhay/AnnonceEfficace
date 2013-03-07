@@ -74,6 +74,10 @@
 				<s:iterator value="annonces" var="resultObject">
 				var AnnonceMarker = new GMarker(new GLatLng(<s:property value="#resultObject[0].positionGeographique.latitude"/>,<s:property value="#resultObject[0].positionGeographique.longitude"/>),annonceMarkerOptions);				
 				map.addOverlay(AnnonceMarker);
+				GEvent.addListener(AnnonceMarker, "click", function(point) {
+				    var myHtml = '<h3><s:property value="#resultObject[0].titre"/><br/><a href="detailsAnnonce?annonceId=<s:property value="#resultObject[0].id"/>">Consulter</a></h3>';				    
+				    map.openInfoWindowHtml(point, myHtml);
+				  });
 				</s:iterator>
 				map.addOverlay(UserMarker);								
 				//map.addOverlay(AnnonceMarker);

@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.arQam.AnnonceEfficace.Metier.EspaceProfessionnel;
 import org.arQam.AnnonceEfficace.Metier.Produit;
 import org.arQam.AnnonceEfficace.Metier.Utilisateur;
@@ -32,6 +35,11 @@ public class EspaceProfesionnelAction extends ActionSupport {
 		        if(user == null) return INPUT;		      		       
 		        //session.put("userPositionGeographique",user.getUserPositionGeographique());	        	
 		        espaceProfessionnel = EspaceProfessionnel.getUserEspaceProfessionnel(user.getId());
+		        if(espaceProfessionnel==null){
+		        	//redirect to see the link
+		            HttpServletResponse response = ServletActionContext.getResponse();
+		    		response.sendRedirect("createEspaceProfessionnel");
+		        }
 		        setVitrines(Vitrine.getEspaceProfessionnelVitrines(espaceProfessionnel.getId()));
 		        setProduits(Produit.list());
 		        parseModeleAffichageToMap();   		    		    		    			        	

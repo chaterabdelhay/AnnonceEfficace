@@ -112,6 +112,7 @@ public class EspaceProfessionnel {
      
         List result = session.createQuery("from EspaceProfessionnel WHERE utilisateurId = "+utilisateurId).list();
         if(result != null)
+        	if(result.size() > 0)
        	 	return (EspaceProfessionnel) result.get(0);                        
 		return null;
 	}	

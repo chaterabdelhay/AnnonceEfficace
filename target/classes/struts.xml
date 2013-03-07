@@ -46,6 +46,11 @@
     		<interceptor-ref name="login" />  	            
     		<result name="success">/espaceUtilisateur.jsp</result>
     	</action>
+    	<action name="createEspaceProfessionnel" class="org.arQam.AnnonceEfficace.Action.CreateEspaceProfessionnelAction">
+    		<!-- <interceptor-ref name="login" /> -->  	            
+    		<result name="success">/createEspaceProfessionnel.jsp</result>
+    		<result name="input" type="redirect">/connexion</result>
+    	</action>
     	<action name="espaceProfessionnel" class="org.arQam.AnnonceEfficace.Action.EspaceProfesionnelAction">
     		<!-- <interceptor-ref name="login" /> -->  	            
     		<result name="success">/espaceProfesionnel.jsp</result>

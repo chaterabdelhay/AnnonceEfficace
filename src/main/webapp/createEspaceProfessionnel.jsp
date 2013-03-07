@@ -9,13 +9,17 @@
 
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
-	<br /> <br /> <br />
+	<br /> <br /> <br /><br /><br /><br />
+	
+		<h3>Vous n'avez pas d'espace professionnel !</h3>
+		<p>Vous pouvez le créer maintenant. C'est gratuit :) ! Remplissez le formulaire ci-dessous. </p>	
 	<div>
 		<table>
 			<tr>
 				<td>
-					<div class="form-2"  style="width:800px">
-					<s:form action="createProduct" theme="css_xhtml" id="form1" method="POST" enctype="multipart/form-data">
+					
+					<div class="form-2"  style="width:800px">					
+					<s:form action="createEspaceProfessionnel" theme="css_xhtml" id="form1" method="POST">
 						<table>
 						<tr>
 						
@@ -34,7 +38,7 @@
 							<tr>
 								<td colspan="2">
 									<h1>
-										<span class="log-in">ajouter un produit</span>
+										<span class="log-in">Créer votre espace professionnel</span>
 									</h1>
 								</td>
 							</tr>
@@ -57,16 +61,13 @@
 										</p>
 										
 										<p>
-											<label for="password">prix</label>
-											<s:textfield name="prix" 
-												id="image" placeholder="prix"/>
+											<label for="description">description</label>
+											<s:textfield name="description" 
+												id="description" placeholder="description"/>
 										</p>
 										<p>											
-											  <s:file name="productimage" label="Product Image" />
-										</p>
-										<p>										
-										<input type="hidden" name="vitrineId" value="<s:property value="%{vitrineId}"/>"/>																																																			
-										</p>																												
+											  <s:file name="logo" label="Logo" />
+										</p>																																																																																																																							
 										<br>																																			
 										<p class="clearfix">
 											<input type="submit" id="submit" value="Créer">

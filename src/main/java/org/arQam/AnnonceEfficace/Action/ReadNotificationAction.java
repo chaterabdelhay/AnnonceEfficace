@@ -32,12 +32,11 @@ public class ReadNotificationAction extends ActionSupport {
         if(user == null) return INPUT;
         // set notifcation as read
         long utilisateurId = user.getId();        
-        setNotificationAsRead(notificationId, utilisateurId);
-        // redirect
-        HttpServletResponse response = ServletActionContext.getResponse();        
+        setNotificationAsRead(notificationId, utilisateurId);               
         //refresh the number of new notifications        
         session.put("nbrOfNotifications", Notification.count(user.getId()));
         //redirect to see the link
+        HttpServletResponse response = ServletActionContext.getResponse();
 		response.sendRedirect(lien);        			
         return SUCCESS;
 	}

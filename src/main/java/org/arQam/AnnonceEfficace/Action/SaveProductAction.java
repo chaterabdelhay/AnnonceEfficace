@@ -21,7 +21,7 @@ public class SaveProductAction extends ActionSupport implements ServletRequestAw
 	public String productimageFileName;// filled automaticly
 	//public String productimageFileName;
 	public float prix;
-	public String vitrineId;	
+	private String vitrineId;	
 	private String type; 
 	public List errorMessages;	
 	
@@ -56,6 +56,14 @@ public class SaveProductAction extends ActionSupport implements ServletRequestAw
         return SUCCESS;
     }
 	
+	public String getVitrineId() {
+		return vitrineId;
+	}
+
+	public void setVitrineId(String vitrineId) {
+		this.vitrineId = vitrineId;
+	}
+
 	public List getErrorMessages() {
 		return errorMessages;
 	}

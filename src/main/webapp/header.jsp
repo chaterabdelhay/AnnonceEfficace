@@ -208,7 +208,7 @@
 					onclick="window.location.replace('publierAnnonce');"/> 
 			</span>	
 			<span id="opt5" class="option"> 
-				<span class="optionDescription" id="opt5Description">Gèrer mon espace professionnel</span> 
+				<span class="optionDescription" id="opt5Description">Gerer mon espace professionnel</span> 
 				<img src="template/images/sideBar/options/opt2Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();"									
 					onclick="window.location.replace('espaceProfessionnel');"/>
