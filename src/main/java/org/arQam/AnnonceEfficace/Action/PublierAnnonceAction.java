@@ -1,5 +1,6 @@
 package org.arQam.AnnonceEfficace.Action;
 
+import java.io.File;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -9,11 +10,15 @@ import java.util.Map;
 
 import javax.persistence.Column;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.arQam.AnnonceEfficace.HibernateUtil;
 import org.arQam.AnnonceEfficace.Metier.Annonce;
+import org.arQam.AnnonceEfficace.Metier.Categorie;
 import org.arQam.AnnonceEfficace.Metier.Notification;
 import org.arQam.AnnonceEfficace.Metier.Objet;
 import org.arQam.AnnonceEfficace.Metier.PositionGeographique;
@@ -26,7 +31,9 @@ import org.hibernate.SessionFactory;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class PublierAnnonceAction extends ActionSupport {		
+public class PublierAnnonceAction extends ActionSupport implements ServletRequestAware {
+	private HttpServletRequest servletRequest;
+	// attributs annonce
 	private String titre;
 	private String description;
 	private String type;    
@@ -34,9 +41,11 @@ public class PublierAnnonceAction extends ActionSupport {
     private Double posGeoLatitude;
     private Double posGeoLongitude;
     // attributs objet
-    private String categorieObjet;
+    private int categorieObjet;
     private String nomObjet;
-    private String imageObjet;
+    private File imageObjet;
+    public String imageObjetContentType; // filled automaticly
+    public String imageObjetFileName;// filled automaticly
     private String descriptionObjet;
     
     // attributs complèmentaires      
@@ -66,6 +75,30 @@ public class PublierAnnonceAction extends ActionSupport {
 			return INPUT;		
 		// validate();
 		if(!isValid()) return INPUT;
+		// upload the file
+		try {
+		    String filePath = servletRequest.getSession().getServletContext().getRealPath("/") + "\\uploadedImage\\objet";
+		    System.out.println("Server path:" + filePath);
+		    System.out.println("Image name:" + imageObjet.getPath());
+		    File fileToCreate = new File(filePath, imageObjetFileName);            
+		    FileUtils.copyFile(this.imageObjet, fileToCreate);
+		    System.out.println("new file :" + fileToCreate.getPath());
+		    System.out.println("new file :" + imageObjetFileName);
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    addActionError(e.getMessage()); 
+		    return INPUT;
+		}	
+		// create objet
+		Objet objet = new Objet();
+		objet.setImage(imageObjetFileName);
+		if(type.equals("V")){
+			objet.setDescription(descriptionObjet);
+			objet.setNom(nomObjet);
+			objet.setCategorie(Categorie.load(categorieObjet));
+		}
+		objet.save();
+		// create annonce
 		Annonce annonce = new Annonce();
         annonce.setTitre(titre);
         annonce.setType(type);
@@ -86,7 +119,7 @@ public class PublierAnnonceAction extends ActionSupport {
         	positionGeographique.save();
         }        
         annonce.setPositionGeographique(positionGeographique);        
-        annonce.setObjet(Objet.load(1));        
+        annonce.setObjet(objet);        
         long annonceId = annonce.save();
         
         // annonce infoscomplementairesSaving
@@ -144,29 +177,29 @@ public class PublierAnnonceAction extends ActionSupport {
 		}
 		if(!errorExists){ /* It the error of empty inputs were detected we don't get in here */
 			if(type.equals("V")){
-				if(categorieObjet.isEmpty() || nomObjet.isEmpty() || imageObjet.isEmpty() || descriptionObjet.isEmpty() || 
+				if(categorieObjet == -1 || nomObjet.isEmpty() || imageObjetFileName == null || descriptionObjet.isEmpty() || 
 						prix == null){				
-					errorMessages.add("veuillez remplir tous les champs svp ");
+					errorMessages.add("veuillez remplir tous les champs svp V");
 					//System.out.println("22222");
 					errorExists = true;
 				}
 			}
 			if(type.equals("E")){
 				if(typeEvenement.isEmpty() || dateEvenement == null || heureEvenement == null){				
-					errorMessages.add("veuillez remplir tous les champs svp ");
+					errorMessages.add("veuillez remplir tous les champs svp E");
 					errorExists = true;	
 				}
 			}
 			if(type.equals("OE")){
 				if(poste.isEmpty() || competences.isEmpty() || typeContrat.isEmpty() || salaire == null){				
-					errorMessages.add("veuillez remplir tous les champs svp ");
+					errorMessages.add("veuillez remplir tous les champs svp OE");
 					errorExists = true;	
 				}
 			}
 			
 			if(type.equals("OS")){
 				if(duree == null || competences.isEmpty() || montantRemuneration == null){				
-					errorMessages.add("veuillez remplir tous les champs svp ");
+					errorMessages.add("veuillez remplir tous les champs svp OS");
 					errorExists = true;	
 				}
 			}
@@ -239,10 +272,10 @@ public class PublierAnnonceAction extends ActionSupport {
 	public void setNegociable(Boolean negociable) {
 		this.negociable = negociable;
 	}
-	public String getCategorieObjet() {
+	public int getCategorieObjet() {
 		return categorieObjet;
 	}
-	public void setCategorieObjet(String categorieObjet) {
+	public void setCategorieObjet(int categorieObjet) {
 		this.categorieObjet = categorieObjet;
 	}
 	public String getNomObjet() {
@@ -251,10 +284,10 @@ public class PublierAnnonceAction extends ActionSupport {
 	public void setNomObjet(String nomObjet) {
 		this.nomObjet = nomObjet;
 	}
-	public String getImageObjet() {
+	public File getImageObjet() {
 		return imageObjet;
 	}
-	public void setImageObjet(String imageObjet) {
+	public void setImageObjet(File imageObjet) {
 		this.imageObjet = imageObjet;
 	}
 	public String getTypeEvenement() {
@@ -337,7 +370,8 @@ public class PublierAnnonceAction extends ActionSupport {
 		this.remunere = remunere;
 	}
 	
-	
-	
+	public void setServletRequest(HttpServletRequest servletRequest) {
+		this.servletRequest = servletRequest;			
+	}	
 	
 }

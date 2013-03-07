@@ -89,7 +89,13 @@
       		<interceptor-ref name="login" />
       		<interceptor-ref name="defaultStack">
     			<param name="validation.excludeMethods">execute</param>
-			</interceptor-ref>      		          		
+			</interceptor-ref>
+			<interceptor-ref name="fileUpload">
+        		<param name="maximumSize">2097152</param>
+        		<param name="allowedTypes">
+            	image/png,image/gif,image/jpeg,image/pjpeg
+        		</param>
+    		</interceptor-ref>       		          		
       		<result name="input">/publierAnnonce.jsp</result>
       		<result name="success" type="redirect">/operationReussie?operation=publier annonce</result>      		
     	</action>
@@ -154,7 +160,7 @@
     			<param name="validation.excludeMethods">execute</param>
 			</interceptor-ref>      		          		
 			<interceptor-ref name="fileUpload">
-        	<param name="maximumSize">2097152</param>
+        		<param name="maximumSize">2097152</param>
         		<param name="allowedTypes">
             	image/png,image/gif,image/jpeg,image/pjpeg
         		</param>

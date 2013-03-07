@@ -15,7 +15,7 @@
 			<tr>
 				<td>
 					<div class="form-2"  style="width:800px">
-					<s:form action="publierAnnonce.action" theme="css_xhtml" >
+					<s:form action="publierAnnonce.action" theme="css_xhtml" enctype="multipart/form-data">
 						<input type="hidden" name="type" value="<s:property value="%{type}" />"/>
 						<table>
 							<tr>
@@ -56,6 +56,12 @@
 											<label for="password">Description</label>
 											<s:textfield name="description" 
 												id="description" placeholder="Desription"/>
+										</p>
+										<p>
+											<s:if test="%{type == \"E\" || type == 'OE' || type == 'OS'}">
+											<label for="titre">image</label>
+											<s:file name="imageObjet"/>		
+											</s:if>									
 										</p>																												
 										<p><a href="#" id="setPosition">Selectionner la position</a></p>
 										<s:hidden name="posGeoLatitude" id="posGeoLatitude" value=""/>
@@ -70,7 +76,7 @@
 									<p>
 											<label for="categorieObjet">Catègorie</label>
 											<s:select headerKey="-1" headerValue="Selectionnez"
-												list="#{'Computer':'Computer', 'Telephone':'Telephone','Autre':'Autre'}"
+												list="#{'1':'Ordinateur', '2':'Télephone','3':'Autre'}"
 												name="categorieObjet" />
 										</p>
 										<p>
@@ -80,9 +86,7 @@
 										</p>
 										<p>
 											<label for="titre">image</label>
-											<s:textfield name="imageObjet" id="titre"
-												placeholder="image de l'objet" />
-											<s:hidden name="nomObjet"/>
+											<s:file name="imageObjet" label="image"/>																						
 										</p>
 										<p>
 											<label for="titre">description</label>

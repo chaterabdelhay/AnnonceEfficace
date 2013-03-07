@@ -61,8 +61,7 @@
 											<s:textfield name="prix" 
 												id="image" placeholder="prix"/>
 										</p>
-										<p>
-											
+										<p>											
 											  <s:file name="productimage" label="Product Image" />
 										</p>
 										<p>										

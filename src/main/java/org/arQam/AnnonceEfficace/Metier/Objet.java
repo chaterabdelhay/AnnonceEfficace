@@ -89,6 +89,16 @@ public class Objet {
 	     if(result != null)
 	      	return (Objet) result.get(0);                        
 		 return null;	
-	}		
+	}
+
+	public long save() {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();    
+		this.id = (Integer) session.save(this);             
+		session.getTransaction().commit();             
+		session.close();
+		return id;
+	}	
 
 }

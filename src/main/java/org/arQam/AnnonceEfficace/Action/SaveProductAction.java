@@ -32,12 +32,12 @@ public class SaveProductAction extends ActionSupport implements ServletRequestAw
 		// upload the file
 		try {
             String filePath = servletRequest.getSession().getServletContext().getRealPath("/") + "\\uploadedImage\\produit";
-            System.out.println("Server path:" + filePath);
-            System.out.println("Image name:" + productimage.getPath());
+            //System.out.println("Server path:" + filePath);
+            //System.out.println("Image name:" + productimage.getPath());
             File fileToCreate = new File(filePath, productimageFileName);            
             FileUtils.copyFile(this.productimage, fileToCreate);
-            System.out.println("new file :" + fileToCreate.getPath());
-            System.out.println("new file :" + productimageFileName);
+            //System.out.println("new file :" + fileToCreate.getPath());
+            //System.out.println("new file :" + productimageFileName);
         } catch (Exception e) {
             e.printStackTrace();
             addActionError(e.getMessage()); 
