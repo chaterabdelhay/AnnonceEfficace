@@ -32,11 +32,8 @@
 			<div class="eventtext">				
 				<div id="mapDivBottomBar">
 					<p>						
-						<!-- BEGIN condition for user marker-->
-						<s:if test="%{#session.utilisateur!=null}">
-						<a href="#" id="centerMapOnUserPos">Centrer sur votre position</a>&nbsp;|&nbsp;
-						</s:if>						
-						<a href="#" id="centerMapOnAnnoncePos">Centrer sur la position de l'annonce</a>												
+						<!-- BEGIN condition for user marker-->						
+						<a href="#" id="centerMapOnUserPos">Centrer sur votre position</a>																							
 					</p>
 				</div>				
 			</div>

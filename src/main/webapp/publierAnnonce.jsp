@@ -235,8 +235,9 @@
 						newMarker = new GMarker(point)
 						map.addOverlay(newMarker);
 						drawnMarker = newMarker;
-						document.getElementById('selectedLatitude').innerHTML = point.lat();
-						document.getElementById('selectedLongitude').innerHTML = point.lng();
+						// we should replace the '.' separtor décimal to ',' or they will invalidated (implicitement) by Struts2
+						document.getElementById('selectedLatitude').innerHTML = String(point.lat()).replace('.',',');
+						document.getElementById('selectedLongitude').innerHTML = String(point.lng()).replace('.',',');
 						//alert('we should save the new position using ajax');
 					}	
 				});			

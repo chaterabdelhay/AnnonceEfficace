@@ -67,10 +67,16 @@ public class PublierAnnonceAction extends ActionSupport implements ServletReques
 		return INPUT;
 	}
 	public String execute() throws Exception {
+		Map session = ActionContext.getContext().getSession();
+        Utilisateur user = (Utilisateur) session.get("utilisateur");
+        if(user == null) return "unAuthentified";
+        
+        
 		if(type == null){
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.sendRedirect("selectAnnonceType");
 		}
+		
 		if(titre == null || description == null) // nouvelle saisie
 			return INPUT;		
 		// validate();
@@ -108,13 +114,13 @@ public class PublierAnnonceAction extends ActionSupport implements ServletReques
         java.util.Date currentDate = calendar.getTime();        
         java.sql.Date date = new java.sql.Date(currentDate.getTime());
         annonce.setDatePostulation(date);
-        // set user, position and the object
-        Map session = ActionContext.getContext().getSession();
-        Utilisateur user = (Utilisateur) session.get("utilisateur");
+        // set user, position and the object        
         annonce.setUtilisateur(user);   
         // get PositionGeographique
         PositionGeographique positionGeographique = user.getUserPositionGeographique();
-        if(posGeoLatitude != null && posGeoLongitude != null){
+        System.out.println("dd" + posGeoLatitude);
+        System.out.println("d2" + posGeoLongitude);
+        if(posGeoLatitude != null && posGeoLongitude != null){        	
         	positionGeographique = new PositionGeographique(posGeoLatitude, posGeoLongitude);
         	positionGeographique.save();
         }        
@@ -240,16 +246,13 @@ public class PublierAnnonceAction extends ActionSupport implements ServletReques
 	public void setType(String type) {
 		this.type = type;
 	}	
-	public double getPosGeoLatitude() {
+	public Double getPosGeoLatitude() {
 		return posGeoLatitude;
 	}
-	public void setPosGeoLatitude(double posGeoLatitude) {
-		this.posGeoLatitude = posGeoLatitude;
-	}
-	public double getPosGeoLongitude() {
+	public Double getPosGeoLongitude() {
 		return posGeoLongitude;
 	}
-	public void setPosGeoLongitude(double posGeoLongitude) {
+	public void setPosGeoLongitude(Double posGeoLongitude) {
 		this.posGeoLongitude = posGeoLongitude;
 	}
 
@@ -348,9 +351,7 @@ public class PublierAnnonceAction extends ActionSupport implements ServletReques
 	public void setPosGeoLatitude(Double posGeoLatitude) {
 		this.posGeoLatitude = posGeoLatitude;
 	}
-	public void setPosGeoLongitude(Double posGeoLongitude) {
-		this.posGeoLongitude = posGeoLongitude;
-	}
+	
 	public List getErrorMessages() {
 		return errorMessages;
 	}
