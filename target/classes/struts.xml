@@ -116,6 +116,9 @@
       		<result name="success">/detailsAnnonce.jsp</result>  
       		<result name="input">/detailsAnnonce_without_comment.jsp</result>       		    		
     	</action>
+    	<action name="ajax_saveNewPosition" class="org.arQam.AnnonceEfficace.Action.SaveNewPositionAction">    		      		      		 
+      		 <result name="success">/ajax_saveNewPosition.jsp</result>    		
+    	</action>
     	<action name="evaluer" class="org.arQam.AnnonceEfficace.Action.EvaluateAction">    		      		      		 
       		<result name="success">/ajax_evaluate.jsp</result>    		
     	</action>

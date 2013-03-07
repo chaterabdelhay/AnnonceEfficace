@@ -60,7 +60,7 @@ public class Utilisateur {
         session.getTransaction().commit();             
         session.close();     
     }
-    
+	
     public static List list() {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
@@ -191,6 +191,12 @@ public class Utilisateur {
 			return ville.getPositionGeographique();
 		}
 		return positionGeographique;				
+	}
+	
+	
+
+	public void setPositionGeographique(PositionGeographique positionGeographique) {
+		this.positionGeographique = positionGeographique;
 	}
 
 	private void setInfos(Utilisateur user) {

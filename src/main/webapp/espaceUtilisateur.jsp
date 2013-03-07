@@ -16,10 +16,30 @@
 					<h2>Bienvenu dans votre espace personnel, M. <s:property value="%{#session.utilisateur.nomUtilisateur}"/></h2>					
 					<h3>Votre Ville  : <s:property value="%{#session.utilisateur.ville.nom}"/></h3>
 					<h3>Votre position géographique : [<s:property value="%{#session.utilisateur.userPositionGeographique.latitude}"/>, <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>]</h3>
+					<p>Vous pouvez modifier votre emplacement géographique en utilisant la carte ci-dessous !</p>
 					<div style="width:400px; height:300px; margin:0px;">
 						<div id="mapa"></div>
 					</div>
 					<script type="text/javascript">
+					//AJAX functions
+					
+					function ajaxSaveNewPosition(latitude,longitude) {
+								var strLatitude = String(latitude);
+								var strLongitude = String(longitude);
+								//alert("ajax_saveNewPosition.action?posGeoLatitude=" + strLatitude.replace('.',',') + "&posGeoLongitude=" + strLongitude.replace('.',','));
+								$.ajax({
+										type : "GET",
+										url : "ajax_saveNewPosition.action?posGeoLatitude=" + strLatitude.replace('.',',') + "&posGeoLongitude=" + strLongitude.replace('.',','),
+										error : function(msg) {
+											alert("error lors de l'évaluation");
+										},
+										success : function(data) {																																
+											//alert('ssss');
+										}
+									});
+								};
+					
+					// GMAP
 		var GMapInitialized = false;
 		var initLatitude  = <s:property value="%{#session.utilisateur.userPositionGeographique.latitude}"/>;
 		var initLongitude = <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>;		
@@ -43,7 +63,8 @@
 						newMarker = new GMarker(point)
 						map.addOverlay(newMarker);
 						drawnMarker = newMarker;
-						alert('we should save the new position using ajax');
+						// save the position to database
+						ajaxSaveNewPosition(point.lat(), point.lng());
 					}					
 				});							
 			}
@@ -53,11 +74,13 @@
 		</script>					
 				</td>
 				<td>
-					<div id="createAccount" style="line-height:30px;width:250px; font-size:13px; margin-left:50px; color:#555">
-						<h2>Voici quelques détails...</h2><br/>
-						<h3>Mes annonces</h3><br/>
-						<h3>Les utilisateurs auxquels je suis abonné</h3><br/>
-						<h3>Les notifications...</h3>			
+					<div style="line-height:30px;width:250px; font-size:13px; margin-left:50px; color:#555">
+						<!--<h2>Voici quelques détails...</h2><br/>
+						
+							<h3>Mes annonces</h3><br/>
+							<h3>Les utilisateurs auxquels je suis abonné</h3><br/>
+							<h3>Les notifications...</h3>
+						 -->			
 					</div>
 				</td>
 			</tr>
