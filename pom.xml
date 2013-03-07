@@ -107,6 +107,15 @@
                         <scanTarget>src/main/resources/struts.xml</scanTarget>
                         <scanTarget>src/main/resources/example.xml</scanTarget>
                     </scanTargets>
+                    <optionSets>
+                            <optionSet>
+                                <id>morememory</id>
+                                <options>
+                                    <option>-Xmx512m</option>
+                                    <option>-XX:MaxPermSize=512m</option>
+                                </options>
+                            </optionSet>
+                        </optionSets>
                 </configuration>
             </plugin>
             <!-- Embedded Tomcat (package t7:run) -->

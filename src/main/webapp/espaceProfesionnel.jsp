@@ -46,7 +46,7 @@
 					 				<img class="image" src="uploadedImage/produit/<s:property value="#produit.photo"/>"/>
 					 			</div>
 					 			<div class="nom">
-					 				<s:property value="#produit.nom"/> Dhs
+					 				<s:property value="#produit.nom"/>
 					 			</div>					 		
 					 			<div class="prix">
 					 				<s:property value="#produit.prix"/> Dhs

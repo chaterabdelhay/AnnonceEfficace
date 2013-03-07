@@ -76,7 +76,7 @@
 									<p>
 											<label for="categorieObjet">Catègorie</label>
 											<s:select headerKey="-1" headerValue="Selectionnez"
-												list="#{'1':'Ordinateur', '2':'Télephone','3':'Autre'}"
+												list="#{'1':'Ordinateur', '2':'Télephone','3':'Moto','4':'Voiture','5':'Autre'}"
 												name="categorieObjet" />
 										</p>
 										<p>

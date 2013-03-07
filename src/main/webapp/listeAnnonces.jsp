@@ -34,7 +34,7 @@
     <!-- begin boxes -->
     <div id="boxes">    	                   
         <s:if test="%{posGeoLatitude == null}">
-        	<p>Le système n'arrive pas à  charger votre position gèographique, <a href="#" id="unauthenifiedUserSetPosition">Selectionnez la position</a> où vous voulez trouver des annonces. Et le système va vous chercher les annonces les plus proches de vous.</p>
+        	<p>Le systÃ¨me n'arrive pas Ã  charger votre position gÃ©ographique, <a href="#" id="unauthenifiedUserSetPosition">Selectionnez la position</a> oÃ¹ vous voulez trouver des annonces. Et le systÃ¨me va vous chercher les annonces les plus proches de vous.</p>
         	<script>
         	$("#unauthenifiedUserSetPosition").click(function() {
         		$("#topGrayLayer1").fadeIn(500);
@@ -77,10 +77,11 @@
 <div id="topGrayLayer2" class="topGrayLayer">
 	<div id="mapDiv">
 		<div class="whiteBG" style="margin-top:200px; padding: 10px;">				     	    
-
-			<p><a id="link1" href="#">Annonces de vente</a></p>
-			<p><a id="link2" href="#">Annonces d'achat</a></p>
-			<p><a id="link3" href="#">Evenements</a></p>
+			<p><a id="link0" href="#">Toutes les annonces</a></p>
+			<p><a id="link1" href="#">Annonces de vente</a></p>			
+			<p><a id="link2" href="#">Evenements</a></p>
+			<p><a id="link3" href="#">Offres d'emploi</a></p>
+			<p><a id="link4" href="#">Offres de stages</a></p>
 			<br/>			
  			<h3><a href="#" id="searchToolClose">Fermer</a></h3>
 			<script>
@@ -98,23 +99,33 @@
 								$('#boxes').html("Error !: " + msg);
 							},
 							success : function(data) {
-								//affiche le contenu du fichier dans le conteneur dédié
+								//affiche le contenu du fichier dans le conteneur indique
 								$('#boxes').html(data);															
 							}
 						});
 			}
+			$("#link0").click(	function(){
+				$("#currentAnnonceType").val("All");
+				ajaxGetListAnnonces();
+				$("#topGrayLayer2").fadeOut(500);
+			});	
 			$("#link1").click(	function(){
 							$("#currentAnnonceType").val("V");
 							ajaxGetListAnnonces();
 							$("#topGrayLayer2").fadeOut(500);
 			});				
 			$("#link2").click(	function(){
-					$("#currentAnnonceType").val("A");
+					$("#currentAnnonceType").val("E");
 					ajaxGetListAnnonces();
 					$("#topGrayLayer2").fadeOut(500);
 			});	
 			$("#link3").click(	function(){
-					$("#currentAnnonceType").val("E");
+					$("#currentAnnonceType").val("OE");
+					ajaxGetListAnnonces();
+					$("#topGrayLayer2").fadeOut(500);										
+			});	
+			$("#link3").click(	function(){
+					$("#currentAnnonceType").val("OS");
 					ajaxGetListAnnonces();
 					$("#topGrayLayer2").fadeOut(500);										
 			});	
@@ -144,16 +155,16 @@
 	var GMapInitialized = false;
 	<s:if test="%{#session.utilisateur!=null}">
 	var userLatitude  = <s:property value="%{#session.utilisateur.userPositionGeographique.latitude}"/>;
-	var userLongitude = <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>;
-	var userIcon = new GIcon(G_DEFAULT_ICON);		
-	userIcon.image = "template/images/GMap/markers/user.png";		
-	var userMarkerOptions = { icon:userIcon};
-	var UserMarker = new GMarker(new GLatLng(userLatitude,userLongitude),userMarkerOptions);
+	var userLongitude = <s:property value="%{#session.utilisateur.userPositionGeographique.longitude}"/>;	
 	</s:if> 
 	<s:if test="%{#session.utilisateur==null}">
 	var userLatitude  = 33.742612777346885;
 	var userLongitude = -6.053466796875;
 	</s:if> 
+	var userIcon = new GIcon(G_DEFAULT_ICON);		
+	userIcon.image = "template/images/GMap/markers/user.png";		
+	var userMarkerOptions = { icon:userIcon};
+	var UserMarker = new GMarker(new GLatLng(userLatitude,userLongitude),userMarkerOptions);
 	function initGMap() {
 		if (GBrowserIsCompatible()) {
 			map = new GMap2(document.getElementById("mapa"));
@@ -169,7 +180,8 @@
 			GEvent.addListener(map, 'click', function(overlay, point) {
 				document.getElementById('selectedLatitude').innerHTML = point.lat();
 				document.getElementById('selectedLongitude').innerHTML = point.lng();
-				map.removeOverlay(UserMarker);
+				if(UserMarker != null)
+					map.removeOverlay(UserMarker);
 				newMarker = new GMarker(point,userMarkerOptions);
 				map.addOverlay(newMarker);
 				UserMarker = newMarker;

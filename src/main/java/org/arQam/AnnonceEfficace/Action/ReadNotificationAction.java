@@ -29,18 +29,16 @@ public class ReadNotificationAction extends ActionSupport {
 		Suivi mp=new Suivi();
         Map session = ActionContext.getContext().getSession();
         Utilisateur user = (Utilisateur) session.get("utilisateur");
+        if(user == null) return INPUT;
         // set notifcation as read
         long utilisateurId = user.getId();        
         setNotificationAsRead(notificationId, utilisateurId);
         // redirect
-        HttpServletResponse response = ServletActionContext.getResponse();
-        
-        //reduce number of new notifications		      
-        session.put("nbrOfNotifications", ((Integer)session.get("nbrOfNotifications")) - 1);
+        HttpServletResponse response = ServletActionContext.getResponse();        
+        //refresh the number of new notifications        
+        session.put("nbrOfNotifications", Notification.count(user.getId()));
         //redirect to see the link
-		response.sendRedirect(lien);
-        //System.out.println("ddddd" + notificationId);
-		//System.out.println("ddddd" + lien);				
+		response.sendRedirect(lien);        			
         return SUCCESS;
 	}
 	

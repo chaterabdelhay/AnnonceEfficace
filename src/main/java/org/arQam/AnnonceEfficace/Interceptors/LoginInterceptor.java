@@ -18,10 +18,7 @@ public class LoginInterceptor implements Interceptor{
     private static final long serialVersionUID = 1L;
  
     public String intercept(ActionInvocation invocation) throws Exception {
- 
-    	// ####### code execut� avant l'invocation de l'actio    	    	
-    	    	
-    	
+    	// ####### code executée avant l'invocation de l'action  	    	    	    	    	
         Map session = ActionContext.getContext().getSession();        
         if(session.get("utilisateur") != null){
         	Utilisateur user = (Utilisateur) session.get("utilisateur");        	        	
@@ -38,10 +35,8 @@ public class LoginInterceptor implements Interceptor{
        // ServletActionContext.getRequest().getSession(false).invalidate();  
           
        response.sendRedirect("login");  
-        
-        // code execut� apr�s l'invocation de l'actio
-              
-        return "connexionPage"; // not used : return a global result name 
+                     
+       return "connexionPage"; // not used : return a global result name 
     }
  
     public void destroy() {

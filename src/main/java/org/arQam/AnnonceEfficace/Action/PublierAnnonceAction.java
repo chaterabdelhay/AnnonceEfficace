@@ -366,6 +366,7 @@ public class PublierAnnonceAction extends ActionSupport implements ServletReques
 	public Boolean getRemunere() {
 		return remunere;
 	}
+	
 	public void setRemunere(Boolean remunere) {
 		this.remunere = remunere;
 	}
