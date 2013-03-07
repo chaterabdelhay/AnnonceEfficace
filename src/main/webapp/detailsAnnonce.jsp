@@ -19,7 +19,8 @@
 			<tr>
 				<td colspan="2"
 					style="padding-bottom: 5px; border-bottom: 1px solid #ddd;">					
-						<div style="float:right" style="width:200px;"> 
+						<div style="float:right" style="width:200px;"> 						
+						<p>Evaluation moyenne : <span id="avgValue"><s:property value="average"/></span></p>
 						<s:if test="%{#session.utilisateur != null}">
 						<s:if test="%{!evaluatedByUser}">
 						<div id="evaluateControl">
@@ -34,16 +35,16 @@
 						</div>
 						</s:if>
 						</s:if>
-						<p>Evaluation moyenne : <span id="avgValue"><s:property value="average"/></span> </p>
 						</div>																
 						<div style="float:left;">
 							<h3>Type de l'annonce : <s:property value="%{typeAnnonce}"/><br/>Titre : <s:property value="%{annonce.titre}"/></h3>
 							<div>																											
-											<h3><a href="#" id="cloturer?annonceId=<s:property value="%{annonce.id}"/>">Cloturer</a></h3>
+											<!-- <h3><a href="#" id="cloturer?annonceId=<s:property value="%{annonce.id}"/>">Cloturer</a></h3>
 											<h3><a href="#" id="supprimer.action?annonceId=<s:property value="%{annonce.id}"/>">Supprimer</a></h3>
 											<h3><a href="#" id="modifier.action?annonceId=<s:property value="%{annonce.id}"/>">Modifier</a></h3>
 											<h3><a href="#" id="signaler.action?annonceId=<s:property value="%{annonce.id}"/>">Signaler</a></h3>																											
 											<h3><a href="#" id="advertise.action?annonceId=<s:property value="%{annonce.id}"/>">faire de la publicité</a></h3>
+											 -->
 							</div>							
 						</div> 	
 				<script>

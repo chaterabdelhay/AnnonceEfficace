@@ -209,13 +209,13 @@
 			</span>	
 			<span id="opt5" class="option"> 
 				<span class="optionDescription" id="opt5Description">Gerer mon espace professionnel</span> 
-				<img src="template/images/sideBar/options/opt2Normal.png" 
+				<img src="template/images/sideBar/options/opt5Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();"									
 					onclick="window.location.replace('espaceProfessionnel');"/>
 			</span>						
 			<span id="opt4" class="option"> 
-				<span class="optionDescription" id="opt4Description">liste d'utilisateurs</span> 
-				<img src="template/images/sideBar/options/opt2Normal.png" 
+				<span class="optionDescription" id="opt4Description">liste des utilisateurs</span> 
+				<img src="template/images/sideBar/options/opt6Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
 					onclick="window.location.replace('listUsers');"/>
 			</span>			
