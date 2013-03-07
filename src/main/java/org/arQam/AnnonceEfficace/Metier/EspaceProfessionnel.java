@@ -107,5 +107,23 @@ public class EspaceProfessionnel {
 		return null;
 	}	
 	
+	public void save() {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();    
+		long id = (Integer) session.save(this);             
+		session.getTransaction().commit();             
+		session.close();     
+	}
+	
+	public void update() {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();    
+		session.update(this);             
+		session.getTransaction().commit();             
+		session.close();     
+	}
+	
 }
 

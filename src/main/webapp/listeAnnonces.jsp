@@ -81,6 +81,8 @@
 			<p><a id="link1" href="#">Annonces de vente</a></p>
 			<p><a id="link2" href="#">Annonces d'achat</a></p>
 			<p><a id="link3" href="#">Evenements</a></p>
+			<br/>			
+ 			<h3><a href="#" id="searchToolClose">Fermer</a></h3>
 			<script>
 			function ajaxGetListAnnonces() {
 				if($("#currentPosGeoLatitude").val() == '' || $("#currentPosGeoLongitude").val() == ''){
@@ -134,9 +136,7 @@
 			$("#toggleUseGMap").click(	function(){
 				ajaxLoadGoogleMapAnnoncesExplorer();
 			});				
-			</script>			
-    		<br/>			
- 			<a href="#" id="searchToolClose">Fermer</a>
+			</script>			    		
  		</div>		
 	</div>
 </div>

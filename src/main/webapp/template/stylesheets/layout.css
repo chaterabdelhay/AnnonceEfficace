@@ -762,8 +762,11 @@ FOOTER
 	background-color:rgba(255,255,255,1);	
 }
 .grayEP{		
-	background-color:rgba(0,0,0,0.02);		
-	/*color:#fff !important;*/
+	background-color:rgba(0,0,0,0.05);			
+}
+
+.blueEP{		
+	background-color:rgba(0,148,255,0.3);
 }
 
 .espaceProfessionnel .header{
@@ -773,24 +776,39 @@ FOOTER
 
 .espaceProfessionnel .header .logo{
 	width:128px;
+	height:128px;	
+}
+
+.espaceProfessionnel .header .logo_whiteBg{
+	width:128px;
 	height:128px;
+	background-color:#fff;
+	border-radius:5px;
+}
+
+.espaceProfessionnel .header .onLeft{
+	float:left;
+}
+
+.espaceProfessionnel .header .onRight{
 	float:right;
 }
 
-.espaceProfessionnel .header .description{
-	margin-right:180px;
+.espaceProfessionnel .header .description_left{
+	text-align:justify;
+	margin-right:140px;
 }
 
-.espaceProfessionnel .left{
+.espaceProfessionnel .header .description_right{
+	text-align:justify;
+	padding-right:0px;	
+}
+
+.espaceProfessionnel .vitrines{
 	padding:10px;
 }
 
-.espaceProfessionnel .right{
-	text-align:right;
-	padding-right:20px;
-}
-
-.produit{	
+.espaceProfessionnel .produit{	
 	display:inline-block;
 	width:120px;
 	height:200px;
@@ -799,6 +817,21 @@ FOOTER
 	border-radius:5px;
 	padding:5px;
 }
+
+
+.espaceProfessionnel .redBorder{		
+	border: 3px solid rgba(255,20,20,0.4);		
+}
+
+.espaceProfessionnel .whiteBorder{		
+	border: 3px solid rgba(0,0,0,0.2);	
+	
+}
+
+.espaceProfessionnel .grayBorder{		
+	border: 3px solid rgba(0,0,0,0.5);			
+}
+
 .produit .image{	
 	width:90px;
 	height:140px;

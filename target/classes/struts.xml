@@ -7,9 +7,7 @@
   	<constant name="struts.devMode" value="true"/>      	
 	
 	<package name="default" extends="struts-default">
-	  		
-      		
-						
+
 		<interceptors>
     		<interceptor name="login" class="org.arQam.AnnonceEfficace.Interceptors.LoginInterceptor"/>    	
 		</interceptors>
@@ -52,6 +50,9 @@
     		<interceptor-ref name="login" />  	            
     		<result name="success">/espaceProfesionnel.jsp</result>
     	</action>    	
+    	<action name="changeModeleAffichageEspaceProfesionnel" class="org.arQam.AnnonceEfficace.Action.ChangeModeleAffichaeEspaceProfesionnelAction">
+    	    <!-- <interceptor-ref name="login" />  --> <!-- action attributs values are not assigned if interceptor is used here   -->
+    	</action>
     	<action name="listeAnnonces" class="org.arQam.AnnonceEfficace.Action.ListeAnnoncesAction">
     		<!-- <interceptor-ref name="login" /> -->  	            
     		<result name="success">/listeAnnonces.jsp</result>
