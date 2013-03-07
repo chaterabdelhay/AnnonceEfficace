@@ -60,8 +60,7 @@ public class EvaluateAction extends ActionSupport {
         ev.setAnnonce(annonce);
         ev.setNote(note);    		 		
  		ev.save();
-    	average=Evaluation.avg(annonceId);
-    	System.out.println(Evaluation.avg(annonceId));
+    	average=Evaluation.avg(annonceId);    	
 		return SUCCESS;    		        
     }
     

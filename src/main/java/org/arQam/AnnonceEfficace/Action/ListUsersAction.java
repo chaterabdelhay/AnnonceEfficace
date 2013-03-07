@@ -21,6 +21,7 @@
 
 package org.arQam.AnnonceEfficace.Action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,19 +32,33 @@ import org.arQam.AnnonceEfficace.Metier.Utilisateur;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ListUsersAction extends ActionSupport {	
-    
+public class ListUsersAction extends ActionSupport {	    
 	
-	public List users;    
+	public List users;
+	public List<Integer> followedUsers = new ArrayList<Integer>();    
     
     public String execute() throws Exception {
     	//setAnnonces(Annonce.list());
-    	// set positionGeographique    	
+    	// set positionGeographique
+    	Map session = ActionContext.getContext().getSession();
+        Utilisateur user = (Utilisateur) session.get("utilisateur");
+        if(user == null) return INPUT;
     	users=Utilisateur.list();
-    		
+    	List listOfFollowedUsers = user.listOfFollowedUsers();
+    	for(Object u : listOfFollowedUsers) {
+    		Object[] tab = (Object[]) u;
+    		//System.out.println((Integer)tab[0]);
+    		followedUsers.add((Integer)tab[0]);
+    	}
         return SUCCESS;       
     }
-
-
+    
+    public boolean isFollowed(int userId){
+    	System.out.println(userId);
+    	for(Integer followedUsedId : followedUsers) {
+    		if(userId == followedUsedId) return true;    		
+    	}
+    	return false;
+    }
 
 }

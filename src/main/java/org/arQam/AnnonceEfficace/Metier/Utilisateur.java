@@ -70,6 +70,16 @@ public class Utilisateur {
         return employees;
     }
     
+    public List listOfFollowedUsers() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+     
+        List employees = session.createSQLQuery("Select u.* from Utilisateur u,suivi su  WHERE u.id = su.suivitId AND su.suiveurId = "+ this.getId()
+        										+"").list();
+        session.close();
+        return employees;
+    }
+    
     
     public static Utilisateur exists(String username, String password) {
     	SessionFactory sf = HibernateUtil.getSessionFactory();
