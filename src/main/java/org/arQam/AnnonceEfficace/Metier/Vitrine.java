@@ -90,6 +90,7 @@ public class Vitrine {
        	 	return (Vitrine) result.get(0);                        
 		return null;
 	}
+	
 	public static int loadByName(String s) {
    	 	SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
@@ -97,8 +98,7 @@ public class Vitrine {
         List result = session.createQuery("from Vitrine WHERE nom = :a")
     			.setParameter("a", s).list();
     			
-        return  (int) ((Vitrine) result.get(0)).id;
-                              
+        return  (int) ((Vitrine) result.get(0)).id;                              
 		
 	}
 

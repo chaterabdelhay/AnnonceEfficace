@@ -97,6 +97,15 @@ public class EspaceProfessionnel {
 		this.modeleAffichage = modeleAffichage;
 	}
 
+	public static List list() {		
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        String hqlRequest = "from EspaceProfessionnel";        
+        List resultList = session.createQuery(hqlRequest).list();        
+        return resultList;
+        
+    }
+	
 	public static EspaceProfessionnel getUserEspaceProfessionnel(long utilisateurId) {
    	 	SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
@@ -124,6 +133,15 @@ public class EspaceProfessionnel {
 		session.getTransaction().commit();             
 		session.close();     
 	}
-	
+
+	public static EspaceProfessionnel load(long id) {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		List result = session.createQuery("from EspaceProfessionnel WHERE id = "+id).list();
+		if(result != null)
+			return (EspaceProfessionnel) result.get(0);                        
+		return null;		
+	}
+
 }
 

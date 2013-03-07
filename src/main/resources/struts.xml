@@ -47,8 +47,9 @@
     		<result name="success">/espaceUtilisateur.jsp</result>
     	</action>
     	<action name="espaceProfessionnel" class="org.arQam.AnnonceEfficace.Action.EspaceProfesionnelAction">
-    		<interceptor-ref name="login" />  	            
+    		<!-- <interceptor-ref name="login" /> -->  	            
     		<result name="success">/espaceProfesionnel.jsp</result>
+    		<result name="input" type="redirect">/connexion</result>
     	</action>    	
     	<action name="changeModeleAffichageEspaceProfesionnel" class="org.arQam.AnnonceEfficace.Action.ChangeModeleAffichaeEspaceProfesionnelAction">
     	    <!-- <interceptor-ref name="login" />  --> <!-- action attributs values are not assigned if interceptor is used here   -->
@@ -130,6 +131,10 @@
     		<result name="input">/connexion.jsp</result>
     	</action> 
     	
+    	<action name="listEspacesPro" class="org.arQam.AnnonceEfficace.Action.ListEspacesProAction">    			           
+    		<result name="success">/listEspacesPro.jsp</result>
+    		<result name="input">/connexion.jsp</result>
+    	</action>     	
     	<action name="suivre" class="org.arQam.AnnonceEfficace.Action.SuivreAction">
     	    <!-- <interceptor-ref name="login" />  -->
     	    <result name="success">/blank.jsp</result>

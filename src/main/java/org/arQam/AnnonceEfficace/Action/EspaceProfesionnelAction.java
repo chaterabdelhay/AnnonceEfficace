@@ -13,27 +13,40 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class EspaceProfesionnelAction extends ActionSupport {
+		private Integer espaceProId;
+	
 	 	private EspaceProfessionnel espaceProfessionnel;
 	 	private List vitrines;
 	 	private List produits;	 		 	
 	 	private Map<String,String> modeleAffichage = new HashMap<String,String>();
-	    public String execute() throws Exception {	       
-	        Map session = ActionContext.getContext().getSession();
-	        Utilisateur user = (Utilisateur) session.get("utilisateur");
-	        //session.put("userPositionGeographique",user.getUserPositionGeographique());	        	
-	        espaceProfessionnel = EspaceProfessionnel.getUserEspaceProfessionnel(user.getId());
-	        setVitrines(Vitrine.getEspaceProfessionnelVitrines(espaceProfessionnel.getId()));
-	        setProduits(Produit.list());
-	        String[] modeleAffichageValues = espaceProfessionnel.getModeleAffichage().getModele().split(";");	        
-	        for(int i = 0; i < modeleAffichageValues.length; i++){
-	        	System.out.println(modeleAffichageValues[i]);
-	        	String[] splitedValue = modeleAffichageValues[i].split("=");	        		        
-	        	modeleAffichage.put(splitedValue[0],splitedValue[1]);
-	        }
-	        
+	    public String execute() throws Exception {
+	    	
+	    	if(espaceProId != null){ /* si (id!= null) alors il s'agit de la consultation d'un espace professionnel*/
+	    		espaceProfessionnel = EspaceProfessionnel.load(Long.valueOf(espaceProId));
+		        setVitrines(Vitrine.getEspaceProfessionnelVitrines(espaceProfessionnel.getId()));
+		        setProduits(Produit.list());
+		        parseModeleAffichageToMap();		        
+	    	}else{
+	    		Map session = ActionContext.getContext().getSession();
+		        Utilisateur user = (Utilisateur) session.get("utilisateur");
+		        if(user == null) return INPUT;		      		       
+		        //session.put("userPositionGeographique",user.getUserPositionGeographique());	        	
+		        espaceProfessionnel = EspaceProfessionnel.getUserEspaceProfessionnel(user.getId());
+		        setVitrines(Vitrine.getEspaceProfessionnelVitrines(espaceProfessionnel.getId()));
+		        setProduits(Produit.list());
+		        parseModeleAffichageToMap();   		    		    		    			        	
+	    	}
 	        return SUCCESS;
 	    }
 
+	    private void parseModeleAffichageToMap(){
+	    	String[] modeleAffichageValues = espaceProfessionnel.getModeleAffichage().getModele().split(";");	        
+	        for(int i = 0; i < modeleAffichageValues.length; i++){	        	
+	        	String[] splitedValue = modeleAffichageValues[i].split("=");	        		        
+	        	modeleAffichage.put(splitedValue[0],splitedValue[1]);
+	        }	 
+	    }
+	    
 		public EspaceProfessionnel getEspaceProfessionnel() {
 			return espaceProfessionnel;
 		}
@@ -64,6 +77,14 @@ public class EspaceProfesionnelAction extends ActionSupport {
 
 		public void setModeleAffichage(Map<String,String> modeleAffichage) {
 			this.modeleAffichage = modeleAffichage;
+		}
+
+		public Integer getEspaceProId() {
+			return espaceProId;
+		}
+
+		public void setEspaceProId(Integer espaceProId) {
+			this.espaceProId = espaceProId;
 		}
 	    	   	
 		

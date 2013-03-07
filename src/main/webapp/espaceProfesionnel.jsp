@@ -10,10 +10,12 @@
 <div class="container_12">	   
     <br/><br/><br/>      	   	    	
 	<div style="margin:40px 0px 160px 10px;">
-		<h3 style="margin-bottom:10px;">
+		<s:if test="%{espaceProId == null}">
+		<h3 style="margin-bottom:10px;">		 
 			<a href="#" id="editModeleAffichage">Modifier le modèle d'affichage</a>&nbsp;|&nbsp;
 			<a href="#" id="augmenterTailleVitrine">Augmenter la taille de ma vitirine</a>
-		</h3>		
+		</h3>
+		</s:if>		
 		<table class="espaceProfessionnel <s:property value="%{modeleAffichage['bg']}"/>">
 			<tr>
 				<td class="header">
@@ -24,11 +26,11 @@
 			</tr>
 			<tr>				
 				<td>
-				   <div class="vitrines">
-					 			
+				   <div class="vitrines">							
 					 <p>
 					 <s:iterator value="vitrines" var="vitrine">
-						<h3>Vitrine : <s:property value="#vitrine.nom"/></h3>
+						<h3><s:property value="#vitrine.nom"/></h3>
+						<s:if test="%{espaceProId == null}">						
 						<div class="produit <s:property value="%{modeleAffichage['produit']}"/>" style="cursor:pointer;" onclick="window.location='createProduct.action?vitrineId=<s:property value="#vitrine.id"/>'">
 					 		<div class="image">					 							 							 			
 					 			<img  src="template/images/new.png"/> <p style="color:rgba(0,0,0,0.3);font-weight:800;">nouveau</p>					 			
@@ -36,6 +38,7 @@
 					 		<div class="nom">&nbsp;</div>					 		
 					 		<div class="prix">&nbsp;</div>	
 					 	</div> 	
+					 	</s:if>					 	
 						 <s:iterator value="produits" var="produit">						 	
 						 	<s:if test="%{#vitrine.id == #produit.vitrine.id}">
 					 		<div class="produit <s:property value="%{modeleAffichage['produit']}"/>">					 		

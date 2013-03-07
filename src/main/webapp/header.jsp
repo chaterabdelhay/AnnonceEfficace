@@ -166,15 +166,12 @@
         	<li><a href="." class="selected">Acceuil</a></li>        	
         	<s:if test="%{#session.utilisateur!=null}">
             	<li><a href="espaceUtilisateur" style="color:#fff;">Mon espace</a></li>
-            </s:if>
-            <s:if test="%{#session.utilisateur!=null}">
-            	<li><a href="espaceProfessionnel" style="color:#fff;">Espace professionnel</a></li>
-            </s:if>
+            </s:if>            
             <s:if test="%{#session.utilisateur!=null}">
             	<li><a href="listeMessages" style="color:#fff;">Mes messages</a></li>
-            </s:if>
-           
+            </s:if>           
             <li><a href="listeAnnonces">Annonces</a></li>                        
+            <li><a href="listEspacesPro">Espaces professionnels</a></li>
             <s:if test="%{#session.utilisateur!=null}">
             	<li><a href="disconnect" style="color:#fff;">Se deconnecter</a></li>
             </s:if>
@@ -201,24 +198,30 @@
 			</span>
 				<div class="noti_bubble"><s:property value="%{#session.nbrOfNotifications}"/></div>
 			</div>
+			<span id="opt1" class="option"> 
+			<span class="optionDescription" id="opt1Description">Mes messages</span> 
+			<img src="template/images/sideBar/options/opt1Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
+					onclick="window.location.replace('listeMessages');"/>
+			</span>	
 			<span id="opt3" class="option"> 
 				<span class="optionDescription" id="opt3Description">Publier une annonce rapidement</span> 
 				<img src="template/images/sideBar/options/opt3Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
 					onclick="window.location.replace('publierAnnonce');"/> 
-			</span>
-		<span id="opt1" class="option"> 
-			<span class="optionDescription" id="opt1Description">Voir les annonces</span> 
-			<img src="template/images/sideBar/options/opt1Normal.png" 
-					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
-					onclick="window.location.replace('listeAnnonces');"/>
-		</span>						
+			</span>	
+			<span id="opt5" class="option"> 
+				<span class="optionDescription" id="opt5Description">Gèrer mon espace professionnel</span> 
+				<img src="template/images/sideBar/options/opt2Normal.png" 
+					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();"									
+					onclick="window.location.replace('espaceProfessionnel');"/>
+			</span>						
 			<span id="opt4" class="option"> 
 				<span class="optionDescription" id="opt4Description">liste d'utilisateurs</span> 
 				<img src="template/images/sideBar/options/opt2Normal.png" 
 					onmouseover="showOptionDescriptor(this)" onmouseout="timedOuthideOptionDescriptor();" 
 					onclick="window.location.replace('listUsers');"/>
-			</span>	
+			</span>			
 			<span id="opt2" class="option"> 
 				<span class="optionDescription" id="opt2Description">Participer au concours</span> 
 				<img src="template/images/sideBar/options/opt2Normal.png" 
@@ -226,8 +229,7 @@
 					onclick="window.location.replace('participerConcours');"/>
 			</span>						
 	</div>		
-	<div id="sideBarBottomPart"></div>
-		
+	<div id="sideBarBottomPart"></div>		
 </div>
 </s:if>					
 <table id="optionDescriptor" cellpadding="0" cellspacing="0">
