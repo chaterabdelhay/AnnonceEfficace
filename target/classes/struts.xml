@@ -160,7 +160,7 @@
         		</param>
     		</interceptor-ref>    
       		<result name="input">/createProduit.jsp</result>
-      		<result name="success" type="redirect">/operationReussie?operation=ajout produit</result>      	    	    	
+      		<result name="success" type="redirect">/espaceProfessionnel</result>      	    	    	
     	</action> 		               		    	    	        	
     	
     	<action name="notifications" class="org.arQam.AnnonceEfficace.Action.NotificationsAction">

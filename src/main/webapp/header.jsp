@@ -166,10 +166,7 @@
         	<li><a href="." class="selected">Acceuil</a></li>        	
         	<s:if test="%{#session.utilisateur!=null}">
             	<li><a href="espaceUtilisateur" style="color:#fff;">Mon espace</a></li>
-            </s:if>            
-            <s:if test="%{#session.utilisateur!=null}">
-            	<li><a href="listeMessages" style="color:#fff;">Mes messages</a></li>
-            </s:if>           
+            </s:if>                        
             <li><a href="listeAnnonces">Annonces</a></li>                        
             <li><a href="listEspacesPro">Espaces professionnels</a></li>
             <s:if test="%{#session.utilisateur!=null}">
