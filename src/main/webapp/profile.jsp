@@ -249,7 +249,7 @@
 						});
 			}			
  		</script>   
-						<h3>les utilisateurs suivi</h3>
+						<h3>Abonnements</h3>
 				<ul>		
 				<s:iterator value="suivis" var="resultObject">  
 				
@@ -266,15 +266,6 @@
 		</table>		
 							
 	</div>
-	
-     <!-- begin .grid_12 - COMMENTS -->
-     <div id="strip" class="grid_12">
-         <img id="users" src="template/images/users.png" alt="" />
-         <ul id="comments">
-             <li>"Maecenas pharetra egestas adipiscing. Nullam consequat velit in felis sodales in facilisis justo fringilla. Pellentesque nec lobortis dolor. Praesent et mi eu magna dapibus condimentum."<br /><span class="signature">John Doe - 4 October 2011</span></li>
-             <li>"Ut dapibus fringilla volutpat. Sed ullamcorper augue nec risus facilisis eu venenatis metus tristique. In hac habitasse platea dictumst. Aenean at lacus urna. Donec pretium mattis gravida."<br /><span class="signature">John Doe - 4 October 2011</span></li>
-         </ul>
-     </div><!-- end .grid_12 -->
 
 </div><!-- END CONTAINER -->
 

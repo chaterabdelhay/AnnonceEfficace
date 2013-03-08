@@ -139,12 +139,14 @@
 							<s:iterator value="commentaires" var="resultObject">
 							<div class="commentaire" style="margin-bottom: 20px;"><p><span class="auteur"><s:property value="#resultObject[1]"/></span> a dit :<br/><span class="contenu"><s:property value="#resultObject[0]"/></span></p></div>
 							</s:iterator>	
+							<s:if test="%{#session.utilisateur != null}">
 							<form id="addCommentForm" method="post" action="">
 								<p  style="float:right;">Nouveau commentaire</p>
 								<s:textarea name="contenu" id="msgTxt"
 									placeholder="Commentez cette annonce !" cols="80" rows="4" />
 								<s:submit id="submit" value="Envoyer" />								
 							</form>							
+							</s:if>
 						</div>										
 					</div>
 

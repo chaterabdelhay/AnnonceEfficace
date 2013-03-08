@@ -186,8 +186,7 @@
     	<action name="readNotification" class="org.arQam.AnnonceEfficace.Action.ReadNotificationAction">
     	    <!-- <interceptor-ref name="login" />  -->    	        	   
     	</action>  
-    	<action name="userGuide" class="com.opensymphony.xwork2.ActionSupport">
-    	    <interceptor-ref name="login" />
+    	<action name="userGuide" class="com.opensymphony.xwork2.ActionSupport">    	    
     	    <result name="success">/userGuide.jsp</result>
     	</action>  	
 	</package>		

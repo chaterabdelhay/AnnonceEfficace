@@ -9,19 +9,7 @@
 
 <!-- BEGIN CONTAINER -->
 <div class="container_12">
-	<br /> <br /> <br />
-	<div id="updatePosition">
-		<table cellpadding="4" style="display:inline;">
-	      <tr>	       
-	       <td>							
-				<p>+ 2 pour chaque outil utilisé : control de version GIT, sonnar, cocomo, IoC, </p>
-				<p>dèja utilisé : Git, Maven, Hibernate, Cocomo</p>
-				<p>à utilisé : DocBook, Sonnar, JUnit</p>
-				<p>Il est obligatoire d'utiliser sonnar durant la présentation (on execute le projet et on laisse la main à sonnar pour créer les differentes statistiques !</p>
-			</td>	      
-		  </tr>
-		</table>		
-	</div>
+	<br /> <br /> <br /><br /><br />
 	<div style="margin-left: 160px;">
 		<table id="login">
 			<tr>
@@ -57,7 +45,7 @@
 											<s:a href="creerCompte">La création d'un compte</s:a> est instantanée ! Même pas deux minutes et vous aurez votre 
 											propre compte.<br/>
 											<span style="color:#888">
-											Les internautes authenfiés ont accès à des <s:a href="Manuel?rubrique=5">fonctionnalités très interresantes</s:a>, ne vous en privez pas ! 
+											Les internautes authenfiés ont accès à des <s:a href="userGuide">fonctionnalités très interresantes</s:a>, ne vous en privez pas ! 
 											</span>
 										</p>																																	
 									</div>

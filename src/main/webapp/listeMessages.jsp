@@ -61,7 +61,7 @@
 					
 						<br/>
 						<h3><a href="#" class="show_hide">Envoyer un message</a></h3>
-						<a href="#" class="success">It's a success !</a><br />
+						<a href="#" class="success" style="display:none">It's a success !</a><br />
 						<div class="t">
 						
 <div class="container_12">
