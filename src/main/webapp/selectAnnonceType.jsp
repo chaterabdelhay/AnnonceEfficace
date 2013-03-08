@@ -43,7 +43,7 @@
 								</td>																				
 								<td  style="padding-left:20px">
 									<a href="publierAnnonce.action?type=OS">
-										<img src="template/images/annonceType/offreStage.png"/>
+										<img src="template/images/annonceType/offreEmploi.png"/>
 									</a>
 								</td>														
 							</tr>
